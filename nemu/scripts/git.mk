@@ -1,5 +1,5 @@
 STUID = 201240077
-STUNAME = Yu Qiang
+STUNAME = 于强
 
 # DO NOT modify the following code!!!
 
