@@ -20,6 +20,7 @@ run-env: $(BINARY) $(DIFF_REF_SO)
 
 run: run-env
 	$(call git_commit, "run")
+	return 0
 	$(NEMU_EXEC)
 
 gdb: run-env
