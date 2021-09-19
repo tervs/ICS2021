@@ -61,7 +61,8 @@ static int cmd_info(char *args)
     
      
 	if(strcmp(arg,"r")){
-isa_reg_display();
+	printf("ok");
+//isa_reg_display();
 }
 return 0;
 
