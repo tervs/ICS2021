@@ -58,11 +58,11 @@ return 0;
 static int cmd_info(char *args) 
 {
      char *arg = strtok(NULL, " ");
-    
+
      
 	if(strcmp(arg,"r")){
-	printf("ok");
-//isa_reg_display();
+///printf("ok");
+isa_reg_display();
 }
 return 0;
 
