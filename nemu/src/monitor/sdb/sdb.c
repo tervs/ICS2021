@@ -37,6 +37,7 @@ static int cmd_c(char *args) {
 static int cmd_q(char *args) {
   return -1;
 }
+
 static int cmd_si(char *args) {
    char *arg = strtok(NULL, " ");
    uint64_t n=0;
@@ -47,14 +48,27 @@ static int cmd_si(char *args) {
    return 0;}
    n=atoi(arg);
    if(n==0)
-   {printf("wrong");}
+   {printf("Unable to run the command");}
    else{
    cpu_exec(n);
    }
 return 0;
-
-   
 }
+
+static int cmd_info(char *args) 
+{
+     char *arg = strtok(NULL, " ");
+	if(strcmp(arg,"r")){
+isa_reg_display();
+}
+return 0;
+
+}
+
+
+
+
+
 static int cmd_help(char *args);
 
 static struct {
@@ -66,6 +80,7 @@ static struct {
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
   {"si","single step",cmd_si},
+  {"info","print ",cmd_info},
   /* TODO: Add more commands */
 
 };
