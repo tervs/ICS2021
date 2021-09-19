@@ -13,10 +13,10 @@ void isa_reg_display() {
 bool *success;
 success=0;
 
-printf("%d",isa_reg_str2val("$0", success));
-
-
-
+printf("%d\n",isa_reg_str2val("$0", success));
+printf("%d\n",isa_reg_str2val("ra", success));
+printf("%d\n",isa_reg_str2val("sp", success));
+printf("%d\n",isa_reg_str2val("gp", success));
 }
 
 
