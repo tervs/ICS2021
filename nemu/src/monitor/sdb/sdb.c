@@ -10,7 +10,8 @@ void init_regex();
 void init_wp_pool();
 
 /* We use the `readline' library to provide more flexibility to read from stdin. */
-static char* rl_gets() {
+static char* rl_gets() 
+{
   static char *line_read = NULL;
 
   if (line_read) {
@@ -49,7 +50,7 @@ static struct {
   { "help", "Display informations about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
-  {"info r","sth",cmd_info_r},
+  {"info","sth",cmd_info_r},
   /* TODO: Add more commands */
 
 };
