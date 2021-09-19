@@ -9,11 +9,11 @@ const char *regs[] = {
 };
 
 void isa_reg_display() {
-int x;
+
 bool *success;
 success=0;
-x=isa_reg_str2val("$0", success) ;
-printf("%d",x);
+
+printf("%d",isa_reg_str2val("$0", success));
 
 
 
