@@ -61,7 +61,7 @@ static int cmd_info(char *args)
    // printf("%s",arg);
      
 	if(strcmp(arg,"r")==0){
-printf("ok");
+//printf("ok");
 isa_reg_display();
 }
 return 0;
