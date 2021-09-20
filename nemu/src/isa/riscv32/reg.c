@@ -13,14 +13,14 @@ void isa_reg_display() {
 bool *success;
 success=0;
 
-printf("%s  %d; ","$0",isa_reg_str2val("$0", success));
-printf("%s  %d; ","$0",isa_reg_str2val("$0", success));
-printf("%s  %d; ","$0",isa_reg_str2val("$0", success));
-printf("%s  %d; ","$0",isa_reg_str2val("$0", success));
-printf("%s  %d; ","$0",isa_reg_str2val("$0", success));
-printf("%s  %d; ","$0",isa_reg_str2val("$0", success));
-printf("%s  %d; ","$0",isa_reg_str2val("$0", success));
-printf("%s  %d; ","$0",isa_reg_str2val("$0", success));
+printf("%s  %d | ","$0",isa_reg_str2val("$0", success));
+printf("%s  %d | ","$0",isa_reg_str2val("$0", success));
+printf("%s  %d | ","$0",isa_reg_str2val("$0", success));
+printf("%s  %d | ","$0",isa_reg_str2val("$0", success));
+printf("%s  %d | ","$0",isa_reg_str2val("$0", success));
+printf("%s  %d | ","$0",isa_reg_str2val("$0", success));
+printf("%s  %d | ","$0",isa_reg_str2val("$0", success));
+printf("%s  %d | ","$0",isa_reg_str2val("$0", success));
 printf("%s  %d\n","$0",isa_reg_str2val("$0", success));
 
 
