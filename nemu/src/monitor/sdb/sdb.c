@@ -64,7 +64,7 @@ static int cmd_info(char *args)
   
   isa_reg_display();
   }
-  else if(strcmp(arg,"r")==0)
+  else if(strcmp(arg,"w")==0)
   {
   printf("to be completed");
   }
