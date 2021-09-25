@@ -61,9 +61,15 @@ static int cmd_info(char *args)
    // printf("%s",arg);
      
 	if(strcmp(arg,"r")==0){
-//printf("ok");
-isa_reg_display();
-}
+  
+  isa_reg_display();
+  }
+  else if(strcmp(arg,"r")==0)
+  {
+  printf("to be completed");
+  }
+  else{printf("wrong command");}
+
 return 0;
 
 }
