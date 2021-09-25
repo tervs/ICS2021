@@ -10,7 +10,8 @@ const char *regs[] = {
 
 void isa_reg_display() {
 
-printf("%ls",&gpr(0));
+printf("0x%08x",gpr(0));
+
 /*bool *success;
 
 success=0;
