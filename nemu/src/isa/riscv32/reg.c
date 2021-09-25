@@ -13,8 +13,8 @@ void isa_reg_display() {
 for(int i=0;i<32;i++)
 {
   printf("%s 0x%08x    ",regs[i],gpr(i));
-  if(i==7||i==15||i==23)
-  printf("\n");
+  if(i==7||i==15||i==23||i==31)
+  {printf("\n");}
 }
 
 }
