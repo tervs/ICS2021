@@ -18,7 +18,7 @@ success=0;
 
 for(int i=0;i<32;i++)
 {
-  printf("%s  0x%08x\n    ",regs[i],isa_reg_str2val(regs[i], success));
+  printf("%s  0x%08x\n    ",regs[i],gpr(i));
 }
 printf("%s  0x%08x    ","$0",isa_reg_str2val("$0", success));
 /*printf("%s  %d    ","ra",isa_reg_str2val("ra", success));
