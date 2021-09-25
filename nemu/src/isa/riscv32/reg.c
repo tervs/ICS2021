@@ -12,6 +12,7 @@ void isa_reg_display() {
 
 printf("%ls",&gpr(0));
 /*bool *success;
+
 success=0;
 
 printf("%s  %d    ","$0",isa_reg_str2val("$0", success));
