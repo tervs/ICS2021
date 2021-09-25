@@ -10,14 +10,14 @@ const char *regs[] = {
 
 void isa_reg_display() {
 
-printf("0x%08x",gpr(0));
+//printf("0x%08x",gpr(0));
 
-/*bool *success;
+bool *success;
 
 success=0;
 
-printf("%s  %d    ","$0",isa_reg_str2val("$0", success));
-printf("%s  %d    ","ra",isa_reg_str2val("ra", success));
+printf("%s  0x%08x    ","$0",isa_reg_str2val("$0", success));
+/*printf("%s  %d    ","ra",isa_reg_str2val("ra", success));
 printf("%s  %d    ","sp",isa_reg_str2val("sp", success));
 printf("%s  %d    ","gp",isa_reg_str2val("gp", success));
 printf("%s  %d    ","tp",isa_reg_str2val("tp", success));
@@ -58,5 +58,5 @@ printf("\n");
 
 word_t isa_reg_str2val(const char *s, bool *success) 
 {
-  return 0;
+  return gpr(0);
 }
