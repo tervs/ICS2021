@@ -71,11 +71,11 @@ static int cmd_x(char *args)
   char *N = strtok(NULL, " ");
 uint32_t n=atoi(N);
 assert(n!=0);
-if(n==0)
+/*if(n==0)
   {
     printf("wrong");
     return 0;
-  }
+  }*/
      char *arg = strtok(NULL, " ");
      uint32_t addr=strtol(arg,NULL,16);
     
