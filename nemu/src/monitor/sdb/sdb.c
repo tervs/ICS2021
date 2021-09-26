@@ -66,19 +66,21 @@ return 0;
 
 static int cmd_x(char *args) 
 {
+  char *N = strtok(NULL, " ");
+uint32_t n=atoi(N);
      char *arg = strtok(NULL, " ");
-     uint32_t n=strtol(arg,NULL,16);
+     uint32_t addr=strtol(arg,NULL,16);
     
      word_t x;
-     for(int j=0;j<4;j++)
+     for(int j=0;j<n;j++)
      {
-        printf("0x%08x    ",n);
+        printf("0x%08x    ",addr);
         printf("0x");
         for(int i=0;i<4;i++)
       {
-      x=vaddr_read(n, 1);
+      x=vaddr_read(addr, 1);
       printf("%02x",x);
-      n++;
+      addr++;
       }
       printf("\n");
 
