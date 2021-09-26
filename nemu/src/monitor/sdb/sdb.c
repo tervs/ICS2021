@@ -66,7 +66,7 @@ static int cmd_x(char *args)
 {
      char *arg = strtok(NULL, " ");
  u_int32_t n=strtol(arg,NULL,16);
- printf("0x%08x",n);
+ printf("0x%08x\n",n);
     
 return 0;
 
