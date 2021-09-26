@@ -67,7 +67,7 @@ return 0;
 static int cmd_x(char *args) 
 {
  
-  if(args==NULL)
+  if(args==NULL||strcmp(args," "))
   {return 0;}
 
   char *N = strtok(NULL, " ");
