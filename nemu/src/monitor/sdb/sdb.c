@@ -68,7 +68,9 @@ static int cmd_x(char *args)
 {
   //if(strcmp(args,'\0')==0)
   //{printf("ok");}
-  assert(args!=NULL);
+  //assert(args!=NULL);
+  if(args==NULL)
+  {exit(0);}
 
   char *N = strtok(NULL, " ");
   
