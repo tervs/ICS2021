@@ -67,11 +67,8 @@ return 0;
 static int cmd_x(char *args) 
 {
  
-  if(args==NULL||strcmp(args," "))
-  {return 0;}
-
+ 
   char *N = strtok(NULL, " ");
-  
 uint32_t n=atoi(N);
 assert(n!=0);
 if(n==0)
