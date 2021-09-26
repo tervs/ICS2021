@@ -66,8 +66,9 @@ return 0;
 
 static int cmd_x(char *args) 
 {
-  if(args==NULL)
-  {printf("ok");}
+  //if(strcmp(args,'\0')==0)
+  //{printf("ok");}
+  assert(args==NULL);
   char *N = strtok(NULL, " ");
   
 uint32_t n=atoi(N);
