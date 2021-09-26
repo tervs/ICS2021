@@ -68,7 +68,8 @@ static int cmd_x(char *args)
 {
   //if(strcmp(args,'\0')==0)
   //{printf("ok");}
-  assert(args==NULL);
+  assert(args!=NULL);
+
   char *N = strtok(NULL, " ");
   
 uint32_t n=atoi(N);
