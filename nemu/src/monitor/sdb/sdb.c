@@ -11,6 +11,7 @@ void init_regex();
 void init_wp_pool();
 word_t vaddr_read(vaddr_t addr, int len);
 
+
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 static char* rl_gets() 
 {
@@ -38,6 +39,9 @@ static int cmd_c(char *args) {
 
 static int cmd_p(char *args) {
   char *EXPR=strtok(NULL, " ");
+
+  
+  //printf("%d   %s",tokens[0].type,tokens[0].token_type);
   printf("%s",EXPR);
   return 0;
 }
