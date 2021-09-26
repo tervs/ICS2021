@@ -3,8 +3,11 @@
 /* We use the POSIX regex functions to process regular expressions.
  * Type 'man regex' for more information about POSIX regex functions.
  */
-#include <regex.h>
 
+
+#include <regex.h>
+int t;
+word_t  eval(int p, int q) ;
 enum {
   TK_NOTYPE = 256, TK_EQ,TK_NUM,
 
@@ -70,7 +73,9 @@ static bool make_token(char *e) {
 
   while (e[position] != '\0') {
     /* Try all rules one by one. */
-    for (i = 0; i < NR_REGEX; i ++) {
+    for (i = 0; i < NR_REGEX; i ++) 
+    
+    {
       if (regexec(&re[i], e + position, 1, &pmatch, 0) == 0 && pmatch.rm_so == 0) 
       
       {
@@ -107,7 +112,7 @@ static bool make_token(char *e) {
       return false;
     }
   }
-
+  t=position;
   return true;
 }
 
@@ -118,8 +123,52 @@ word_t expr(char *e, bool *success) {
     return 0;
   }
 
+  int p=0;
+  int q=t;
+
+return eval(p,q);
+
+
   /* TODO: Insert codes to evaluate the expression. */
   TODO();
 
   return 0;
+}
+
+  word_t  eval(int p, int q) 
+  {
+    if (p > q) 
+    {
+    /* Bad expression */
+    return -1;
+    }
+    
+    else if (p == q)
+    {
+      return atoi(tokens[p].str);
+    /* Single token.
+     * For now this token should be a number.
+     * Return the value of the number.
+     */
+    }
+
+    else if (check_parentheses(p, q) == true) {
+    /* The expression is surrounded by a matched pair of parentheses.
+     * If that is the case, just throw away the parentheses.
+     */
+    return eval(p + 1, q - 1);
+  }
+  else {
+    op = the position of 主运算符 in the token expression;
+    val1 = eval(p, op - 1);
+    val2 = eval(op + 1, q);
+
+    switch (op_type) {
+      case '+': return val1 + val2;
+      case '-': /* ... */
+      case '*': /* ... */
+      case '/': /* ... */
+      default: assert(0);
+    }
+  }
 }
