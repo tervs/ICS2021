@@ -66,15 +66,14 @@ return 0;
 
 static int cmd_x(char *args) 
 {
-  //if(strcmp(args,'\0')==0)
-  //{printf("ok");}
-  //assert(args!=NULL);
+ 
   if(args==NULL)
   {return 0;}
 
   char *N = strtok(NULL, " ");
   
 uint32_t n=atoi(N);
+assert(n!=0);
 if(n==0)
   {
     printf("wrong");
