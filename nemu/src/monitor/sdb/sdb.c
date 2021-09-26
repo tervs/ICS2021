@@ -73,7 +73,7 @@ static int cmd_x(char *args)
      for(int i=0;i<4;i++)
      {
     x=vaddr_read(n, 1);
-    printf("%08x",x);
+    printf("%02x",x);
     n++;
      }
  
