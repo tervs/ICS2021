@@ -70,8 +70,6 @@ static int cmd_x(char *args)
      uint32_t n=strtol(arg,NULL,16);
     
      word_t x;
-
-
      for(int j=0;j<4;j++)
      {
         printf("0x%08x    ",n);
