@@ -36,7 +36,11 @@ static int cmd_c(char *args) {
 }
 
 
-
+static int cmd_p(char *args) {
+  char *EXPR=strtok(NULL, " ");
+  printf("%s",EXPR);
+  return 0;
+}
 
 
 
@@ -139,7 +143,9 @@ static struct {
   { "q", "Exit NEMU", cmd_q },
   {"si","single step",cmd_si},
   {"info","print ",cmd_info},
-  {"x","print virtual memory",cmd_x}
+  {"x","print virtual memory",cmd_x},
+  {"p","expression",cmd_p}
+
   /* TODO: Add more commands */
 
 };
