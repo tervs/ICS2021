@@ -66,13 +66,15 @@ return 0;
 
 static int cmd_x(char *args) 
 {
+  if(args==NULL)
+  {printf("ok");}
   char *N = strtok(NULL, " ");
   
 uint32_t n=atoi(N);
 if(n==0)
   {
     printf("wrong");
-    exit(0);
+    return 0;
   }
      char *arg = strtok(NULL, " ");
      uint32_t addr=strtol(arg,NULL,16);
