@@ -3,11 +3,13 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 #include "sdb.h"
+//#include "vaddr.h"
 
 static int is_batch_mode = false;
 
 void init_regex();
 void init_wp_pool();
+word_t vaddr_read(vaddr_t addr, int len);
 
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 static char* rl_gets() 
@@ -65,8 +67,11 @@ return 0;
 static int cmd_x(char *args) 
 {
      char *arg = strtok(NULL, " ");
- u_int32_t n=strtol(arg,NULL,16);
- printf("0x%08x\n",n);
+     uint32_t n=strtol(arg,NULL,16);
+     printf("0x%08x    ",n);
+     word_t x;
+     x=vaddr_read(n, 4);
+    printf("0x%08x\n",x);
     
 return 0;
 
