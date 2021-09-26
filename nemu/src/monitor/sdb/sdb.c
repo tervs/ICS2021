@@ -34,6 +34,10 @@ static int cmd_c(char *args) {
 }
 
 
+
+
+
+
 static int cmd_q(char *args) {
   return -1;
 }
@@ -54,6 +58,23 @@ static int cmd_si(char *args) {
    }
 return 0;
 }
+
+
+
+
+static int cmd_x(char *args) 
+{
+     char *arg = strtok(NULL, " ");
+ u_int32_t n=strtol(arg,NULL,16);
+ printf("0x%08x",n);
+    
+return 0;
+
+}
+
+
+
+
 
 static int cmd_info(char *args) 
 {
@@ -90,6 +111,7 @@ static struct {
   { "q", "Exit NEMU", cmd_q },
   {"si","single step",cmd_si},
   {"info","print ",cmd_info},
+  {"x","print virtual memory",cmd_x}
   /* TODO: Add more commands */
 
 };
