@@ -70,7 +70,7 @@ static int cmd_x(char *args)
   //{printf("ok");}
   //assert(args!=NULL);
   if(args==NULL)
-  {exit(0);}
+  {return 0;}
 
   char *N = strtok(NULL, " ");
   
