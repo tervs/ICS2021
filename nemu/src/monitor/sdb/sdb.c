@@ -67,6 +67,11 @@ return 0;
 static int cmd_x(char *args) 
 {
   char *N = strtok(NULL, " ");
+  if(strcmp(N," ")==0)
+  {
+    printf("wrong");
+    exit(0);
+  }
 uint32_t n=atoi(N);
      char *arg = strtok(NULL, " ");
      uint32_t addr=strtol(arg,NULL,16);
