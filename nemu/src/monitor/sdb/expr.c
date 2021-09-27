@@ -171,7 +171,7 @@ word_t  eval(int p, int q)
 
     }
 
-return 0; 
+   assert(0); 
   }
 
 
