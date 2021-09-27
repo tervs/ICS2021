@@ -11,7 +11,7 @@ int t;
 word_t  eval(int p, int q) ;
 //static bool check_parentheses(int p, int q);
 //tatic bool match(int p, int q);
-//int op_position(int p,int q);
+int op_position(int p,int q);
 
 
 enum {
@@ -140,12 +140,12 @@ word_t  eval(int p, int q)
       return atoi(tokens[p].str);
     }
 
-/*
-    else if (check_parentheses(p, q) == true) 
+
+    /*else if (check_parentheses(p, q) == true) 
     {
     return eval(p + 1, q - 1);
     }
-    
+    */
 
     else 
     {
@@ -162,10 +162,7 @@ word_t  eval(int p, int q)
     }
 
     }
-
-   assert(0); 
-   */
-  return 123;
+return -1;
   }
 
 
@@ -252,5 +249,5 @@ for(int i=p+1;i<q;i++)
 //编写括号匹配函数，检测某字符串两侧是否互相匹配
 
 
-  //int op_position(char *e)
+
  
