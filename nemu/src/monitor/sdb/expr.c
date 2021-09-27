@@ -129,7 +129,7 @@ return eval(0,t);
 
 word_t  eval(int p, int q)
 {
-    /*if (p > q) 
+    if (p > q) 
     { 
     return -1;
     }
@@ -140,7 +140,7 @@ word_t  eval(int p, int q)
       return atoi(tokens[p].str);
     }
 
-
+/*
     else if (check_parentheses(p, q) == true) 
     {
     return eval(p + 1, q - 1);
