@@ -40,12 +40,13 @@ static int cmd_c(char *args) {
 
 static int cmd_p(char *args) {
   char *EXPR = strtok(NULL, " ");
-  //uint32_t x;
-  //bool *success;
-  //x=expr(EXPR, &success);
-  //printf("%ld",x);
+  uint32_t x;
+  bool success;
+  success=true;
+  x=expr(EXPR, &success);
+  printf("%d",x);
   //printf("%d   %s",tokens[0].type,tokens[0].token_type);
-  printf("%s", EXPR);
+  //printf("%s", EXPR);
   return 0;
 }
 
