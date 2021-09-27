@@ -1,13 +1,19 @@
 #include <isa.h>
-
-/* We use the POSIX regex functions to process regular expressions.
- * Type 'man regex' for more information about POSIX regex functions.
- */
-
-
 #include <regex.h>
+#include<stdbool.h>
+
 int t;
+
+
+
+
+
 word_t  eval(int p, int q) ;
+int op_position(char *e);
+static bool check_parentheses(int p, int q);
+static bool match(int p, int q);
+
+
 enum {
   TK_NOTYPE = 256, TK_EQ,TK_NUM,
 
@@ -39,9 +45,7 @@ static struct rule {
 
 static regex_t re[NR_REGEX] = {};
 
-/* Rules are used for many times.
- * Therefore we compile them only once before any usage.
- */
+
 void init_regex() {
   int i;
   char error_msg[128];
@@ -128,48 +132,89 @@ word_t expr(char *e, bool *success) {
 
 return eval(p,q);
 
-
-  /* TODO: Insert codes to evaluate the expression. */
-  TODO();
-
-  return 0;
 }
 
   word_t  eval(int p, int q) 
   {
     if (p > q) 
-    {
-    /* Bad expression */
+    { 
     return -1;
     }
     
     else if (p == q)
     {
       return atoi(tokens[p].str);
-    /* Single token.
-     * For now this token should be a number.
-     * Return the value of the number.
-     */
     }
 
-    else if (check_parentheses(p, q) == true) {
-    /* The expression is surrounded by a matched pair of parentheses.
-     * If that is the case, just throw away the parentheses.
-     */
+    else if (check_parentheses(p, q) == true) 
+    {
     return eval(p + 1, q - 1);
-  }
-  else {
-    op = the position of 主运算符 in the token expression;
-    val1 = eval(p, op - 1);
-    val2 = eval(op + 1, q);
+    }
+  /*else {
+    int op = op_position(i);
+    word_t val1 = eval(p, op - 1);
+    word_t val2 = eval(op + 1, q);
 
-    switch (op_type) {
+    switch (tokens[op].type) {
       case '+': return val1 + val2;
-      case '-': 
-      case '*': 
-      case '/': 
+      case '-': return val1 - val2; 
+      case '*': return val1 * val2;
+      case '/': return val1 / val2;
       default: assert(0);
     }
   }
-  
+  */
+ return -1;
+  }
+
+static bool check_parentheses(int p, int q)
+{
+    if(tokens[p].type!='('||tokens[q].type!=')')
+    return false;
+    else{
+      return match(p,q);
+    }
 }
+
+
+static bool match(int p, int q)
+{
+  
+
+  int bracket=0;
+for(int i=p+1;i<q;i++)
+{
+    switch(tokens[i].type)
+            {
+              case '(':
+                bracket++;
+                 break;
+
+              case ')':
+               bracket--;
+                break;
+
+              default:
+                break;
+            }
+            if(bracket<0)
+            {
+              return false;
+              break;
+            }
+}
+            
+            if(bracket==0)
+            {
+              return true;
+            }
+            else return false;
+}
+
+//将去空格之后的tokens保存成一个一个新的字符串数组，tokens.str似乎已经是这样的数组了
+//利用新字符串数组，编写函数求解op位置
+//编写括号匹配函数，检测某字符串两侧是否互相匹配
+
+
+  //int op_position(char *e)
+ 

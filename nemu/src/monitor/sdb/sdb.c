@@ -39,7 +39,6 @@ static int cmd_c(char *args) {
 
 static int cmd_p(char *args) {
   char *EXPR=strtok(NULL, " ");
-
   
   //printf("%d   %s",tokens[0].type,tokens[0].token_type);
   
