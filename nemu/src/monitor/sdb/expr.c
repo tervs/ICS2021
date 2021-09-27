@@ -9,9 +9,9 @@ int t;
 
 
 word_t  eval(int p, int q) ;
-static bool check_parentheses(int p, int q);
-static bool match(int p, int q);
-int op_position(int p,int q);
+//static bool check_parentheses(int p, int q);
+//tatic bool match(int p, int q);
+//int op_position(int p,int q);
 
 
 enum {
@@ -129,7 +129,7 @@ return eval(0,t);
 
 word_t  eval(int p, int q)
 {
-    if (p > q) 
+    /*if (p > q) 
     { 
     return -1;
     }
@@ -159,12 +159,13 @@ word_t  eval(int p, int q)
       case '-': return val1 - val2; 
       case '*': return val1 * val2;
       case '/': return val1 / val2;
-      //default: //assert(0);
     }
 
     }
 
    assert(0); 
+   */
+  return 123;
   }
 
 
@@ -202,7 +203,7 @@ int op_position(int p,int q)
 }
 
 
-static bool check_parentheses(int p, int q)
+/*static bool check_parentheses(int p, int q)
 {
     if(tokens[p].type!='('||tokens[q].type!=')')
     return false;
@@ -245,7 +246,7 @@ for(int i=p+1;i<q;i++)
             }
             else return false;
 }
-
+*/
 //将去空格之后的tokens保存成一个一个新的字符串数组，tokens.str似乎已经是这样的数组了
 //利用新字符串数组，编写函数求解op位置
 //编写括号匹配函数，检测某字符串两侧是否互相匹配
