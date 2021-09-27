@@ -100,7 +100,7 @@ static bool make_token(char *e) {
         strcpy(tokens[position].str,rules[i].regex);
         }
 
-       Log("%d  %s ",tokens[position].type,tokens[position].str);
+       Log("%d   %d  %s ",position,tokens[position].type,tokens[position].str);
           break;
       }
     }
