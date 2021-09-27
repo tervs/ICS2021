@@ -100,17 +100,7 @@ static bool make_token(char *e) {
         }
 
        Log("%d  %s ",tokens[position].type,tokens[position].str);
-        /* TODO: Now a new token is recognized with rules[i]. Add codes
-         * to record the token in the array `tokens'. For certain types
-         * of tokens, some extra actions should be performed.
-         */
-
-        /*switch (rules[i].token_type) {
-          default: TODO();
-        }
-        */
-
-        break;
+          break;
       }
     }
 
@@ -121,6 +111,7 @@ static bool make_token(char *e) {
   }
   t=position;
   return true;
+  Log("%d  ",t);
 }
 
 word_t expr(char *e, bool *success) 
