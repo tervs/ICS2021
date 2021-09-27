@@ -1,6 +1,6 @@
 #include <isa.h>
 #include <regex.h>
-#include<stdbool.h>
+#include <stdbool.h>
 
 int t;
 

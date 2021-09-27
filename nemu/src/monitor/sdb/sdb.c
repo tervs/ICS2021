@@ -3,6 +3,7 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 #include "sdb.h"
+#include<stdbool.h>
 //#include "vaddr.h"
 
 static int is_batch_mode = false;
@@ -10,7 +11,7 @@ static int is_batch_mode = false;
 void init_regex();
 void init_wp_pool();
 word_t vaddr_read(vaddr_t addr, int len);
-
+word_t expr(char *e, bool *success); 
 
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 static char* rl_gets() 
@@ -38,12 +39,13 @@ static int cmd_c(char *args) {
 
 
 static int cmd_p(char *args) {
-  char *EXPR=strtok(NULL, " ");
-  
+  char *EXPR = strtok(NULL, " ");
+  //uint32_t x;
+  //bool *success;
+  //x=expr(EXPR, &success);
+  //printf("%ld",x);
   //printf("%d   %s",tokens[0].type,tokens[0].token_type);
-  
- 
-printf("%s",EXPR);
+  printf("%s", EXPR);
   return 0;
 }
 
