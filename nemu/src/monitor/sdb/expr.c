@@ -186,7 +186,7 @@ int op_position(int p,int q)
           x=i;
       }
     }
-Log("now x is %d while  i is %d",x,i);
+Log("now x is %d while  i is %d and type is %d",x,i,tokens[i].type);
     if(tokens[i].type==')')
       {
           bracket--;
