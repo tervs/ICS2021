@@ -110,7 +110,7 @@ static bool make_token(char *e) {
       return false;
     }
   }
-  t=position;
+  t=position-1;
   Log("%d  ",t);
   return true;
 
