@@ -150,6 +150,7 @@ word_t  eval(int p, int q)
     else 
     {
     int op = op_position(p,q);
+    Log("%d",op);
     word_t val1 = eval(p, op - 1);
     word_t val2 = eval(op + 1, q);
 
@@ -160,7 +161,7 @@ word_t  eval(int p, int q)
       case '*': return val1 * val2;
       case '/': return val1 / val2;
     }
-Log("%d",op);
+
     }
 return -1;
   }
