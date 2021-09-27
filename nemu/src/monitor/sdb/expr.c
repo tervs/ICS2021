@@ -165,10 +165,11 @@ return eval(p,q);
 
     switch (op_type) {
       case '+': return val1 + val2;
-      case '-': /* ... */
-      case '*': /* ... */
-      case '/': /* ... */
+      case '-': 
+      case '*': 
+      case '/': 
       default: assert(0);
     }
   }
+  
 }
