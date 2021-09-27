@@ -70,11 +70,6 @@ typedef struct token {
 static Token tokens[32] __attribute__((used)) = {};
 static int nr_token __attribute__((used))  = 0;
 
-
-
-
-
-
 static bool make_token(char *e) {
   int position = 0;
   int i;
@@ -127,9 +122,6 @@ static bool make_token(char *e) {
   return true;
 }
 
-
-
-
 word_t expr(char *e, bool *success) 
 {
   if (!make_token(e)) 
@@ -140,9 +132,6 @@ word_t expr(char *e, bool *success)
  
 return eval(0,t);
 }
-
-
-
 
 word_t  eval(int p, int q)
 {
@@ -188,7 +177,34 @@ word_t  eval(int p, int q)
 
 int op_position(int p,int q)
 {
-  return 0;
+  int x=p;
+  int bracket=0;
+  for(int i=p;i<=q;i++)
+  {
+    
+    if(tokens[i].type!='('&&bracket==0)
+    {
+        if(tokens[i].type=='+'||'-')
+      {
+          x=i;
+      }
+        else if((tokens[i].type=='*'||'/')&&(tokens[x].type!='+'||'-'))
+      {
+          x=i;
+      }
+    }
+
+    if(tokens[i].type==')')
+      {
+          bracket--;
+      }
+    if(tokens[i].type=='(')
+      {
+          bracket++;
+      }
+  }
+
+  return x;
 }
 
 
