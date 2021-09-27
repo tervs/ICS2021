@@ -99,7 +99,7 @@ static bool make_token(char *e) {
         strcpy(tokens[position].str,rules[i].regex);
         }
 
-       
+       Log("%d  %s ",tokens[position].type,tokens[position].str);
         /* TODO: Now a new token is recognized with rules[i]. Add codes
          * to record the token in the array `tokens'. For certain types
          * of tokens, some extra actions should be performed.
