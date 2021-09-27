@@ -9,27 +9,21 @@ int t;
 
 
 word_t  eval(int p, int q) ;
-int op_position(char *e);
 static bool check_parentheses(int p, int q);
 static bool match(int p, int q);
+int op_position(int p,int q);
 
 
 enum {
   TK_NOTYPE = 256, TK_EQ,TK_NUM,
-
-  /* TODO: Add more token types */
-
 };
+
+
 
 static struct rule {
   const char *regex;
   int token_type;
 } rules[] = {
-
-  /* TODO: Add more rules.
-   * Pay attention to the precedence level of different rules.
-   */
-
   {" +", TK_NOTYPE},    // spaces
   {"\\+", '+'},         // plus
   {"==", TK_EQ},        // equal
@@ -41,8 +35,10 @@ static struct rule {
   {"[0-9]",TK_NUM},
 };
 
-#define NR_REGEX ARRLEN(rules)
 
+
+
+#define NR_REGEX ARRLEN(rules)
 static regex_t re[NR_REGEX] = {};
 
 
@@ -60,13 +56,24 @@ void init_regex() {
   }
 }
 
+
+
+
+
 typedef struct token {
   int type;
   char str[32];
 } Token;
 
+
+
 static Token tokens[32] __attribute__((used)) = {};
 static int nr_token __attribute__((used))  = 0;
+
+
+
+
+
 
 static bool make_token(char *e) {
   int position = 0;
@@ -121,51 +128,69 @@ static bool make_token(char *e) {
 }
 
 
-word_t expr(char *e, bool *success) {
-  if (!make_token(e)) {
+
+
+word_t expr(char *e, bool *success) 
+{
+  if (!make_token(e)) 
+  {
     *success = false;
     return 0;
   }
-
-  int p=0;
-  int q=t;
-
-return eval(p,q);
-
+ 
+return eval(0,t);
 }
 
-  word_t  eval(int p, int q) 
-  {
+
+
+
+word_t  eval(int p, int q)
+{
     if (p > q) 
     { 
     return -1;
     }
     
+
     else if (p == q)
     {
       return atoi(tokens[p].str);
     }
 
+
     else if (check_parentheses(p, q) == true) 
     {
     return eval(p + 1, q - 1);
     }
-  /*else {
-    int op = op_position(i);
+    
+
+    else 
+    {
+    int op = op_position(p,q);
     word_t val1 = eval(p, op - 1);
     word_t val2 = eval(op + 1, q);
 
-    switch (tokens[op].type) {
+    switch (tokens[op].type) 
+    {
       case '+': return val1 + val2;
       case '-': return val1 - val2; 
       case '*': return val1 * val2;
       case '/': return val1 / val2;
       default: assert(0);
     }
+
+    }
+
+ return 0;
   }
-  */
- return -1;
-  }
+
+
+
+int op_position(int p,int q)
+{
+  return 0;
+}
+
 
 static bool check_parentheses(int p, int q)
 {
