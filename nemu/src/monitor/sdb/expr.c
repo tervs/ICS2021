@@ -76,7 +76,7 @@ static bool make_token(char *e) {
   regmatch_t pmatch;
 
   nr_token = 0;
-
+int j=0;
   while (e[position] != '\0') 
   {
     /* Try all rules one by one. */
@@ -103,12 +103,15 @@ static bool make_token(char *e) {
        Log("now position is %d  type here is %d   str is %s ",position-1,tokens[position-1].type,tokens[position-1].str);
           break;
       }
+
     }
 
     if (i == NR_REGEX) {
       printf("no match at position %d\n%s\n%*.s^\n", position, e, position, "");
       return false;
     }
+    Log("%d",j);
+    j++;
   }
   t=position-1;
   Log("%d  ",t);
