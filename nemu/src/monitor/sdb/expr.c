@@ -157,6 +157,7 @@ word_t  eval(int p, int q)
     else 
     {
     int op = op_position(p,q);
+    if(op==-1){exit(0);}
     Log("op is %d  p is %d  q is%d",op,p,q);
     word_t val1 = eval(p, op - 1);
     word_t val2 = eval(op + 1, q);
