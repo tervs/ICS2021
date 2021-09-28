@@ -173,19 +173,19 @@ return -1;
 
 
 
-int op_position(int p,int q)
+int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组开始位置，q是结束
 {
-  int x=100;
+  int x=-1;
   int bracket=0;
-
   for(int i=p;i<=q;i++)
   {
-  if(x==100&&((tokens[i].type=='+')||(tokens[i].type=='-')||(tokens[i].type=='*')||(tokens[i].type=='/')))
-  {
-    x=i;
-  }
+    if(x==-1&&((tokens[i].type=='+')||(tokens[i].type=='-')||(tokens[i].type=='*')||(tokens[i].type=='/')))
+    {
+      x=i;
+    }
 
-}
+  }
+  //
 Log("%d",x);
 
   for(int i=p;i<=q;i++)
