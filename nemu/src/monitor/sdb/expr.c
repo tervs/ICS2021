@@ -199,11 +199,12 @@ Log("%d",x);
           x=i;
         
       }
+     /*
      else if((tokens[i].type==3||4)&&(tokens[x].type!=1||2))
       {
         x=i;
       }
-     
+     */
       
     }
    
