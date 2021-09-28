@@ -187,11 +187,11 @@ int op_position(int p,int q)
           x=i;
         
       }
-      if((tokens[i].type==4||5)&&(tokens[x].type!=1||3))
+     else if((tokens[i].type==4||5)&&(tokens[x].type!=1||3))
       {
         x=i;
       }
-      else break;
+     
       
     }
    
