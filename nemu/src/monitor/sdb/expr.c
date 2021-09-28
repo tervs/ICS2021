@@ -271,6 +271,8 @@ for(int i=p+1;i<q;i++)
               return true;
             }
             else return false;
+            TODO();
+            // (4+3))*((2-1) is wrong.
 }
 
 //将去空格之后的tokens保存成一个一个新的字符串数组，tokens.str似乎已经是这样的数组了
@@ -278,7 +280,7 @@ for(int i=p+1;i<q;i++)
 //编写括号匹配函数，检测某字符串两侧是否互相匹配
 
 
-// (4+3))*((2-1) is wrong.
+
 
 
  
