@@ -178,7 +178,7 @@ int op_position(int p,int q)
     {bracket++;}
     else if(bracket==0)
     {
-       if(tokens[i].type=='+'||tokens[i].type=='-')
+       if(tokens[i].type==1||tokens[i].type==3)
       {
           x=i;
         
