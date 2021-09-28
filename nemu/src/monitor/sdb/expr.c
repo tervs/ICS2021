@@ -180,7 +180,7 @@ int op_position(int p,int q)
 
   for(int i=p;i<=q;i++)
   {
-  if(x==100&&((tokens[i].type==1)||(tokens[i].type==2)))
+  if(x==100&&((tokens[i].type==1)||(tokens[i].type==2)||(tokens[i].type==3)||(tokens[i].type==4)))
   {
     x=i;
   }
