@@ -23,7 +23,8 @@ enum {
 static struct rule {
   const char *regex;
   int token_type;
-} rules[] = {
+} rules[] = 
+{
   {" +", TK_NOTYPE},    
   {"\\+", '+'},   
   {"\\-",'-'},  
@@ -35,6 +36,8 @@ static struct rule {
   {"==", TK_EQ},        
  
 };
+
+
 
 
 
