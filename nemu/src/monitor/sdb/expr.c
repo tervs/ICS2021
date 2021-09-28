@@ -111,7 +111,7 @@ int j=0;
       printf("no match at position %d\n%s\n%*.s^\n", position, e, position, "");
       return false;
     }
-    Log("%d",j);
+   // Log("%d",j);
     j++;
   }
  t=j-1;
