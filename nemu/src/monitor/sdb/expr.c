@@ -175,7 +175,7 @@ return -1;
 
 int op_position(int p,int q)
 {
-  int x=p;
+  int x=100;
   int bracket=0;
 
   for(int i=p;i<=q;i++)
