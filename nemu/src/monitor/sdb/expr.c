@@ -96,11 +96,11 @@ int j=0;
         
         if(i!=TK_NOTYPE)
         {
-        tokens[position-1].type=i;
-        strncpy(tokens[position-1].str,substr_start,substr_len);
+        tokens[j].type=i;
+        strncpy(tokens[j].str,substr_start,substr_len);
         }
 
-       Log("now position is %d  type here is %d   str is %s ",position-1,tokens[position-1].type,tokens[position-1].str);
+       Log("now position is %d  type here is %d   str is %s ",j,tokens[j].type,tokens[j].str);
           break;
       }
 
