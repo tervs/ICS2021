@@ -186,7 +186,7 @@ int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组
   }
   //找到第一个操作符的位置，无论这个符号是什么。从p到q扫描，直到遇到第一个操作符，然后结束循环。
   //此时x记录着第一个操作符的位置。
-  Log("%d",x);
+  Log("the first op is %d",x);
   //接下来正式寻找主操作符。
   for(int i=p;i<=q;i++)
   {
