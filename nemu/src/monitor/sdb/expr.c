@@ -8,7 +8,7 @@ int t;
 
 
 
-word_t  eval(int p, int q) ;
+word_t  eval(int p, int q,bool *success) ;
 static bool check_parentheses(int p, int q);
 static bool match(int p, int q);
 int op_position(int p,int q);
@@ -133,17 +133,18 @@ word_t expr(char *e, bool *success)
     return 0;
   }
  
-int ans=eval(0,t);
+int ans=eval(0,t,success);
 memset(tokens, 0, sizeof(Token)*32);
 return ans;
 }
 
-word_t  eval(int p, int q)
+word_t  eval(int p, int q,bool *success)
 {
     if (p > q) 
     { 
-    printf("Bad Expressions");
-    exit(0);
+   success=false;
+   return -1;
+    
     }
     
 
@@ -155,7 +156,7 @@ word_t  eval(int p, int q)
 
     else if (check_parentheses(p, q) == true) 
     {
-    return eval(p + 1, q - 1);
+    return eval(p + 1, q - 1,success);
     }
     
 
@@ -164,8 +165,8 @@ word_t  eval(int p, int q)
     int op = op_position(p,q);
     if(op==-1){exit(0);}
     Log("op is %d  p is %d  q is  %d",op,p,q);
-    word_t val1 = eval(p, op - 1);
-    word_t val2 = eval(op + 1, q);
+    word_t val1 = eval(p, op - 1,success);
+    word_t val2 = eval(op + 1, q,success);
 
     switch (tokens[op].type) 
     {
