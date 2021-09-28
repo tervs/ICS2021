@@ -96,11 +96,11 @@ static bool make_token(char *e) {
         
         if(i!=TK_NOTYPE)
         {
-      tokens[position-1].type=i;
+        tokens[position-1].type=i;
         strcpy(tokens[position-1].str,rules[i].regex);
         }
 
-       Log("%d   %d  %s ",position,tokens[position-1].type,tokens[position-1].str);
+       Log("now position is %d  type here is %d   str is %s ",position-1,tokens[position-1].type,tokens[position-1].str);
           break;
       }
     }
