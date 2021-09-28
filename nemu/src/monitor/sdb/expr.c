@@ -175,8 +175,20 @@ return -1;
 
 int op_position(int p,int q)
 {
-  int x=p;
+  int x=-1;
   int bracket=0;
+for(int i=p;i<=q;i++)
+{
+  if(x==-1&&(tokens[i].type==1||2||3||4)){
+    x=i;
+    break;
+  }
+}
+
+
+
+
+
   for(int i=p;i<=q;i++)
   {
     if(tokens[i].type==5)
