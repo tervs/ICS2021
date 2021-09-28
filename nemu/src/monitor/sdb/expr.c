@@ -184,7 +184,7 @@ int op_position(int p,int q)
       }
       else  if((tokens[i].type==4||5)&&(tokens[x].type!=1||3))
       {
-        x=i+1;
+        x=i;
       }
       else break;
       Log("now x is %d while  i is %d and type is %d",x,i,tokens[i].type);
