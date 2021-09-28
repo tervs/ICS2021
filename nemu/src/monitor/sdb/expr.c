@@ -97,7 +97,7 @@ int j=0;
         
         if(i!=TK_NOTYPE)
         {
-        tokens[j].type=i;
+        tokens[j].type=rules[i].token_type;
         strncpy(tokens[j].str,substr_start,substr_len);
         }
 
@@ -180,7 +180,7 @@ int op_position(int p,int q)
 
   for(int i=p;i<=q;i++)
   {
-  if(x==100&&((tokens[i].type==1)||(tokens[i].type==2)))
+  if(x==100&&((tokens[i].type=='+')||(tokens[i].type=='-')||(tokens[i].type=='*')||(tokens[i].type=='/')))
   {
     x=i;
   }
@@ -194,13 +194,13 @@ Log("%d",x);
     {bracket++;}
     else if(bracket==0)
     {
-       if(tokens[i].type==1||tokens[i].type==2)
+       if(tokens[i].type=='+'||tokens[i].type=='-')
       {
           x=i;
         
       }
      
-     else if((tokens[i].type==3||4)&&(tokens[x].type!=1||2))
+     else if((tokens[i].type=='*'||'/')&&(tokens[x].type!='+'||'-'))
       {
         x=i;
       }
