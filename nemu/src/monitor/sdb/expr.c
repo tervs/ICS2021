@@ -181,10 +181,10 @@ for(int i=p;i<=q;i++)
 {
   if(x==-1&&(tokens[i].type==1||2||3||4)){
     x=i;
-    break;
   }
-}
 
+}
+Log("%d",x);
 
 
 
