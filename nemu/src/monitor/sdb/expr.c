@@ -95,7 +95,7 @@ int j=0;
 
         position += substr_len;
         
-        if(i!=TK_NOTYPE)
+        if(rules[i].token_type!=TK_NOTYPE)
         {
         tokens[j].type=rules[i].token_type;
         strncpy(tokens[j].str,substr_start,substr_len);
