@@ -175,23 +175,22 @@ return -1;
 
 int op_position(int p,int q)
 {
-  int x=-1;
+  int x=p;
   int bracket=0;
-for(int i=p;i<=q;i++)
-{
-  if(x==-1&&(tokens[i].type==1||2||3||4)){
+/*
+  for(int i=p;i<=q;i++)
+  {
+  if(x==-1&&((tokens[i].type==1)||(tokens[i].type==2)||(tokens[i].type==3)||(tokens[i].type==4)))
+  {
     x=i;
   }
 
 }
 Log("%d",x);
-
-
-
-
+*/
   for(int i=p;i<=q;i++)
   {
-    if(tokens[i].type==5)
+    if(tokens[i].type=='(')
     {bracket++;}
     else if(bracket==0)
     {
@@ -208,7 +207,7 @@ Log("%d",x);
       
     }
    
-    else if(tokens[i].type==6)
+    else if(tokens[i].type==')')
     {bracket--;}
  Log("now x is %d while  i is %d and type is %d  bracket id %d",x,i,tokens[i].type,bracket);
   
