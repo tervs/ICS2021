@@ -177,6 +177,8 @@ int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组
 {
   int x=-1;//x用来记录op，也就是主操作符位置，初始化为-1,
   int bracket=0;//用于记录括号，遇到左括号+1,右括号-1.为0意味着没有括号
+
+  
   for(int i=p;i<=q;i++)
   {
     if(x==-1&&((tokens[i].type=='+')||(tokens[i].type=='-')||(tokens[i].type=='*')||(tokens[i].type=='/')))
@@ -188,6 +190,7 @@ int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组
   //此时x记录着第一个操作符的位置。
   Log("the first op is %d",x);
   //接下来正式寻找主操作符。
+
   for(int i=p;i<=q;i++)
   {
     if(tokens[i].type=='(')
