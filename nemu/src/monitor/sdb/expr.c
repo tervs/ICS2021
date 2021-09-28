@@ -191,7 +191,7 @@ int op_position(int p,int q)
       
     }
    
-    else if(tokens[i].type==')')
+    else if(tokens[i].type==7)
     {bracket--;}
  Log("now x is %d while  i is %d and type is %d  bracket id %d",x,i,tokens[i].type,bracket);
   
