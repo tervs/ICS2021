@@ -178,7 +178,7 @@ int op_position(int p,int q)
   int bracket=0;
   for(int i=p;i<=q;i++)
   {
-    if(tokens[i].type=='6')
+    if(tokens[i].type=='(')
     {bracket++;}
     else if(bracket==0)
     {
