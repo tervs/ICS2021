@@ -142,7 +142,8 @@ word_t  eval(int p, int q)
 {
     if (p > q) 
     { 
-    return -1;
+    printf("Bad Expressions");
+    exit(0);
     }
     
 
