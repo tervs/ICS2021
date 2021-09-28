@@ -86,11 +86,11 @@ int j=0;
       if (regexec(&re[i], e + position, 1, &pmatch, 0) == 0 && pmatch.rm_so == 0) 
       
       {
-        //char *substr_start = e + position;
+        char *substr_start = e + position;
         int substr_len = pmatch.rm_eo;
 
-       // Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s",
-         //   i, rules[i].regex, position, substr_len, substr_len, substr_start);
+        Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s",
+            i, rules[i].regex, position, substr_len, substr_len, substr_start);
 
         position += substr_len;
         
@@ -100,7 +100,7 @@ int j=0;
         strcpy(tokens[position-1].str,rules[i].regex);
         }
 
-       Log("now position is %d  type here is %d   str is %s ",position-1,tokens[position-1].type,tokens[position-1].str);
+       //Log("now position is %d  type here is %d   str is %s ",position-1,tokens[position-1].type,tokens[position-1].str);
           break;
       }
 
@@ -110,7 +110,7 @@ int j=0;
       printf("no match at position %d\n%s\n%*.s^\n", position, e, position, "");
       return false;
     }
-    Log("%d",j);
+    //Log("%d",j);
     j++;
   }
   t=position-1;
