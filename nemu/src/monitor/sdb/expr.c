@@ -201,7 +201,7 @@ int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组
        if(tokens[i].type=='+'||tokens[i].type=='-')
       {x=i;}//当最新遇到的 操作符是+或者——，更新x为最新的位置。
      
-        else if((tokens[i].type=='*'||tokens[i].type=='/'))
+        else if((tokens[i].type=='*'||tokens[i].type=='/')&&(tokens[x].type!='+'||tokens[x].type!='-'))
       {x=i;}//假如最新遇到的操作符是*或/，并且当前已经记录的x对应的操作符不为+或-，更新。
       
     }
@@ -209,7 +209,7 @@ int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组
     else if(tokens[i].type==')')
     {bracket--;}//当遇到），bracket-1。
 
-    Log("now x is %d and type is %d  while i is %d and type is %d  bracket is %d",x,tokens[x].type,i,tokens[i].type,bracket);
+    Log("now x is %d while i is %d and type is %d  bracket is %d",x,i,tokens[i].type,bracket);
   
     }
   return x;
