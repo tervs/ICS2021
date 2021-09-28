@@ -113,8 +113,8 @@ int j=0;
     Log("%d",j);
     j++;
   }
- t=j;
-  Log("%d  ",j);
+ t=j-1;
+  Log("%d  ",t);
   return true;
 
 }
