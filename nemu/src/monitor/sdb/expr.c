@@ -24,15 +24,16 @@ static struct rule {
   const char *regex;
   int token_type;
 } rules[] = {
-  {" +", TK_NOTYPE},    // spaces
-  {"\\+", '+'},         // plus
-  {"==", TK_EQ},        // equal
-  {"\\-",'-'},
+  {" +", TK_NOTYPE},    
+  {"\\+", '+'},   
+  {"\\-",'-'},  
   {"\\*",'*'},
-  {"\\/",'/'},
+  {"\\/",'/'}, 
   {"\\(",'('},
   {"\\)",')'},
   {"[0-9]+",TK_NUM},
+  {"==", TK_EQ},        
+ 
 };
 
 
@@ -174,20 +175,20 @@ return -1;
 
 int op_position(int p,int q)
 {
-  int x=0;
+  int x=p;
   int bracket=0;
   for(int i=p;i<=q;i++)
   {
-    if(tokens[i].type==6)
+    if(tokens[i].type==5)
     {bracket++;}
     else if(bracket==0)
     {
-       if(tokens[i].type==1||tokens[i].type==3)
+       if(tokens[i].type==1||tokens[i].type==2)
       {
           x=i;
         
       }
-     else if((tokens[i].type==4||5)&&(tokens[x].type!=1||3))
+     else if((tokens[i].type==3||4)&&(tokens[x].type!=1||2))
       {
         x=i;
       }
@@ -195,7 +196,7 @@ int op_position(int p,int q)
       
     }
    
-    else if(tokens[i].type==7)
+    else if(tokens[i].type==6)
     {bracket--;}
  Log("now x is %d while  i is %d and type is %d  bracket id %d",x,i,tokens[i].type,bracket);
   
