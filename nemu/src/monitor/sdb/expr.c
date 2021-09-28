@@ -154,7 +154,7 @@ word_t  eval(int p, int q)
     else 
     {
     int op = op_position(p,q);
-    /*Log("op is %d  p is %d  q is%d",op,p,q);
+    Log("op is %d  p is %d  q is%d",op,p,q);
     word_t val1 = eval(p, op - 1);
     word_t val2 = eval(op + 1, q);
 
@@ -165,7 +165,7 @@ word_t  eval(int p, int q)
       case '*': return val1 * val2;
       case '/': return val1 / val2;
     }
-*/ Log("op is %d     p is %d     q is %d",op,p,q);
+ Log("op is %d     p is %d     q is %d",op,p,q);
     }
    
 return -1;
@@ -188,7 +188,7 @@ int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组
   }
   //找到第一个操作符的位置，无论这个符号是什么。从p到q扫描，直到遇到第一个操作符，然后结束循环。
   //此时x记录着第一个操作符的位置。
-  Log("the first op is %d",x);
+  //Log("the first op is %d",x);
   //接下来正式寻找主操作符。
 
   for(int i=p;i<=q;i++)
@@ -209,7 +209,7 @@ int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组
     else if(tokens[i].type==')')
     {bracket--;}//当遇到），bracket-1。
 
-    Log("now x is %d and type of x is %d  while i is %d and type is %d  bracket is %d",x,tokens[x].type,i,tokens[i].type,bracket);
+    //Log("now x is %d and type of x is %d  while i is %d and type is %d  bracket is %d",x,tokens[x].type,i,tokens[i].type,bracket);
   
     }
   return x;
