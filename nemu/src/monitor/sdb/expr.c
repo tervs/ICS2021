@@ -182,12 +182,12 @@ int op_position(int p,int q)
     {bracket++;}
     else if(bracket==0)
     {
-       if(tokens[i].type=='+'||tokens[i].type=='-')
+       if(tokens[i].type==1||tokens[i].type==3)
       {
           x=i;
         
       }
-      if((tokens[i].type=='*'||'/')&&(tokens[x].type!='+'||'-'))
+      if((tokens[i].type==4||5)&&(tokens[x].type!=1||3))
       {
         x=i;
       }
@@ -195,7 +195,7 @@ int op_position(int p,int q)
       
     }
    
-    else if(tokens[i].type==')')
+    else if(tokens[i].type==7)
     {bracket--;}
  Log("now x is %d while  i is %d and type is %d  bracket id %d",x,i,tokens[i].type,bracket);
   
