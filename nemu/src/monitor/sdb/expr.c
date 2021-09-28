@@ -183,14 +183,17 @@ int op_position(int p,int q)
           x=i;
         
       }
-    
+      if((tokens[i].type=='*'||'/')&&(tokens[x].type!='+'||'-'))
+      {
+        x=i;
+      }
       else break;
       Log("now x is %d while  i is %d and type is %d",x,i,tokens[i].type);
     }
     else if(tokens[i].type==')')
     {bracket--;}
 
-  //(tokens[i].type=='*'||'/')&&(tokens[x].type!='+'||'-')
+  
 }
 return x;
 }
