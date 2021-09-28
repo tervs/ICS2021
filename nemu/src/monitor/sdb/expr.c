@@ -183,7 +183,7 @@ int op_position(int p,int q)
           x=i;
         
       }
-      if(1)
+      if(0)
       {
         x=i;
       }
