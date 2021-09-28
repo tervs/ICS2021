@@ -142,8 +142,8 @@ word_t  eval(int p, int q,bool *success)
 {
     if (p > q) 
     { 
-   success=false;
-   return -1;
+   *success=false;
+   return 0;
     
     }
     
