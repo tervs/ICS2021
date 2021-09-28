@@ -147,7 +147,7 @@ word_t  eval(int p, int q)
     }
     */
 
-    else 
+    /*else 
     {
     int op = op_position(p,q);
     Log("%d  %d  %d",op,p,q);
@@ -163,11 +163,12 @@ word_t  eval(int p, int q)
     }
 
     }
+    */
 return -1;
   }
 
 
-
+/*
 int op_position(int p,int q)
 {
   int x=0;
@@ -198,6 +199,8 @@ int op_position(int p,int q)
 }
 return x;
 }
+*/
+
 
 /*static bool check_parentheses(int p, int q)
 {
