@@ -174,22 +174,22 @@ int op_position(int p,int q)
   int bracket=0;
   for(int i=p;i<=q;i++)
   {
-    if(tokens[i].type==6)
+    if(tokens[i].type=='(')
     {bracket++;}
     else if(bracket==0)
     {
-       if(tokens[i].type==1||tokens[i].type==3)
+       if(tokens[i].type=='+'||tokens[i].type=='-')
       {
           x=i;
       }
-      else  if((tokens[i].type==4||5)&&(tokens[x].type!=1||3))
+      else  if((tokens[i].type=='*'||'/')&&(tokens[x].type!='+'||'-'))
       {
         x=i;
       }
       else break;
       Log("now x is %d while  i is %d and type is %d",x,i,tokens[i].type);
     }
-    else if(tokens[i].type==7)
+    else if(tokens[i].type==')')
     {bracket--;}
 
   
