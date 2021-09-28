@@ -99,6 +99,7 @@ int j=0;
         {
         tokens[j].type=rules[i].token_type;
         strncpy(tokens[j].str,substr_start,substr_len);
+         j++;
         }
         else{Log("warning of space");break;}
 
@@ -113,7 +114,7 @@ int j=0;
       return false;
     }
    // Log("%d",j);
-    j++;
+   
   }
  t=j-1;
   Log("%d  ",t);
