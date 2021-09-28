@@ -174,33 +174,28 @@ int op_position(int p,int q)
   int bracket=0;
   for(int i=p;i<=q;i++)
   {
-    
-    if(tokens[i].type!='('&&bracket==0)
+    if(tokens[i].type=='(')
+    {bracket++;}
+    else if(bracket==0)
     {
-        if(tokens[i].type=='+'||'-')
+       if(tokens[i].type=='+'||tokens[i].type=='-')
       {
           x=i;
       }
-        else if((tokens[i].type=='*'||'/')&&(tokens[x].type!='+'||'-'))
+      else  if((tokens[i].type=='*'||'/')&&(tokens[x].type!='+'||'-'))
       {
-          x=i;
+        x=i;
       }
       else break;
+      Log("now x is %d while  i is %d and type is %d",x,i,tokens[i].type);
     }
-Log("now x is %d while  i is %d and type is %d",x,i,tokens[i].type);
-    if(tokens[i].type==')')
-      {
-          bracket--;
-      }
-    if(tokens[i].type=='(')
-      {
-          bracket++;
-      }
-  }
+    else if(tokens[i].type==')')
+    {bracket--;}
 
-  return x;
+  
 }
-
+return x;
+}
 
 /*static bool check_parentheses(int p, int q)
 {
