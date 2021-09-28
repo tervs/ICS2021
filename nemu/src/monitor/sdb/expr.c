@@ -180,11 +180,11 @@ int op_position(int p,int q)
     {
        if(tokens[i].type=='+'||tokens[i].type=='-')
       {
-          x=i+10;
+          x=i;
       }
       else  if((tokens[i].type=='*'||'/')&&(tokens[x].type!='+'||'-'))
       {
-        x=i;
+        x=i+1;
       }
       else break;
       Log("now x is %d while  i is %d and type is %d",x,i,tokens[i].type);
