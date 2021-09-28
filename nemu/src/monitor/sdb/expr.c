@@ -150,7 +150,7 @@ word_t  eval(int p, int q)
     }
     */
 
-    /*else 
+    else 
     {
     int op = op_position(p,q);
     Log("%d  %d  %d",op,p,q);
@@ -166,23 +166,23 @@ word_t  eval(int p, int q)
     }
 
     }
-    */
+    
 return -1;
   }
 
 
-/*
+
 int op_position(int p,int q)
 {
   int x=0;
   int bracket=0;
   for(int i=p;i<=q;i++)
   {
-    if(tokens[i].type==6)
+    if(tokens[i].type=='6')
     {bracket++;}
     else if(bracket==0)
     {
-       if(tokens[i].type==1||tokens[i].type==3)
+       if(tokens[i].type=='+'||tokens[i].type=='-')
       {
           x=i;
         
@@ -195,14 +195,14 @@ int op_position(int p,int q)
       
     }
    
-    else if(tokens[i].type==7)
+    else if(tokens[i].type==')')
     {bracket--;}
  Log("now x is %d while  i is %d and type is %d  bracket id %d",x,i,tokens[i].type,bracket);
   
 }
 return x;
 }
-*/
+
 
 
 /*static bool check_parentheses(int p, int q)
