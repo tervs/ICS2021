@@ -186,7 +186,7 @@ int op_position(int p,int q)
       else  if((tokens[i].type=='*'||'/')&&(tokens[x].type!='+'||'-'))
       {
         x=i;
-    
+    assert(tokens[x].type!='+'||'-');
       }
       else break;
       Log("now x is %d while  i is %d and type is %d",x,i,tokens[i].type);
