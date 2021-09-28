@@ -44,7 +44,7 @@ static int cmd_p(char *args) {
   bool success;
   success=true;
   x=expr(EXPR, &success);
-  if(success){printf("Bad Expression");}
+  if(!success){printf("Bad Expression");}
   else {printf("%d\n",x);}
   //printf("%d   %s",tokens[0].type,tokens[0].token_type);
   //printf("%s", EXPR);
