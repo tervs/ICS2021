@@ -97,7 +97,7 @@ int j=0;
         if(i!=TK_NOTYPE)
         {
         tokens[position-1].type=i;
-        strcpy(tokens[position-1].str,rules[i].regex);
+        strcpy(tokens[position-1].str,substr_start);
         }
 
        //Log("now position is %d  type here is %d   str is %s ",position-1,tokens[position-1].type,tokens[position-1].str);
