@@ -170,7 +170,7 @@ return -1;
 
 int op_position(int p,int q)
 {
-  int x=p;
+  int x=4;
   int bracket=0;
   for(int i=p;i<=q;i++)
   {
@@ -181,12 +181,12 @@ int op_position(int p,int q)
        if(tokens[i].type=='+'||tokens[i].type=='-')
       {
           x=i;
-          Log("1");
+        
       }
       else  if((tokens[i].type=='*'||'/')&&(tokens[x].type!='+'||'-'))
       {
         x=i;
-          Log("2");
+    
       }
       else break;
       Log("now x is %d while  i is %d and type is %d",x,i,tokens[i].type);
