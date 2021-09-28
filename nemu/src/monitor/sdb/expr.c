@@ -15,7 +15,16 @@ int op_position(int p,int q);
 
 
 enum {
-  TK_NOTYPE = 256, TK_EQ,TK_NUM,
+  TK_NOTYPE = 256, 
+  TK_EQ,
+  TK_NUM,
+  TK_HEX,//16进制数
+	TK_REG0,//寄存器取值
+  TK_REG,
+  TK_NEQ,//不等号
+  TK_AND,
+  TK_OR,
+
 };
 
 
@@ -33,7 +42,13 @@ static struct rule {
   {"\\(",'('},
   {"\\)",')'},
   {"[0-9]+",TK_NUM},
-  {"==", TK_EQ},        
+  {"==", TK_EQ}, 
+  {"\\0[xX][0-9a-fA-F]+",TK_HEX},
+  {"\\$\\$0", TK_REG0},
+  {"\\$[a-z][0-9a-z]{1,2}", TK_REG},
+  {"!=", TK_NEQ},	
+  {"&&", TK_AND},				//logic and
+	{"\\|\\|", TK_OR}
  
 };
 
@@ -273,6 +288,10 @@ for(int i=p+1;i<q;i++)
             else return false;
             TODO();
             // (4+3))*((2-1) is wrong.
+            //异常处理，包括对于括号匹配，对于非法表达式（--），除0,
+            //负数进行运算
+            //最大整数长度拓展
+            //颜色高亮
 }
 
 //将去空格之后的tokens保存成一个一个新的字符串数组，tokens.str似乎已经是这样的数组了
