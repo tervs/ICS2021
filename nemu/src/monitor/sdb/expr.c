@@ -93,8 +93,8 @@ int j=0;
         char *substr_start = e + position;
         int substr_len = pmatch.rm_eo;
 
-        Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s",
-            i, rules[i].regex, position, substr_len, substr_len, substr_start);
+        //Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s",
+          //  i, rules[i].regex, position, substr_len, substr_len, substr_start);
 
         position += substr_len;
         
@@ -106,7 +106,7 @@ int j=0;
         }
         else{Log("warning of space");break;}
 
-       Log("now position is %d  type here is %d   str is %s ",j-1,tokens[j].type,tokens[j-1].str);
+      // Log("now position is %d  type here is %d   str is %s ",j-1,tokens[j].type,tokens[j-1].str);
           break;
       }
 
@@ -199,7 +199,7 @@ int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组
   }
   //找到第一个操作符的位置，无论这个符号是什么。从p到q扫描，直到遇到第一个操作符，然后结束循环。
   //此时x记录着第一个操作符的位置。
-  //Log("the first op is %d",x);
+  Log("the first op is %d",x);
   //接下来正式寻找主操作符。
 
   for(int i=p;i<=q;i++)
@@ -220,7 +220,7 @@ int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组
     else if(tokens[i].type==')')
     {bracket--;}//当遇到），bracket-1。
 
-    //Log("now x is %d and type of x is %d  while i is %d and type is %d  bracket is %d",x,tokens[x].type,i,tokens[i].type,bracket);
+    Log("now x is %d and type of x is %d  while i is %d and type is %d  bracket is %d",x,tokens[x].type,i,tokens[i].type,bracket);
   
     }
   return x;
