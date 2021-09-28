@@ -183,7 +183,7 @@ int op_position(int p,int q)
           x=i;
         
       }
-      if((tokens[i].type=='*'||'/')&&(tokens[x].type!='+'||'-'))
+      if(1)
       {
         x=i;
       }
@@ -193,7 +193,7 @@ int op_position(int p,int q)
     else if(tokens[i].type==')')
     {bracket--;}
 
-  
+  //(tokens[i].type=='*'||'/')&&(tokens[x].type!='+'||'-')
 }
 return x;
 }
