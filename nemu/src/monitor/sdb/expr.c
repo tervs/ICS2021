@@ -183,10 +183,7 @@ int op_position(int p,int q)
           x=i;
         
       }
-      if(0)
-      {
-        x=i;
-      }
+    
       else break;
       Log("now x is %d while  i is %d and type is %d",x,i,tokens[i].type);
     }
