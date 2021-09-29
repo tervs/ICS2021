@@ -32,24 +32,23 @@ enum {
 static struct rule {
   const char *regex;
   int token_type;
+  int priority;
 } rules[] = 
 {
-  {" +", TK_NOTYPE},    
-  {"\\+", '+'},   
-  {"\\-",'-'},  
-  {"\\*",'*'},
-  {"\\/",'/'}, 
-  {"\\(",'('},
-  {"\\)",')'},
-  {"\\b0[xX][0-9a-fA-F]+\\b",TK_HEX},
-  {"[0-9]+",TK_NUM},
-  {"==", TK_EQ}, 
-  //{"\\$\\$0", TK_REG0},
-  {"\\$[a-z][0-9a-z]{1,2}|\\$\\$0", TK_REG},
-  {"!=", TK_NEQ},	
-  {"&&", TK_AND},				//logic and
-	{"\\|\\|", TK_OR}
- 
+  {" +", TK_NOTYPE,-1},    
+  {"\\+", '+',4},   
+  {"\\-",'-',4},  
+  {"\\*",'*',3},//乘法优先级为3,指针优先级2
+  {"\\/",'/',4}, 
+  {"\\(",'(',-1},
+  {"\\)",')',-1},
+  {"==", TK_EQ,7}, 
+  {"!=", TK_NEQ,7},	
+  {"&&", TK_AND,11},				//logic and
+	{"\\|\\|", TK_OR,12},
+  {"\\b0[xX][0-9a-fA-F]+\\b",TK_HEX,0},
+  {"[0-9]+",TK_NUM,0},
+  {"\\$[a-z][0-9a-z]{1,2}|\\$\\$0", TK_REG,0},
 };
 
 
@@ -82,6 +81,7 @@ void init_regex() {
 typedef struct token {
   int type;
   char str[32];
+  int priority;
 } Token;
 
 
@@ -190,6 +190,12 @@ word_t  eval(int p, int q,bool *success)
       case '-': return val1 - val2; 
       case '*': return val1 * val2;
       case '/': return val1 / val2;
+      case TK_EQ:return val1 ==val2;
+      case TK_NEQ:return val1 !=val2;
+      case TK_AND:return val1 &&val2;
+      case TK_OR:return val1 ||val2;
+      case TK_REG: return 0;
+
     }
  Log("op is %d     p is %d     q is %d",op,p,q);
     }
@@ -300,6 +306,7 @@ for(int i=p+1;i<q;i++)
 
 
 */
+
 
 
  
