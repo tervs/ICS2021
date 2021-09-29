@@ -107,8 +107,7 @@ assert(n!=0);
      uint64_t addr=strtol(arg,NULL,16);
    printf("%ld\n",addr) ;
      word_t x;
-     
-     /*for(int j=0;j<n;j++)
+     for(int j=0;j<n;j++)
      {
         printf("0x%08lx    ",addr);
         printf("0x");
@@ -120,10 +119,8 @@ assert(n!=0);
       addr++;
       }
       printf("\n");
-*/
-x=vaddr_read(addr, 4);
-printf("%08x",x);
-     
+
+     }
      
  
     
