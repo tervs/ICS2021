@@ -130,7 +130,7 @@ int j=0;
         }
         //else{Log("warning of space");break;}
 
-       Log("now position is %d  type here is %d   str is %s ",j-1,tokens[j].type,tokens[j-1].str);
+       Log("now position is %d  type here is %d   str is %s ",j-1,tokens[j-1].type,tokens[j-1].str);
           break;
       }
 
