@@ -201,7 +201,8 @@ word_t expr(char *e, bool *success)
 word_t  eval(int p, int q,bool *success)
 {
     if (p > q) 
-    { 
+    {
+        Log("make_token is %d",*success);
    *success=false;
    return 0;//sign
     
