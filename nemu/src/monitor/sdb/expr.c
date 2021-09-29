@@ -215,9 +215,9 @@ word_t  eval(int p, int q,bool *success)
     else if (p == q)
     {
       
-      uint32_t temp;//=strtoul(tokens[p].str,0,0);
-      sscanf(tokens[p].str,"%u",&temp);
-Log("%d",temp);
+      uint32_t temp=strtoul(tokens[p].str,NULL,10);
+     // sscanf(tokens[p].str,"%u",&temp);
+Log("%u",temp);
       return temp;
     }
 
