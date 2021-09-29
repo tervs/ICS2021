@@ -180,12 +180,12 @@ static bool make_token(char *e)
 
 
 
-word_t expr(char *e, bool *success，sign) 
+word_t expr(char *e, bool *success,uint32_t *sign) 
 
 {
-  bool *success;
-  success = (bool *)malloc(sizeof(bool)) ;
-  *success=true;
+  //bool *success;
+  //success = (bool *)malloc(sizeof(bool)) ;
+  //*success=true;
   if (!make_token(e)) 
   {
     *success = false;
