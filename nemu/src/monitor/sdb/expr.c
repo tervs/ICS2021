@@ -2,7 +2,7 @@
 #include <regex.h>
 #include <stdbool.h>
 //uint32_t *sign=0;
-word_t type=1;
+word_t sign=1;
 //bool p=true;
 //bool *success=&p;
 //expr总体用一个sucess返回秋值是否成功，所以各个部分自己的bool变量应该记录做别名
@@ -376,7 +376,7 @@ for(int i=p+1;i<q;i++)
 
 word_t mistake_type(word_t *type)
 {
-  return *type;
+  return sign;
 }
 //定义一个变量，用来储存出错的类型并在主函数之中打印出来
 

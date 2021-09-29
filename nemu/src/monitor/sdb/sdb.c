@@ -49,7 +49,7 @@ static int cmd_p(char *args) {
   x=expr(EXPR, &success);
   word_t type=0;
   type=mistake_type(&type);
-  printf("%u/n",type);
+  printf("the type is %u\n",type);
   if(!success){printf("Bad Expression!\n");}
   
   else {printf("%u\n",x);}
