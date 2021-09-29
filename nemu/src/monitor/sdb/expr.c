@@ -188,14 +188,14 @@ word_t expr(char *e, bool *success)
   if (!make_token(e)) 
   {
     *success = false;
-     //Log("%d",*success);
+     Log("make_token is %d",*success);
      // Log("%d",*sign);
     return 0;
   }
  
-  int ans=-1;//eval(0,t,success);
+    int ans=eval(0,t,success);
     memset(tokens, 0, sizeof(Token)*32);
-return ans;
+    return ans;
 }
 
 word_t  eval(int p, int q,bool *success)
