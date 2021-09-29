@@ -45,7 +45,7 @@ static struct rule {
   {"[0-9]+",TK_NUM},
   {"==", TK_EQ}, 
   //{"\\$\\$0", TK_REG0},
-  {"?<=\\$[a-z][0-9a-z]{1,2}|\\$\\$0", TK_REG},
+  {"\\$[a-z][0-9a-z]{1,2}|\\$\\$0", TK_REG},
   {"!=", TK_NEQ},	
   {"&&", TK_AND},				//logic and
 	{"\\|\\|", TK_OR}
