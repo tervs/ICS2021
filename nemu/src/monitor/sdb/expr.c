@@ -211,8 +211,10 @@ word_t  eval(int p, int q,bool *success)
 
     else if (p == q)
     {
-      Log("1111111");
-      return atoi(tokens[p].str);
+      
+      int temp=atoi(tokens[p].str);
+Log("%d",temp);
+      return temp;
     }
 
 
