@@ -4,8 +4,8 @@
 
 int t;
 uint32_t *sign;
-bool p=true;
-bool *success=&p;
+//bool p=true;
+//bool *success=&p;
 //expr总体用一个sucess返回秋值是否成功，所以各个部分自己的bool变量应该记录做别名
 
 
@@ -180,7 +180,9 @@ static bool make_token(char *e)
 word_t expr(char *e, bool *success，sign) 
 
 {
-
+  bool *success;
+  success = (bool *)malloc(sizeof(bool)) ;
+  *success=true;
   if (!make_token(e)) 
   {
     *success = false;
