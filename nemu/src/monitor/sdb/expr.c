@@ -124,12 +124,14 @@ static bool make_token(char *e)
               {
                   tokens[j].type=rules[i].token_type;
                   strncpy(tokens[j].str,substr_start+1,substr_len-1);
+                  tokens[j].priority=rules[i].priority;
               }
         
               else
               { 
                   tokens[j].type=rules[i].token_type;
                   strncpy(tokens[j].str,substr_start,substr_len);
+                  tokens[j].priority=rules[i].priority;
               }
          
               j++;
