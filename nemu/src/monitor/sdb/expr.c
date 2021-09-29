@@ -199,7 +199,7 @@ word_t expr(char *e, bool *success)
  
   for (int i = 0; i <=t; i++) 
   {
-    bool s=(tokens[i - 1].priority !=0)&&(tokens[i - 1].priority !=-1);
+    bool s=(tokens[i - 1].priority !=0)&&(tokens[i - 1].type!=')');
   if (tokens[i].type == '*' && (i == 0 || s) ) 
   {
     tokens[i].type = TK_POI;
