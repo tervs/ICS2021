@@ -203,6 +203,7 @@ word_t expr(char *e, bool *success)
   if (tokens[i].type == '*' && (i == 0 || s) ) 
   {
     tokens[i].type = TK_POI;
+    Log("position %d is POI",i);
   }
 }
 
