@@ -55,7 +55,7 @@ static int cmd_p(char *args) {
 
 static int cmd_test(char *args) {
   int x;
-  x=1+1==2;
+  x=2==3;
   
   printf("%d",x);
   return 0;
