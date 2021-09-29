@@ -149,7 +149,7 @@ word_t expr(char *e, bool *success)
   }
  
 int ans=-1;//eval(0,t,success);
-//memset(tokens, 0, sizeof(Token)*32);
+memset(tokens, 0, sizeof(Token)*32);
 return ans;
 }
 /*
