@@ -323,10 +323,15 @@ int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组
 word_t get_addr(word_t x)
 {
   printf("%08x\n",x);
-  word_t n;
-  n=vaddr_read(x, 1);
-  n=n*256+n;
-  printf("%08x\n",n);
+  word_t n=0;
+  for(int i=0;i<4;i++)
+  {
+    n=vaddr_read(x, 1);
+    n=n*256+vaddr_read(x, 1);
+    x++;
+    printf("%08x\n",n);
+  }
+  
   //printf("%d",n);
   return 0;
 }
