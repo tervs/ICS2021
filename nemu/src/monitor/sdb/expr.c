@@ -125,8 +125,8 @@ int j=0;
           { 
             tokens[j].type=rules[i].token_type;
             strncpy(tokens[j].str,substr_start,substr_len);
-            j++;
           }
+           j++;
         }
         //else{Log("warning of space");break;}
 
