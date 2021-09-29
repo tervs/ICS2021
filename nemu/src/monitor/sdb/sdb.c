@@ -53,6 +53,15 @@ static int cmd_p(char *args) {
 
 
 
+static int cmd_test(char *args) {
+  int x;
+  x=1+1==2;
+  
+  printf("%d",x);
+  return 0;
+}
+
+
 static int cmd_q(char *args) {
   return -1;
 }
@@ -153,7 +162,9 @@ static struct {
   {"si","single step",cmd_si},
   {"info","print ",cmd_info},
   {"x","print virtual memory",cmd_x},
-  {"p","expression",cmd_p}
+  {"p","expression",cmd_p},
+  {"test","test",cmd_test}
+
 
   /* TODO: Add more commands */
 
