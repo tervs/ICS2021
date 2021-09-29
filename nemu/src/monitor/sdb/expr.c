@@ -116,7 +116,7 @@ int j=0;
         if(rules[i].token_type!=TK_NOTYPE)
         {
         tokens[j].type=rules[i].token_type;
-        strncpy(tokens[j].str,substr_start,substr_len);
+        strncpy(tokens[j].str,substr_start+1,substr_len);
          j++;
         }
         else{Log("warning of space");break;}
