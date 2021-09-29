@@ -14,10 +14,10 @@ int t;
 //4 表达式不正确。如1+1+;
 //
 
-word_t  eval(int p, int q,bool *success) ;
-static bool check_parentheses(int p, int q);
-static bool match(int p, int q);
-int op_position(int p,int q);
+//word_t  eval(int p, int q,bool *success) ;
+//static bool check_parentheses(int p, int q);
+//static bool match(int p, int q);
+//int op_position(int p,int q);
 
 
 enum {
@@ -195,11 +195,11 @@ word_t expr(char *e, bool *success)
     return 0;
   }
  
-    int ans=eval(0,t,success);
+    int ans=-1;//eval(0,t,success);
     memset(tokens, 0, sizeof(Token)*32);
     return ans;
 }
-
+/*
 word_t  eval(int p, int q,bool *success)
 {
   *success=true;
@@ -360,5 +360,5 @@ for(int i=p+1;i<q;i++)
 
 
 
-
+*/
  
