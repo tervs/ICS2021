@@ -114,8 +114,8 @@ assert(n!=0);
         for(int i=0;i<4;i++)
       {
       x=vaddr_read(addr, 1);
-      printf("%02x\n",x);
-      printf("%d",x);
+      printf("%02x",x);
+     // printf("%d",x);
       addr++;
       }
       printf("\n");
