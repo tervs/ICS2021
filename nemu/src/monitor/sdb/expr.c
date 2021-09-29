@@ -115,11 +115,20 @@ int j=0;
         
         if(rules[i].token_type!=TK_NOTYPE)
         {
-        tokens[j].type=rules[i].token_type;
-        strncpy(tokens[j].str,substr_start+1,substr_len);
-         j++;
+          if(i==13)
+          {
+            tokens[j].type=rules[i].token_type;
+            strncpy(tokens[j].str,substr_start+1,substr_len-1);
+          }
+        
+          else
+          { 
+            tokens[j].type=rules[i].token_type;
+            strncpy(tokens[j].str,substr_start,substr_len);
+            j++;
+          }
         }
-        else{Log("warning of space");break;}
+        //else{Log("warning of space");break;}
 
        Log("now position is %d  type here is %d   str is %s ",j-1,tokens[j].type,tokens[j-1].str);
           break;
@@ -127,7 +136,8 @@ int j=0;
 
     }
 
-    if (i == NR_REGEX) {
+    if (i == NR_REGEX) 
+    {
       printf("no match at position %d\n%s\n%*.s^\n", position, e, position, "");
       return false;
     }
