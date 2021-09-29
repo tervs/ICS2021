@@ -55,7 +55,7 @@ static int cmd_p(char *args) {
 
 static int cmd_t(char *args) {
   int x;
-  x=100!=99+9;
+  x=(100!=99)+9;
   
   printf("%d",x);
   return 0;
