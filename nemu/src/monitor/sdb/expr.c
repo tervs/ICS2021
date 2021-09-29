@@ -144,9 +144,8 @@ static bool make_token(char *e)
                 }
                   if(tokens[j-1].type==260)//将寄存器值取出并保存为十进制字符串
                 {
-                  bool success;
-                  success=true;
-                  uint64_t temp=isa_reg_str2val(tokens[j-1].str,&success);
+                  
+                  uint64_t temp=isa_reg_str2val(tokens[j-1].str,success);
                   tokens[j-1].type=258;
                   if(!success){return false;} //sign
                   //printf("%ld\n",temp);
