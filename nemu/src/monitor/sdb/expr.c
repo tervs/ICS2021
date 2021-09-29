@@ -1,7 +1,7 @@
 #include <isa.h>
 #include <regex.h>
 #include <stdbool.h>
-uint32_t *sign=0;
+//uint32_t *sign=0;
 int t;
 //bool p=true;
 //bool *success=&p;
@@ -148,7 +148,7 @@ static bool make_token(char *e)
                   uint64_t temp=isa_reg_str2val(tokens[j-1].str,&is_reg_exist);
                   tokens[j-1].type=258;
                   if(!is_reg_exist){
-                    *sign=1;
+                    //*sign=1;
                     Log("%d\n",is_reg_exist);
                     return false;} //sign
                   //printf("%ld\n",temp);
@@ -179,7 +179,7 @@ static bool make_token(char *e)
 
 
 
-word_t expr(char *e, bool *success,uint32_t *sign) 
+word_t expr(char *e, bool *success) 
 
 {
   //bool *success;
@@ -189,7 +189,7 @@ word_t expr(char *e, bool *success,uint32_t *sign)
   {
     *success = false;
      Log("%d",*success);
-      Log("%d",*sign);
+     // Log("%d",*sign);
     return 0;
   }
  
