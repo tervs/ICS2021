@@ -149,7 +149,7 @@ static bool make_token(char *e)
                   tokens[j-1].type=258;
                   if(!is_reg_exist){
                     //*sign=1;
-                    Log("%d\n",is_reg_exist);
+                   // Log("%d\n",is_reg_exist);
                     return false;} //sign
                   //printf("%ld\n",temp);
                   sprintf(tokens[j-1].str,"%ld",temp);
@@ -188,7 +188,7 @@ word_t expr(char *e, bool *success)
   if (!make_token(e)) 
   {
     *success = false;
-     Log("%d",*success);
+     //Log("%d",*success);
      // Log("%d",*sign);
     return 0;
   }
