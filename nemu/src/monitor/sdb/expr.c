@@ -217,7 +217,7 @@ word_t  eval(int p, int q,bool *success)
       
       uint32_t temp=strtoul(tokens[p].str,NULL,10);
      // sscanf(tokens[p].str,"%u",&temp);
-Log("%u",temp);
+     Log("%u",temp);
       return temp;
     }
 
