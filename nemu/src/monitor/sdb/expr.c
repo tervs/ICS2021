@@ -19,6 +19,7 @@ static bool check_parentheses(int p, int q);
 static bool match(int p, int q);
 int op_position(int p,int q);
 word_t get_addr(word_t x);
+word_t vaddr_read(vaddr_t addr, int len);
 
 
 enum {
@@ -321,7 +322,11 @@ int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组
 
 word_t get_addr(word_t x)
 {
-  printf("%08x",x);
+  printf("%08x\n",x);
+  word_t n;
+  n=vaddr_read(x, 1);
+  printf("%02x\n",n);
+      printf("%d",n);
   return 0;
 }
 
