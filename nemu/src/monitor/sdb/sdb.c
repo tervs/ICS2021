@@ -55,7 +55,7 @@ static int cmd_p(char *args) {
 
 static int cmd_t(char *args) {
   int x;
-  x=2==2;
+  x=2==2+1;
   
   printf("%d",x);
   return 0;
