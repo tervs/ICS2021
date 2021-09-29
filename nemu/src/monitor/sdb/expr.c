@@ -6,7 +6,7 @@ int t;
 uint32_t *sign;
 bool p=true;
 bool *success=&p;
-
+//expr总体用一个sucess返回秋值是否成功，所以各个部分自己的bool变量应该记录做别名
 
 
 //1 寄存器不存在 
@@ -145,10 +145,10 @@ static bool make_token(char *e)
                 }
                   if(tokens[j-1].type==260)//将寄存器值取出并保存为十进制字符串
                 {
-                  
-                  uint64_t temp=isa_reg_str2val(tokens[j-1].str,success);
+                  bool is_reg_exist=true;
+                  uint64_t temp=isa_reg_str2val(tokens[j-1].str,&is_reg_exist);
                   tokens[j-1].type=258;
-                  if(!success){return false;} //sign
+                  if(!is_reg_exist){return false;} //sign
                   //printf("%ld\n",temp);
                   sprintf(tokens[j-1].str,"%ld",temp);
                 }
