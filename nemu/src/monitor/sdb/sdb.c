@@ -42,10 +42,11 @@ static int cmd_p(char *args) {
   char *EXPR = strtok(NULL, "\0");
   uint32_t x;
   
-  bool success=true;
+  bool success;
  
   uint32_t sign;
   x=expr(EXPR, &success,&sign);
+
   if(!success){printf("Bad Expression!\n");}
   else {printf("%d\n",x);}
   //printf("%d   %s",tokens[0].type,tokens[0].token_type);
