@@ -15,7 +15,7 @@ int t;
 
 
 enum {
-  TK_NOTYPE = 256, 
+  TK_NOTYPE = 256, //ac
   TK_EQ,
   TK_NUM,
   TK_HEX,//16进制数
@@ -128,6 +128,11 @@ static bool make_token(char *e)
          
               j++;
             }
+                  if(tokens[j-1].type==259)
+                 {
+                   uint64_t temp=strtol(tokens[i].str,NULL,16);
+                   printf("0x%08lx",temp);
+                }
               //else{Log("warning of space");break;}
               Log("now position is %d  type here is %d   str is %s ",j-1,tokens[j-1].type,tokens[j-1].str);
               break;
@@ -146,6 +151,7 @@ static bool make_token(char *e)
     Log("%d  ",t);
     return true;
 }
+
 
 word_t expr(char *e, bool *success) 
 {
