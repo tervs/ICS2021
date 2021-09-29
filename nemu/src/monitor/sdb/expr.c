@@ -134,7 +134,7 @@ static bool make_token(char *e)
          
               j++;
             }
-             Log("now position is %d  type here is %d   str is %s ",j-1,tokens[j-1].type,tokens[j-1].str);
+             Log("position: %d  type: %d  str: %s  priority: %d",j-1,tokens[j-1].type,tokens[j-1].str,tokens[j-1].priority);
                   if(tokens[j-1].type==259)//将16进制数字转化为十进制字符串
                  {
                    uint64_t temp=strtol(tokens[j-1].str,NULL,16);
