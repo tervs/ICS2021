@@ -42,7 +42,7 @@ static int cmd_p(char *args) {
   char *EXPR = strtok(NULL, "\0");
   uint32_t x;
   
-  bool success;
+  bool success=true;;
 
   //uint32_t sign=0;
   x=expr(EXPR, &success);
