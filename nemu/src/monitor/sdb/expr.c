@@ -289,7 +289,7 @@ int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组
       //  else if((tokens[i].type=='*'||tokens[i].type=='/')&&(tokens[x].type!='+'&&tokens[x].type!='-'))
       //{x=i;}//假如最新遇到的操作符是*或/，并且当前已经记录的x对应的操作符不为+或-，更新。
       
-      if(tokens[i].priority<=tokens[x].priority)
+      if(tokens[i].priority>=tokens[x].priority)
       {x=i;}
     }
    
