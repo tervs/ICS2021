@@ -2,7 +2,7 @@
 #include <regex.h>
 #include <stdbool.h>
 //uint32_t *sign=0;
-word_t sign=2;
+word_t sign=0;
 //bool p=true;
 //bool *success=&p;
 //expr总体用一个sucess返回秋值是否成功，所以各个部分自己的bool变量应该记录做别名
