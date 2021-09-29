@@ -325,8 +325,9 @@ word_t get_addr(word_t x)
   printf("%08x\n",x);
   word_t n;
   n=vaddr_read(x, 1);
-  printf("%02x\n",n);
-      printf("%d",n);
+  n=n*16;
+  printf("%08x\n",n);
+  //printf("%d",n);
   return 0;
 }
 
