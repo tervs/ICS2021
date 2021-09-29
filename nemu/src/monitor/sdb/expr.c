@@ -195,7 +195,7 @@ word_t expr(char *e, bool *success)
     return 0;
   }
  
-    int ans=-1;//eval(0,t,success);
+    int ans=eval(0,t,success);
     memset(tokens, 0, sizeof(Token)*32);
     return ans;
 }
