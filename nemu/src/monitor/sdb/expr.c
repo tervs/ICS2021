@@ -216,6 +216,7 @@ word_t  eval(int p, int q,bool *success)
     {
         //Log("make_token is %d",*succ);
    *success=false;
+   sign=4;
    return 0;//sign
     
     }
