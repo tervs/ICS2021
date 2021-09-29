@@ -131,7 +131,8 @@ static bool make_token(char *e)
                   if(tokens[j-1].type==259)
                  {
                    uint64_t temp=strtol(tokens[j-1].str,NULL,16);
-                   printf("0x%08lx",temp);
+                   printf("0x%08lx\n",temp);
+                   printf("%ld\n",temp);
                 }
               //else{Log("warning of space");break;}
               Log("now position is %d  type here is %d   str is %s ",j-1,tokens[j-1].type,tokens[j-1].str);
