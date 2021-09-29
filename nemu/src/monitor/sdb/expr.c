@@ -108,8 +108,8 @@ int j=0;
         char *substr_start = e + position;
         int substr_len = pmatch.rm_eo;
 
-        //Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s",
-          //  i, rules[i].regex, position, substr_len, substr_len, substr_start);
+        Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s",
+            i, rules[i].regex, position, substr_len, substr_len, substr_start);
 
         position += substr_len;
         
@@ -121,7 +121,7 @@ int j=0;
         }
         else{Log("warning of space");break;}
 
-      // Log("now position is %d  type here is %d   str is %s ",j-1,tokens[j].type,tokens[j-1].str);
+       Log("now position is %d  type here is %d   str is %s ",j-1,tokens[j].type,tokens[j-1].str);
           break;
       }
 
