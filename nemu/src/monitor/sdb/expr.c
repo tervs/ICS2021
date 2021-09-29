@@ -257,7 +257,7 @@ word_t  eval(int p, int q,bool *success)
         case TK_NEQ:return val1 !=val2;
         case TK_AND:return val1 &&val2;
         case TK_OR:return val1 ||val2;
-        case TK_POI: if(val2<2147483648){*success=false;return 0;}
+        case TK_POI: if(val2<2147483648){*success=false;sign=5;return 0;}
         else {get_addr(val2);}
 
       }
