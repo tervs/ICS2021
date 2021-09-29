@@ -99,12 +99,12 @@ assert(n!=0);
     return 0;
   }*/
      char *arg = strtok(NULL, " ");
-     uint32_t addr=strtol(arg,NULL,16);
-   printf("%d\n",addr) ;
+     uint64_t addr=strtol(arg,NULL,16);
+   printf("%ld\n",addr) ;
      word_t x;
      for(int j=0;j<n;j++)
      {
-        printf("0x%08x    ",addr);
+        printf("0x%08lx    ",addr);
         printf("0x");
         for(int i=0;i<4;i++)
       {
