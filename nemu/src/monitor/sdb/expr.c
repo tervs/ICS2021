@@ -281,12 +281,14 @@ int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组
 
     else if(bracket==0)//当bracket为0,也就是不在一个括号内的时候，才执行扫描判断。
     {
-       if(tokens[i].type=='+'||tokens[i].type=='-')
-      {x=i;}//当最新遇到的 操作符是+或者——，更新x为最新的位置。
+       //if(tokens[i].type=='+'||tokens[i].type=='-')
+      //{x=i;}//当最新遇到的 操作符是+或者——，更新x为最新的位置。
      
-        else if((tokens[i].type=='*'||tokens[i].type=='/')&&(tokens[x].type!='+'&&tokens[x].type!='-'))
-      {x=i;}//假如最新遇到的操作符是*或/，并且当前已经记录的x对应的操作符不为+或-，更新。
+      //  else if((tokens[i].type=='*'||tokens[i].type=='/')&&(tokens[x].type!='+'&&tokens[x].type!='-'))
+      //{x=i;}//假如最新遇到的操作符是*或/，并且当前已经记录的x对应的操作符不为+或-，更新。
       
+      if(tokens[i].priority<=tokens[x].priority)
+      {x=i;}
     }
    
     else if(tokens[i].type==')')
