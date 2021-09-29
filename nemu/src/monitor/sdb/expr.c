@@ -134,6 +134,14 @@ static bool make_token(char *e)
                    sprintf(tokens[j-1].str,"%ld",temp);
                    Log("now the str is %s",tokens[j-1].str);
                 }
+                if(tokens[j-1].type==260)
+                {
+                  bool success;
+                  success=true;
+                  uint64_t temp=isa_reg_str2val(tokens[j-1].str,&success);
+                  if(!success){return false;}
+                  printf("%ld\n",temp);
+                }
               //else{Log("warning of space");break;}
               Log("now position is %d  type here is %d   str is %s ",j-1,tokens[j-1].type,tokens[j-1].str);
               break;
