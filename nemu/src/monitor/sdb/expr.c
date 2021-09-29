@@ -131,8 +131,6 @@ static bool make_token(char *e)
                   if(tokens[j-1].type==259)
                  {
                    uint64_t temp=strtol(tokens[j-1].str,NULL,16);
-                   printf("0x%08lx\n",temp);
-                   printf("%ld\n",temp);
                    sprintf(tokens[j-1].str,"%ld",temp);
                    Log("now the str is %s",tokens[j-1].str);
                 }
