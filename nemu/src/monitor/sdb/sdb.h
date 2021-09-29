@@ -4,6 +4,6 @@
 #include <common.h>
 
 word_t expr(char *e, bool *success);
-
+word_t mistake_type(word_t *type);
 
 #endif

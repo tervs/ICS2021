@@ -12,6 +12,7 @@ void init_regex();
 void init_wp_pool();
 word_t vaddr_read(vaddr_t addr, int len);
 word_t expr(char *e, bool *success); 
+word_t mistake_type(word_t *type);
 
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 static char* rl_gets() 
@@ -46,7 +47,9 @@ static int cmd_p(char *args) {
 
   //uint32_t sign=0;
   x=expr(EXPR, &success);
-
+  word_t type=0;
+  type=mistake_type(&type);
+  printf("%u/n",type);
   if(!success){printf("Bad Expression!\n");}
   
   else {printf("%u\n",x);}

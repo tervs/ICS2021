@@ -2,17 +2,18 @@
 #include <regex.h>
 #include <stdbool.h>
 //uint32_t *sign=0;
-int t;
+word_t type=1;
 //bool p=true;
 //bool *success=&p;
 //expr总体用一个sucess返回秋值是否成功，所以各个部分自己的bool变量应该记录做别名
-
+int t;
 
 //1 寄存器不存在 
 //2 左右括号不匹配
 //3 make_token有未识别字符
 //4 表达式不正确。如1+1+;
-//
+//5 内存不在范围内
+
 
 word_t  eval(int p, int q,bool *success) ;
 static bool check_parentheses(int p, int q);
@@ -20,6 +21,7 @@ static bool match(int p, int q);
 int op_position(int p,int q);
 word_t get_addr(word_t x);
 word_t vaddr_read(vaddr_t addr, int len);
+word_t mistake_type(word_t *type);
 
 
 enum {
@@ -36,9 +38,8 @@ enum {
 
 };
 
-
-
-static struct rule {
+static struct rule 
+{
   const char *regex;
   int token_type;
   int priority;
@@ -62,42 +63,36 @@ static struct rule {
 };
 
 
-
-
-
-
 #define NR_REGEX ARRLEN(rules)
 static regex_t re[NR_REGEX] = {};
 
 
-void init_regex() {
+void init_regex() 
+{
   int i;
   char error_msg[128];
   int ret;
 
-  for (i = 0; i < NR_REGEX; i ++) {
+  for (i = 0; i < NR_REGEX; i ++) 
+  {
     ret = regcomp(&re[i], rules[i].regex, REG_EXTENDED);
-    if (ret != 0) {
+    if (ret != 0) 
+    {
       regerror(ret, &re[i], error_msg, 128);
       panic("regex compilation failed: %s\n%s", error_msg, rules[i].regex);
     }
   }
 }
 
-
-
-
-
-typedef struct token {
+typedef struct token 
+{
   int type;
   char str[32];
   int priority;
 } Token;
+
 static Token tokens[32] __attribute__((used)) = {};
 static int nr_token __attribute__((used))  = 0;
-
-
-
 
 static bool make_token(char *e) 
 {
@@ -179,12 +174,6 @@ static bool make_token(char *e)
     return true;
 }
 
-
-
-
-
-
-
 word_t expr(char *e, bool *success) 
 
 {
@@ -202,12 +191,12 @@ word_t expr(char *e, bool *success)
   for (int i = 0; i <=t; i++) 
   {
     bool s=(tokens[i - 1].priority !=0)&&(tokens[i - 1].type!=')');
-  if (tokens[i].type == '*' && (i == 0 || s) ) 
-  {
-    tokens[i].type = TK_POI;
-    Log("position %d is POI",i);
+    if (tokens[i].type == '*' && (i == 0 || s) ) 
+    {
+      tokens[i].type = TK_POI;
+      Log("position %d is POI",i);
+    }
   }
-}
 
 
 
@@ -248,33 +237,31 @@ word_t  eval(int p, int q,bool *success)
 
     else 
     {
-    int op = op_position(p,q);
-    if(op==-1){exit(0);}
-    Log("op is %d  p is %d  q is  %d",op,p,q);
-    word_t val1 = eval(p, op - 1,success);
-    word_t val2 = eval(op + 1, q,success);
+      int op = op_position(p,q);
+      if(op==-1){exit(0);}
+      Log("op is %d  p is %d  q is  %d",op,p,q);
+      word_t val1 = eval(p, op - 1,success);
+      word_t val2 = eval(op + 1, q,success);
 
-    switch (tokens[op].type) 
-    {
-      case '+': return val1 + val2;
-      case '-': return val1 - val2; 
-      case '*': return val1 * val2;
-      case '/': return val1 / val2;
-      case TK_EQ:return val1 ==val2;
-      case TK_NEQ:return val1 !=val2;
-      case TK_AND:return val1 &&val2;
-      case TK_OR:return val1 ||val2;
-      case TK_POI: if(val2<2147483648){*success=false;return 0;}
-      else {get_addr(val2);}
+      switch (tokens[op].type) 
+      {
+        case '+': return val1 + val2;
+        case '-': return val1 - val2; 
+        case '*': return val1 * val2;
+        case '/': return val1 / val2;
+        case TK_EQ:return val1 ==val2;
+        case TK_NEQ:return val1 !=val2;
+        case TK_AND:return val1 &&val2;
+        case TK_OR:return val1 ||val2;
+        case TK_POI: if(val2<2147483648){*success=false;return 0;}
+        else {get_addr(val2);}
 
-    }
- Log("op is %d     p is %d     q is %d",op,p,q);
+      }
+      Log("op is %d     p is %d     q is %d",op,p,q);
     }
    
-return -1;
-  }
-
-
+  return -1;
+}
 
 int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组开始位置，q是结束.
 {
@@ -317,7 +304,8 @@ int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组
 
     Log("now x is %d and type of x is %d  while i is %d and type is %d  bracket is %d",x,tokens[x].type,i,tokens[i].type,bracket);
   
-    }
+  }
+  
   return x;
 }
 
@@ -386,7 +374,10 @@ for(int i=p+1;i<q;i++)
             //颜色高亮
 }
 
-
+word_t mistake_type(word_t *type)
+{
+  return *type;
+}
 //定义一个变量，用来储存出错的类型并在主函数之中打印出来
 
 
