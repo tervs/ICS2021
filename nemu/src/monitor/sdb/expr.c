@@ -132,13 +132,15 @@ static bool make_token(char *e)
                  {
                    uint64_t temp=strtol(tokens[j-1].str,NULL,16);
                    sprintf(tokens[j-1].str,"%ld",temp);
+                   tokens[j-1].type=258;
                    Log("now the str is %s",tokens[j-1].str);
                 }
-                if(tokens[j-1].type==260)
+                  if(tokens[j-1].type==260)
                 {
                   bool success;
                   success=true;
                   uint64_t temp=isa_reg_str2val(tokens[j-1].str,&success);
+                  tokens[j-1].type=258;
                   if(!success){return false;}
                   printf("%ld\n",temp);
                   sprintf(tokens[j-1].str,"%ld",temp);
