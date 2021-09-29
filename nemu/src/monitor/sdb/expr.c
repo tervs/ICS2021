@@ -188,6 +188,7 @@ word_t expr(char *e, bool *success，sign)
   if (!make_token(e)) 
   {
     *success = false;
+     Log("%d\n",*success);
     return 0;
   }
  
