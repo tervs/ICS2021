@@ -100,7 +100,7 @@ assert(n!=0);
   }*/
      char *arg = strtok(NULL, " ");
      uint32_t addr=strtol(arg,NULL,16);
-   printf("%08x\n",addr) ;
+   printf("%d\n",addr) ;
      word_t x;
      for(int j=0;j<n;j++)
      {
