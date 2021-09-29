@@ -3,15 +3,22 @@
 #include <stdbool.h>
 
 int t;
+uint32_t *sign;
+bool p=true;
+bool *success=&p;
 
 
 
+//1 寄存器不存在 
+//2 左右括号不匹配
+//3 make_token有未识别字符
+//4 表达式不正确。如1+1+;
+//
 
-
-//word_t  eval(int p, int q,bool *success) ;
-//static bool check_parentheses(int p, int q);
-//static bool match(int p, int q);
-//int op_position(int p,int q);
+word_t  eval(int p, int q,bool *success) ;
+static bool check_parentheses(int p, int q);
+static bool match(int p, int q);
+int op_position(int p,int q);
 
 
 enum {
@@ -83,11 +90,11 @@ typedef struct token {
   char str[32];
   int priority;
 } Token;
-
-
-
 static Token tokens[32] __attribute__((used)) = {};
 static int nr_token __attribute__((used))  = 0;
+
+
+
 
 static bool make_token(char *e) 
 {
@@ -114,7 +121,7 @@ static bool make_token(char *e)
         
               if(rules[i].token_type!=TK_NOTYPE)
            {
-              if(i==13)
+              if(i==13)//将寄存器的储存名称去除开头的$
               {
                   tokens[j].type=rules[i].token_type;
                   strncpy(tokens[j].str,substr_start+1,substr_len-1);
@@ -128,20 +135,20 @@ static bool make_token(char *e)
          
               j++;
             }
-                  if(tokens[j-1].type==259)
+                  if(tokens[j-1].type==259)//将16进制数字转化为十进制字符串
                  {
                    uint64_t temp=strtol(tokens[j-1].str,NULL,16);
                    sprintf(tokens[j-1].str,"%ld",temp);
                    tokens[j-1].type=258;
                    //Log("now the str is %s",tokens[j-1].str);
                 }
-                  if(tokens[j-1].type==260)
+                  if(tokens[j-1].type==260)//将寄存器值取出并保存为十进制字符串
                 {
                   bool success;
                   success=true;
                   uint64_t temp=isa_reg_str2val(tokens[j-1].str,&success);
                   tokens[j-1].type=258;
-                  if(!success){return false;}
+                  if(!success){return false;} //sign
                   //printf("%ld\n",temp);
                   sprintf(tokens[j-1].str,"%ld",temp);
                 }
@@ -155,7 +162,7 @@ static bool make_token(char *e)
       if (i == NR_REGEX) 
       {
         printf("no match at position %d\n%s\n%*.s^\n", position, e, position, "");
-        return false;
+        return false;//sign
       }
      // Log("%d",j);
     }
@@ -165,8 +172,15 @@ static bool make_token(char *e)
 }
 
 
-word_t expr(char *e, bool *success) 
+
+
+
+
+
+word_t expr(char *e, bool *success，sign) 
+
 {
+
   if (!make_token(e)) 
   {
     *success = false;
@@ -177,13 +191,13 @@ word_t expr(char *e, bool *success)
     memset(tokens, 0, sizeof(Token)*32);
 return ans;
 }
-/*
+
 word_t  eval(int p, int q,bool *success)
 {
     if (p > q) 
     { 
    *success=false;
-   return 0;
+   return 0;//sign
     
     }
     
@@ -325,12 +339,10 @@ for(int i=p+1;i<q;i++)
             //颜色高亮
 }
 
-//将去空格之后的tokens保存成一个一个新的字符串数组，tokens.str似乎已经是这样的数组了
-//利用新字符串数组，编写函数求解op位置
-//编写括号匹配函数，检测某字符串两侧是否互相匹配
+
+//定义一个变量，用来储存出错的类型并在主函数之中打印出来
 
 
-*/
 
 
 

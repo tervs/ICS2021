@@ -11,7 +11,7 @@ static int is_batch_mode = false;
 void init_regex();
 void init_wp_pool();
 word_t vaddr_read(vaddr_t addr, int len);
-word_t expr(char *e, bool *success); 
+word_t expr(char *e, bool *success,uint32_t *sign); 
 
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 static char* rl_gets() 
@@ -41,9 +41,11 @@ static int cmd_c(char *args) {
 static int cmd_p(char *args) {
   char *EXPR = strtok(NULL, "\0");
   uint32_t x;
-  bool success;
-  success=true;
-  x=expr(EXPR, &success);
+  bool p=true;
+  bool *success=&p;
+ 
+  uint32_t sign;
+  x=expr(EXPR, success,&sign);
   if(!success){printf("Bad Expression!\n");}
   else {printf("%d\n",x);}
   //printf("%d   %s",tokens[0].type,tokens[0].token_type);
