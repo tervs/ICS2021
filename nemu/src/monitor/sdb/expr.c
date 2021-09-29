@@ -329,11 +329,11 @@ word_t get_addr(word_t x)
     
     n=n*256+vaddr_read(x, 1);
     x++;
-    printf("%08x\n",n);
+    //printf("%08x\n",n);
   }
   
   //printf("%d",n);
-  return 0;
+  return n;
 }
 
 static bool check_parentheses(int p, int q)
