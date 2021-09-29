@@ -148,7 +148,9 @@ static bool make_token(char *e)
                   bool is_reg_exist=true;
                   uint64_t temp=isa_reg_str2val(tokens[j-1].str,&is_reg_exist);
                   tokens[j-1].type=258;
-                  if(!is_reg_exist){return false;} //sign
+                  if(!is_reg_exist){
+                    Log("%d\n",is_reg_exist);
+                    return false;} //sign
                   //printf("%ld\n",temp);
                   sprintf(tokens[j-1].str,"%ld",temp);
                 }
