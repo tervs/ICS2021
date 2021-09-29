@@ -18,6 +18,7 @@ word_t  eval(int p, int q,bool *success) ;
 static bool check_parentheses(int p, int q);
 static bool match(int p, int q);
 int op_position(int p,int q);
+word_t get_addr(word_t x);
 
 
 enum {
@@ -262,7 +263,7 @@ word_t  eval(int p, int q,bool *success)
       case TK_NEQ:return val1 !=val2;
       case TK_AND:return val1 &&val2;
       case TK_OR:return val1 ||val2;
-      case TK_POI: return 1;
+      //case TK_POI: return get_addr(val2);
 
     }
  Log("op is %d     p is %d     q is %d",op,p,q);
@@ -318,7 +319,10 @@ int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组
   return x;
 }
 
-
+word_t get_addr(word_t x)
+{
+  return 0;
+}
 
 static bool check_parentheses(int p, int q)
 {
@@ -328,7 +332,6 @@ static bool check_parentheses(int p, int q)
       return match(p,q);
     }
 }
-
 
 static bool match(int p, int q)
 {

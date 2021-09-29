@@ -115,6 +115,7 @@ assert(n!=0);
       {
       x=vaddr_read(addr, 1);
       printf("%02x",x);
+      printf("%d",x);
       addr++;
       }
       printf("\n");
