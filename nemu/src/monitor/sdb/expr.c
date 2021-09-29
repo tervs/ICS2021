@@ -326,7 +326,7 @@ word_t get_addr(word_t x)
   word_t n=0;
   for(int i=0;i<4;i++)
   {
-    n=vaddr_read(x, 1);
+    
     n=n*256+vaddr_read(x, 1);
     x++;
     printf("%08x\n",n);
