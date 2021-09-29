@@ -43,12 +43,14 @@ static int cmd_p(char *args) {
   uint32_t x;
   
   bool success;
- 
-  uint32_t sign;
+
+  uint32_t sign=0;
   x=expr(EXPR, &success,&sign);
 
   if(!success){printf("Bad Expression!\n");}
+  
   else {printf("%d\n",x);}
+  Log("%d",sign);
   //printf("%d   %s",tokens[0].type,tokens[0].token_type);
   //printf("%s", EXPR);
   return 0;
