@@ -111,13 +111,13 @@ assert(n!=0);
      {
         printf("0x%08lx    ",addr);
         printf("0x");
-        //for(int i=0;i<4;i++)
-      //{
+        for(int i=0;i<4;i++)
+      {
       x=vaddr_read(addr, 1);
       printf("%02x\n",x);
       printf("%d",x);
-      //addr++;
-      //}
+      addr++;
+      }
       printf("\n");
 
      }
