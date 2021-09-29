@@ -133,6 +133,8 @@ static bool make_token(char *e)
                    uint64_t temp=strtol(tokens[j-1].str,NULL,16);
                    printf("0x%08lx\n",temp);
                    printf("%ld\n",temp);
+                   sprintf(tokens[j-1].str,"%ld",temp);
+                   Log("now the str is %s",tokens[j-1].str);
                 }
               //else{Log("warning of space");break;}
               Log("now position is %d  type here is %d   str is %s ",j-1,tokens[j-1].type,tokens[j-1].str);
