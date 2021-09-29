@@ -215,7 +215,7 @@ word_t  eval(int p, int q,bool *success)
     else if (p == q)
     {
       
-      int temp=atoi(tokens[p].str);
+      uint32_t temp=atoi(tokens[p].str);
 Log("%d",temp);
       return temp;
     }
