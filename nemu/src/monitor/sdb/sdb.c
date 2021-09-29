@@ -53,9 +53,9 @@ static int cmd_p(char *args) {
 
 
 
-static int cmd_test(char *args) {
+static int cmd_t(char *args) {
   int x;
-  x=2==2;
+  x=1+2==2;
   
   printf("%d",x);
   return 0;
@@ -163,7 +163,7 @@ static struct {
   {"info","print ",cmd_info},
   {"x","print virtual memory",cmd_x},
   {"p","expression",cmd_p},
-  {"test","test",cmd_test}
+  {"t","test",cmd_t}
 
 
   /* TODO: Add more commands */
