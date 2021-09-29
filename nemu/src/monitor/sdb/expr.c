@@ -19,7 +19,7 @@ enum {
   TK_EQ,
   TK_NUM,
   TK_HEX,//16进制数
-	TK_REG0,//寄存器取值
+	//TK_REG0,//寄存器取值
   TK_REG,
   TK_NEQ,//不等号
   TK_AND,
@@ -44,8 +44,8 @@ static struct rule {
   {"\\b0[xX][0-9a-fA-F]+\\b",TK_HEX},
   {"[0-9]+",TK_NUM},
   {"==", TK_EQ}, 
-  {"\\$\\$0", TK_REG0},
-  {"\\$[a-z][0-9a-z]{1,2}", TK_REG},
+  //{"\\$\\$0", TK_REG0},
+  {"\\$[a-z][0-9a-z]{1,2}|\\$\\$0", TK_REG},
   {"!=", TK_NEQ},	
   {"&&", TK_AND},				//logic and
 	{"\\|\\|", TK_OR}
