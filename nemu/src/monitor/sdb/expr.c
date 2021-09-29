@@ -8,10 +8,10 @@ int t;
 
 
 
-word_t  eval(int p, int q,bool *success) ;
-static bool check_parentheses(int p, int q);
-static bool match(int p, int q);
-int op_position(int p,int q);
+//word_t  eval(int p, int q,bool *success) ;
+//static bool check_parentheses(int p, int q);
+//static bool match(int p, int q);
+//int op_position(int p,int q);
 
 
 enum {
@@ -148,11 +148,11 @@ word_t expr(char *e, bool *success)
     return 0;
   }
  
-int ans=eval(0,t,success);
-memset(tokens, 0, sizeof(Token)*32);
+int ans=-1;//eval(0,t,success);
+//memset(tokens, 0, sizeof(Token)*32);
 return ans;
 }
-
+/*
 word_t  eval(int p, int q,bool *success)
 {
     if (p > q) 
@@ -204,15 +204,15 @@ int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组
   int x=0;//x用来记录op，也就是主操作符位置，初始化为-1,
   int bracket=0;//用于记录括号，遇到左括号+1,右括号-1.为0意味着没有括号
 
-  /*
-  for(int i=p;i<=q;i++)
-  {
-    if(x==-1&&((tokens[i].type=='+')||(tokens[i].type=='-')||(tokens[i].type=='*')||(tokens[i].type=='/')))
-    {
-      x=i;
-    }
-  }
-  */
+  
+  //for(int i=p;i<=q;i++)
+  //{
+  //  if(x==-1&&((tokens[i].type=='+')||(tokens[i].type=='-')||(tokens[i].type=='*')||(tokens[i].type=='/')))
+  //  {
+  //    x=i;
+  //  }
+  //}
+  
   //找到第一个操作符的位置，无论这个符号是什么。从p到q扫描，直到遇到第一个操作符，然后结束循环。
   //此时x记录着第一个操作符的位置。
  // Log("the first op is %d",x);
@@ -299,7 +299,7 @@ for(int i=p+1;i<q;i++)
 //编写括号匹配函数，检测某字符串两侧是否互相匹配
 
 
-
+*/
 
 
  
