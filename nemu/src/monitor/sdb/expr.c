@@ -89,65 +89,62 @@ typedef struct token {
 static Token tokens[32] __attribute__((used)) = {};
 static int nr_token __attribute__((used))  = 0;
 
-static bool make_token(char *e) {
-  int position = 0;
-  int i;
-  regmatch_t pmatch;
-
-  nr_token = 0;
-int j=0;
-  while (e[position] != '\0') 
-  {
-    /* Try all rules one by one. */
-    for (i = 0; i < NR_REGEX; i ++) 
-    
+static bool make_token(char *e) 
+{
+    int position = 0;
+    int i;
+    regmatch_t pmatch;
+    nr_token = 0;
+    int j=0;
+    while (e[position] != '\0') 
     {
-      if (regexec(&re[i], e + position, 1, &pmatch, 0) == 0 && pmatch.rm_so == 0) 
-      
-      {
-        char *substr_start = e + position;
-        int substr_len = pmatch.rm_eo;
-
-        Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s",
-            i, rules[i].regex, position, substr_len, substr_len, substr_start);
-
-        position += substr_len;
-        
-        if(rules[i].token_type!=TK_NOTYPE)
+        /* Try all rules one by one. */
+        for (i = 0; i < NR_REGEX; i ++) 
         {
-          if(i==13)
+            if (regexec(&re[i], e + position, 1, &pmatch, 0) == 0 && pmatch.rm_so == 0) 
+      
           {
-            tokens[j].type=rules[i].token_type;
-            strncpy(tokens[j].str,substr_start+1,substr_len-1);
-          }
+              char *substr_start = e + position;
+              int substr_len = pmatch.rm_eo;
+
+              Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s",
+              i, rules[i].regex, position, substr_len, substr_len, substr_start);
+
+              position += substr_len;
         
-          else
-          { 
-            tokens[j].type=rules[i].token_type;
-            strncpy(tokens[j].str,substr_start,substr_len);
-          }
+              if(rules[i].token_type!=TK_NOTYPE)
+           {
+              if(i==13)
+              {
+                  tokens[j].type=rules[i].token_type;
+                  strncpy(tokens[j].str,substr_start+1,substr_len-1);
+              }
+        
+              else
+              { 
+                  tokens[j].type=rules[i].token_type;
+                  strncpy(tokens[j].str,substr_start,substr_len);
+              }
          
-            j++;
+              j++;
+            }
+              //else{Log("warning of space");break;}
+              Log("now position is %d  type here is %d   str is %s ",j-1,tokens[j-1].type,tokens[j-1].str);
+              break;
+          }
+
         }
-        //else{Log("warning of space");break;}
-          Log("now position is %d  type here is %d   str is %s ",j-1,tokens[j-1].type,tokens[j-1].str);
-          break;
+
+      if (i == NR_REGEX) 
+      {
+        printf("no match at position %d\n%s\n%*.s^\n", position, e, position, "");
+        return false;
       }
-
+     // Log("%d",j);
     }
-
-    if (i == NR_REGEX) 
-    {
-      printf("no match at position %d\n%s\n%*.s^\n", position, e, position, "");
-      return false;
-    }
-   // Log("%d",j);
-   
-  }
- t=j-1;
-  Log("%d  ",t);
-  return true;
-
+    t=j-1;
+    Log("%d  ",t);
+    return true;
 }
 
 word_t expr(char *e, bool *success) 
@@ -158,8 +155,8 @@ word_t expr(char *e, bool *success)
     return 0;
   }
  
-int ans=-1;//eval(0,t,success);
-memset(tokens, 0, sizeof(Token)*32);
+  int ans=-1;//eval(0,t,success);
+    memset(tokens, 0, sizeof(Token)*32);
 return ans;
 }
 /*
