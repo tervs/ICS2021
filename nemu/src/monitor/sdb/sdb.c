@@ -55,7 +55,7 @@ static int cmd_p(char *args) {
 
 static int cmd_t(char *args) {
   int x;
-  x=4||8;
+  x=4&&0;
   
   printf("%d",x);
   return 0;
