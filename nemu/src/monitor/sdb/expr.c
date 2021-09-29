@@ -262,7 +262,7 @@ word_t  eval(int p, int q,bool *success)
       case TK_NEQ:return val1 !=val2;
       case TK_AND:return val1 &&val2;
       case TK_OR:return val1 ||val2;
-      case TK_POI: return 0;
+      case TK_POI: return 1;
 
     }
  Log("op is %d     p is %d     q is %d",op,p,q);
