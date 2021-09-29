@@ -49,7 +49,7 @@ static int cmd_p(char *args) {
 
   if(!success){printf("Bad Expression!\n");}
   
-  else {printf("%d\n",x);}
+  else {printf("%u\n",x);}
   //Log("%d",sign);
   //printf("%d   %s",tokens[0].type,tokens[0].token_type);
   //printf("%s", EXPR);
