@@ -30,6 +30,7 @@ enum {
   TK_NEQ,//不等号
   TK_AND,
   TK_OR,
+  TK_POI,
 
 };
 
@@ -55,6 +56,7 @@ static struct rule {
   {"\\b0[xX][0-9a-fA-F]+\\b",TK_HEX,0},
   {"[0-9]+",TK_NUM,0},
   {"\\$[a-z][0-9a-z]{1,2}|\\$\\$0", TK_REG,0},
+  {"\\*",'*',2},
 };
 
 
@@ -195,6 +197,17 @@ word_t expr(char *e, bool *success)
     return 0;
   }
  
+  for (int i = 0; i <=t; i++) 
+  {
+    bool s=(tokens[i - 1].priority !=0)&&(tokens[i - 1].priority !=-1);
+  if (tokens[i].type == '*' && (i == 0 || s) ) 
+  {
+    tokens[i].type = TK_POI;
+  }
+}
+
+
+
     word_t ans=eval(0,t,success);
     memset(tokens, 0, sizeof(Token)*32);
     Log("%u",ans);
@@ -248,7 +261,7 @@ word_t  eval(int p, int q,bool *success)
       case TK_NEQ:return val1 !=val2;
       case TK_AND:return val1 &&val2;
       case TK_OR:return val1 ||val2;
-      case TK_REG: return 0;
+      case TK_POI: return 0;
 
     }
  Log("op is %d     p is %d     q is %d",op,p,q);
