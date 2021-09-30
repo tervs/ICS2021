@@ -22,6 +22,7 @@ int op_position(int p,int q);
 word_t get_addr(word_t x);
 word_t vaddr_read(vaddr_t addr, int len);
 word_t mistake_type(word_t *type);
+void is_pointer();
 
 
 enum {
@@ -190,7 +191,7 @@ word_t expr(char *e, bool *success)
      // Log("%d",*sign);
     return 0;
   }
- 
+ /*
   for (int i = 0; i <=t; i++) 
   {
     bool s=(tokens[i - 1].priority !=0)&&(tokens[i - 1].type!=')');
@@ -201,7 +202,7 @@ word_t expr(char *e, bool *success)
     }
   }
 
-
+*/
 
     word_t ans=eval(0,t,success);
     memset(tokens, 0, sizeof(Token)*32);
@@ -403,7 +404,19 @@ word_t mistake_type(word_t *type)
 }
 //定义一个变量，用来储存出错的类型并在主函数之中打印出来
 
+void is_pointer()
+{
 
+  for (int i = 0; i <=t; i++) 
+  {
+    bool s=(tokens[i - 1].priority !=0)&&(tokens[i - 1].type!=')');
+    if (tokens[i].type == '*' && (i == 0 || s) ) 
+    {
+      tokens[i].type = TK_POI;
+      Log("position %d is POI",i);
+    }
+  }
+}
 
 
 
