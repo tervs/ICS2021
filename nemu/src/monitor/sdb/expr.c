@@ -331,12 +331,17 @@ word_t get_addr(word_t x)
 }
 
 static bool check_parentheses(int p, int q)
+
 {
-    if(tokens[p].type!='('||tokens[q].type!=')')
-    return false;
-    else{
-      return match(p,q);
-    }
+
+  if(match(p,q)&&(tokens[p].type!='('||tokens[q].type!=')'))
+  {return true;}
+else {return false;}
+    //if(tokens[p].type!='('||tokens[q].type!=')')
+   // return false;
+    //else{
+    //  return match(p,q);
+    //}
 
 }
 
