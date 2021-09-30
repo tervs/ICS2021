@@ -211,7 +211,7 @@ word_t expr(char *e, bool *success)
 
 word_t  eval(int p, int q,bool *success)
 {
-  *success=true;
+  //*success=true;
     
     
     if (p > q) 
