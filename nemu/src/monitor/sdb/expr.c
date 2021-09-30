@@ -16,7 +16,7 @@ int t;
 
 
 word_t  eval(int p, int q,bool *success) ;
-static bool check_parentheses(int p, int q);
+//static bool check_parentheses(int p, int q);
 static bool match(int p, int q);
 int op_position(int p,int q);
 word_t get_addr(word_t x);
@@ -212,6 +212,8 @@ word_t expr(char *e, bool *success)
 word_t  eval(int p, int q,bool *success)
 {
   *success=true;
+    
+    
     if (p > q) 
     {
         //Log("make_token is %d",*succ);
@@ -221,27 +223,28 @@ word_t  eval(int p, int q,bool *success)
     
     }
     
-
-    else if (p == q)
+    else if(match(p,q)==true)
     {
+        if (p == q)
+      {
       
       uint32_t temp=strtoul(tokens[p].str,NULL,10);
      // sscanf(tokens[p].str,"%u",&temp);
      //Log("%u",temp);
       return temp;
-    }
+       }
 
 
-    else if (check_parentheses(p, q) == true) 
-    {
-      Log("if you see, the here bracket is true");
-    return eval(p + 1, q - 1,success);
-    Log("%d\n", check_parentheses(p,q));
-    }
+      else if (tokens[p].type=='('&&tokens[q].type==')') 
+      {
+        Log("if you see, the here bracket is true");
+        return eval(p + 1, q - 1,success);
+       // Log("%d\n", check_parentheses(p,q));
+      }
 
 
-    else 
-    {
+      else 
+      {
       int op = op_position(p,q);
       if(op==-1){exit(0);}
       Log("op is %d  p is %d  q is  %d",op,p,q);
@@ -263,8 +266,10 @@ word_t  eval(int p, int q,bool *success)
 
       }
       Log("op is %d     p is %d     q is %d",op,p,q);
+      }
     }
-   
+    
+    else {printf("bad brackets");*success= false;sign=2;}
   return -1;
 }
 
@@ -329,14 +334,14 @@ word_t get_addr(word_t x)
   //printf("%d",n);
   return n;
 }
-
+/*
 static bool check_parentheses(int p, int q)
 
 {
 
-  if(match(p,q)&&(tokens[p].type!='('||tokens[q].type!=')'))
-  {return true;}
-else {return false;}
+  //if(match(p,q)&&(tokens[p].type!='('||tokens[q].type!=')'))
+  //{return true;}
+   //else {return false;}
     //if(tokens[p].type!='('||tokens[q].type!=')')
    // return false;
     //else{
@@ -344,7 +349,7 @@ else {return false;}
     //}
 
 }
-
+*/
 static bool match(int p, int q)
 {
   int bracket=0;
