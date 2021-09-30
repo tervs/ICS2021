@@ -50,9 +50,9 @@ static int cmd_p(char *args) {
   word_t type=0;
   type=mistake_type(&type);
   //printf("the type is %u\n",type);
-  if(!success){printf("Bad Expression!\n");}
+  //if(!success){printf("Bad Expression!\n");}
   
-  else {printf("%u\n",x);}
+  printf("%u\n",x);
   //Log("%d",sign);
   //printf("%d   %s",tokens[0].type,tokens[0].token_type);
   //printf("%s", EXPR);
