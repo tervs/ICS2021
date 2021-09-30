@@ -234,6 +234,7 @@ word_t  eval(int p, int q,bool *success)
 
     else if (check_parentheses(p, q) == true) 
     {
+      Log("if you see, the here bracket is true");
     return eval(p + 1, q - 1,success);
     Log("%d\n", check_parentheses(p,q));
     }
