@@ -348,7 +348,7 @@ else {return false;}
 static bool match(int p, int q)
 {
   int bracket=0;
-for(int i=p+1;i<q;i++)
+for(int i=p;i<=q;i++)
 {
     switch(tokens[i].type)
             {
