@@ -255,8 +255,13 @@ word_t  eval(int p, int q,bool *success)
       int op = op_position(p,q);
       if(op==-1){exit(0);}
       Log("op is %d  p is %d  q is  %d",op,p,q);
-      word_t val1 = eval(p, op - 1,success);
+
       word_t val2 = eval(op + 1, q,success);
+      if(tokens[op].type==TK_POI){return get_addr(val2);}
+      else
+      {
+          word_t val1 = eval(p, op - 1,success);
+      
 
       switch (tokens[op].type) 
       {
@@ -268,10 +273,12 @@ word_t  eval(int p, int q,bool *success)
         case TK_NEQ:return val1 !=val2;
         case TK_AND:return val1 &&val2;
         case TK_OR:return val1 ||val2;
-        case TK_POI: if(val2<2147483648){*success=false;sign=5;return 0;}
-        else {get_addr(val2);}
+        //case TK_POI: if(val2<2147483648){*success=false;sign=5;return 0;}
+        //else {get_addr(val2);}
 
       }
+      }
+     
       Log("op is %d     p is %d     q is %d",op,p,q);
       }
     }
