@@ -234,8 +234,8 @@ word_t  eval(int p, int q,bool *success)
       return temp;
        }
 
-
-      else if (tokens[p].type=='('&&tokens[q].type==')') 
+        
+      else if (match(p+1,q-1)&&tokens[p].type=='('&&tokens[q].type==')') 
       {
         Log("if you see, the here bracket is true");
         return eval(p + 1, q - 1,success);
