@@ -238,7 +238,7 @@ word_t  eval(int p, int q,bool *success)
     return eval(p + 1, q - 1,success);
     Log("%d\n", check_parentheses(p,q));
     }
-    
+
 
     else 
     {
@@ -363,6 +363,7 @@ for(int i=p;i<=q;i++)
               default:
                 break;
             }
+             Log("bracket is %d",bracket);
             if(bracket<0)
             {
               return false;
