@@ -257,7 +257,11 @@ word_t  eval(int p, int q,bool *success)
       Log("op is %d  p is %d  q is  %d",op,p,q);
 
       word_t val2 = eval(op + 1, q,success);
-      if(tokens[op].type==TK_POI){return get_addr(val2);}
+      if(tokens[op].type==TK_POI)
+      {
+        if(val2<2147483648){*success=false;sign=5;return 0;}
+        else {return get_addr(val2);}
+      }
       else
       {
           word_t val1 = eval(p, op - 1,success);
