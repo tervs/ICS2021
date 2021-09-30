@@ -158,7 +158,7 @@ static bool make_token(char *e)
                   sprintf(tokens[j-1].str,"%ld",temp);
                 }
               //else{Log("warning of space");break;}
-              //Log("now position is %d  type here is %d   str is %s ",j-1,tokens[j-1].type,tokens[j-1].str);
+              Log("now position is %d  type here is %d   str is %s ",j-1,tokens[j-1].type,tokens[j-1].str);
               break;
           }
 
@@ -229,11 +229,15 @@ word_t  eval(int p, int q,bool *success)
     {
         if (p == q)
       {
+        if(tokens[p].type==TK_NUM)
+        {
+            uint32_t temp=strtoul(tokens[p].str,NULL,10);
+            // sscanf(tokens[p].str,"%u",&temp);
+            //Log("%u",temp);
+            return temp;
+        }
+      else{sign=4;*success=false;return 0;}
       
-      uint32_t temp=strtoul(tokens[p].str,NULL,10);
-     // sscanf(tokens[p].str,"%u",&temp);
-     //Log("%u",temp);
-      return temp;
        }
 
         
