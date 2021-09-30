@@ -203,7 +203,7 @@ word_t expr(char *e, bool *success)
   }
 
 */
-
+is_pointer();
     word_t ans=eval(0,t,success);
     memset(tokens, 0, sizeof(Token)*32);
     Log("%u",ans);
