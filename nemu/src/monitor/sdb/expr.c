@@ -337,12 +337,11 @@ static bool check_parentheses(int p, int q)
     else{
       return match(p,q);
     }
+
 }
 
 static bool match(int p, int q)
 {
-  
-
   int bracket=0;
 for(int i=p+1;i<q;i++)
 {
@@ -365,7 +364,7 @@ for(int i=p+1;i<q;i++)
               break;
             }
 }
-            
+            Log("bracket is %d",bracket);
             if(bracket==0)
             {
               return true;
