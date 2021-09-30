@@ -23,6 +23,7 @@ word_t get_addr(word_t x);
 word_t vaddr_read(vaddr_t addr, int len);
 word_t mistake_type(word_t *type);
 void is_pointer();
+void is_negative();
 
 
 enum {
@@ -36,6 +37,7 @@ enum {
   TK_AND,
   TK_OR,
   TK_POI,
+  TK_NEG,
 
 };
 
@@ -61,6 +63,7 @@ static struct rule
   {"[0-9]+",TK_NUM,0},
   {"\\$[a-z][0-9a-z]{1,2}|\\$\\$0", TK_REG,0},
   {"\\*",'*',2},
+  {"\\-",'-',2},
 };
 
 
@@ -203,7 +206,8 @@ word_t expr(char *e, bool *success)
   }
 
 */
-is_pointer();
+    is_pointer();
+    void is_negative();
     word_t ans=eval(0,t,success);
     memset(tokens, 0, sizeof(Token)*32);
     Log("%u",ans);
@@ -261,6 +265,10 @@ word_t  eval(int p, int q,bool *success)
       {
         if(val2<2147483648){*success=false;sign=5;return 0;}
         else {return get_addr(val2);}
+      }
+      else if(tokens[op].type==TK_NEG)
+      {
+        return -val2;
       }
       else
       {
@@ -429,6 +437,20 @@ void is_pointer()
   }
 }
 
+
+void is_negative()
+{
+
+  for (int i = 0; i <=t; i++) 
+  {
+    bool s=(tokens[i - 1].priority !=0)&&(tokens[i - 1].type!=')');
+    if (tokens[i].type == '-' && (i == 0 || s) ) 
+    {
+      tokens[i].type = TK_NEG;
+      Log("position %d is NEG",i);
+    }
+  }
+}
 
 
  
