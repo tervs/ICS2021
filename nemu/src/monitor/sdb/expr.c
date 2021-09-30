@@ -1,6 +1,7 @@
 #include <isa.h>
 #include <regex.h>
 #include <stdbool.h>
+//typedef word_t long long;
 //uint32_t *sign=0;
 word_t sign=0;
 //bool p=true;
