@@ -315,7 +315,7 @@ word_t  eval(int p, int q,bool *success)
 
 int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组开始位置，q是结束.
 {
-  int x=0;//x用来记录op，也就是主操作符位置，初始化为-1,
+  int x=p;//x用来记录op，也就是主操作符位置，初始化为-1,
   int bracket=0;//用于记录括号，遇到左括号+1,右括号-1.为0意味着没有括号
 
   
