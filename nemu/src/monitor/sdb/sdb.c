@@ -53,11 +53,11 @@ static int cmd_p(char *args)
     printf("Bad Expression!    ");
     switch(type)
   {
-    case 1:printf("Invalid register!\n");
-    case 2:printf("Mismatched parentheses!\n");
-    case 3:printf("Unrecognized character!\n");
-    case 4:printf("Invalid expression!\n");
-    case 5:printf("Memory out of range!\n");
+    case 1:printf("Invalid register!\n");break;
+    case 2:printf("Mismatched parentheses!\n");break;
+    case 3:printf("Unrecognized character!\n");break;
+    case 4:printf("Invalid expression!\n");break;
+    case 5:printf("Memory out of range!\n");break;
   }
   
   }
