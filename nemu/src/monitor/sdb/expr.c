@@ -392,6 +392,7 @@ static bool check_parentheses(int p, int q)
 
 static bool match(int p, int q)
 {
+  if(q<p){Log("bad match");exit(0);}
   int bracket=0;
 for(int i=p;i<=q;i++)
 {
