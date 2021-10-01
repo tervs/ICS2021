@@ -401,7 +401,7 @@ static bool check_parentheses(int p, int q)
 
 static bool match(int p, int q)
 {
-  if(q<p){sign=6;return false;}
+  if(q<p){return false;}
   int bracket=0;
 for(int i=p;i<=q;i++)
 {
