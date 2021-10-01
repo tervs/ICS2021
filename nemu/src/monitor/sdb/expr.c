@@ -209,7 +209,7 @@ word_t expr(char *e, bool *success)
 */
     is_pointer();
     is_negative();
-    word_t ans=op_position(0,t);//eval(0,t,success);
+    word_t ans=eval(0,t,success);
     memset(tokens, 0, sizeof(Token)*32);
     Log("%d",ans);
     return ans;
