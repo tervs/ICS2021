@@ -11,12 +11,12 @@ int t;
 //5 内存不在范围内
 //expr总体用一个sucess返回秋值是否成功，所以各个部分自己的bool变量应该记录做别名
 
-word_t  eval(int p, int q,bool *success) ;
-static bool match(int p, int q);
-int op_position(int p,int q);
-word_t get_addr(word_t x);
-word_t vaddr_read(vaddr_t addr, int len);
-word_t mistake_type(word_t *type);
+word_t  eval(int p, int q,bool *success) ;//求值的递归函数
+static bool match(int p, int q);//检测括号匹配
+int op_position(int p,int q);//主操作符位置
+word_t get_addr(word_t x);//读取内存
+word_t vaddr_read(vaddr_t addr, int len);//调用外部程序读取内存
+word_t mistake_type(word_t *type);//返回错误类型
 void is_pointer();
 void is_negative();
 
@@ -62,7 +62,7 @@ static struct rule
 #define NR_REGEX ARRLEN(rules)
 static regex_t re[NR_REGEX] = {};
 
-
+//初始化，对正则表达式进行编译;
 void init_regex() 
 {
   int i;
@@ -90,6 +90,7 @@ typedef struct token
 static Token tokens[1024] __attribute__((used)) = {};
 static int nr_token __attribute__((used))  = 0;
 
+//识别字符串中的字符并按位置放在tokens数组中
 static bool make_token(char *e) 
 {
     int position = 0;
@@ -153,7 +154,7 @@ static bool make_token(char *e)
                   
                   sprintf(tokens[j-1].str,"%ld",temp);
                 }
-              Log("now position is %d  type here is %d   str is %s ",j-1,tokens[j-1].type,tokens[j-1].str);
+             Log("now position is %d  type here is %d   str is %s ",j-1,tokens[j-1].type,tokens[j-1].str);
               break;
           }
 
@@ -166,7 +167,7 @@ static bool make_token(char *e)
         return false;
       }
     }
-    t=j-1;
+    t=j-1;//t是数组长度
     Log("%d  ",t);
     return true;
 }
@@ -177,30 +178,27 @@ word_t expr(char *e, bool *success)
   if (!make_token(e)) 
   {
     *success = false;
-     Log("make_token is %d",*success);
     return 0;
   }
     is_pointer();
     is_negative();
     word_t ans=eval(0,t,success);
-    memset(tokens, 0, sizeof(Token)*32);
-    Log("%d",ans);
+    memset(tokens, 0, sizeof(Token)*32);//将使用过的数组初始化
     return ans;
 }
-
+//递归求解
 word_t  eval(int p, int q,bool *success)
 {
-    if (p > q) 
+    if (p > q) //p>q一般认为是错误表达式
     {
       *success=false;
       sign=4;
-      Log("type is 4 and succcess is %d",*success);
       return 0;
     }
 
-    else if(match(p,q)==true)
+    else if(match(p,q)==true)//假如所有括号都匹配，否则返回false
     {//Log("good match");
-        if (p == q)
+        if (p == q)//若出现相等，只有p=q并且位置上是数字才是可行的，否则就是无效表达式
       {
         if(tokens[p].type==TK_NUM)
         {
@@ -210,28 +208,26 @@ word_t  eval(int p, int q,bool *success)
           else{sign=4;*success=false;return 0;}
        }
 
-        else if (match(p+1,q-1)&&tokens[p].type=='('&&tokens[q].type==')') 
+        else if (match(p+1,q-1)&&tokens[p].type=='('&&tokens[q].type==')') //所有括号都匹配，并且pq被一对匹配的括号包围着，则去括号
       {
-        Log("if you see, the here bracket is true");
         return eval(p + 1, q - 1,success);
       }
        
       else{
           int op = op_position(p,q);
-          if(op==-1){exit(0);}
           Log("op is %d  p is %d  q is  %d",op,p,q);
-          word_t val2 = eval(op + 1, q,success);
+          word_t val2 = eval(op + 1, q,success);//因为可能出现单目运算符，故先调用val2.
       
-        if(tokens[op].type==TK_POI)
+        if(tokens[op].type==TK_POI)//是取指针运算
       {
         if(val2<2147483648){*success=false;sign=5;return 0;}
         else {return get_addr(val2);}
       }
-        else if(tokens[op].type==TK_NEG)
+        else if(tokens[op].type==TK_NEG)//是取负运算
       {
         return -val2;
       }
-      else
+      else//已经确定是双目操作符，使用switch返回
       {
         
           word_t val1 = eval(p, op - 1,success);
@@ -250,7 +246,7 @@ word_t  eval(int p, int q,bool *success)
      // Log("op is %d     p is %d     q is %d",op,p,q);
       }
     }
-    else {printf("bad brackets");*success= false;sign=2;}
+   // else {printf("bad brackets");*success= false;sign=2;}括号不正确应该已经被排除掉了
   return -1;
 }
 
@@ -263,8 +259,8 @@ int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组
   for(int i=p;i<=q;i++)
   {
 
-    Log("x: %d  x.type: %d  x.priority: %d  i: %d  i.type: %d  x.priority: %d  bracket: %d,"
-    ,x,tokens[x].type,tokens[x].priority,i,tokens[i].type,tokens[i].priority,bracket);
+    //Log("x: %d  x.type: %d  x.priority: %d  i: %d  i.type: %d  x.priority: %d  bracket: %d,"
+    //,x,tokens[x].type,tokens[x].priority,i,tokens[i].type,tokens[i].priority,bracket);
     if(tokens[i].type=='(')
     {bracket++;}//假如遇到（，变量+1.
 
@@ -273,7 +269,7 @@ int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组
       if(tokens[i].priority>=tokens[x].priority)
       {
         if((tokens[x].priority==2)&&(tokens[i].priority==2)){Log("skip!");continue;}
-        else{x=i;}
+        else{x=i;}//主要是考虑到连续两个单目操作，主运算符应该是外面的那个
       }
     }
    
