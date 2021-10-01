@@ -39,23 +39,28 @@ static int cmd_c(char *args) {
 }
 
 
-static int cmd_p(char *args) {
+static int cmd_p(char *args) 
+{
   char *EXPR = strtok(NULL, "\0");
   uint32_t x;
-  
   bool success=true;;
-
-  //uint32_t sign=0;
   x=expr(EXPR, &success);
   word_t type=0;
   type=mistake_type(&type);
-  //printf("the type is %u\n",type);
-  if(!success){printf("Bad Expression!\n");}
+  if(!success)
+  {
+    printf("Bad Expression!    ");
+    switch(type)
+  {
+    case 1:printf("Invalid register!\n");
+    case 2:printf("Mismatched parentheses!\n");
+    case 3:printf("Unrecognized character!\n");
+    case 4:printf("Invalid expression!\n");
+    case 5:printf("Memory out of range!\n");
+  }
   
+  }
   else {printf("%u\n",x);}
-  //Log("%d",sign);
-  //printf("%d   %s",tokens[0].type,tokens[0].token_type);
-  //printf("%s", EXPR);
   return 0;
 }
 
