@@ -50,7 +50,6 @@ static int cmd_p(char *args)
   printf("type is %d\n",type);
   if(!success)
   {
-    printf("Bad Expression!    ");
     switch(type)
   {
     case 1:printf("Invalid register!\n");break;
