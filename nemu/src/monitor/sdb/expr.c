@@ -260,6 +260,7 @@ word_t  eval(int p, int q,bool *success)
 
       else 
       {
+        Log("?");
       int op = op_position(p,q);
       if(op==-1){exit(0);}
       Log("op is %d  p is %d  q is  %d",op,p,q);
