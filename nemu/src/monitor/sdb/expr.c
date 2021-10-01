@@ -250,9 +250,9 @@ word_t  eval(int p, int q,bool *success)
       
        }
 
+Log("?");
 
-
-       else if(q-p>=2)
+        if(q-p>=2)
        {
         if (match(p+1,q-1)&&tokens[p].type=='('&&tokens[q].type==')') 
       {
