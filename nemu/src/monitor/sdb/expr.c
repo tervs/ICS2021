@@ -1,12 +1,7 @@
 #include <isa.h>
 #include <regex.h>
 #include <stdbool.h>
-//typedef word_t long long;
-//uint32_t *sign=0;
 word_t sign=0;
-//bool p=true;
-//bool *success=&p;
-//expr总体用一个sucess返回秋值是否成功，所以各个部分自己的bool变量应该记录做别名
 int t;
 
 //1 寄存器不存在 
@@ -14,10 +9,9 @@ int t;
 //3 make_token有未识别字符
 //4 表达式不正确。如1+1+;
 //5 内存不在范围内
-
+//expr总体用一个sucess返回秋值是否成功，所以各个部分自己的bool变量应该记录做别名
 
 word_t  eval(int p, int q,bool *success) ;
-//static bool check_parentheses(int p, int q);
 static bool match(int p, int q);
 int op_position(int p,int q);
 word_t get_addr(word_t x);
@@ -26,13 +20,11 @@ word_t mistake_type(word_t *type);
 void is_pointer();
 void is_negative();
 
-
 enum {
   TK_NOTYPE = 256, //ac
   TK_EQ,
   TK_NUM,
   TK_HEX,//16进制数
-	//TK_REG0,//寄存器取值
   TK_REG,
   TK_NEQ,//不等号
   TK_AND,
@@ -41,7 +33,6 @@ enum {
   TK_NEG,
 
 };
-
 static struct rule 
 {
   const char *regex;
@@ -140,7 +131,7 @@ static bool make_token(char *e)
          
               j++;
             }
-             Log("position: %d  type: %d  str: %s  priority: %d",j-1,tokens[j-1].type,tokens[j-1].str,tokens[j-1].priority);
+             //Log("position: %d  type: %d  str: %s  priority: %d",j-1,tokens[j-1].type,tokens[j-1].str,tokens[j-1].priority);
                   if(tokens[j-1].type==259)//将16进制数字转化为十进制字符串
                  {
                    uint64_t temp=strtol(tokens[j-1].str,NULL,16);
@@ -158,11 +149,10 @@ static bool make_token(char *e)
                     sign=1;
                     // Log("%d\n",is_reg_exist);
                     return false;
-                    } //sign
-                  //printf("%ld\n",temp);
+                    } 
+                  
                   sprintf(tokens[j-1].str,"%ld",temp);
                 }
-              //else{Log("warning of space");break;}
               Log("now position is %d  type here is %d   str is %s ",j-1,tokens[j-1].type,tokens[j-1].str);
               break;
           }
@@ -173,9 +163,8 @@ static bool make_token(char *e)
       {
         printf("no match at position %d\n%s\n%*.s^\n", position, e, position, "");
         sign=3;
-        return false;//sign
+        return false;
       }
-     // Log("%d",j);
     }
     t=j-1;
     Log("%d  ",t);
@@ -185,28 +174,12 @@ static bool make_token(char *e)
 word_t expr(char *e, bool *success) 
 
 {
-  //bool *success;
-  //success = (bool *)malloc(sizeof(bool)) ;
-  //*success=true;
   if (!make_token(e)) 
   {
     *success = false;
      Log("make_token is %d",*success);
-     // Log("%d",*sign);
     return 0;
   }
- /*
-  for (int i = 0; i <=t; i++) 
-  {
-    bool s=(tokens[i - 1].priority !=0)&&(tokens[i - 1].type!=')');
-    if (tokens[i].type == '*' && (i == 0 || s) ) 
-    {
-      tokens[i].type = TK_POI;
-      Log("position %d is POI",i);
-    }
-  }
-
-*/
     is_pointer();
     is_negative();
     word_t ans=eval(0,t,success);
@@ -217,76 +190,51 @@ word_t expr(char *e, bool *success)
 
 word_t  eval(int p, int q,bool *success)
 {
-  //   *success=true;
-    
-    
     if (p > q) 
     {
-        //Log("make_token is %d",*succ);
-   *success=false;
-  
-   sign=4;
-   Log("type is 4 and succcess is %d",*success);
-   return 0;//sign
-    
+      *success=false;
+      sign=4;
+      Log("type is 4 and succcess is %d",*success);
+      return 0;
     }
-    
 
     else if(match(p,q)==true)
-    {Log("good match");
-        
-        
+    {//Log("good match");
         if (p == q)
       {
-        Log("?");
         if(tokens[p].type==TK_NUM)
         {
             uint32_t temp=strtoul(tokens[p].str,NULL,10);
-            // sscanf(tokens[p].str,"%u",&temp);
-            
             return temp;
         }
-        else{sign=4;*success=false;return 0;}
-      
+          else{sign=4;*success=false;return 0;}
        }
 
-
-      
         else if (match(p+1,q-1)&&tokens[p].type=='('&&tokens[q].type==')') 
       {
         Log("if you see, the here bracket is true");
         return eval(p + 1, q - 1,success);
-       // Log("%d\n", check_parentheses(p,q));
       }
        
-      
-
-
       else{
+          int op = op_position(p,q);
+          if(op==-1){exit(0);}
+          Log("op is %d  p is %d  q is  %d",op,p,q);
+          word_t val2 = eval(op + 1, q,success);
       
-       // Log("?");
-      int op = op_position(p,q);
-      if(op==-1){exit(0);}
-      Log("op is %d  p is %d  q is  %d",op,p,q);
-//exit(0);
-      word_t val2 = eval(op + 1, q,success);
-      
-      if(tokens[op].type==TK_POI)
+        if(tokens[op].type==TK_POI)
       {
         if(val2<2147483648){*success=false;sign=5;return 0;}
         else {return get_addr(val2);}
       }
-      else if(tokens[op].type==TK_NEG)
+        else if(tokens[op].type==TK_NEG)
       {
-        
         return -val2;
       }
       else
       {
         
           word_t val1 = eval(p, op - 1,success);
-      
-
       switch (tokens[op].type) 
       {
         case '+': return val1 + val2;
@@ -297,18 +245,12 @@ word_t  eval(int p, int q,bool *success)
         case TK_NEQ:return val1 !=val2;
         case TK_AND:return val1 &&val2;
         case TK_OR:return val1 ||val2;
-        //case TK_POI: if(val2<2147483648){*success=false;sign=5;return 0;}
-        //else {get_addr(val2);}
-
       }
       }
-     
-      Log("op is %d     p is %d     q is %d",op,p,q);
+     // Log("op is %d     p is %d     q is %d",op,p,q);
       }
     }
-    
     else {printf("bad brackets");*success= false;sign=2;}
-  
   return -1;
 }
 
@@ -317,20 +259,6 @@ int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组
 {
   int x=p;//x用来记录op，也就是主操作符位置，初始化为-1,
   int bracket=0;//用于记录括号，遇到左括号+1,右括号-1.为0意味着没有括号
-
-  
-  //for(int i=p;i<=q;i++)
-  //{
-  //  if(x==-1&&((tokens[i].type=='+')||(tokens[i].type=='-')||(tokens[i].type=='*')||(tokens[i].type=='/')))
-  //  {
-  //    x=i;
-  //  }
-  //}
-  
-  //找到第一个操作符的位置，无论这个符号是什么。从p到q扫描，直到遇到第一个操作符，然后结束循环。
-  //此时x记录着第一个操作符的位置。
- // Log("the first op is %d",x);
-  //接下来正式寻找主操作符。
 
   for(int i=p;i<=q;i++)
   {
@@ -342,26 +270,15 @@ int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组
 
     else if(bracket==0)//当bracket为0,也就是不在一个括号内的时候，才执行扫描判断。
     {
-       //if(tokens[i].type=='+'||tokens[i].type=='-')
-      //{x=i;}//当最新遇到的 操作符是+或者——，更新x为最新的位置。
-     
-      //  else if((tokens[i].type=='*'||tokens[i].type=='/')&&(tokens[x].type!='+'&&tokens[x].type!='-'))
-      //{x=i;}//假如最新遇到的操作符是*或/，并且当前已经记录的x对应的操作符不为+或-，更新。
-      
       if(tokens[i].priority>=tokens[x].priority)
       {
         if((tokens[x].priority==2)&&(tokens[i].priority==2)){Log("skip!");continue;}
         else{x=i;}
       }
-     
-      
     }
    
     else if(tokens[i].type==')')
     {bracket--;}//当遇到），bracket-1。
-
-    
-  
   }
   
   return x;
@@ -376,28 +293,9 @@ word_t get_addr(word_t x)
     
     n=n*256+vaddr_read(x, 1);
     x++;
-    //printf("%08x\n",n);
   }
-  
-  //printf("%d",n);
   return n;
 }
-/*
-static bool check_parentheses(int p, int q)
-
-{
-
-  //if(match(p,q)&&(tokens[p].type!='('||tokens[q].type!=')'))
-  //{return true;}
-   //else {return false;}
-    //if(tokens[p].type!='('||tokens[q].type!=')')
-   // return false;
-    //else{
-    //  return match(p,q);
-    //}
-
-}
-*/
 
 static bool match(int p, int q)
 {
@@ -418,15 +316,12 @@ for(int i=p;i<=q;i++)
               default:
                 break;
             }
-             //Log("bracket is %d",bracket);
-
             if(bracket<0)
             {
               return false;
               break;
             }
 }
-            //Log("bracket is %d",bracket);
             if(bracket==0)
             {
               return true;
