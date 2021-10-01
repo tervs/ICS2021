@@ -38,7 +38,6 @@ static int cmd_c(char *args) {
   return 0;
 }
 
-
 static int cmd_p(char *args) 
 {
   char *EXPR = strtok(NULL, "\0");
@@ -64,8 +63,6 @@ static int cmd_p(char *args)
   return 0;
 }
 
-
-
 static int cmd_t(char *args) {
   int x;
   x=4&&0;
@@ -73,7 +70,6 @@ static int cmd_t(char *args) {
   printf("%d",x);
   return 0;
 }
-
 
 static int cmd_q(char *args) {
   return -1;
@@ -96,21 +92,14 @@ static int cmd_si(char *args) {
 return 0;
 }
 
-
-
-
 static int cmd_x(char *args) 
 {
  
  
   char *N = strtok(NULL, " ");
-uint32_t n=atoi(N);
-assert(n!=0);
-/*if(n==0)
-  {
-    printf("wrong");
-    return 0;
-  }*/
+  uint32_t n=atoi(N);
+  assert(n!=0);
+
      char *arg = strtok(NULL, " ");
      uint64_t addr=strtol(arg,NULL,16);
    printf("%ld\n",addr) ;
@@ -128,17 +117,10 @@ assert(n!=0);
       }
       printf("\n");
 
-     }
-     
- 
-    
+     } 
 return 0;
 
 }
-
-
-
-
 
 static int cmd_info(char *args) 
 {
@@ -159,7 +141,16 @@ return 0;
 
 }
 
-
+static int cmd_w(char *args) 
+{
+  char *EXPR = strtok(NULL, "\0");
+  uint32_t x,x0;
+  bool success=true;;
+  x0=expr(EXPR, &success);
+  x=expr(EXPR, &success);
+  if(x!=x0){return -1;}
+  return 0;
+}
 
 
 
@@ -177,7 +168,8 @@ static struct {
   {"info","print ",cmd_info},
   {"x","print virtual memory",cmd_x},
   {"p","expression",cmd_p},
-  {"t","test",cmd_t}
+  {"t","test",cmd_t},
+  {"w","watchpoint",cmd_w},
 
 
   /* TODO: Add more commands */
