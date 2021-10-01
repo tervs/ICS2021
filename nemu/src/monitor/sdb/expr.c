@@ -231,20 +231,26 @@ word_t  eval(int p, int q,bool *success)
     
     }
     
+
     else if(match(p,q)==true)
     {Log("good match");
+        
+        
         if (p == q)
       {
+        Log("?");
         if(tokens[p].type==TK_NUM)
         {
             uint32_t temp=strtoul(tokens[p].str,NULL,10);
             // sscanf(tokens[p].str,"%u",&temp);
-            Log("?");
+            
             return temp;
         }
-      else{sign=4;*success=false;return 0;}
+        else{sign=4;*success=false;return 0;}
       
        }
+
+
 
        else if(q-p>=2)
        {
@@ -304,7 +310,7 @@ word_t  eval(int p, int q,bool *success)
     }
     
     else {printf("bad brackets");*success= false;sign=2;}
-    Log("?");
+  
   return -1;
 }
 
