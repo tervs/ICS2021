@@ -118,6 +118,8 @@ bool is_empty(WP *linklist)
 
 void watchpoint(char *e, bool *success)
 {
+  printf("good\n");
+  /*
   int new=new_wp();
   //bool success=true;;
   int value=expr(e, success);
@@ -125,5 +127,5 @@ void watchpoint(char *e, bool *success)
   wp_pool[new].x=value;
   printf("%d   %s   %d\n",new,wp_pool[new].EXPR,wp_pool[new].x);
   return;
-  
+  */
 }
