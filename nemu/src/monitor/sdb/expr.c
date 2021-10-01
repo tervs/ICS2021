@@ -340,7 +340,7 @@ int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组
     else if(tokens[i].type==')')
     {bracket--;}//当遇到），bracket-1。
 
-    Log("now x is %d and type of x is %d  while i is %d and type is %d  bracket is %d",x,tokens[x].type,i,tokens[i].type,bracket);
+    Log("x: %d  x.type: %d  x.priority: %d  i: %d  i.type: %d  x.priority: %d  bracket: %d,",x,tokens[x].type,tokens[x].priority,i,tokens[i].type,tokens[i].priority,bracket);
   
   }
   
