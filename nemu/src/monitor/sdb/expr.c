@@ -260,8 +260,9 @@ word_t  eval(int p, int q,bool *success)
       int op = op_position(p,q);
       if(op==-1){exit(0);}
       Log("op is %d  p is %d  q is  %d",op,p,q);
-exit(0);
+//exit(0);
       word_t val2 = eval(op + 1, q,success);
+      exit(0);
       if(tokens[op].type==TK_POI)
       {
         if(val2<2147483648){*success=false;sign=5;return 0;}
