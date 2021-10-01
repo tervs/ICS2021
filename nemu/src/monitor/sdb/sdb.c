@@ -13,6 +13,7 @@ void init_wp_pool();
 word_t vaddr_read(vaddr_t addr, int len);
 word_t expr(char *e, bool *success); 
 word_t mistake_type(word_t *type);
+void watchpoint(char *e, bool *success);
 
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 static char* rl_gets() 
@@ -144,11 +145,9 @@ return 0;
 static int cmd_w(char *args) 
 {
   char *EXPR = strtok(NULL, "\0");
-  uint32_t x,x0;
-  bool success=true;;
-  x0=expr(EXPR, &success);
-  x=expr(EXPR, &success);
-  if(x!=x0){return -1;}
+
+  bool success=true;
+  watchpoint(EXPR, &success);
   return 0;
 }
 
