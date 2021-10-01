@@ -337,7 +337,7 @@ int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组
       
       if(tokens[i].priority>=tokens[x].priority)
       {
-        if((tokens[x].priority==2)&&(tokens[i].priority==2)){continue;Log("skip!");}
+        if((tokens[x].priority==2)&&(tokens[i].priority==2)){Log("skip!");continue;}
         else{x=i;}
       }
      
