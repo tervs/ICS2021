@@ -252,7 +252,7 @@ word_t  eval(int p, int q,bool *success)
 
 
         else if(q-p>=2)
-       {
+       {Log("?");
         if (match(p+1,q-1)&&tokens[p].type=='('&&tokens[q].type==')') 
       {
         Log("if you see, the here bracket is true");
