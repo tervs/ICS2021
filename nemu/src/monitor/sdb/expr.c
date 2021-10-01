@@ -322,6 +322,8 @@ int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组
 
   for(int i=p;i<=q;i++)
   {
+
+    Log("x: %d  x.type: %d  x.priority: %d  i: %d  i.type: %d  x.priority: %d  bracket: %d,",x,tokens[x].type,tokens[x].priority,i,tokens[i].type,tokens[i].priority,bracket);
     if(tokens[i].type=='(')
     {bracket++;}//假如遇到（，变量+1.
 
@@ -335,7 +337,7 @@ int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组
       
       if(tokens[i].priority>=tokens[x].priority)
       {
-        if((tokens[x].priority==2)&&(tokens[i].priority==2)){continue;}
+        if((tokens[x].priority==2)&&(tokens[i].priority==2)){continue;Log("skip!");}
         else{x=i;}
       }
      
@@ -345,7 +347,7 @@ int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组
     else if(tokens[i].type==')')
     {bracket--;}//当遇到），bracket-1。
 
-    Log("x: %d  x.type: %d  x.priority: %d  i: %d  i.type: %d  x.priority: %d  bracket: %d,",x,tokens[x].type,tokens[x].priority,i,tokens[i].type,tokens[i].priority,bracket);
+    
   
   }
   
