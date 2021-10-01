@@ -246,13 +246,16 @@ word_t  eval(int p, int q,bool *success)
       
        }
 
-       
-      else if ((q-p>=2)&&match(p+1,q-1)&&tokens[p].type=='('&&tokens[q].type==')') 
+       else if(q-p>=2)
+       {
+        if (match(p+1,q-1)&&tokens[p].type=='('&&tokens[q].type==')') 
       {
         Log("if you see, the here bracket is true");
         return eval(p + 1, q - 1,success);
        // Log("%d\n", check_parentheses(p,q));
       }
+       }
+      
 
 
       else 
