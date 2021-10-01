@@ -434,6 +434,7 @@ void is_pointer()
     if (tokens[i].type == '*' && (i == 0 || s) ) 
     {
       tokens[i].type = TK_POI;
+      tokens[i].priority = 2;
       Log("position %d is POI",i);
     }
   }
@@ -449,6 +450,7 @@ void is_negative()
     if (tokens[i].type == '-' && (i == 0 || s) ) 
     {
       tokens[i].type = TK_NEG;
+      tokens[i].priority = 2;
       Log("position %d is NEG",i);
     }
   }
