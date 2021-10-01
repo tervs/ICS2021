@@ -328,10 +328,7 @@ for(int i=p;i<=q;i++)
             }
             else return false;
             TODO();
-            // (4+3))*((2-1) is wrong.
             //异常处理，包括对于括号匹配，对于非法表达式（--），除0,
-            //负数进行运算
-            //最大整数长度拓展
             //颜色高亮
 }
 
@@ -341,7 +338,6 @@ word_t mistake_type(word_t *type)
   sign=0;
   return x;
 }
-//定义一个变量，用来储存出错的类型并在主函数之中打印出来
 
 void is_pointer()
 {
