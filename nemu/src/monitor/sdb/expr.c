@@ -260,7 +260,7 @@ word_t  eval(int p, int q,bool *success)
       int op = op_position(p,q);
       if(op==-1){exit(0);}
       Log("op is %d  p is %d  q is  %d",op,p,q);
-
+exit(0);
       word_t val2 = eval(op + 1, q,success);
       if(tokens[op].type==TK_POI)
       {
@@ -269,7 +269,7 @@ word_t  eval(int p, int q,bool *success)
       }
       else if(tokens[op].type==TK_NEG)
       {
-        exit(0);
+        
         return -val2;
       }
       else
