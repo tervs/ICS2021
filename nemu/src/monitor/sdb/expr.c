@@ -251,15 +251,14 @@ word_t  eval(int p, int q,bool *success)
        }
 
 
-        else if(q-p>=2)
-       {Log("?");
-        if (match(p+1,q-1)&&tokens[p].type=='('&&tokens[q].type==')') 
+      
+        else if (match(p+1,q-1)&&tokens[p].type=='('&&tokens[q].type==')') 
       {
         Log("if you see, the here bracket is true");
         return eval(p + 1, q - 1,success);
        // Log("%d\n", check_parentheses(p,q));
       }
-       }
+       
       
 
 
@@ -402,7 +401,7 @@ static bool check_parentheses(int p, int q)
 
 static bool match(int p, int q)
 {
-  if(q<p){Log("bad match");exit(0);}
+  if(q<p){sign=6;return false;}
   int bracket=0;
 for(int i=p;i<=q;i++)
 {
