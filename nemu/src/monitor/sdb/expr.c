@@ -250,9 +250,8 @@ word_t  eval(int p, int q,bool *success)
       
        }
 
-Log("?");
 
-        if(q-p>=2)
+        else if(q-p>=2)
        {
         if (match(p+1,q-1)&&tokens[p].type=='('&&tokens[q].type==')') 
       {
@@ -263,8 +262,8 @@ Log("?");
        }
       
 
-Log("?");
-      
+
+      else{
       
         Log("?");
       int op = op_position(p,q);
@@ -306,7 +305,7 @@ Log("?");
       }
      
       Log("op is %d     p is %d     q is %d",op,p,q);
-      
+      }
     }
     
     else {printf("bad brackets");*success= false;sign=2;}
