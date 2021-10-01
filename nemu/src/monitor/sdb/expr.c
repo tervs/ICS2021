@@ -232,7 +232,7 @@ word_t  eval(int p, int q,bool *success)
     }
     
     else if(match(p,q)==true)
-    {
+    {Log("good match");
         if (p == q)
       {
         if(tokens[p].type==TK_NUM)
@@ -408,14 +408,15 @@ for(int i=p;i<=q;i++)
               default:
                 break;
             }
-             Log("bracket is %d",bracket);
+             //Log("bracket is %d",bracket);
+
             if(bracket<0)
             {
               return false;
               break;
             }
 }
-            Log("bracket is %d",bracket);
+            //Log("bracket is %d",bracket);
             if(bracket==0)
             {
               return true;
