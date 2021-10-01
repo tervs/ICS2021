@@ -120,11 +120,13 @@ void watchpoint(char *e, bool *success)
 {
   
   int new=new_wp();
+  printf("good  %d",new);
   //bool success=true;;
+  /*
   int value=expr(e, success);
   wp_pool[new].EXPR=e;
   wp_pool[new].x=value;
   printf("%d   %s   %d\n",new,wp_pool[new].EXPR,wp_pool[new].x);
   return;
-  
+  */
 }
