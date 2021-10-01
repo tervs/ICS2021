@@ -18,7 +18,7 @@ int t;
 
 word_t  eval(int p, int q,bool *success) ;
 //static bool check_parentheses(int p, int q);
-//static bool match(int p, int q);
+static bool match(int p, int q);
 int op_position(int p,int q);
 word_t get_addr(word_t x);
 word_t vaddr_read(vaddr_t addr, int len);
@@ -214,7 +214,7 @@ word_t expr(char *e, bool *success)
     Log("%d",ans);
     return ans;
 }
-/*
+
 word_t  eval(int p, int q,bool *success)
 {
   //   *success=true;
@@ -299,7 +299,7 @@ word_t  eval(int p, int q,bool *success)
     else {printf("bad brackets");*success= false;sign=2;}
   return -1;
 }
-*/
+
 
 int op_position(int p,int q)  //用于寻找主操作符位置，p是token数组开始位置，q是结束.
 {
@@ -386,7 +386,7 @@ static bool check_parentheses(int p, int q)
 
 }
 */
-/*
+
 static bool match(int p, int q)
 {
   int bracket=0;
@@ -425,7 +425,7 @@ for(int i=p;i<=q;i++)
             //最大整数长度拓展
             //颜色高亮
 }
-*/
+
 word_t mistake_type(word_t *type)
 {
   word_t x=sign;
