@@ -269,10 +269,12 @@ word_t  eval(int p, int q,bool *success)
       }
       else if(tokens[op].type==TK_NEG)
       {
+        
         return -val2;
       }
       else
       {
+        exit(0);
           word_t val1 = eval(p, op - 1,success);
       
 
