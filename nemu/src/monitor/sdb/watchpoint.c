@@ -225,8 +225,9 @@ void newdelete(int n)
   
   else if(is_empty(head)){printf("no watchpoint to free!\n");return;}
   free_wp(n);
-  printf("head: ");travers(head);
-  printf("free: ");travers(free_);
+  printf("head: \n");travers(head);
+
+  printf("free: \n");travers(free_);
 
 }
 
