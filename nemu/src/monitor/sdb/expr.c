@@ -332,7 +332,14 @@ word_t mistake_type(word_t *type)
 {
   word_t x=sign;
   sign=0;
-
+switch(x)
+  {
+    case 1:printf("Invalid register!\n");break;
+    case 2:printf("Mismatched parentheses!\n");break;
+    case 3:printf("Unrecognized character!\n");break;
+    case 4:printf("Invalid expression!\n");break;
+    case 5:printf("Memory out of range!\n");break;
+  }
   return x;
 }
 
