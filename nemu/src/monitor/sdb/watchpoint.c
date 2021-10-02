@@ -174,12 +174,12 @@ void travers(WP *linklist)
 
 void watchpoint(char *e, bool *success)
 {
-  if(is_empty(free_)){printf("no free watchpoint!");return ;}
+  if(is_empty(free_)){printf("no free watchpoint!\n");return ;}
   else
   {
     int n=new_wp();
-    travers(head);
-    travers(free_);
+    //travers(head);
+    //travers(free_);
     wp_pool[n].EXPR=e;
     uint32_t x;
     x=expr(e, success);
