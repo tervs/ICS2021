@@ -239,6 +239,7 @@ void newdelete(int n)
 void wp_info()
 {
   travers(head);
+  printf("%s",wp_pool[7].EXPR);
 }
 
 
