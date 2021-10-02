@@ -256,9 +256,11 @@ void strcopy(char *EXPR,char *e)
   for(int i=0;i<n;i++)
   {
     printf("%d\n",i);
-    if(strcmp(&e[i]," ")!=0)
+    if(e[i]!=' ')
     {
+
         EXPR[count]=e[i];
+        printf("%d",count);
         count++;
     }
   }
