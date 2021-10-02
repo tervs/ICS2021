@@ -19,7 +19,7 @@ void insert(WP *linklist,int n);
 int get_last(WP *linklist);
 bool is_empty(WP *linklist);
 void watchpoint(char *e, bool *success);
-
+void travers(WP *linklist);
 
 static WP wp_pool[NR_WP] = {};
 static WP *head = NULL, *free_ = NULL;
@@ -121,8 +121,8 @@ void watchpoint(char *e, bool *success)
 {
   
   //int new=new_wp();
-  int  s=get_last(free_);
-  printf("good  %d",s);
+ delete(free_,10);
+void travers(WP *linklist);
   //bool success=true;;
   /*
   int value=expr(e, success);
@@ -131,4 +131,18 @@ void watchpoint(char *e, bool *success)
   printf("%d   %s   %d\n",new,wp_pool[new].EXPR,wp_pool[new].x);
   return;
   */
+}
+
+
+void travers(WP *linklist)
+{
+    int first=linklist->NO;
+    for(int i=first; ;i=wp_pool[i].next->NO)
+    {
+      Log("now is %d",i);
+      if(wp_pool[i].next==NULL)
+      {
+        break;
+      }
+    }
 }
