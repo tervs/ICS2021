@@ -148,6 +148,8 @@ void watchpoint(char *e, bool *success)
   travers(free_);
   delete(free_,0);
   Log("%d",free_->NO);
+  insert(head,0);
+  Log("%d",head->NO);
 
 
   
