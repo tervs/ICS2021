@@ -202,6 +202,4 @@ void newdelete(int n)
 
 
 
-
-//delete不能删除第一个元素
-//insert 似乎插入第一个元素有问题
+//delete一个不在列表里的监视点会出错
