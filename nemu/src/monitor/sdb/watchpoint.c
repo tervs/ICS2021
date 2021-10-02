@@ -61,7 +61,13 @@ void delete(WP *linklist,int n)//删去链表里的n号元素。对于head，n�
 
   int first=linklist->NO;
   Log("%d",first);
-  for(int i=first;;i=wp_pool[i].next->NO)
+  if(first==n)
+  {
+    linklist=wp_pool[n].next;
+  }
+  else
+  {
+    for(int i=first;;i=wp_pool[i].next->NO)
   {
     if(wp_pool[i].next==&wp_pool[n])
     {
@@ -69,7 +75,7 @@ void delete(WP *linklist,int n)//删去链表里的n号元素。对于head，n�
      break;
     }
   }
-
+  }
   return;
 }
 
