@@ -332,6 +332,7 @@ word_t mistake_type(word_t *type)
 {
   word_t x=sign;
   sign=0;
+
   return x;
 }
 
