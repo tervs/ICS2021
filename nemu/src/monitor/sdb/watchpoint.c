@@ -170,6 +170,7 @@ void watchpoint(char *e, bool *success)
  //Log("here?");
   printf("\n");
   //Log("here?");
+  Log("maybe here");
   travers(head);
   printf("\n");
   //bool success=true;;
