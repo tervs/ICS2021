@@ -100,9 +100,9 @@ void insert(WP **linklist,int n)//将要插入链表的是n号元素，记录lin
     {
       Log("is empty ? %d",is_empty(*linklist));
       *linklist=&wp_pool[n];
-      Log("?");
+
       wp_pool[n].next=NULL;
-      Log("?");
+
       return;
     }
     else{
@@ -205,8 +205,9 @@ void watchpoint(char *e, bool *success)
   else
   {
     int n=new_wp();
-
+Log("?");
     strcpy(wp_pool[n].EXPR,e);
+    Log("?");
     //wp_pool[n].EXPR=e;
     uint32_t x;
     x=expr(e, success);
