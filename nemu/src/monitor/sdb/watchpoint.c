@@ -148,6 +148,8 @@ void watchpoint(char *e, bool *success)
   printf("\n");
   int n=get_last(free_);
   delete(free_,n);
+   travers(free_);
+  printf("\n");
   insert(head,n);
  travers(free_);
   printf("\n");
