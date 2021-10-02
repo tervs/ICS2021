@@ -165,6 +165,7 @@ void watchpoint(char *e, bool *success)
 bool s=delete(free_,0);
 Log("%d",s);
   Log("%d",free_->NO);
+  travers(free_);
   //int new=new_wp();
 
 
