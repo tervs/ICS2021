@@ -8,6 +8,6 @@
 word_t expr(char *e, bool *success);
 word_t mistake_type(word_t *type);
 void watchpoint(char *e, bool *success);
-
+void newdelete(int n);
 
 #endif

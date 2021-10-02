@@ -14,6 +14,7 @@ word_t vaddr_read(vaddr_t addr, int len);
 word_t expr(char *e, bool *success); 
 word_t mistake_type(word_t *type);
 void watchpoint(char *e, bool *success);
+void newdelete(int n);
 
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 static char* rl_gets() 
@@ -151,6 +152,14 @@ static int cmd_w(char *args)
   return 0;
 }
 
+static int cmd_d(char *args) 
+{
+  char *arg = strtok(NULL, " ");
+  word_t n;
+  n=atoi(arg);
+  newdelete(n);
+  return 0;
+}
 
 
 static int cmd_help(char *args);
@@ -169,6 +178,7 @@ static struct {
   {"p","expression",cmd_p},
   {"t","test",cmd_t},
   {"w","watchpoint",cmd_w},
+  {"d","delete watchpoint",cmd_d},
 
 
   /* TODO: Add more commands */
