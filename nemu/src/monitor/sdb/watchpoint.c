@@ -201,7 +201,7 @@ void watchpoint(char *e, bool *success)
 {
   if(is_empty(free_)){printf("no free watchpoint!\n");return ;}
   else
-  {printf("head: \n");travers(head);
+  {
     int n=new_wp();
 
     strcpy(wp_pool[n].EXPR,e);
