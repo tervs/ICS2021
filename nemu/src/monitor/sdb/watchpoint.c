@@ -176,14 +176,14 @@ void watchpoint(char *e, bool *success)
    
   printf("\n");
   insert(head,n-1);
-  /*
+  
  Log("here?");
   printf("\n");
   //Log("here?");
   Log("maybe here");
   travers(head);
   printf("\n");
-  */
+  
   //bool success=true;;
   /*
   int value=expr(e, success);
