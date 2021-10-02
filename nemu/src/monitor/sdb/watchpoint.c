@@ -102,6 +102,7 @@ void insert(WP **linklist,int n)//将要插入链表的是n号元素，记录lin
       *linklist=&wp_pool[n];
       Log("?");
       wp_pool[n].next=NULL;
+      Log("?");
       return;
     }
     else{
