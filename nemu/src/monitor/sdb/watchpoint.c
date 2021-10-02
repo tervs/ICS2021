@@ -137,7 +137,7 @@ void watchpoint(char *e, bool *success)
   //int new=new_wp();
   travers(free_);
 
- delete(free_,10);
+ delete(free_,0);
  travers(free_);
   //bool success=true;;
   /*
