@@ -14,7 +14,7 @@ typedef struct watchpoint {
 
 int new_wp();
 void free_wp(WP *wp);
-void delete(WP *linklist,int n);
+void delete(WP **linklist,int n);
 void insert(WP *linklist,int n);
 int get_last(WP *linklist);
 bool is_empty(WP *linklist);
@@ -44,35 +44,35 @@ int new_wp()
 {
   if(is_empty(free_)){printf("no free watchpoint!");return -1;}
   int n=get_last(free_);
-  delete(free_,n);
+  delete(&free_,n);
   insert(head,n);
   return n;
 }
 void free_wp(WP *wp)
 {
   if(is_empty(head)){printf("no watchpoint to free!");return;}
-  delete(head,wp->NO);
+  delete(&head,wp->NO);
   insert(free_,wp->NO);
   return;
 
 }
 
-void delete(WP *linklist,int n)//删去链表里的n号元素。对于head，n是指定数值。对于free，n是链表尾数值，由另一个函数计算得出。
+void delete(WP **linklist,int n)//删去链表里的n号元素。对于head，n是指定数值。对于free，n是链表尾数值，由另一个函数计算得出。
 {
 
-  int first=linklist->NO;
+  int first=(*linklist)->NO;
   Log("%d",first);
   Log("%d",n);
   if(first==n)
   {
     Log("????");
-    linklist=wp_pool[n].next;
-    Log("%d",linklist->NO);
+    *linklist=wp_pool[n].next;
+    Log("%d",(*linklist)->NO);
     return;
   }
   else
   {
-    Log("%d",linklist->NO);
+    Log("%d",(*linklist)->NO);
     for(int i=first;;i=wp_pool[i].next->NO)
   {
     if(wp_pool[i].next==&wp_pool[n])
@@ -146,7 +146,7 @@ void watchpoint(char *e, bool *success)
 {
   Log("%d",free_->NO);
   travers(free_);
-  delete(free_,0);
+  delete(&free_,0);
   Log("%d",free_->NO);
   insert(head,0);
   Log("%d",head->NO);
@@ -158,7 +158,7 @@ void watchpoint(char *e, bool *success)
 
 void newdelete(int n)
 {
-  delete(free_,n);
+  delete(&free_,n);
   travers(free_);
 }
 
