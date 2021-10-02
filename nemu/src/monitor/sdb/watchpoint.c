@@ -213,13 +213,18 @@ void watchpoint(char *e, bool *success)
     printf("%u\n",wp_pool[n].value);
     printf("head: \n");travers(head);
     printf("free: \n");travers(free_);
+
+
+if(e!= NULL)
+    {
+    free(e);
+      e = NULL; 
+    }
+
     return;
 
 
-    if(e!= NULL){
-free(e);
-e = NULL; //指针释放之后并不为空，要设置其为空。
-}
+    
   }
 
 }
