@@ -121,8 +121,9 @@ void watchpoint(char *e, bool *success)
 {
   
   //int new=new_wp();
+  travers(free_);
  delete(free_,10);
-void travers(WP *linklist);
+ travers(free_);
   //bool success=true;;
   /*
   int value=expr(e, success);
