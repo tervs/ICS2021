@@ -164,23 +164,11 @@ void watchpoint(char *e, bool *success)
   delete(free_,n);
    travers(free_);
   printf("\n");
-  insert(head,n);
-  //Log("here?");
- travers(free_);
 
-
- delete(free_,n-1);
-   travers(free_);
-
-
-   
-  printf("\n");
-  insert(head,n-1);
   
- Log("here?");
-  printf("\n");
-  //Log("here?");
-  Log("maybe here");
+  insert(head,n);
+  
+
   travers(head);
   printf("\n");
   
