@@ -203,6 +203,7 @@ void watchpoint(char *e, bool *success)
   else
   {
     int n=new_wp();
+printf("head: \n");travers(head);
 
     wp_pool[n].EXPR=e;
     uint32_t x;
