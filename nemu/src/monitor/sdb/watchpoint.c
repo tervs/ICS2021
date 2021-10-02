@@ -167,12 +167,22 @@ void watchpoint(char *e, bool *success)
   insert(head,n);
   //Log("here?");
  travers(free_);
- //Log("here?");
+
+
+ delete(free_,n-1);
+   travers(free_);
+
+
+   /*
+  printf("\n");
+  insert(head,n-1);
+ Log("here?");
   printf("\n");
   //Log("here?");
   Log("maybe here");
   travers(head);
   printf("\n");
+  */
   //bool success=true;;
   /*
   int value=expr(e, success);
@@ -192,3 +202,4 @@ void newdelete(int n)
 
 
 //delete不能删除第一个元素
+//insert 似乎插入第一个元素有问题
