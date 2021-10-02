@@ -168,7 +168,7 @@ void watchpoint(char *e, bool *success)
 
 
   insert(head,n);
-  
+   Log("%d",head->NO);
 
 
   delete(free_,n-1);
