@@ -203,17 +203,17 @@ void watchpoint(char *e, bool *success)
   else
   {
     int n=new_wp();
-    printf("head: ");travers(head);
-    printf("free: ");travers(free_);
+
     wp_pool[n].EXPR=e;
     uint32_t x;
     x=expr(e, success);
     wp_pool[n].value=x;
     printf("%s\n",wp_pool[n].EXPR);
     printf("%u\n",wp_pool[n].value);
+    printf("head: \n");travers(head);
+    printf("free: \n");travers(free_);
     return;
   }
-
 
 }
 
