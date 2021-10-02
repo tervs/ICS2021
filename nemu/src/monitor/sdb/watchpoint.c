@@ -205,10 +205,10 @@ void watchpoint(char *e, bool *success)
   else
   {
     int n=new_wp();
-    Log("?");
-  wp_pool[n].EXPR=e;
-
-    
+     Log("?");
+    strcpy(wp_pool[n].EXPR,e);
+    //strcpy(wp_pool[n].EXPR,*e);
+     Log("?");
     //wp_pool[n].EXPR=e;
     uint32_t x;
     x=expr(e, success);
