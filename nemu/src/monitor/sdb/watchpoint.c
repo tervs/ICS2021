@@ -83,6 +83,7 @@ int get_last(WP *linklist)
 {
   int n;
     int first=linklist->NO;
+    Log("first in free is %d",first);
     for(int i=first; ;i=wp_pool[i].next->NO)
     {
       if(wp_pool[i].next==NULL)
