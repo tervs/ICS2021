@@ -120,7 +120,7 @@ void watchpoint(char *e, bool *success)
 {
   
   //int new=new_wp();
-  bool s=is_empty(free_);
+  int  s=get_last(free_);
   printf("good  %d",s);
   //bool success=true;;
   /*
