@@ -71,18 +71,14 @@ void delete(WP **linklist,int n)//删去链表里的n号元素。对于head，n�
 {
 
   int first=(*linklist)->NO;
-  Log("%d",first);
-  Log("%d",n);
   if(first==n)
   {
-    Log("????");
     *linklist=wp_pool[n].next;
-    Log("%d",(*linklist)->NO);
+    //Log("empty. so %d",(*linklist)->NO);
     return;
   }
   else
   {
-    Log("%d",(*linklist)->NO);
     for(int i=first;;i=wp_pool[i].next->NO)
   {
     if(wp_pool[i].next==&wp_pool[n])
@@ -100,24 +96,21 @@ void delete(WP **linklist,int n)//删去链表里的n号元素。对于head，n�
 
 
 void insert(WP **linklist,int n)//将要插入链表的是n号元素，记录linklist指向的元素的序号作为起始值。依次检测该监视点是否是最后一个，如果是，将n号链接在后面，并将n号的next更新为null
-{//若是要插入的链表是空的呢？
+{
     if(is_empty(*linklist))
     {
-      Log("%d",is_empty(*linklist));
+      Log("is empty ? %d",is_empty(*linklist));
       *linklist=&wp_pool[n];
       wp_pool[n].next=NULL;
-      Log("%d",(*linklist)->NO);
       return;
     }
     else{
     int last=get_last(*linklist);
-    Log("%d",last);
+    Log("last number is %d",last);
     wp_pool[last].next=&wp_pool[n];
-    Log("success");
     wp_pool[n].next=NULL;
     return;
     }
-   
 }
 
 
@@ -163,6 +156,7 @@ void travers(WP *linklist)
       printf("%d  ",i);
       if(wp_pool[i].next==NULL)
       {
+        printf("\n");
         break;
       }
     }
