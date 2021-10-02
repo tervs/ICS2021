@@ -119,8 +119,9 @@ bool is_empty(WP *linklist)
 void watchpoint(char *e, bool *success)
 {
   
-  int new=new_wp();
-  printf("good  %d",new);
+  //int new=new_wp();
+  bool s=is_empty(head);
+  printf("good  %d",s);
   //bool success=true;;
   /*
   int value=expr(e, success);
