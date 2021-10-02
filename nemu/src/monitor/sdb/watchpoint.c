@@ -138,7 +138,7 @@ int get_last(WP *linklist)
 
 bool is_empty(WP *linklist)
 {
-  Log("%d",(linklist==NULL));
+  //Log("%d",(linklist==NULL));
   if(linklist==NULL)
   
   return true;
@@ -151,6 +151,10 @@ bool is_empty(WP *linklist)
 
 void travers(WP *linklist)
 {
+  if(is_empty(linklist)){printf("unable to travers!\n");return;}
+
+  else
+  {
     int first=linklist->NO;
     for(int i=first; ;i=wp_pool[i].next->NO)
     {
@@ -161,6 +165,7 @@ void travers(WP *linklist)
         break;
       }
     }
+  }
 }
 
 
