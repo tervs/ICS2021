@@ -83,10 +83,21 @@ void delete(WP *linklist,int n)//删去链表里的n号元素。对于head，n�
 
 void insert(WP *linklist,int n)//将要插入链表的是n号元素，记录linklist指向的元素的序号作为起始值。依次检测该监视点是否是最后一个，如果是，将n号链接在后面，并将n号的next更新为null
 {//若是要插入的链表是空的呢？
+    if(is_empty(linklist))
+    {
+      linklist=&wp_pool[n];
+      wp_pool[n].next=NULL;
+      Log("success");
+    }
+    else{
     int last=get_last(linklist);
+    Log("%d",last);
     wp_pool[last].next=wp_pool[n].next;
+    Log("success");
     wp_pool[n].next=NULL;
     return;
+    }
+   
 }
 
 int get_last(WP *linklist)
