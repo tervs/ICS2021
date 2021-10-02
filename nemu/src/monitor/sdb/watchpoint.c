@@ -142,7 +142,7 @@ bool is_empty(WP *linklist)
 void travers(WP *linklist)
 {
     Log("here?");
-    int first=linklist->NO;
+    int first=31;
     Log("here?");
     for(int i=first; ;i=wp_pool[i].next->NO)
     {
@@ -168,6 +168,12 @@ void watchpoint(char *e, bool *success)
 
   insert(head,n);
   
+
+
+  delete(free_,n-1);
+   travers(free_);
+insert(head,n-1);
+
 
   travers(head);
   printf("\n");
