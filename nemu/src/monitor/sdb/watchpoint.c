@@ -12,7 +12,7 @@ typedef struct watchpoint {
 } WP;
 
 int new_wp();
-void free_wp(WP *wp);
+void free_wp(int n);
 void delete(WP **linklist,int n);
 void insert(WP **linklist,int n);
 int get_last(WP *linklist);
@@ -53,13 +53,11 @@ int new_wp()
 
 
 
-void free_wp(WP *wp)
+void free_wp(int n)
 {
-  if(is_empty(head)){printf("no watchpoint to free!");return;}
-  delete(&head,wp->NO);
-  insert(&free_,wp->NO);
+  delete(&head,n);
+  insert(&free_,n);
   return;
-
 }
 
 
@@ -194,7 +192,8 @@ void watchpoint(char *e, bool *success)
 
 void newdelete(int n)
 {
-  delete(&free_,n);
+   if(is_empty(head)){printf("no watchpoint to free!");return;}
+  free_wp(n);
   printf("head: ");travers(head);
   printf("free: ");travers(free_);
 
