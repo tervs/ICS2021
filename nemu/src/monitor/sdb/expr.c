@@ -246,7 +246,7 @@ word_t  eval(int p, int q,bool *success)
      // Log("op is %d     p is %d     q is %d",op,p,q);
       }
     }
-   // else {printf("bad brackets");*success= false;sign=2;}括号不正确应该已经被排除掉了
+   else {*success= false;sign=2;}//括号不正确应该已经被排除掉了
   return -1;
 }
 
