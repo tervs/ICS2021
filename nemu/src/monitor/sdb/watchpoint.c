@@ -158,7 +158,7 @@ void travers(WP *linklist)
     int first=linklist->NO;
     for(int i=first; ;i=wp_pool[i].next->NO)
     {
-      printf("%d  ",i);
+      printf("%d    %s    %d\n",i,wp_pool[i].EXPR,wp_pool[i].value);
       if(wp_pool[i].next==NULL)
       {
         printf("\n");
@@ -232,6 +232,7 @@ void newdelete(int n)
 
 void wp_info()
 {
+  travers(head);
     printf("good!");
 }
 
