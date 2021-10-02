@@ -233,7 +233,6 @@ void newdelete(int n)
 void wp_info()
 {
   travers(head);
-    printf("good!");
 }
 
 
