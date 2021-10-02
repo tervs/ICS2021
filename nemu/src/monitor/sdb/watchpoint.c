@@ -22,6 +22,8 @@ void watchpoint(char *e, bool *success);
 void travers(WP *linklist);
 void newdelete(int n);
 void wp_info();
+char *strcopy(char *EXPR,char *e);
+
 
 static WP wp_pool[NR_WP] = {};
 static WP *head = NULL, *free_ = NULL;
@@ -248,5 +250,18 @@ void wp_info()
   printf("%s",wp_pool[7].EXPR);
 }
 
-
+char *strcopy(char *EXPR,char *e)
+{
+  int n=strlen(e);
+  int count=0;
+  for(int i=0;i<n;i++)
+  {
+    if(strcmp(&e[i]," ")!=0)
+    {
+        EXPR[count]=e[i];
+        count++;
+    }
+  }
+  return EXPR;
+}
 //delete一个不在列表里的监视点会出错
