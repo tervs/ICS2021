@@ -176,7 +176,7 @@ void watchpoint(char *e, bool *success)
     x=expr(e, success);
     wp_pool[n].value=x;
     printf("%s\n",wp_pool[n].EXPR);
-    printf("%d\n",wp_pool[n].value);
+    printf("%u\n",wp_pool[n].value);
     return;
   }
 
