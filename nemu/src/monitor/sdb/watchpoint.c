@@ -138,7 +138,9 @@ int get_last(WP *linklist)
 
 bool is_empty(WP *linklist)
 {
+  Log("%d",(linklist==NULL));
   if(linklist==NULL)
+  
   return true;
   else return false;
 }
