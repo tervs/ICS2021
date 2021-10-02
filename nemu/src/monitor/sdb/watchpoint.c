@@ -213,9 +213,7 @@ void watchpoint(char *e, bool *success)
     printf("%u\n",wp_pool[n].value);
     printf("head: \n");travers(head);
     printf("free: \n");travers(free_);
-printf("???");
-    memset(&e, 0, sizeof(e));
-printf("%s\n",e);
+
     return;
 
 
