@@ -21,7 +21,6 @@ bool is_empty(WP *linklist);
 void watchpoint(char *e, bool *success);
 void travers(WP *linklist);
 void newdelete(int n);
-void change(WP *linklist);
 
 static WP wp_pool[NR_WP] = {};
 static WP *head = NULL, *free_ = NULL;
@@ -121,22 +120,7 @@ int get_last(WP *linklist)
     }
   return n;
 }
-/*
-bool is_full(WP *linklist)
-{
-  int count=0;
-  int first=linklist->NO;
-    for(int i=first;;i=wp_pool[i].next->NO)
-    {
-      count++;
-      if((wp_pool[i].next==NULL)&&(count==32))
-      {
-        return true;
-      }
-    }
-    return false;
-}
-*/
+
 bool is_empty(WP *linklist)
 {
   if(linklist==NULL)
@@ -146,9 +130,7 @@ bool is_empty(WP *linklist)
 
 void travers(WP *linklist)
 {
-    Log("here?");
     int first=linklist->NO;
-    Log("here?");
     for(int i=first; ;i=wp_pool[i].next->NO)
     {
       printf("%d    %d\n",i,wp_pool[i].last);
@@ -161,51 +143,14 @@ void travers(WP *linklist)
 
 void watchpoint(char *e, bool *success)
 {
+  Log("%d",free_->NO);
+  travers(free_);
+  delete(free_,0);
+  Log("%d",free_->NO);
+
+
   
-change(free_);
-
-
-
  
-  travers(free_);
-  //int new=new_wp();
-
-
-
-
-  /*
-  travers(free_);
-  printf("\n");
-  int n=get_last(free_);
-  delete(free_,n);
-   travers(free_);
-  printf("\n");
-
-
-  insert(head,n);
-   Log("%d",is_empty(head));
-   Log("%d",head->NO);
-
-
-  delete(free_,n-1);
-   travers(free_);
-insert(head,n-1);
-
-
-  travers(head);
-  printf("\n");
-  
-*/
-
-
-  //bool success=true;;
-  /*
-  int value=expr(e, success);
-  wp_pool[new].EXPR=e;
-  wp_pool[new].x=value;
-  printf("%d   %s   %d\n",new,wp_pool[new].EXPR,wp_pool[new].x);
-  return;
-  */
 }
 
 void newdelete(int n)
@@ -214,12 +159,6 @@ void newdelete(int n)
   travers(free_);
 }
 
-
-void change(WP *linklist)
-{
-  linklist->last=123;
-  return;
-}
 
 
 
