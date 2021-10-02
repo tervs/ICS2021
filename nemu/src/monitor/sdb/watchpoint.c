@@ -17,6 +17,7 @@ void delete(WP **linklist,int n);
 void insert(WP **linklist,int n);
 int get_last(WP *linklist);
 bool is_empty(WP *linklist);
+bool search(WP *linklist,int n);
 void watchpoint(char *e, bool *success);
 void travers(WP *linklist);
 void newdelete(int n);
@@ -149,7 +150,7 @@ bool is_empty(WP *linklist)
 
 void travers(WP *linklist)
 {
-  if(is_empty(linklist)){printf("unable to travers!\n");return;}
+  if(is_empty(linklist)){printf("empty linklist!\n");return;}
 
   else
   {
@@ -168,6 +169,23 @@ void travers(WP *linklist)
 
 
 
+
+bool search(WP *linklist,int n)
+{
+  if(is_empty(linklist)){printf("empty linklist!");return false;}
+  else
+  {
+    int first=linklist->NO;
+    for(int i=first; ;i=wp_pool[i].next->NO)
+    {
+      if(wp_pool[i].NO==n)
+      {
+        return false;
+      }
+    }
+  }
+  return false;
+}
 
 
 void watchpoint(char *e, bool *success)
@@ -190,13 +208,19 @@ void watchpoint(char *e, bool *success)
 
 }
 
+
+
 void newdelete(int n)
 {
+bool s=search(head,n);
+printf("%d",s);
+
+  /*
    if(is_empty(head)){printf("no watchpoint to free!");return;}
   free_wp(n);
   printf("head: ");travers(head);
   printf("free: ");travers(free_);
-
+*/
 }
 
 
