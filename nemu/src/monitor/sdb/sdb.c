@@ -15,6 +15,7 @@ word_t expr(char *e, bool *success);
 void mistake_type();
 void watchpoint(char *e, bool *success);
 void newdelete(int n);
+void wp_info();
 
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 static char* rl_gets() 
@@ -137,7 +138,7 @@ static int cmd_info(char *args)
   }
   else if(strcmp(arg,"w")==0)
   {
-  printf("to be completed");
+  wp_info();
   }
   else{printf("wrong command");}
 

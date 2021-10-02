@@ -21,6 +21,7 @@ bool search(WP *linklist,int n);
 void watchpoint(char *e, bool *success);
 void travers(WP *linklist);
 void newdelete(int n);
+void wp_info();
 
 static WP wp_pool[NR_WP] = {};
 static WP *head = NULL, *free_ = NULL;
@@ -229,7 +230,10 @@ void newdelete(int n)
 
 }
 
-
+void wp_info()
+{
+    printf("good!");
+}
 
 
 //delete一个不在列表里的监视点会出错
