@@ -214,6 +214,12 @@ void watchpoint(char *e, bool *success)
     printf("head: \n");travers(head);
     printf("free: \n");travers(free_);
     return;
+
+
+    if(e!= NULL){
+free(e);
+e = NULL; //指针释放之后并不为空，要设置其为空。
+}
   }
 
 }
