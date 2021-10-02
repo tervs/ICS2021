@@ -49,6 +49,7 @@ static int cmd_p(char *args)
   word_t type=0;
   type=mistake_type(&type);
   printf("type is %d\n",type);
+  /*
   if(!success)
   {
     switch(type)
@@ -59,9 +60,9 @@ static int cmd_p(char *args)
     case 4:printf("Invalid expression!\n");break;
     case 5:printf("Memory out of range!\n");break;
   }
-  
-  }
-  else {printf("%u\n",x);}
+ 
+  } */
+  if(success){printf("%u\n",x);}
   return 0;
 }
 

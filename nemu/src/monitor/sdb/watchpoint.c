@@ -220,9 +220,9 @@ void watchpoint(char *e, bool *success)
 
 void newdelete(int n)
 {
-  if(!search(head,n)){printf("no such watchpoint in use!");return;}
+  if(!search(head,n)){printf("no such watchpoint in use!\n");return;}
   
-  else if(is_empty(head)){printf("no watchpoint to free!");return;}
+  else if(is_empty(head)){printf("no watchpoint to free!\n");return;}
   free_wp(n);
   printf("head: ");travers(head);
   printf("free: ");travers(free_);
