@@ -252,6 +252,7 @@ void strcopy(char *EXPR,char *e)
 {
   int n=strlen(e);
   printf("%d\n",n);
+  printf("%s\n",e);
   int count=0;
   for(int i=0;i<n;i++)
   {
