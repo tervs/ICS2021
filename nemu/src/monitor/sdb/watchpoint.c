@@ -85,6 +85,7 @@ void insert(WP *linklist,int n)//将要插入链表的是n号元素，记录link
 {//若是要插入的链表是空的呢？
     if(is_empty(linklist))
     {
+      Log("%d",is_empty(linklist));
       linklist=&wp_pool[n];
       wp_pool[n].next=NULL;
       Log("%d",linklist->NO);
