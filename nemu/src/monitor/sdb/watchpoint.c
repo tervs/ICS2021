@@ -214,12 +214,7 @@ void watchpoint(char *e, bool *success)
     printf("head: \n");travers(head);
     printf("free: \n");travers(free_);
 
-
-if(e!= NULL)
-    {
-    free(e);
-      e = NULL; 
-    }
+    memset(&e, 0, sizeof(e));
 
     return;
 
