@@ -190,30 +190,14 @@ void watchpoint(char *e, bool *success)
   }
 
 
-
-  /*
-  Log("%d",free_->NO);
-  travers(free_);
-  delete(&free_,0);
-  travers(free_);
-  Log("%d",free_->NO);
-  insert(&head,0);
-  Log("%d",head->NO);
-  travers(head);
-  delete(&free_,1);
-  Log("%d",free_->NO);
-travers(free_);
-
-insert(&head,1);
-travers(head);
-*/
-
 }
 
 void newdelete(int n)
 {
   delete(&free_,n);
   travers(free_);
+  travers(head);
+
 }
 
 
