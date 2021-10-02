@@ -87,7 +87,7 @@ void insert(WP *linklist,int n)//将要插入链表的是n号元素，记录link
     {
       linklist=&wp_pool[n];
       wp_pool[n].next=NULL;
-      Log("success");
+      Log("%d",linklist->NO);
       return;
     }
     else{
@@ -165,7 +165,7 @@ void watchpoint(char *e, bool *success)
    travers(free_);
   printf("\n");
 
-  
+
   insert(head,n);
   
 
