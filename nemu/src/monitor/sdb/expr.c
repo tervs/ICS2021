@@ -16,7 +16,7 @@ static bool match(int p, int q);//检测括号匹配
 int op_position(int p,int q);//主操作符位置
 word_t get_addr(word_t x);//读取内存
 word_t vaddr_read(vaddr_t addr, int len);//调用外部程序读取内存
-word_t mistake_type(word_t *type);//返回错误类型
+void mistake_type();//返回错误类型
 void is_pointer();
 void is_negative();
 
@@ -328,7 +328,7 @@ for(int i=p;i<=q;i++)
             //颜色高亮
 }
 
-word_t mistake_type(word_t *type)
+void mistake_type()
 {
   word_t x=sign;
   sign=0;
@@ -340,7 +340,6 @@ switch(x)
     case 4:printf("Invalid expression!\n");break;
     case 5:printf("Memory out of range!\n");break;
   }
-  return x;
 }
 
 void is_pointer()

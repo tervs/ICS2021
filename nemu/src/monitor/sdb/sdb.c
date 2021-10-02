@@ -12,7 +12,7 @@ void init_regex();
 void init_wp_pool();
 word_t vaddr_read(vaddr_t addr, int len);
 word_t expr(char *e, bool *success); 
-word_t mistake_type(word_t *type);
+void mistake_type();
 void watchpoint(char *e, bool *success);
 void newdelete(int n);
 
@@ -46,9 +46,9 @@ static int cmd_p(char *args)
   uint32_t x;
   bool success=true;;
   x=expr(EXPR, &success);
-  word_t type=0;
-  type=mistake_type(&type);
-  printf("type is %d\n",type);
+  //word_t type=0;
+  //type=mistake_type(&type);
+  //printf("type is %d\n",type);
   /*
   if(!success)
   {
@@ -62,6 +62,7 @@ static int cmd_p(char *args)
   }
  
   } */
+  mistake_type();
   if(success){printf("%u\n",x);}
   return 0;
 }
