@@ -151,7 +151,7 @@ void travers(WP *linklist)
     Log("here?");
     for(int i=first; ;i=wp_pool[i].next->NO)
     {
-      printf("%d    %d",i,wp_pool[i].last);
+      printf("%d    %d\n",i,wp_pool[i].last);
       if(wp_pool[i].next==NULL)
       {
         break;
