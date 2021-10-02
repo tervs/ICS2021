@@ -197,7 +197,7 @@ word_t  eval(int p, int q,bool *success)
     }
 
     else if(match(p,q)==true)//假如所有括号都匹配，否则返回false
-    {//Log("good match");
+    {Log("good match");
         if (p == q)//若出现相等，只有p=q并且位置上是数字才是可行的，否则就是无效表达式
       {
         if(tokens[p].type==TK_NUM)
