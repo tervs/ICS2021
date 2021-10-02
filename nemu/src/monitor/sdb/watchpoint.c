@@ -22,7 +22,7 @@ void watchpoint(char *e, bool *success);
 void travers(WP *linklist);
 void newdelete(int n);
 void wp_info();
-char *strcopy(char *EXPR,char *e);
+void strcopy(char *EXPR,char *e);
 
 
 static WP wp_pool[NR_WP] = {};
@@ -207,9 +207,7 @@ void watchpoint(char *e, bool *success)
   else
   {
     int n=new_wp();
-     Log("?");
-    strcpy(wp_pool[n].EXPR,e);
-    //strcpy(wp_pool[n].EXPR,*e);
+      strcopy(wp_pool[n].EXPR,e);
      Log("?");
     //wp_pool[n].EXPR=e;
     uint32_t x;
@@ -250,7 +248,7 @@ void wp_info()
   printf("%s",wp_pool[7].EXPR);
 }
 
-char *strcopy(char *EXPR,char *e)
+void strcopy(char *EXPR,char *e)
 {
   int n=strlen(e);
   int count=0;
@@ -262,6 +260,6 @@ char *strcopy(char *EXPR,char *e)
         count++;
     }
   }
-  return EXPR;
+  //return EXPR;
 }
 //delete一个不在列表里的监视点会出错
