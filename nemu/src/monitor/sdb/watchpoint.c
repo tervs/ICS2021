@@ -178,8 +178,8 @@ void watchpoint(char *e, bool *success)
   else
   {
     int n=new_wp();
-    travers(head);
-    travers(free_);
+    printf("head: ");travers(head);
+    printf("free: ");travers(free_);
     wp_pool[n].EXPR=e;
     uint32_t x;
     x=expr(e, success);
@@ -195,8 +195,8 @@ void watchpoint(char *e, bool *success)
 void newdelete(int n)
 {
   delete(&free_,n);
-  travers(free_);
-  travers(head);
+  printf("head: ");travers(head);
+  printf("free: ");travers(free_);
 
 }
 
