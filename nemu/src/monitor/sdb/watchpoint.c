@@ -14,7 +14,7 @@ typedef struct watchpoint {
 
 int new_wp();
 void free_wp(WP *wp);
-void delete(WP *linklist,int n);
+bool delete(WP *linklist,int n);
 void insert(WP *linklist,int n);
 int get_last(WP *linklist);
 bool is_empty(WP *linklist);
@@ -56,7 +56,7 @@ void free_wp(WP *wp)
 
 }
 
-void delete(WP *linklist,int n)//删去链表里的n号元素。对于head，n是指定数值。对于free，n是链表尾数值，由另一个函数计算得出。
+bool delete(WP *linklist,int n)//删去链表里的n号元素。对于head，n是指定数值。对于free，n是链表尾数值，由另一个函数计算得出。
 {
 
   int first=linklist->NO;
@@ -67,6 +67,7 @@ void delete(WP *linklist,int n)//删去链表里的n号元素。对于head，n�
     Log("????");
     linklist=wp_pool[n].next;
     Log("%d",linklist->NO);
+    return true;
   }
   else
   {
@@ -79,7 +80,7 @@ void delete(WP *linklist,int n)//删去链表里的n号元素。对于head，n�
     }
   }
   }
-  return;
+  return true;
 }
 
 void insert(WP *linklist,int n)//将要插入链表的是n号元素，记录linklist指向的元素的序号作为起始值。依次检测该监视点是否是最后一个，如果是，将n号链接在后面，并将n号的next更新为null
@@ -161,8 +162,8 @@ void watchpoint(char *e, bool *success)
   
 
 
-
-  delete(free_,0);
+bool s=delete(free_,0);
+Log("%d",s);
   Log("%d",free_->NO);
   //int new=new_wp();
 
