@@ -214,6 +214,8 @@ void watchpoint(char *e, bool *success)
     printf("head: \n");travers(head);
     printf("free: \n");travers(free_);
 
+
+printf("%s\n",wp_pool[7].EXPR);
     return;
 
 
