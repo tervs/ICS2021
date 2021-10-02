@@ -185,8 +185,9 @@ void watchpoint(char *e, bool *success)
   delete(&free_,1);
   Log("%d",free_->NO);
 travers(free_);
-insert(&head,1);
 
+insert(&head,1);
+travers(head);
 
 
 }
