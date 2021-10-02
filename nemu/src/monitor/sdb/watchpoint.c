@@ -172,7 +172,9 @@ void travers(WP *linklist)
 
 bool search(WP *linklist,int n)
 {
-  if(is_empty(linklist)){printf("empty linklist!");return false;}
+  if(is_empty(linklist))
+  {//printf("empty linklist!");
+  return false;}
   else
   {
     int first=linklist->NO;
@@ -184,7 +186,7 @@ bool search(WP *linklist,int n)
       }
       else if(wp_pool[i].next==NULL)
       {
-        printf("\n");
+        //printf("search failed");
         return false;
       }
 
