@@ -163,8 +163,11 @@ void watchpoint(char *e, bool *success)
    travers(free_);
   printf("\n");
   insert(head,n);
+  Log("here?");
  travers(free_);
+ Log("here?");
   printf("\n");
+  Log("here?");
   travers(head);
   printf("\n");
   //bool success=true;;
