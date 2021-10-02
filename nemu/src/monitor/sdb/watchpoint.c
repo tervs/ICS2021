@@ -61,6 +61,7 @@ void delete(WP *linklist,int n)//删去链表里的n号元素。对于head，n�
 
   int first=linklist->NO;
   Log("%d",first);
+  Log("%d",n);
   if(first==n)
   {
     linklist=wp_pool[n].next;
