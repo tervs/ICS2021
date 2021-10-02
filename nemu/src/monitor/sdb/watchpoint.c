@@ -145,9 +145,14 @@ void watchpoint(char *e, bool *success)
   
   //int new=new_wp();
   travers(free_);
-
- delete(free_,0);
+  printf("\n");
+  int n=get_last(free_);
+  delete(free_,n);
+  insert(head,n);
  travers(free_);
+  printf("\n");
+  travers(head);
+  printf("\n");
   //bool success=true;;
   /*
   int value=expr(e, success);
@@ -163,3 +168,7 @@ void newdelete(int n)
   delete(free_,n);
   travers(free_);
 }
+
+
+
+//delete不能删除第一个元素
