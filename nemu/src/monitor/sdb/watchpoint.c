@@ -8,7 +8,7 @@ typedef struct watchpoint {
   int NO;
   struct watchpoint *next;
   char *EXPR;
-  word_t x;//初始值
+  word_t value;//初始值
 } WP;
 
 int new_wp();
@@ -44,7 +44,6 @@ void init_wp_pool() {
 
 int new_wp()
 {
-  if(is_empty(free_)){printf("no free watchpoint!");return -1;}
   int n=get_last(free_);
   delete(&free_,n);
   insert(&head,n);
@@ -168,6 +167,22 @@ void travers(WP *linklist)
 
 void watchpoint(char *e, bool *success)
 {
+  if(is_empty(free_)){printf("no free watchpoint!");return ;}
+  else
+  {
+    int n=new_wp();
+    wp_pool[n].EXPR=e;
+    uint32_t x;
+    x=expr(e, success);
+    wp_pool[n].value=x;
+    printf("%s\n",wp_pool[n].EXPR);
+    printf("%d\n",wp_pool[n].value);
+    return;
+  }
+
+
+
+  /*
   Log("%d",free_->NO);
   travers(free_);
   delete(&free_,0);
@@ -182,7 +197,7 @@ travers(free_);
 
 insert(&head,1);
 travers(head);
-
+*/
 
 }
 
