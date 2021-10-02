@@ -173,9 +173,10 @@ void watchpoint(char *e, bool *success)
    travers(free_);
 
 
-   /*
+   
   printf("\n");
   insert(head,n-1);
+  /*
  Log("here?");
   printf("\n");
   //Log("here?");
