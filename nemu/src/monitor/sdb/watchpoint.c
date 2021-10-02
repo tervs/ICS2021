@@ -122,6 +122,7 @@ void watchpoint(char *e, bool *success)
   
   //int new=new_wp();
   travers(free_);
+
  delete(free_,10);
  travers(free_);
   //bool success=true;;
@@ -140,7 +141,7 @@ void travers(WP *linklist)
     int first=linklist->NO;
     for(int i=first; ;i=wp_pool[i].next->NO)
     {
-      Log("now is %d",i);
+      printf("%d  ",i);
       if(wp_pool[i].next==NULL)
       {
         break;
