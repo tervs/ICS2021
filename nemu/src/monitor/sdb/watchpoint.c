@@ -180,11 +180,17 @@ bool search(WP *linklist,int n)
     {
       if(wp_pool[i].NO==n)
       {
+        return true;
+      }
+      else if(wp_pool[i].next==NULL)
+      {
+        printf("\n");
         return false;
       }
+
     }
   }
-  return false;
+
 }
 
 
