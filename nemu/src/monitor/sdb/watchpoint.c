@@ -112,7 +112,7 @@ void insert(WP **linklist,int n)//将要插入链表的是n号元素，记录lin
     else{
     int last=get_last(*linklist);
     Log("%d",last);
-    wp_pool[last].next=wp_pool[n].next;
+    wp_pool[last].next=&wp_pool[n];
     Log("success");
     wp_pool[n].next=NULL;
     return;
