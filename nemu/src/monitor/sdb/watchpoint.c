@@ -213,7 +213,7 @@ void watchpoint(char *e, bool *success)
     {
       int n=new_wp();
       Log("?");
-      strcpy(wp_pool[n].EXPR,e);
+      strcpy(wp_pool[n].EXPR,"1+1");
       Log("?");
       (&wp_pool[n])->value=val;
     printf("%s\n",wp_pool[n].EXPR);
