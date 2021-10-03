@@ -206,6 +206,25 @@ void watchpoint(char *e, bool *success)
   if(is_empty(free_)){printf("no free watchpoint!\n");return ;}
   else
   {
+
+    bool success = true;
+	  uint32_t val = expr(e,&success);
+    if(success)
+    {
+      int n=new_wp();
+      Log("?");
+      strcpy((&wp_pool[n])->EXPR,e);
+      Log("?");
+      (&wp_pool[n])->value=val;
+    printf("%s\n",wp_pool[n].EXPR);
+    printf("%u\n",wp_pool[n].value);
+    printf("head: \n");travers(head);
+    printf("free: \n");travers(free_);
+
+    }
+
+
+    /*
     int n=new_wp();
     Log("?");
       strcpy(wp_pool[n].EXPR,e);
@@ -214,10 +233,9 @@ void watchpoint(char *e, bool *success)
     uint32_t x;
     x=expr(e, success);
     wp_pool[n].value=x;
-    printf("%s\n",wp_pool[n].EXPR);
-    printf("%u\n",wp_pool[n].value);
-    printf("head: \n");travers(head);
-    printf("free: \n");travers(free_);
+
+    */
+
 
 
 printf("%s\n",wp_pool[7].EXPR);
