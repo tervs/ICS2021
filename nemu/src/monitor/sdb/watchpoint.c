@@ -32,8 +32,10 @@ void init_wp_pool() {
   int i;
   for (i = 0; i < NR_WP; i ++) {
     wp_pool[i].NO = i;
+    //wp_pool[i].EXPR=
     wp_pool[i].next = &wp_pool[i + 1];
   }
+
   wp_pool[NR_WP - 1].next = NULL;
 
   head = NULL;
@@ -213,7 +215,8 @@ void watchpoint(char *e, bool *success)
     {
       int n=new_wp();
       Log("?");
-      strcpy(wp_pool[n].EXPR,"1+1");
+      WP *p=&(wp_pool[n]);
+      strcpy(p->EXPR,"1+1");
       Log("?");
       (&wp_pool[n])->value=val;
     printf("%s\n",wp_pool[n].EXPR);
