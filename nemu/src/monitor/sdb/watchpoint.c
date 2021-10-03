@@ -221,8 +221,8 @@ void watchpoint(char *e, bool *success)
       Log("?");
       strcpy(s->EXPR,"1+1");
       Log("?");
-      (&wp_pool[n])->value=val;
-
+      s->value=val;
+      Log("?");
     printf("%s\n",wp_pool[n].EXPR);
     printf("%u\n",wp_pool[n].value);
     printf("head: \n");travers(head);
