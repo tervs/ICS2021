@@ -7,6 +7,7 @@
 
 // this should be enough
 static char buf[65536] = {};
+static int position=0;
 static char code_buf[65536 + 128] = {}; // a little larger than `buf`
 static char *code_format =
 "#include <stdio.h>\n"
@@ -16,11 +17,55 @@ static char *code_format =
 "  return 0; "
 "}";
 
-static void gen_rand_expr() {
-  buf[0] = '\0';
+static int choose(int x)
+{
+  return (rand()%x);
 }
 
-int main(int argc, char *argv[]) {
+static void gen_rand_op() 
+{
+
+  switch (choose(4)) {
+    case 0: strcat(buf,"+"); break;
+    case 1: strcat(buf,"-"); break;
+    case 2: strcat(buf,"*"); break;
+    case 3: strcat(buf,"/"); break;
+  }
+
+}
+
+static void gen_num() 
+{
+  char num[16];
+  sprintf(num,"%u",(rand()%100+1));
+  switch(choose(2))
+  {
+    case 0:strcat(buf,num);break;
+    case 1:strcat(buf,"(-");strcat(buf,num);strcat(buf,")");break;
+  }
+  
+
+ 
+}
+
+
+
+
+
+static void gen_rand_expr() 
+{
+    //do{strcat(buf," ");}while(choose(3)!=0);
+  switch (choose(4)) {
+    case 0: gen_num(); break;
+    case 1: strcat(buf,"("); gen_num(); strcat(buf,")"); break;
+    default: gen_rand_expr(); gen_rand_op(); gen_rand_expr(); break;
+  }
+
+  if(buf[0] == '\0') gen_rand_expr();
+}
+
+int main(int argc, char *argv[]) 
+{
   int seed = time(0);
   srand(seed);
   int loop = 1;
@@ -28,7 +73,9 @@ int main(int argc, char *argv[]) {
     sscanf(argv[1], "%d", &loop);
   }
   int i;
-  for (i = 0; i < loop; i ++) {
+  for (i = 0; i < loop; i ++) 
+  {
+     buf[0] = '\0';
     gen_rand_expr();
 
     sprintf(code_buf, code_format, buf);

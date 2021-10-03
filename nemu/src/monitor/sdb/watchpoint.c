@@ -207,7 +207,7 @@ void watchpoint(char *e, bool *success)
   else
   {
     int n=new_wp();
-      strcopy(wp_pool[n].EXPR,e);
+      strcpy(wp_pool[n].EXPR,e);
      Log("?");
     //wp_pool[n].EXPR=e;
     uint32_t x;
@@ -247,7 +247,7 @@ void wp_info()
   travers(head);
   printf("%s",wp_pool[7].EXPR);
 }
-
+/*
 void strcopy(char *EXPR,char *e)
 {
   int n=strlen(e);
@@ -267,4 +267,5 @@ void strcopy(char *EXPR,char *e)
   }
   //return EXPR;
 }
+*/
 //delete一个不在列表里的监视点会出错
