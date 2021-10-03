@@ -53,6 +53,7 @@ int new_wp()
   int n=get_last(free_);
   delete(&free_,n);
   insert(&head,n);
+  free(wp_pool[n].EXPR);
   return n;
 }
 
