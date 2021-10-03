@@ -10,4 +10,5 @@ void mistake_type();
 void watchpoint(char *e, bool *success);
 void newdelete(int n);
 void wp_info();
+int diff();
 #endif

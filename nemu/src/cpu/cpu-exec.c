@@ -20,13 +20,23 @@ rtlreg_t tmp_reg[4];
 
 void device_update();
 void fetch_decode(Decode *s, vaddr_t pc);
+int diff();
 
-static void trace_and_difftest(Decode *_this, vaddr_t dnpc) {
+static void trace_and_difftest(Decode *_this, vaddr_t dnpc) 
+{
 #ifdef CONFIG_ITRACE_COND
   if (ITRACE_COND) log_write("%s\n", _this->logbuf);
 #endif
   if (g_print_step) { IFDEF(CONFIG_ITRACE, puts(_this->logbuf)); }
   IFDEF(CONFIG_DIFFTEST, difftest_step(_this->pc, dnpc));
+  int x=diff();
+  if(x!=0)
+  {
+    printf("watchpoint %d has changed!",(x-1));
+    nemu_state.state = NEMU_STOP;
+  }
+
+
 }
 
 #include <isa-exec.h>

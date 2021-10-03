@@ -22,6 +22,7 @@ void watchpoint(char *e, bool *success);
 void travers(WP *linklist);
 void newdelete(int n);
 void wp_info();
+int diff();
 
 
 static WP wp_pool[NR_WP] = {};
@@ -246,4 +247,32 @@ void newdelete(int n)
 void wp_info()
 {
   travers(head);
+}
+
+
+int diff()
+{
+  if(is_empty(head)){printf("empty linklist!\n");return 0;}
+
+  else
+  {
+    int first=head->NO;
+    for(int i=first; ;i=wp_pool[i].next->NO)
+    {
+      bool success = true;
+
+	    uint32_t val = expr(wp_pool[i].EXPR,&success);
+
+      if(val!=wp_pool[i].value)
+      {
+        return i+1;
+      }
+  
+      if(wp_pool[i].next==NULL)
+      {
+        printf("\n");
+        return 0;
+      }
+    }
+  }
 }
