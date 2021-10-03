@@ -223,7 +223,7 @@ void watchpoint(char *e, bool *success)
       Log("?");
       s->value=val;
       Log("?");
-    printf("%s\n",wp_pool[n].EXPR);
+    printf("%s\n",s->EXPR);
     printf("%u\n",wp_pool[n].value);
     printf("head: \n");travers(head);
     printf("free: \n");travers(free_);
