@@ -219,7 +219,7 @@ void watchpoint(char *e, bool *success)
      //WP *s = malloc(MAX);
       wp_pool[n].EXPR = malloc(MAX);
       Log("?");
-      strcpy(wp_pool[n].EXPR,"1+1");
+      strcpy(wp_pool[n].EXPR,e);
       Log("?");
       wp_pool[n].value=val;
       Log("?");
