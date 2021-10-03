@@ -22,7 +22,6 @@ void watchpoint(char *e, bool *success);
 void travers(WP *linklist);
 void newdelete(int n);
 void wp_info();
-void strcopy(char *EXPR,char *e);
 
 
 static WP wp_pool[NR_WP] = {};
@@ -214,44 +213,18 @@ void watchpoint(char *e, bool *success)
 	  uint32_t val = expr(e,&success);
     if(success)
     {
-      
       int n=new_wp();
-      Log("?");
-     //WP *s = malloc(MAX);
       wp_pool[n].EXPR = malloc(MAX);
-      Log("?");
       strcpy(wp_pool[n].EXPR,e);
-      Log("?");
       wp_pool[n].value=val;
-      Log("?");
-    printf("%s\n",wp_pool[n].EXPR);
-    printf("%u\n",wp_pool[n].value);
+    //printf("%s\n",wp_pool[n].EXPR);
+    //printf("%u\n",wp_pool[n].value);
     printf("head: \n");travers(head);
-    printf("free: \n");travers(free_);
+    //printf("free: \n");travers(free_);
 
     }
     
-
-
-    /*
-    int n=new_wp();
-    Log("?");
-      strcpy(wp_pool[n].EXPR,e);
-     Log("?");
-    //wp_pool[n].EXPR=e;
-    uint32_t x;
-    x=expr(e, success);
-    wp_pool[n].value=x;
-
-    */
-
-
-
-printf("%s\n",wp_pool[7].EXPR);
     return;
-
-
-    
   }
 
 }
@@ -273,27 +246,4 @@ void newdelete(int n)
 void wp_info()
 {
   travers(head);
-  printf("%s",wp_pool[7].EXPR);
 }
-/*
-void strcopy(char *EXPR,char *e)
-{
-  int n=strlen(e);
-  printf("%d\n",n);
-  printf("%s\n",e);
-  int count=0;
-  for(int i=0;i<n;i++)
-  {
-    printf("%d\n",i);
-    if(e[i]!=' ')
-    {
-
-        EXPR[count]=e[i];
-        printf("%d",count);
-        count++;
-    }
-  }
-  //return EXPR;
-}
-*/
-//delete一个不在列表里的监视点会出错
