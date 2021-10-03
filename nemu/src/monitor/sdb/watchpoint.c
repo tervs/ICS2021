@@ -1,7 +1,7 @@
 #include "sdb.h"
 
 #define NR_WP 8
-
+#define MAX 64
 
 
 typedef struct watchpoint {
@@ -216,11 +216,13 @@ void watchpoint(char *e, bool *success)
       
       int n=new_wp();
       Log("?");
-     
-      strcpy(wp_pool[n].EXPR,"1+1");
+     WP *s = malloc(MAX);
+      s->EXPR = malloc(MAX);
+      Log("?");
+      strcpy(s->EXPR,"1+1");
       Log("?");
       (&wp_pool[n])->value=val;
-      
+
     //printf("%s\n",wp_pool[n].EXPR);
     //printf("%u\n",wp_pool[n].value);
 
