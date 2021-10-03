@@ -216,14 +216,14 @@ void watchpoint(char *e, bool *success)
       
       int n=new_wp();
       Log("?");
-     WP *s = malloc(MAX);
-      s->EXPR = malloc(MAX);
+     //WP *s = malloc(MAX);
+      wp_pool[n].EXPR = malloc(MAX);
       Log("?");
-      strcpy(s->EXPR,"1+1");
+      strcpy(wp_pool[n].EXPR,"1+1");
       Log("?");
-      s->value=val;
+      wp_pool[n].value=val;
       Log("?");
-    printf("%s\n",s->EXPR);
+    printf("%s\n",wp_pool[n].EXPR);
     printf("%u\n",wp_pool[n].value);
     printf("head: \n");travers(head);
     printf("free: \n");travers(free_);
