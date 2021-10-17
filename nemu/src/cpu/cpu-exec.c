@@ -67,6 +67,7 @@ void assert_fail_msg() {
 }
 
 void fetch_decode(Decode *s, vaddr_t pc) {
+   Log("pc is 0x%08x",s->pc);
   s->pc = pc;
   s->snpc = pc;
   int idx = isa_fetch_decode(s);
@@ -109,7 +110,7 @@ void cpu_exec(uint64_t n) {
   Decode s;
   for (;n > 0; n --) {
     fetch_decode_exec_updatepc(&s);
-    Log("pc is 0x%08x",s.pc);
+   
     g_nr_guest_instr ++;
     trace_and_difftest(&s, cpu.pc);
     if (nemu_state.state != NEMU_RUNNING) break;
