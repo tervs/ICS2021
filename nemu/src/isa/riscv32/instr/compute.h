@@ -23,7 +23,7 @@ def_EHelper(jal) {
 
 def_EHelper(jalr) {
   rtl_li(s, ddest, s->pc+4);
-  rtl_addi(s, s0, dsrc1, s->pc);
+  rtl_addi(s, s0, dsrc2, s->pc);
   s->dnpc=(*s0>>1)<<1;
   //rtl_jr(s, ddest, id_src1->imm);
 }
