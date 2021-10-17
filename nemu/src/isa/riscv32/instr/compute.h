@@ -23,12 +23,12 @@ def_EHelper(jal) {
 
 def_EHelper(jalr) {
   rtl_li(s, ddest, s->pc+4);
-  rtl_li(s, s0, s->pc);
-  printf(" ((id_src2->imm)<<20)>>20  0x%08x\n",*s0);
-  rtl_addi(s, s0, s0, ((id_src2->imm)<<20)>>20);
-  printf(" ((id_src2->imm)<<20)>>20  0x%08x\n",*s0);
-  rtl_li(s, s0, (*s0>>1)<<1);
-  rtl_jr(s,s0);
+  //rtl_li(s, s0, s->pc);
+  //printf(" ((id_src2->imm)<<20)>>20  0x%08x\n",*s0);
+  rtl_addi(s,dsrc1,dsrc1, ((id_src2->imm)<<20)>>20);
+  printf(" ((id_src2->imm)<<20)>>20  0x%08x\n",*dsrc1);
+  rtl_li(s, dsrc1, (*dsrc1>>1)<<1);
+  rtl_jr(s,dsrc1);
   //s->dnpc=(*s0>>1)<<1;
   //rtl_jr(s, ddest, id_src1->imm);
 }
