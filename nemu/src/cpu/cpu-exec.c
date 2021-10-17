@@ -109,7 +109,7 @@ void cpu_exec(uint64_t n) {
   Decode s;
   for (;n > 0; n --) {
     fetch_decode_exec_updatepc(&s);
-    Log("pc is %ud",s.pc);
+    Log("pc is %ul",s.pc);
     g_nr_guest_instr ++;
     trace_and_difftest(&s, cpu.pc);
     if (nemu_state.state != NEMU_RUNNING) break;
