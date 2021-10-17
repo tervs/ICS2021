@@ -11,3 +11,12 @@ def_EHelper(auipc) {
 def_EHelper(addi) {
   rtl_addi(s, ddest, dsrc1, ((id_src2->imm)<<20));
 }
+
+
+def_EHelper(jal) {
+  
+  rtl_li(s, ddest, s->pc);
+  rtl_addi(s, ddest, ddest, id_src1->imm);
+  s->pc=*ddest;
+  rtl_li(s, ddest, s->snpc);
+}
