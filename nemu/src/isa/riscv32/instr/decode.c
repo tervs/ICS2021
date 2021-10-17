@@ -29,7 +29,7 @@ static def_DHelper(I) {
 }
 
 static def_DHelper(U) {
-  decode_op_i(s, id_src1, s->isa.instr.u.imm31_12, true);
+  decode_op_i(s, id_src1, s->isa.instr.u.imm31_12<<12, true);
   
   decode_op_r(s, id_dest, s->isa.instr.u.rd, true);
 }
