@@ -19,4 +19,8 @@ def_EHelper(jal) {
   rtl_addi(s, ddest, ddest, id_src1->imm);
   s->pc=*ddest;
   rtl_li(s, ddest, s->snpc);
+}//maybe wrong
+
+def_EHelper(jalr) {
+  rtl_li(s, ddest, id_src1->imm);
 }
