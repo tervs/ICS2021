@@ -15,12 +15,15 @@ def_EHelper(addi) {
 
 def_EHelper(jal) {
   
-  rtl_li(s, ddest, s->pc);
+  rtl_li(s, ddest, s->pc+4);
   rtl_addi(s, ddest, ddest, id_src1->imm);
-  s->pc=*ddest;
+  rtl_jr(s,ddest);
   rtl_li(s, ddest, s->snpc);
 }//maybe wrong
 
 def_EHelper(jalr) {
-  rtl_li(s, ddest, id_src1->imm);
+  rtl_li(s, ddest, s->pc+4);
+  rtl_addi(s, s0, dsrc1, s->pc);
+  s->dnpc=(*s0>>1)<<1;
+  //rtl_jr(s, ddest, id_src1->imm);
 }
