@@ -25,6 +25,11 @@ def_EHelper(sub) {
   rtl_sub(s, ddest, dsrc1, dsrc2);
 }
 
+def_EHelper(sltiu) {
+
+  //printf("xxx\n");
+  rtl_sub(s, ddest, dsrc1, dsrc2);
+}
 
 
 def_EHelper(jal) {
