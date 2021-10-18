@@ -139,5 +139,6 @@ def_EHelper(div) {
 }//maybe wrong
 
 def_EHelper(rem) {
+  printf("test\n");
   rtl_divs_r(s, ddest, dsrc1,dsrc2);
 }//maybe wrong
