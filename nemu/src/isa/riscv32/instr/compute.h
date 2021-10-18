@@ -21,8 +21,8 @@ def_EHelper(add) {
 
 def_EHelper(sub) {
 
-  printf("xxx\n");
-  rtl_add(s, ddest, dsrc1, dsrc2);
+  //printf("xxx\n");
+  rtl_sub(s, ddest, dsrc1, dsrc2);
 }
 
 
