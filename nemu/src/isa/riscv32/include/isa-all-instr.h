@@ -25,7 +25,8 @@ f(ori)\
 f(bge)\
 f(mul)\
 f(div)\
-f(lh)
+f(lh)\
+f(lhu)
 
 
 def_all_EXEC_ID();
