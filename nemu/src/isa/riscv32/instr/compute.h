@@ -66,6 +66,13 @@ def_EHelper(bne) {
   */
 }
 
+def_EHelper(blt) {
+  rtl_li(s, s0, s->pc);
+  rtl_addi(s, s0, s0, id_src2->imm);
+  rtl_jrelop(s,RELOP_LT,dsrc1,ddest,*s0);
+}
+
+
 def_EHelper(sltu) {
 
   //printf("src1 0x%08x       imm 0x%08x\n" ,*(id_src1->preg), id_src2->imm);
@@ -113,7 +120,6 @@ def_EHelper(slli) {
   rtl_slli(s, ddest, dsrc1, (id_src2->imm));
 }
 
-
 def_EHelper(srl) {
   rtl_srl(s, ddest, dsrc1, dsrc2);
 }
@@ -127,6 +133,8 @@ def_EHelper(bge) {
   rtl_addi(s, s0, s0, id_src2->imm);
   rtl_jrelop(s,RELOP_GE,dsrc1,ddest,*s0);
 }
+
+
 
 
 
