@@ -7,7 +7,6 @@ def_EHelper(auipc) {
   rtl_addi(s, ddest, ddest, s->pc);
 }
 
-
 def_EHelper(addi) {
   rtl_addi(s, ddest, dsrc1, (id_src2->imm));
 }
@@ -17,7 +16,6 @@ def_EHelper(add) {
   //printf("xxx\n");
   rtl_add(s, ddest, dsrc1, dsrc2);
 }
-
 
 def_EHelper(sub) {
   rtl_sub(s, ddest, dsrc1, dsrc2);
@@ -37,7 +35,6 @@ def_EHelper(jal) {
   rtl_li(s, ddest, s->snpc);
 }
 
-
 def_EHelper(jalr) {
   rtl_li(s, ddest, s->pc+4);
   rtl_addi(s,dsrc1,dsrc1, ((id_src2->imm)<<20)>>20);
@@ -55,8 +52,18 @@ def_EHelper(beq) {
   printf("offset 0x%08x\n",(id_src2->imm<<20)>>20);
   printf("s0 0x%08x\n",*s0);
   */
+}
 
 
-  
-  
+def_EHelper(bne) {
+  rtl_li(s, s0, s->pc);
+  rtl_addi(s, s0, s0, (id_src2->imm<<20)>>20);
+  rtl_jrelop(s,RELOP_NE,dsrc1,ddest,*s0);
+
+  /*
+  printf("rs1  0x%08x \n",*dsrc1);
+  printf("rs2  0x%08x \n",*ddest);
+  printf("offset 0x%08x\n",(id_src2->imm<<20)>>20);
+  printf("s0 0x%08x\n",*s0);
+  */
 }

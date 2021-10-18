@@ -9,7 +9,8 @@ f(jalr)\
 f(add)\
 f(sub)\
 f(sltiu)\
-f(beq)
+f(beq)\
+f(bne)
 //f(sll)
 //f(mv) 
 //f(slti) f(sltiu) f(xori)\f(ori) f(andi) 
