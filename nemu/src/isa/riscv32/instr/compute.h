@@ -65,3 +65,9 @@ def_EHelper(bne) {
   printf("s0 0x%08x\n",*s0);
   */
 }
+
+def_EHelper(sltu) {
+
+  //printf("src1 0x%08x       imm 0x%08x\n" ,*(id_src1->preg), id_src2->imm);
+ rtl_li(s,ddest,interpret_relop(RELOP_LTU, *(id_src1->preg), *(id_src2->preg)));
+}
