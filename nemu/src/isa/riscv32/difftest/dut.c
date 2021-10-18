@@ -2,10 +2,7 @@
 #include <cpu/difftest.h>
 #include "../local-include/reg.h"
 extern const char *regs[];
-bool difftest_check_pc(CPU_state *ref_r, vaddr_t pc);
-
-
-
+//bool difftest_check_pc(CPU_state *ref_r, vaddr_t pc);
 
 bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t pc) {
  
@@ -17,7 +14,11 @@ bool s0=true;
      s=difftest_check_reg(regs[i],pc,(*ref_r).gpr[i]._32,gpr(i));
      if(!s){s0=false;}
   }
-
+  if(cpu.pc!=(*ref_r).pc)
+  {
+    printf("wrong pc\n");
+    return false;
+  }
   //s0=s&&difftest_check_pc(ref_r,pc);
  return s0;
 }
