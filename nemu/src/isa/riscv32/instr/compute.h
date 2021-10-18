@@ -82,14 +82,20 @@ def_EHelper(or) {
 
 def_EHelper(srai) {
 
-  // rtl_li(s, ddest, id_src2->imm);
-   printf("offset 0x%08x\n",id_src2->imm);
+  
+  // printf("offset 0x%08x\n",id_src2->imm);
   rtl_srai(s, ddest, dsrc1, (id_src2->imm));
+}// no branch .while shamt 5!=0, instruction is invalid
+
+def_EHelper(andi) {
+  rtl_andi(s, ddest, dsrc1, (id_src2->imm));
 }
 
+def_EHelper(and) {
 
-
-
+  //printf("xxx\n");
+  rtl_and(s, ddest, dsrc1, dsrc2);
+}
 
 
 
