@@ -14,10 +14,22 @@ def_EHelper(addi) {
 
 def_EHelper(add) {
 
-  printf("xxx\n");
+  //printf("xxx\n");
   rtl_add(s, ddest, dsrc1, dsrc2);
 }
 
+
+def_EHelper(sub) {
+
+  //printf("xxx\n");
+  rtl_add(s, ddest, dsrc1, dsrc2);
+}
+
+def_EHelper(sll) {
+
+  //printf("xxx\n");
+  rtl_add(s, ddest, dsrc1, dsrc2);
+}
 
 
 def_EHelper(jal) {
