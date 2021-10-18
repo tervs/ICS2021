@@ -44,7 +44,7 @@ def_EHelper(jalr) {
 
 def_EHelper(beq) {
   rtl_li(s, s0, s->pc);
-  rtl_addi(s, s0, s0, (id_src2->imm<<20)>>20);
+  rtl_addi(s, s0, s0, id_src2->imm);
   rtl_jrelop(s,RELOP_EQ,dsrc1,ddest,*s0);
   /*
   printf("rs1  0x%08x \n",*dsrc1);
@@ -57,7 +57,7 @@ def_EHelper(beq) {
 
 def_EHelper(bne) {
   rtl_li(s, s0, s->pc);
-  rtl_addi(s, s0, s0, (id_src2->imm<<20)>>20);
+  rtl_addi(s, s0, s0, id_src2->imm);
   rtl_jrelop(s,RELOP_NE,dsrc1,ddest,*s0);
 
   /*
