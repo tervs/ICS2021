@@ -7,7 +7,7 @@ int is_exit_status_bad();
 
 int main(int argc, char *argv[]) {
 
-  printf("here?\n");
+ // printf("here?\n");
   /* Initialize the monitor. */
 #ifdef CONFIG_TARGET_AM
   am_init_monitor();
