@@ -23,7 +23,8 @@ f(sll)\
 f(xori)\
 f(ori)\
 f(bge)\
-f(mul)
+f(mul)\
+f(div)
 
 
 def_all_EXEC_ID();

@@ -119,6 +119,8 @@ def_EHelper(bge) {
 
 def_EHelper(mul) {
   rtl_mulu_lo(s, ddest, dsrc1,dsrc2);
+}//maybe wrong
 
-}
-
+def_EHelper(div) {
+  rtl_divs_q(s, ddest, dsrc1,dsrc2);
+}//maybe wrong
