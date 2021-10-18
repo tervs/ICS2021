@@ -27,7 +27,9 @@ def_EHelper(sub) {
 
 def_EHelper(sltiu) {
 
-   rtl_addi(s, ddest, dsrc1, (id_src2->imm));
+  rtl_li(s,ddest,interpret_relop(RELOP_LTU, id_src1->imm, id_src2->imm));
+
+   //rtl_jrelop(s, ddest, dsrc1, (id_src2->imm));
 }
 
 
