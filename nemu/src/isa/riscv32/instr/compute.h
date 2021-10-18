@@ -53,7 +53,6 @@ def_EHelper(beq) {
   rtl_jrelop(s,RELOP_EQ,dsrc1,ddest,*s0);
 }
 
-
 def_EHelper(bne) {
   rtl_li(s, s0, s->pc);
   rtl_addi(s, s0, s0, id_src2->imm);
