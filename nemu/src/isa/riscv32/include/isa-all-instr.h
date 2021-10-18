@@ -29,7 +29,8 @@ f(lh)\
 f(lhu)\
 f(slli)\
 f(srl)\
-f(srli)
+f(srli)\
+f(sh)
 
 
 def_all_EXEC_ID();
