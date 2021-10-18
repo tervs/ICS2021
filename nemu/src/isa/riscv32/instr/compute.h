@@ -85,6 +85,9 @@ def_EHelper(bge) {
 }
 
 
+
+
+
 def_EHelper(slt) {
  rtl_li(s,ddest,interpret_relop(RELOP_LT, *(id_src1->preg), *(id_src2->preg)));
 }
@@ -156,6 +159,11 @@ def_EHelper(srli) {
 def_EHelper(mul) {
   rtl_mulu_lo(s, ddest, dsrc1,dsrc2);
 }//maybe wrong
+
+def_EHelper(mulh) {
+  rtl_muls_hi(s, ddest, dsrc1,dsrc2);
+}//maybe wrong
+
 
 def_EHelper(div) {
   rtl_divs_q(s, ddest, dsrc1,dsrc2);
