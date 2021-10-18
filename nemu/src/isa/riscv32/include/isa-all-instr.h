@@ -11,7 +11,9 @@ f(sub)\
 f(sltiu)\
 f(beq)\
 f(bne)\
-f(sltu)
+f(sltu)\
+f(xor)\
+f(or)
 //f(sll)
 //f(mv) 
 //f(slti) f(sltiu) f(xori)\f(ori) f(andi) 
