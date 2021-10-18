@@ -48,6 +48,8 @@ def_EHelper(jalr) {
 def_EHelper(beq) {
   rtl_li(s, s0, s->pc);
   rtl_addi(s, s0, s0, (id_src2->imm<<20)>>20);
+
+  printf("rs1  0x%08x    rs2  0x%08x    offset 0x%08x   s0 0x%08x\n",*dsrc1,*dsrc2,(id_src2->imm<<20)>>20,*s0);
   rtl_jrelop(s,RELOP_EQ,dsrc1,ddest,*s0);
   
 }
