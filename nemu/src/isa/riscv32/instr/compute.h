@@ -20,8 +20,6 @@ def_EHelper(add) {
 
 
 def_EHelper(sub) {
-
-  
   rtl_sub(s, ddest, dsrc1, dsrc2);
 }
 
@@ -29,8 +27,6 @@ def_EHelper(sltiu) {
 
   //printf("src1 0x%08x       imm 0x%08x\n" ,*(id_src1->preg), id_src2->imm);
  rtl_li(s,ddest,interpret_relop(RELOP_LTU, *(id_src1->preg), id_src2->imm));
-
-   //rtl_jrelop(s, ddest, dsrc1, (id_src2->imm));
 }
 
 
@@ -47,4 +43,11 @@ def_EHelper(jalr) {
   rtl_addi(s,dsrc1,dsrc1, ((id_src2->imm)<<20)>>20);
   rtl_li(s, dsrc1, (*dsrc1>>1)<<1);
   rtl_jr(s,dsrc1);
+}
+
+def_EHelper(beq) {
+  rtl_li(s, s0, s->pc);
+  rtl_addi(s, s0, s0, (id_src2->imm<<20)>>20);
+  rtl_jrelop(s,RELOP_EQ,dsrc1,ddest,*s0);
+  
 }
