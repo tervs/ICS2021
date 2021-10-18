@@ -27,7 +27,9 @@ f(mul)\
 f(div)\
 f(lh)\
 f(lhu)\
-f(slli)
+f(slli)\
+f(srl)\
+f(srli)
 
 
 def_all_EXEC_ID();

@@ -113,6 +113,15 @@ def_EHelper(slli) {
   rtl_slli(s, ddest, dsrc1, (id_src2->imm));
 }
 
+
+def_EHelper(srl) {
+  rtl_srl(s, ddest, dsrc1, dsrc2);
+}
+
+def_EHelper(srli) {
+  rtl_srli(s, ddest, dsrc1, (id_src2->imm));
+}
+
 def_EHelper(bge) {
   rtl_li(s, s0, s->pc);
   rtl_addi(s, s0, s0, id_src2->imm);
