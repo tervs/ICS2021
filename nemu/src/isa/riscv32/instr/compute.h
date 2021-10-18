@@ -80,6 +80,12 @@ def_EHelper(or) {
   rtl_or(s, ddest, dsrc1, dsrc2);
 }
 
+def_EHelper(srai) {
+
+  // rtl_li(s, ddest, id_src2->imm);
+   printf("offset 0x%08x\n",id_src2->imm);
+  rtl_srai(s, ddest, dsrc1, (id_src2->imm));
+}
 
 
 

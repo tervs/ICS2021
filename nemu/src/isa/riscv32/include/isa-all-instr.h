@@ -14,10 +14,9 @@ f(bne)\
 f(sltu)\
 f(xor)\
 f(or)\
-f(sb)
-//f(sll)
-//f(mv) 
-//f(slti) f(sltiu) f(xori)\f(ori) f(andi) 
+f(sb)\
+f(srai)
+
 
 def_all_EXEC_ID();
 
