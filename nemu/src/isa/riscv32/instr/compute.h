@@ -27,8 +27,7 @@ def_EHelper(sub) {
 
 def_EHelper(sltiu) {
 
-  //printf("xxx\n");
-  rtl_sub(s, ddest, dsrc1, dsrc2);
+   rtl_addi(s, ddest, dsrc1, (id_src2->imm));
 }
 
 
