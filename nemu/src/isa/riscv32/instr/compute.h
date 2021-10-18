@@ -50,7 +50,7 @@ def_EHelper(beq) {
   rtl_addi(s, s0, s0, (id_src2->imm<<20)>>20);
 
   printf("rs1  0x%08x \n",*dsrc1);
-  printf("rs2  0x%08x \n",*dsrc2);
+  printf("rs2  0x%08x \n",*ddest);
   printf("offset 0x%08x\n",(id_src2->imm<<20)>>20);
   printf("s0 0x%08x\n",*s0);
   
