@@ -36,8 +36,8 @@ def_EHelper(jal) {
 }
 
 def_EHelper(jalr) {
-  printf("origin is 0x%08x\n",id_src2->imm);
-  printf("shift is 0x%08x\n",((id_src2->imm)<<20)>>20);
+  //printf("origin is 0x%08x\n",id_src2->imm);
+  //printf("shift is 0x%08x\n",((id_src2->imm)<<20)>>20);
 
   rtl_li(s, ddest, s->pc+4);
   rtl_addi(s,dsrc1,dsrc1, ((id_src2->imm)<<20)>>20);
