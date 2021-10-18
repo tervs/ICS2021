@@ -15,7 +15,8 @@ f(sltu)\
 f(xor)\
 f(or)\
 f(sb)\
-f(srai)
+f(srai)\
+f(lbu)
 
 
 def_all_EXEC_ID();
