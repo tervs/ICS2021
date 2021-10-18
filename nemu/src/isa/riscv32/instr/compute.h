@@ -21,12 +21,13 @@ def_EHelper(add) {
 
 def_EHelper(sub) {
 
-  //printf("xxx\n");
+  
   rtl_sub(s, ddest, dsrc1, dsrc2);
 }
 
 def_EHelper(sltiu) {
 
+  printf("src1 0x%08x       imm 0x%08x\n" ,id_src1->imm, id_src2->imm);
   rtl_li(s,ddest,!interpret_relop(RELOP_LTU, id_src1->imm, id_src2->imm));
 
    //rtl_jrelop(s, ddest, dsrc1, (id_src2->imm));
