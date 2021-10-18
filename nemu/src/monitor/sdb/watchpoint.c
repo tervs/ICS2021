@@ -158,7 +158,7 @@ bool is_empty(WP *linklist)
 
 void travers(WP *linklist)
 {
-  if(is_empty(linklist)){printf("empty linklist!\n");return;}
+  if(is_empty(linklist)){printf("empty             linklist!\n");return;}
 
   else
   {
