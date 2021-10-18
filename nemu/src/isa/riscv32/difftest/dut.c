@@ -18,13 +18,13 @@ bool s0=true;
      if(!s){s0=false;}
   }
 
-  s0=s&&difftest_check_pc(ref_r,pc);
+  //s0=s&&difftest_check_pc(ref_r,pc);
  return s0;
 }
 
 
 
-
+/*
 bool difftest_check_pc(CPU_state *ref_r, vaddr_t pc)
 {
   if((*ref_r).pc!=pc)
@@ -34,6 +34,6 @@ bool difftest_check_pc(CPU_state *ref_r, vaddr_t pc)
   }
   return true;
 }
-
+*/
 void isa_difftest_attach() {
 }
