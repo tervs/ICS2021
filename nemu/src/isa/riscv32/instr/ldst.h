@@ -19,11 +19,10 @@ def_EHelper(sw) {
 }
 
 def_EHelper(sb) {
+  printf("0x%08x\n",id_src2->imm);
   rtl_sm(s, ddest, dsrc1, id_src2->imm, 1);
 }
 
 def_EHelper(sh) {
-
-  printf("0x%08x\n",id_src2->imm);
   rtl_sm(s, ddest, dsrc1, id_src2->imm, 2);
 }
