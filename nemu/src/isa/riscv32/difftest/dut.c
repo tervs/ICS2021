@@ -11,6 +11,7 @@ bool s=true;
      s=difftest_check_reg(regs[i],pc,(*ref_r).gpr[i]._32,gpr(i));
      
   }
+  printf("%d\n",s);
  return s;
   
 
