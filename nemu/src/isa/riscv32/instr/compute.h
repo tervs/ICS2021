@@ -72,6 +72,12 @@ def_EHelper(blt) {
   rtl_jrelop(s,RELOP_LT,dsrc1,ddest,*s0);
 }
 
+def_EHelper(bltu) {
+  rtl_li(s, s0, s->pc);
+  rtl_addi(s, s0, s0, id_src2->imm);
+  rtl_jrelop(s,RELOP_LTU,dsrc1,ddest,*s0);
+}
+
 def_EHelper(bge) {
   rtl_li(s, s0, s->pc);
   rtl_addi(s, s0, s0, id_src2->imm);

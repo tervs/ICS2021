@@ -34,7 +34,8 @@ f(sh)\
 f(rem)\
 f(blt)\
 f(slt)\
-f(sra)
+f(sra)\
+f(bltu)
 
 
 def_all_EXEC_ID();
