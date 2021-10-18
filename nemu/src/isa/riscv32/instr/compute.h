@@ -105,6 +105,10 @@ def_EHelper(ori) {
   rtl_ori(s, ddest, dsrc1, (id_src2->imm));
 }
 
+def_EHelper(sra) {
+  rtl_sra(s, ddest, dsrc1, dsrc2);
+}
+
 def_EHelper(srai) {
 
   
