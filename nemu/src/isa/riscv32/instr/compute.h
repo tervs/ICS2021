@@ -117,5 +117,8 @@ def_EHelper(bge) {
 
 
 
+def_EHelper(mul) {
+  rtl_mulu_lo(s, ddest, dsrc1,dsrc2);
 
+}
 
