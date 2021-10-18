@@ -27,7 +27,7 @@ bool s0=true;
 
 bool difftest_check_pc(CPU_state *ref_r, vaddr_t pc)
 {
-  if((*ref_r).pc!=pc)
+  if((*ref_r).pc!=(pc+4))
   {
   Log("wrong pc! right = 0x%08x   wrong = 0x%08x ", (*ref_r).pc,pc);
   return false;
