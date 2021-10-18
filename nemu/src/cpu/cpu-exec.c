@@ -71,7 +71,7 @@ void fetch_decode(Decode *s, vaddr_t pc) {
   s->pc = pc;
   s->snpc = pc;
   int idx = isa_fetch_decode(s);
-   //  Log("pc is 0x%08x  instr is %d",s->pc, idx);
+   Log("pc is 0x%08x  ",s->pc);
    //isa_reg_display();
   s->dnpc = s->snpc;
   s->EHelper = g_exec_table[idx];
