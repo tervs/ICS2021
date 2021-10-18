@@ -16,7 +16,7 @@ bool s0=true;
   }
   if(cpu.pc!=(*ref_r).pc)
   {
-    printf("wrong pc\n");
+    Log("You got wrong pc! right = 0x%08x   wrong = 0x%08x ",(*ref_r).pc,cpu.pc);
     return false;
   }
   //s0=s&&difftest_check_pc(ref_r,pc);
