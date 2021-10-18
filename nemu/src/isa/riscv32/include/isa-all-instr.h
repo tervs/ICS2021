@@ -8,7 +8,7 @@ f(jal)\
 f(jalr)\
 f(add)\
 f(sub)\
-f(sll)
+//f(sll)
 //f(mv) 
 //f(slti) f(sltiu) f(xori)\f(ori) f(andi) 
 
