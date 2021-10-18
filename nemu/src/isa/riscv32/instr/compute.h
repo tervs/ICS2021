@@ -29,7 +29,6 @@ def_EHelper(sltiu) {
  rtl_li(s,ddest,interpret_relop(RELOP_LTU, *(id_src1->preg), id_src2->imm));
 }
 
-
 def_EHelper(jal) {
   
   rtl_li(s, ddest, s->pc);
@@ -37,6 +36,7 @@ def_EHelper(jal) {
   rtl_jr(s,ddest);
   rtl_li(s, ddest, s->snpc);
 }
+
 
 def_EHelper(jalr) {
   rtl_li(s, ddest, s->pc+4);
