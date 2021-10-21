@@ -7,9 +7,9 @@
 
 size_t strlen(const char *s) {
  
-
- //char t="x";
- //putch(t);
+return 3;
+ //panic("Not implemented");
+/*
     char *t=(char*)&s;
     if(t==NULL){panic("NULL STRING!");}
     else
@@ -20,10 +20,10 @@ size_t strlen(const char *s) {
         
         i=i+1;
       }
-      printf("%d\n",i);
       return i;
     }
-  //panic("Not implemented");
+
+    */
 }
 
 char *strcpy(char *dst, const char *src) {
