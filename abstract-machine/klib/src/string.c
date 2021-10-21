@@ -7,7 +7,11 @@
 
 size_t strlen(const char *s) {
  
+ const char *sc;
+  for(sc = s; *sc != '\0'; ++sc);
+  return (sc-s);
 
+/*
     char *t=(char*)&s;
     if(t==NULL){panic("NULL STRING!");}
     else
@@ -20,7 +24,7 @@ size_t strlen(const char *s) {
       }
       return i;
     }
-
+*/
     
 }
 
