@@ -19,10 +19,10 @@
 #if defined(__ARCH_X86_NEMU)
 # define DEVICE_BASE 0x0
 #else
-# define DEVICE_BASE 0xa0000000
+# define DEVICE_BASE 0x80000000
 #endif
 
-#define MMIO_BASE 0x80000000
+#define MMIO_BASE 0xa0000000
 //specialmark
 #define SERIAL_PORT     (DEVICE_BASE + 0x00003f8)
 #define KBD_ADDR        (DEVICE_BASE + 0x0000060)
