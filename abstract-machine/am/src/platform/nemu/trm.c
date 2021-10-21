@@ -1,6 +1,6 @@
 #include <am.h>
 #include <nemu.h>
-#include <stdio.h>
+//#include <stdio.h>
 
 extern char _heap_start;
 int main(const char *args);
@@ -13,7 +13,7 @@ static const char mainargs[] = MAINARGS;
 
 void putch(char ch) {
 
-  printf("test\n\n\n\n");
+
   outb(SERIAL_PORT, ch);
 }
 
