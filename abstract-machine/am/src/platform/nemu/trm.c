@@ -13,7 +13,7 @@ static const char mainargs[] = MAINARGS;
 
 void putch(char ch) {
 
-  printf("test\n");
+  printf("test\n\n\n\n");
   outb(SERIAL_PORT, ch);
 }
 
