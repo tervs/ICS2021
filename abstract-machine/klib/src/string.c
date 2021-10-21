@@ -2,11 +2,14 @@
 #include <klib-macros.h>
 #include <stdint.h>
 //#include <assert.h>
-
+#include<stdio.h>
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
 size_t strlen(const char *s) {
  
+
+ //char t="x";
+ //putch(t);
     char *t=(char*)&s;
     if(t==NULL){panic("NULL STRING!");}
     else
@@ -17,6 +20,7 @@ size_t strlen(const char *s) {
         
         i=i+1;
       }
+      printf("%d\n",i);
       return i;
     }
   //panic("Not implemented");
