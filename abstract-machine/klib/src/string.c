@@ -7,9 +7,7 @@
 
 size_t strlen(const char *s) {
  
-return 3;
- //panic("Not implemented");
-/*
+
     char *t=(char*)&s;
     if(t==NULL){panic("NULL STRING!");}
     else
@@ -23,7 +21,7 @@ return 3;
       return i;
     }
 
-    */
+    
 }
 
 char *strcpy(char *dst, const char *src) {
