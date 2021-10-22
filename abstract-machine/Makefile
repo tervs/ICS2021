@@ -19,7 +19,9 @@ ifeq ($(findstring $(MAKECMDGOALS),clean|clean-all|html),)
 ### Print build info message
 #echo $AM_HOME
 $(info test # Building $(NAME)-$(MAKECMDGOALS) [$(ARCH)])
-export CDPATH=/home/yu/ics2021/am-kernels/tests/cpu-tests/build/memory.txt
+export CDPATH=/home/yu/ics2021/am-kernels/tests/cpu-tests/build
+$(shell mkdir -p $(CDPATH)/memory.txt)
+
 $(info here $(CDPATH))
 ### Check: environment variable `$AM_HOME` looks sane
 ifeq ($(wildcard $(AM_HOME)/am/include/am.h),)
