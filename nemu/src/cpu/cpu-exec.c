@@ -22,11 +22,14 @@ void device_update();
 void fetch_decode(Decode *s, vaddr_t pc);
 int diff();
 
+
+
+
 static void trace_and_difftest(Decode *_this, vaddr_t dnpc) 
 {
  // printf("test\n");
 #ifdef CONFIG_ITRACE_COND
-  if (ITRACE_COND) log_write("  %s\n\n\n\n\n", _this->logbuf);
+  if (ITRACE_COND) log_write("dskahfi\nouaehg\nfkhaeisuefh\naesiupfhiasduhf  %s\n\n\n\n\n", _this->logbuf);
 #endif
   if (g_print_step) { IFDEF(CONFIG_ITRACE, puts(_this->logbuf)); }
   IFDEF(CONFIG_DIFFTEST, difftest_step(_this->pc, dnpc));
@@ -43,17 +46,24 @@ static void trace_and_difftest(Decode *_this, vaddr_t dnpc)
 #include <isa-exec.h>
 
 #define FILL_EXEC_TABLE(name) [concat(EXEC_ID_, name)] = concat(exec_, name),
-static const void* g_exec_table[TOTAL_INSTR] = {
+static const void* g_exec_table[TOTAL_INSTR] = 
+{
   MAP(INSTR_LIST, FILL_EXEC_TABLE)
 };
 
-static void fetch_decode_exec_updatepc(Decode *s) {
+
+
+static void fetch_decode_exec_updatepc(Decode *s) 
+{
   fetch_decode(s, cpu.pc);
   s->EHelper(s);
   cpu.pc = s->dnpc;
 }
 
-static void statistic() {
+
+
+static void statistic() 
+{
   IFNDEF(CONFIG_TARGET_AM, setlocale(LC_NUMERIC, ""));
 #define NUMBERIC_FMT MUXDEF(CONFIG_TARGET_AM, "%ld", "%'ld")
   Log("host time spent = " NUMBERIC_FMT " us", g_timer);
@@ -62,12 +72,20 @@ static void statistic() {
   else Log("Finish running in less than 1 us and can not calculate the simulation frequency");
 }
 
-void assert_fail_msg() {
+void assert_fail_msg() 
+{
   isa_reg_display();
   statistic();
 }
 
-void fetch_decode(Decode *s, vaddr_t pc) {
+
+
+
+
+
+
+void fetch_decode(Decode *s, vaddr_t pc) 
+{
 
   s->pc = pc;
   s->snpc = pc;
@@ -76,13 +94,18 @@ void fetch_decode(Decode *s, vaddr_t pc) {
    //isa_reg_display();
   s->dnpc = s->snpc;
   s->EHelper = g_exec_table[idx];
+
+
+
+                                                                  //itace 的实现在这个地方
 #ifdef CONFIG_ITRACE
   char *p = s->logbuf;
   p += snprintf(p, sizeof(s->logbuf), FMT_WORD ":", s->pc);
   int ilen = s->snpc - s->pc;
   int i;
   uint8_t *instr = (uint8_t *)&s->isa.instr.val;
-  for (i = 0; i < ilen; i ++) {
+  for (i = 0; i < ilen; i ++) 
+  {
     p += snprintf(p, 4, " %02x", instr[i]);
   }
   int ilen_max = MUXDEF(CONFIG_ISA_x86, 8, 4);
@@ -98,10 +121,20 @@ void fetch_decode(Decode *s, vaddr_t pc) {
 #endif
 }
 
+
+
+
+
+
+
+
+
 /* Simulate how the CPU works. */
-void cpu_exec(uint64_t n) {
+void cpu_exec(uint64_t n) 
+{
   g_print_step = (n < MAX_INSTR_TO_PRINT);
-  switch (nemu_state.state) {
+  switch (nemu_state.state) 
+  {
     case NEMU_END: case NEMU_ABORT:
       printf("Program execution has ended. To restart the program, exit NEMU and run again.\n");
       return;
@@ -111,9 +144,9 @@ void cpu_exec(uint64_t n) {
   uint64_t timer_start = get_time();
 
   Decode s;
-  for (;n > 0; n --) {
+  for (;n > 0; n --) 
+  {//两处引用了itace这个宏
     fetch_decode_exec_updatepc(&s);
-   
     g_nr_guest_instr ++;
     trace_and_difftest(&s, cpu.pc);
     if (nemu_state.state != NEMU_RUNNING) break;
@@ -123,7 +156,8 @@ void cpu_exec(uint64_t n) {
   uint64_t timer_end = get_time();
   g_timer += timer_end - timer_start;
 
-  switch (nemu_state.state) {
+  switch (nemu_state.state) 
+  {
     case NEMU_RUNNING: nemu_state.state = NEMU_STOP; break;
 
     case NEMU_END: case NEMU_ABORT:
