@@ -100,7 +100,7 @@ void fetch_decode(Decode *s, vaddr_t pc)
 
                                                                   //itace 的实现在这个地方
 #ifdef CONFIG_ITRACE
-  //printf("init\n");
+  printf("init\n");
   char *p = s->logbuf;
   p += snprintf(p, sizeof(s->logbuf), FMT_WORD ":", s->pc);//打印pc
   int ilen = s->snpc - s->pc;
@@ -110,6 +110,7 @@ void fetch_decode(Decode *s, vaddr_t pc)
   {
     p += snprintf(p, 4, " %02x", instr[i]);//打印指令
   }
+  printf("%s\n",p);
   int ilen_max = MUXDEF(CONFIG_ISA_x86, 8, 4);//似乎是x86专用命令
   int space_len = ilen_max - ilen;
   if (space_len < 0) space_len = 0;
@@ -122,7 +123,7 @@ void fetch_decode(Decode *s, vaddr_t pc)
   
   void disassemble(char *str, int size, uint64_t pc, uint8_t *code, int nbyte);
   disassemble(p, s->logbuf + sizeof(s->logbuf) - p, MUXDEF(CONFIG_ISA_x86, s->snpc, s->pc), (uint8_t *)&s->isa.instr.val, ilen);
-  printf("str:%s  size:%ld  pc:0x%08x  code:%hhn  nbyte:%d\n",p, s->logbuf + sizeof(s->logbuf) - p, MUXDEF(CONFIG_ISA_x86, s->snpc, s->pc), (uint8_t *)&s->isa.instr.val, ilen);
+  //printf("str:%s  size:%ld  pc:0x%08x  code:%hhn  nbyte:%d\n",p, s->logbuf + sizeof(s->logbuf) - p, MUXDEF(CONFIG_ISA_x86, s->snpc, s->pc), (uint8_t *)&s->isa.instr.val, ilen);
   //printf("%s\n",p);
 #endif
 }
