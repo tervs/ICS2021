@@ -102,7 +102,7 @@ void fetch_decode(Decode *s, vaddr_t pc)
 #ifdef CONFIG_ITRACE
   char *p = s->logbuf;
   p += snprintf(p, sizeof(s->logbuf), FMT_WORD ":", s->pc);//打印pc
-  printf("%s\n",p);
+  //printf("%s\n",p);
   int ilen = s->snpc - s->pc;
   int i;
   uint8_t *instr = (uint8_t *)&s->isa.instr.val;
@@ -110,6 +110,7 @@ void fetch_decode(Decode *s, vaddr_t pc)
   {
     p += snprintf(p, 4, " %02x", instr[i]);//打印指令
   }
+  printf("%s\n",p);
   int ilen_max = MUXDEF(CONFIG_ISA_x86, 8, 4);//似乎是x86专用命令
   int space_len = ilen_max - ilen;
   if (space_len < 0) space_len = 0;
