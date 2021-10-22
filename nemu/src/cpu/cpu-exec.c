@@ -114,8 +114,9 @@ void fetch_decode(Decode *s, vaddr_t pc)
   if (space_len < 0) space_len = 0;
   space_len = space_len * 3 + 1;
   memset(p, ' ', space_len);
+  printf("%s\n",p);
   p += space_len;
-  printf("str:%s  size:%ld  pc:0x%08x  code:%hhn  nbyte:%d\n",p, s->logbuf + sizeof(s->logbuf) - p, MUXDEF(CONFIG_ISA_x86, s->snpc, s->pc), (uint8_t *)&s->isa.instr.val, ilen);
+  //printf("str:%s  size:%ld  pc:0x%08x  code:%hhn  nbyte:%d\n",p, s->logbuf + sizeof(s->logbuf) - p, MUXDEF(CONFIG_ISA_x86, s->snpc, s->pc), (uint8_t *)&s->isa.instr.val, ilen);
   void disassemble(char *str, int size, uint64_t pc, uint8_t *code, int nbyte);
   disassemble(p, s->logbuf + sizeof(s->logbuf) - p, MUXDEF(CONFIG_ISA_x86, s->snpc, s->pc), (uint8_t *)&s->isa.instr.val, ilen);
 #endif
