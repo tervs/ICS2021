@@ -19,7 +19,7 @@ ifeq ($(findstring $(MAKECMDGOALS),clean|clean-all|html),)
 ### Print build info message
 #echo $AM_HOME
 $(info test # Building $(NAME)-$(MAKECMDGOALS) [$(ARCH)])
-MEM_DIR=$(shell ../)
+MEM_DIR=$(shell ./home/yu/ics2021/am-kernels/tests/cpu-tests)
 $(info here $(MEM_DIR))
 ### Check: environment variable `$AM_HOME` looks sane
 ifeq ($(wildcard $(AM_HOME)/am/include/am.h),)
