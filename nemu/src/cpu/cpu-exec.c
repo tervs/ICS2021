@@ -110,11 +110,12 @@ void fetch_decode(Decode *s, vaddr_t pc)
   {
     p += snprintf(p, 4, " %02x", instr[i]);//打印指令
   }
-  printf("%s\n",p);
+  //printf("%s\n",p);
   int ilen_max = MUXDEF(CONFIG_ISA_x86, 8, 4);//似乎是x86专用命令
   int space_len = ilen_max - ilen;
   if (space_len < 0) space_len = 0;
   space_len = space_len * 3 + 1;
+  printf("%s\n",p);
   memset(p, ' ', space_len);
   //printf("%s\n",p);
   p += space_len;
