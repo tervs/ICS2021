@@ -20,7 +20,7 @@ ifeq ($(findstring $(MAKECMDGOALS),clean|clean-all|html),)
 #echo $AM_HOME
 $(info test # Building $(NAME)-$(MAKECMDGOALS) [$(ARCH)])
 MEM_DIR=$(shell pwd)
-$(info here (MEM_DIR))
+$(info here $(MEM_DIR))
 ### Check: environment variable `$AM_HOME` looks sane
 ifeq ($(wildcard $(AM_HOME)/am/include/am.h),)
   $(error $$AM_HOME must be an AbstractMachine repo)
