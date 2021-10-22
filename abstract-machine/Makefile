@@ -20,7 +20,7 @@ ifeq ($(findstring $(MAKECMDGOALS),clean|clean-all|html),)
 #echo $AM_HOME
 $(info test # Building $(NAME)-$(MAKECMDGOALS) [$(ARCH)])
 export CDPATH=/home/yu/ics2021/am-kernels/tests/cpu-tests/build
-$(shell mkdir -p $(CDPATH)/memory.txt)
+$(shell touch $(CDPATH)/memory.txt)
 
 $(info here $(CDPATH))
 ### Check: environment variable `$AM_HOME` looks sane
