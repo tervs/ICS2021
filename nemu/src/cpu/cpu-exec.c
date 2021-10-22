@@ -29,10 +29,11 @@ static void trace_and_difftest(Decode *_this, vaddr_t dnpc)
 {
  // printf("test\n");
 #ifdef CONFIG_ITRACE_COND
-  if (ITRACE_COND) log_write("%s\n", _this->logbuf);
+  if (ITRACE_COND) log_write("%s\n", _this->logbuf);//此处用于输出到文件
 #endif
-  if (g_print_step) { IFDEF(CONFIG_ITRACE, puts(_this->logbuf)); }
-  IFDEF(CONFIG_DIFFTEST, difftest_step(_this->pc, dnpc));
+  if (g_print_step) 
+  //{ IFDEF(CONFIG_ITRACE, puts(_this->logbuf)); }//itrace
+  IFDEF(CONFIG_DIFFTEST, difftest_step(_this->pc, dnpc));//diff
   int x=diff();
   if(x!=0)
   {
@@ -100,7 +101,7 @@ void fetch_decode(Decode *s, vaddr_t pc)
                                                                   //itace 的实现在这个地方
 #ifdef CONFIG_ITRACE
   char *p = s->logbuf;
-  p += snprintf(p, sizeof(s->logbuf), FMT_WORD ":", s->pc);
+  p += snprintf(p, sizeof(s->logbuf), FMT_WORD "       :", s->pc);
   int ilen = s->snpc - s->pc;
   int i;
   uint8_t *instr = (uint8_t *)&s->isa.instr.val;
