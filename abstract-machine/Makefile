@@ -19,7 +19,7 @@ ifeq ($(findstring $(MAKECMDGOALS),clean|clean-all|html),)
 ### Print build info message
 #echo $AM_HOME
 $(info test # Building $(NAME)-$(MAKECMDGOALS) [$(ARCH)])
-MEM_DIR=$(shell  /home/yu)
+MEM_DIR=$(shell  /home/yu/ics2021/nemu)
 
 $(info here $(MEM_DIR))
 ### Check: environment variable `$AM_HOME` looks sane
