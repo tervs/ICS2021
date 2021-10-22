@@ -35,11 +35,16 @@ config ENGINE_INTERPRETER
   bool "Interpreter"
   help
     Interpreter guest instructions one by one.
+config Test
+  bool "test2"
+  help
+    no help    
 endchoice
 
 config ENGINE
   string
   default "interpreter" if ENGINE_INTERPRETER
+  default "test3" if Test
   default "none"
 
 choice
