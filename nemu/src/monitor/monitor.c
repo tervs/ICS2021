@@ -64,8 +64,8 @@ static int parse_args(int argc, char *argv[]) {
     {0          , 0                , NULL,  0 },
   };
  // printf("arcg is %d  argc is %s\n",argc,*argv);
- Log("logfile is %s",log_file); 
-Log("logfile is %s",diff_so_file);
+ //Log("logfile is %s",log_file); 
+//Log("logfile is %s",diff_so_file);
   int o;
   while ( (o = getopt_long(argc, argv, "-bhl:d:p:", table, NULL)) != -1) {
     //Log("o os %d",o);

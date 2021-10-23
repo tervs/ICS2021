@@ -9,12 +9,13 @@ $(BINARY): compile_git
 
 # Some convenient rules
 
-override ARGS ?= --log=$(BUILD_DIR)/test-nemu-log.txt
+override ARGS ?= --log=$(BUILD_DIR)/-nemu-log.txt
 override ARGS += $(ARGS_DIFF)
+override TEST ?=  --log=$(BUILD_DIR)/test-nemu-log.txt
 
 # Command to execute NEMU
 IMG ?=
-NEMU_EXEC := $(BINARY) $(ARGS) $(IMG)
+NEMU_EXEC := $(BINARY) $(ARGS) $(TEST) $(IMG)
 
 run-env: $(BINARY) $(DIFF_REF_SO)
 
