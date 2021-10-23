@@ -25,7 +25,7 @@ $(info $(ALL))
 
 # Command to execute NEMU
 IMG ?=
-NEMU_EXEC := $(BINARY) $(ARGS) $(TEST) $(IMG)
+NEMU_EXEC := $(BINARY) $(ARGS)  $(IMG)
 
 run-env: $(BINARY) $(DIFF_REF_SO)
 
