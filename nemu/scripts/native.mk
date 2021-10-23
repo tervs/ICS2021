@@ -10,6 +10,7 @@ $(BINARY): compile_git
 export MPATH=/home/yu/ics2021/am-kernels/tests/cpu-tests/build
 # Some convenient rules
 
+$(shell touch $(MPATH)/test-mtrace.txt)
 override ARGS ?= --log=$(BUILD_DIR)/nemu-log.txt
 override ARGS += $(ARGS_DIFF)
 override TEST ?=  --mtrace=$(MPATH)/test-mtrace.txt
