@@ -9,11 +9,11 @@ compile_git:
 	$(call git_commit, "compile")
 $(BINARY): compile_git
 
-export MPATH=/home/yu/ics2021/am-kernels/tests/cpu-tests/build##
-ALL = $(basename $(notdir $(shell find $(MPATH)/. -name "*-mtrace.txt")))##
-$(ALL): %:%.txt
-%.txt:
-	@echo $*
+#export MPATH=/home/yu/ics2021/am-kernels/tests/cpu-tests/build##
+#ALL = $(basename $(notdir $(shell find $(MPATH)/. -name "*-mtrace.txt")))##
+#$(ALL): %:%.txt
+#%.txt:
+#	@echo $*
 #%.txt: TEST =  --mtrace=$(MPATH)
 # Some convenient rules
 
@@ -21,7 +21,7 @@ $(ALL): %:%.txt
 override ARGS ?= --log=$(BUILD_DIR)/nemu-log.txt
 override ARGS += $(ARGS_DIFF)
 #$(info new $(TEST))
-$(info $(ALL))
+#$(info $(ALL))
 
 # Command to execute NEMU
 IMG ?=
