@@ -1,20 +1,24 @@
 include $(NEMU_HOME)/scripts/git.mk
 include $(NEMU_HOME)/scripts/build.mk
-
 include $(NEMU_HOME)/tools/difftest.mk
+
+
+
+
 
 compile_git:
 	$(call git_commit, "compile")
 $(BINARY): compile_git
 
 export MPATH=/home/yu/ics2021/am-kernels/tests/cpu-tests/build
+ALL = $(basename $(notdir $(shell find $(MPATH)/. -name "*.txt")))
 # Some convenient rules
 
 
 override ARGS ?= --log=$(BUILD_DIR)/nemu-log.txt
 override ARGS += $(ARGS_DIFF)
 override TEST ?=  --mtrace=$(MPATH)/$*-memory.txt
-$(info $(TEST))
+$(info $(ALL))
 
 # Command to execute NEMU
 IMG ?=
