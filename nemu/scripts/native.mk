@@ -5,7 +5,6 @@ include $(NEMU_HOME)/tools/difftest.mk
 
 
 
-
 compile_git:
 	$(call git_commit, "compile")
 $(BINARY): compile_git
@@ -13,7 +12,8 @@ $(BINARY): compile_git
 export MPATH=/home/yu/ics2021/am-kernels/tests/cpu-tests/build##
 ALL = $(basename $(notdir $(shell find $(MPATH)/. -name "*-mtrace.txt")))##
 $(ALL): %:%.txt
-%.txt: TEST =  --mtrace=$(MPATH)
+	@echo $*
+#%.txt: TEST =  --mtrace=$(MPATH)
 # Some convenient rules
 
 
@@ -41,5 +41,6 @@ $(clean-tools):
 	-@$(MAKE) -s -C $@ clean
 clean-tools: $(clean-tools)
 clean-all: clean distclean clean-tools
+latest:
 
-.PHONY: run gdb run-env clean-tools clean-all $(clean-tools)
+.PHONY: run gdb run-env clean-tools clean-all $(clean-tools) latest
