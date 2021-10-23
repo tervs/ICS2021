@@ -30,6 +30,7 @@ void sdb_set_batch_mode();
 static char *log_file = NULL;
 static char *diff_so_file = NULL;
 static char *img_file = NULL;
+static char *mtrace_file=NULL;
 static int difftest_port = 1234;
 
 static long load_img() {
@@ -61,6 +62,7 @@ static int parse_args(int argc, char *argv[]) {
     {"diff"     , required_argument, NULL, 'd'},
     {"port"     , required_argument, NULL, 'p'},
     {"help"     , no_argument      , NULL, 'h'},
+    {"mtrace"   , required_argument, NULL, 'm'},
     {0          , 0                , NULL,  0 },
   };
  // printf("arcg is %d  argc is %s\n",argc,*argv);
@@ -74,6 +76,7 @@ static int parse_args(int argc, char *argv[]) {
       case 'p': printf("p\n");sscanf(optarg, "%d", &difftest_port); break;
       case 'l': printf("l\n");log_file = optarg;break;
       case 'd': printf("d\n");diff_so_file = optarg; break;
+      case 'm': printf("m\n");mtrace_file = optarg; break;
       case 1: printf("?\n");img_file = optarg; return optind - 1;
       default:
         printf("Usage: %s [OPTION...] IMAGE [args]\n\n", argv[0]);
