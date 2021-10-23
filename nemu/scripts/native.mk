@@ -11,7 +11,7 @@ compile_git:
 $(BINARY): compile_git
 
 export MPATH=/home/yu/ics2021/am-kernels/tests/cpu-tests/build
-ALL = $(basename $(notdir $(shell find $(MPATH)/. -name "*.txt")))
+ALL = $(basename $(notdir $(shell find $(MPATH)/. -name "*-mtrace.txt")))
 # Some convenient rules
 
 
