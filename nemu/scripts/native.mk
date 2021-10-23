@@ -10,11 +10,11 @@ $(BINARY): compile_git
 export MPATH=/home/yu/ics2021/am-kernels/tests/cpu-tests/build
 # Some convenient rules
 
-#$(shell touch $(MPATH)/$-mtrace.txt)
+
 override ARGS ?= --log=$(BUILD_DIR)/nemu-log.txt
 override ARGS += $(ARGS_DIFF)
-override TEST ?=  --mtrace=$(MPATH)/mtrace.txt
-$(info run here)
+override TEST ?=  --mtrace=$(MPATH)/$*-memory.txt
+$(info $(TEST))
 
 # Command to execute NEMU
 IMG ?=
