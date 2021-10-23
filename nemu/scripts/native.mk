@@ -12,7 +12,7 @@ $(BINARY): compile_git
 export MPATH=/home/yu/ics2021/am-kernels/tests/cpu-tests/build##
 ALL = $(basename $(notdir $(shell find $(MPATH)/. -name "*-mtrace.txt")))##
 $(ALL): %:%.txt
-%.txt:latest
+%.txt:%.txt
 	@/bin/echo $*
 $(info $(ALL))
 #%.txt: TEST =  --mtrace=$(MPATH)
