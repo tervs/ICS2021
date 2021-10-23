@@ -25,12 +25,12 @@ override ARGS += $(ARGS_DIFF)
 
 # Command to execute NEMU
 IMG ?=
-NEMU_EXEC := $(BINARY) $(ARGS)  $(IMG)
+NEMU_EXEC := $(BINARY) $(ARGS) $(IMG)
 
 run-env: $(BINARY) $(DIFF_REF_SO)
 
 run: run-env
-	$(call git_commit, "run")
+		$(call git_commit, "run")
 		$(NEMU_EXEC)
 
 gdb: run-env
@@ -44,4 +44,4 @@ clean-tools: $(clean-tools)
 clean-all: clean distclean clean-tools
 latest:
 
-.PHONY: run gdb run-env clean-tools clean-all $(clean-tools) latest
+.PHONY: run gdb run-env clean-tools clean-all $(clean-tools)
