@@ -14,6 +14,7 @@ ALL = $(basename $(notdir $(shell find $(MPATH)/. -name "*-mtrace.txt")))##
 $(ALL): %:%.txt
 %.txt:
 	@echo $*
+$(info $(ALL))
 #%.txt: TEST =  --mtrace=$(MPATH)
 # Some convenient rules
 
@@ -21,7 +22,7 @@ $(ALL): %:%.txt
 override ARGS ?= --log=$(BUILD_DIR)/nemu-log.txt
 override ARGS += $(ARGS_DIFF)
 #$(info new $(TEST))
-#$(info $(ALL))
+
 
 # Command to execute NEMU
 IMG ?=
