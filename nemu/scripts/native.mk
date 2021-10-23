@@ -11,7 +11,7 @@ export MPATH=/home/yu/ics2021/am-kernels/tests/cpu-tests/build
 # Some convenient rules
 
 
-override ARGS ?= --log=$(BUILD_DIR)/test-nemu-log.txt
+override ARGS ?= --log=$(BUILD_DIR)/nemu-log.txt
 override ARGS += $(ARGS_DIFF)
 override TEST ?=  --mtrace=$(MPATH)/$*-memory.txt
 $(info $(TEST))
