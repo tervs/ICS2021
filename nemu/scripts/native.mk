@@ -12,7 +12,7 @@ $(BINARY): compile_git
 export MPATH=/home/yu/ics2021/am-kernels/tests/cpu-tests/build##
 ALL = $(basename $(notdir $(shell find $(MPATH)/. -name "*-mtrace.txt")))##
 $(ALL): %:%.txt
-%.txt:
+%.txt:latest
 	@echo $*
 $(info $(ALL))
 #%.txt: TEST =  --mtrace=$(MPATH)
@@ -45,4 +45,4 @@ clean-tools: $(clean-tools)
 clean-all: clean distclean clean-tools
 latest:
 
-.PHONY: run gdb run-env clean-tools clean-all $(clean-tools)
+.PHONY: run gdb run-env clean-tools clean-all $(clean-tools) latest
