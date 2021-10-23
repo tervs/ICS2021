@@ -11,6 +11,8 @@ $(BINARY): compile_git
 
 export MPATH=/home/yu/ics2021/am-kernels/tests/cpu-tests/build##
 ALL = $(basename $(notdir $(shell find $(MPATH)/. -name "*-mtrace.txt")))##
+
+
 $(ALL): %:%.txt
 %.txt:%.txt
 	@/bin/echo $*
@@ -33,7 +35,7 @@ run-env: $(BINARY) $(DIFF_REF_SO)
 run: run-env
 		$(call git_commit, "run")
 		$(NEMU_EXEC)
-
+	$(addsuffix "test", $(ALL))
 gdb: run-env
 	$(call git_commit, "gdb")
 	gdb -s $(BINARY) --args $(NEMU_EXEC)
