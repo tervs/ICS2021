@@ -64,14 +64,16 @@ static int parse_args(int argc, char *argv[]) {
     {0          , 0                , NULL,  0 },
   };
  // printf("arcg is %d  argc is %s\n",argc,*argv);
+ Log("logfile is %s",log_file); 
+Log("logfile is %s",diff_so_file);
   int o;
   while ( (o = getopt_long(argc, argv, "-bhl:d:p:", table, NULL)) != -1) {
     //Log("o os %d",o);
     switch (o) {
       case 'b': printf("b\n");sdb_set_batch_mode(); break;
       case 'p': printf("p\n");sscanf(optarg, "%d", &difftest_port); break;
-      case 'l': printf("l\n");log_file = optarg;Log("logfile is %s",log_file); break;
-      case 'd': printf("d\n");diff_so_file = optarg;Log("logfile is %s",diff_so_file); break;
+      case 'l': printf("l\n");log_file = optarg;break;
+      case 'd': printf("d\n");diff_so_file = optarg; break;
       case 1: printf("?\n");img_file = optarg; return optind - 1;
       default:
         printf("Usage: %s [OPTION...] IMAGE [args]\n\n", argv[0]);
