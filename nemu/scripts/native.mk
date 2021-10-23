@@ -14,13 +14,13 @@ export MPATH=/home/yu/ics2021/am-kernels/tests/cpu-tests/build##
 ALL = $(basename $(notdir $(shell find $(MPATH)/. -name "*-mtrace.txt")))##
 $(ALL): %:%.txt
 %.txt:
-TEST ?=  --mtrace=$(MPATH)/$*.txt
+	$(eval TEST ?=  --mtrace=$(MPATH)/$*.txt)
 # Some convenient rules
 
 
 override ARGS ?= --log=$(BUILD_DIR)/nemu-log.txt
 override ARGS += $(ARGS_DIFF)
-
+$(info new $(TEST))
 $(info $(ALL))
 
 # Command to execute NEMU
