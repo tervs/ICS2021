@@ -11,7 +11,7 @@ export MPATH=/home/yu/ics2021/am-kernels/tests/cpu-tests/build
 # Some convenient rules
 
 override ARGS ?= --log=$(BUILD_DIR)/nemu-log.txt
-override ARGS += $(ARGS_DIFF)
+#override ARGS += $(ARGS_DIFF)
 override TEST ?=  --mtrace=$(MPATH)/test-mtrace.txt
 
 # Command to execute NEMU
