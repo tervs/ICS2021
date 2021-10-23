@@ -14,7 +14,7 @@ export MPATH=/home/yu/ics2021/am-kernels/tests/cpu-tests/build##
 ALL = $(basename $(notdir $(shell find $(MPATH)/. -name "*-mtrace.txt")))##
 $(ALL): %:%.txt
 %.txt:
-	@TEST ?=  --mtrace=$(MPATH)/$*.txt
+TEST ?=  --mtrace=$(MPATH)/$*.txt
 # Some convenient rules
 
 
