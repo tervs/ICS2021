@@ -7,11 +7,12 @@ compile_git:
 	$(call git_commit, "compile")
 $(BINARY): compile_git
 
+export MPATH=/home/yu/ics2021/am-kernels/tests/cpu-tests/build
 # Some convenient rules
 
 override ARGS ?= --log=$(BUILD_DIR)/nemu-log.txt
 override ARGS += $(ARGS_DIFF)
-override TEST ?=  --log=$(BUILD_DIR)/test-nemu-log.txt
+override TEST ?=  --mtrace=$(MPATH)/test-mtrace.txt
 
 # Command to execute NEMU
 IMG ?=
