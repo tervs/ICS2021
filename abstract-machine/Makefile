@@ -18,7 +18,7 @@ ifeq ($(findstring $(MAKECMDGOALS),clean|clean-all|html),)
 
 ### Print build info message
 #echo $AM_HOME
-$(info test # Building $(NAME)-$(MAKECMDGOALS) [$(ARCH)])
+$(info # Building $(NAME)-$(MAKECMDGOALS) [$(ARCH)])
 #export CDPATH=/home/yu/ics2021/am-kernels/tests/cpu-tests/build
 #$(shell touch $(CDPATH)/memory.txt)
 
@@ -130,7 +130,7 @@ $(LIBS): %:
 
 ### Rule (link): objects (`*.o`) and libraries (`*.a`) -> `IMAGE.elf`, the final ELF binary to be packed into image (ld)
 $(IMAGE).elf: $(OBJS) am $(LIBS)
-	@echo test + LD "->" $(IMAGE_REL).elf
+	@echo + LD "->" $(IMAGE_REL).elf
 	@$(LD) $(LDFLAGS) -o $(IMAGE).elf --start-group $(LINKAGE) --end-group
 
 ### Rule (archive): objects (`*.o`) -> `ARCHIVE.a` (ar)
