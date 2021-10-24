@@ -83,6 +83,7 @@ p=p-temp;
 void paddr_write(paddr_t addr, int len, word_t data) 
 {
 
+/*
   #ifdef CONFIG_MTRACE
   char *p=(&s)->mtrace_logbuf;
   //printf(" %02x",pmem_read(addr,1));
@@ -105,7 +106,7 @@ p=p-temp;
   
 
 #endif
-
+*/
 
 
 
