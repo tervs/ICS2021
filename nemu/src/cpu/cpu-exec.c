@@ -33,7 +33,7 @@ static void trace_and_difftest(Decode *_this, vaddr_t dnpc)
   if (ITRACE_COND) log_write("test %s\n", _this->logbuf);//此处用于输出到文件
 #endif
   if (g_print_step) 
-  { IFDEF(CONFIG_ITRACE, puts(_this->logbuf)); }//itrace
+  //{ IFDEF(CONFIG_ITRACE, puts(_this->logbuf)); }//itrace
   IFDEF(CONFIG_DIFFTEST, difftest_step(_this->pc, dnpc));//diff
   int x=diff();
   if(x!=0)
