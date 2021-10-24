@@ -18,6 +18,6 @@ bool log_enable() {
   //printf("test init\n");
   bool s=MUXDEF(CONFIG_TRACE, (g_nr_guest_instr >= CONFIG_TRACE_START) &&
          (g_nr_guest_instr <= CONFIG_TRACE_END), false);
-         printf("test init\n");
+         printf("%d\n",s);
   return s;
 }
