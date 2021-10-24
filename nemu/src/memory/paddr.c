@@ -66,10 +66,9 @@ word_t paddr_read(paddr_t addr, int len)
 void paddr_write(paddr_t addr, int len, word_t data) 
 {
 
-printf("test\n");
   #ifdef CONFIG_MTRACE
   char *p=(&s)->mtrace_logbuf;
-
+  printf(" %02x",pmem_read(addr,1));
 
   p += snprintf(p, sizeof((&s)->mtrace_logbuf), FMT_WORD ":", (&s)->pc);
   for (int i = 0; i < len; i ++) 
