@@ -66,12 +66,8 @@ static int parse_args(int argc, char *argv[]) {
     {"mtrace"   , required_argument, NULL, 'm'},
     {0          , 0                , NULL,  0 },
   };
- // printf("arcg is %d  argc is %s\n",argc,*argv);
- //Log("logfile is %s",log_file); 
-//Log("logfile is %s",diff_so_file);
   int o;
   while ( (o = getopt_long(argc, argv, "-bhl:d:p:m:", table, NULL)) != -1) {
-    //Log("o os %d",o);
     switch (o) {
       case 'b': sdb_set_batch_mode(); break;
       case 'p': sscanf(optarg, "%d", &difftest_port); break;
@@ -98,13 +94,14 @@ void init_monitor(int argc, char *argv[]) {
 
   /* Parse arguments. */
   parse_args(argc, argv);
-  printf("%s\n",mtrace_file);
+
+
+  //printf("%s\n",mtrace_file);
   /* Set random seed. */
   init_rand();
 
   /* Open the log file. */
   init_log(log_file);
-
 
 
   init_mtrace_log(mtrace_file);
