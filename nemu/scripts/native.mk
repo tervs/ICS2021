@@ -33,7 +33,7 @@ NEMU_EXEC := $(BINARY) $(ARGS) $(MTRACE) $(IMG)
 run-env: $(BINARY) $(DIFF_REF_SO)
 
 run: run-env
-		@$(shell if [ ! -e $(CDPATH)/nemu-log-mtrace.txt ];then touch $(CDPATH)/nemu-log-mtrace.txt; fi)
+#		@$(shell if [ ! -e $(CDPATH)/nemu-log-mtrace.txt ];then touch $(CDPATH)/nemu-log-mtrace.txt; fi)
 		$(call git_commit, "run")
 		$(NEMU_EXEC)
 
