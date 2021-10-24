@@ -71,15 +71,19 @@ void paddr_write(paddr_t addr, int len, word_t data)
   //printf(" %02x",pmem_read(addr,1));
   int temp;
   temp=snprintf(p, sizeof((&s)->mtrace_logbuf), FMT_WORD ":", (&s)->pc);
-printf("%s\n",p);
-p=p+temp;
-  p += snprintf(p, sizeof((&s)->mtrace_logbuf), FMT_WORD ":", (&s)->pc);
+ 
+  p=p+temp;
+ // p += snprintf(p, sizeof((&s)->mtrace_logbuf), FMT_WORD ":", (&s)->pc);
   for (int i = 0; i < len; i ++) 
   {
-    p += snprintf(p, 4, " %02x", pmem_read(addr,1));//打印指令
-     //printf("%02s\n",p);
+    int step=0;
+    step= snprintf(p, 4, " %02x", pmem_read(addr,1));//打印指令
+    temp+=step;
+    p+=step;
     addr++;
   }
+p=p-temp;
+ printf("%s\n",p);
   
 
 #endif
