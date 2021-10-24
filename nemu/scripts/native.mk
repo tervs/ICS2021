@@ -33,7 +33,7 @@ genmtrace:
 run-env: $(BINARY) $(DIFF_REF_SO)
 
 run: run-env
-
+		$(call genmtrace,"run")
 		$(call git_commit, "run")
 		$(NEMU_EXEC)
 
