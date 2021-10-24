@@ -10,25 +10,25 @@ compile_git:
 $(BINARY): compile_git
 
 export MPATH=/home/yu/ics2021/am-kernels/tests/cpu-tests/build##
-ALL = $(basename $(notdir $(shell find $(MPATH)/. -name "*-mtrace.txt")))##
+#ALL = $(basename $(notdir $(shell find $(MPATH)/. -name "*-mtrace.txt")))##
+#@$(shell touch $(CDPATH)/log-mtrace.txt)
 
 
-$(ALL): %:%.txt
-%.txt:%.txt
-	@/bin/echo $*
-$(info $(ALL))
-#%.txt: TEST =  --mtrace=$(MPATH)
 # Some convenient rules
 
 
 override ARGS ?= --log=$(BUILD_DIR)/nemu-log.txt
 override ARGS += $(ARGS_DIFF)
+override MTRACE =  --mtrace=$(MPATH)/nemu-log-mtrace
 #$(info new $(TEST))
 
 
 # Command to execute NEMU
 IMG ?=
-NEMU_EXEC := $(BINARY) $(ARGS) $(IMG)
+NEMU_EXEC := $(BINARY) $(ARGS) $(MTRACE) $(IMG)
+
+genmtrace:
+	@$(shell if [ ! -e $(CDPATH)/nemu-log-mtrace.txt ];then touch $(CDPATH)/nemu-log-mtrace; fi)
 
 run-env: $(BINARY) $(DIFF_REF_SO)
 
@@ -46,6 +46,6 @@ $(clean-tools):
 	-@$(MAKE) -s -C $@ clean
 clean-tools: $(clean-tools)
 clean-all: clean distclean clean-tools
-latest:
 
-.PHONY: run gdb run-env clean-tools clean-all $(clean-tools) latest
+
+.PHONY: run gdb run-env clean-tools clean-all $(clean-tools) genmtrace
