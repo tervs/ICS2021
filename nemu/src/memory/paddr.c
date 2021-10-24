@@ -70,7 +70,7 @@ void paddr_write(paddr_t addr, int len, word_t data)
     panic("address = " FMT_PADDR " is out of bound of pmem [" FMT_PADDR ", " FMT_PADDR ") at pc = " FMT_WORD,
       addr, CONFIG_MBASE, CONFIG_MBASE + CONFIG_MSIZE, cpu.pc));
 
-
+printf("test\n");
   #ifdef CONFIG_MTRACE
   char *p=(&s)->mtrace_logbuf;
 
