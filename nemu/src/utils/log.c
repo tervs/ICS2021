@@ -10,12 +10,14 @@ void init_log(const char *log_file) {
     Assert(fp, "Can not open '%s'", log_file);
     log_fp = fp;
   }
-  printf("test log\n");
+  //printf("test log\n");
   Log("Log is written to %s", log_file ? log_file : "stdout");
 }
 
 bool log_enable() {
-  printf("test init\n");
-  return MUXDEF(CONFIG_TRACE, (g_nr_guest_instr >= CONFIG_TRACE_START) &&
+  //printf("test init\n");
+  bool s=MUXDEF(CONFIG_TRACE, (g_nr_guest_instr >= CONFIG_TRACE_START) &&
          (g_nr_guest_instr <= CONFIG_TRACE_END), false);
+         printf("test init\n");
+  return s;
 }
