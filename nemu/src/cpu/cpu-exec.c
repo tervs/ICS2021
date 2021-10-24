@@ -113,7 +113,7 @@ void fetch_decode(Decode *s, vaddr_t pc)
   char *p = s->logbuf;
   //printf("%s\n",p);
   p += snprintf(p, sizeof(s->logbuf), FMT_WORD ":", s->pc);//打印pc
-  if(strcmp(p," ")){assert(1);}
+  if(p==NULL){assert(0);}
   //printf("is pc ? %02x\n",s->pc);
   int ilen = s->snpc - s->pc;
   int i;
