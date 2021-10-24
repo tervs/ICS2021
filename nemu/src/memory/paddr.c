@@ -2,6 +2,8 @@
 #include <memory/paddr.h>
 #include <device/mmio.h>
 #include <isa.h>
+#include <cpu/decode.h>
+extern Decode s;
 
 #if   defined(CONFIG_TARGET_AM)
 static uint8_t *pmem = NULL;
