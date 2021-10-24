@@ -9,6 +9,7 @@ void init_device();
 void init_sdb();
 void init_disasm(const char *triple);
 //void init_iringbuf();
+void init_log(const char *mtrace_file);
 
 static void welcome() {
   Log("Trace: %s", MUXDEF(CONFIG_TRACE, ASNI_FMT("ON", ASNI_FG_GREEN), ASNI_FMT("OFF", ASNI_FG_RED)));
@@ -103,6 +104,7 @@ void init_monitor(int argc, char *argv[]) {
   /* Open the log file. */
   init_log(log_file);
 
+  init_log(mtrace_file);
   /* Initialize memory. */
   init_mem();
 

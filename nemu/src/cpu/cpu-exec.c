@@ -13,6 +13,7 @@
 
 CPU_state cpu = {};
 uint64_t g_nr_guest_instr = 0;
+uint64_t addr=0x80000000;
 static uint64_t g_timer = 0; // unit: us
 static bool g_print_step = false;
 const rtlreg_t rzero = 0;
