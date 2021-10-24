@@ -68,7 +68,7 @@ word_t paddr_read(paddr_t addr, int len)
 void paddr_write(paddr_t addr, int len, word_t data) 
 {
 
-/*
+
   #ifdef CONFIG_MTRACE
   char *p=(&s)->mtrace_logbuf;
   //printf(" %02x",pmem_read(addr,1));
@@ -86,13 +86,8 @@ void paddr_write(paddr_t addr, int len, word_t data)
     p+=step;
     addr++;
   }
-p=p-temp;
- printf("%s\n",p);
-  
 
 #endif
-*/
-
 
 
 
