@@ -70,21 +70,22 @@ static int parse_args(int argc, char *argv[]) {
  //Log("logfile is %s",log_file); 
 //Log("logfile is %s",diff_so_file);
   int o;
-  while ( (o = getopt_long(argc, argv, "-bhl:d:p:", table, NULL)) != -1) {
+  while ( (o = getopt_long(argc, argv, "-bhl:d:p:m:", table, NULL)) != -1) {
     //Log("o os %d",o);
     switch (o) {
-      case 'b': printf("b\n");sdb_set_batch_mode(); break;
-      case 'p': printf("p\n");sscanf(optarg, "%d", &difftest_port); break;
-      case 'l': printf("l\n");log_file = optarg;break;
-      case 'd': printf("d\n");diff_so_file = optarg; break;
-      case 'm': printf("m\n");mtrace_file = optarg; break;
-      case 1: printf("?\n");img_file = optarg; return optind - 1;
+      case 'b': sdb_set_batch_mode(); break;
+      case 'p': sscanf(optarg, "%d", &difftest_port); break;
+      case 'l': log_file = optarg;break;
+      case 'd': diff_so_file = optarg; break;
+      case 'm': mtrace_file = optarg; break;
+      case 1: img_file = optarg; return optind - 1;
       default:
         printf("Usage: %s [OPTION...] IMAGE [args]\n\n", argv[0]);
         printf("\t-b,--batch              run with batch mode\n");
         printf("\t-l,--log=FILE           output log to FILE\n");
         printf("\t-d,--diff=REF_SO        run DiffTest with reference REF_SO\n");
         printf("\t-p,--port=PORT          run DiffTest with port PORT\n");
+        printf("\t-m,--mtrace=FILE        output mtrace-log to FILE\n");
         printf("\n");
         exit(0);
     }
@@ -103,6 +104,8 @@ void init_monitor(int argc, char *argv[]) {
 
   /* Open the log file. */
   init_log(log_file);
+
+
 
   init_mtrace_log(mtrace_file);
   /* Initialize memory. */

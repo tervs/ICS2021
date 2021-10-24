@@ -20,20 +20,14 @@ export MPATH=/home/yu/ics2021/am-kernels/tests/cpu-tests/build##
 override ARGS ?= --log=$(BUILD_DIR)/nemu-log.txt
 override ARGS += $(ARGS_DIFF)
 override MTRACE =  --mtrace=$(MPATH)/nemu-log-mtrace.txt
-#$(info new $(TEST))
-
 
 # Command to execute NEMU
 IMG ?=
 NEMU_EXEC := $(BINARY) $(ARGS) $(MTRACE) $(IMG)
 
-#genmtrace:
-#	@$(shell if [ ! -e $(CDPATH)/nemu-log-mtrace.txt ];then touch $(CDPATH)/nemu-log-mtrace.txt; fi)
-
 run-env: $(BINARY) $(DIFF_REF_SO)
 
 run: run-env
-#		@$(shell if [ ! -e $(CDPATH)/nemu-log-mtrace.txt ];then touch $(CDPATH)/nemu-log-mtrace.txt; fi)
 		$(call git_commit, "run")
 		$(NEMU_EXEC)
 
