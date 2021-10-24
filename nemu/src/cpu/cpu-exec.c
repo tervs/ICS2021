@@ -27,6 +27,13 @@ int diff();
 
 
 
+/*
+static void mtrace(Decode *s)
+{
+    char *p=s->mtrace_logbuf;
+    p += snprintf(p, sizeof(s->mtrace_logbuf), FMT_WORD ":", s->pc);
+}
+*/
 static void trace_and_difftest(Decode *_this, vaddr_t dnpc) 
 {
  // printf("test\n");
@@ -124,6 +131,14 @@ void fetch_decode(Decode *s, vaddr_t pc)
   void disassemble(char *str, int size, uint64_t pc, uint8_t *code, int nbyte);
   disassemble(p, s->logbuf + sizeof(s->logbuf) - p, MUXDEF(CONFIG_ISA_x86, s->snpc, s->pc), (uint8_t *)&s->isa.instr.val, ilen);
 #endif
+
+
+/*
+  #ifdef CONFIG_MTRACE
+    mtrace();
+  #endif // DEBUG
+*/
+
 }
 
 
