@@ -83,7 +83,7 @@ void paddr_write(paddr_t addr, int len, word_t data)
 
 
 #ifdef CONFIG_MTRACE
-  p+=snprintf(p, sizeof((&s)->mtrace_logbuf), "  After:");//格式宏 FMT_WORD 
+  p+=snprintf(p, sizeof((&s)->mtrace_logbuf), "     After:");//格式宏 FMT_WORD 
   for (int i = 0; i < len; i ++) 
   {
     p+= snprintf(p, 4, " %02x", pmem_read(addr,1));//打印指令
