@@ -11,7 +11,9 @@ void init_mtrace(const char *log_file) {
     FILE *fp = fopen(log_file, "w");
     Assert(fp, "Can not open '%s'", log_file);
     mtrace_log_fp = fp;
+  
   }
+  
   Log("Mtrace Log is written to %s", log_file ? log_file : "stdout");
 }
 
