@@ -27,13 +27,13 @@ override MTRACE =  --mtrace=$(MPATH)/nemu-log-mtrace.txt
 IMG ?=
 NEMU_EXEC := $(BINARY) $(ARGS) $(MTRACE) $(IMG)
 
-genmtrace:
-	@$(shell if [ ! -e $(CDPATH)/nemu-log-mtrace.txt ];then touch $(CDPATH)/nemu-log-mtrace.txt; fi)
+#genmtrace:
+#	@$(shell if [ ! -e $(CDPATH)/nemu-log-mtrace.txt ];then touch $(CDPATH)/nemu-log-mtrace.txt; fi)
 
 run-env: $(BINARY) $(DIFF_REF_SO)
 
 run: run-env
-		$(call genmtrace,"run")
+		@$(shell if [ ! -e $(CDPATH)/nemu-log-mtrace.txt ];then touch $(CDPATH)/nemu-log-mtrace.txt; fi)
 		$(call git_commit, "run")
 		$(NEMU_EXEC)
 
@@ -48,4 +48,4 @@ clean-tools: $(clean-tools)
 clean-all: clean distclean clean-tools
 
 
-.PHONY: run gdb run-env clean-tools clean-all $(clean-tools) genmtrace
+.PHONY: run gdb run-env clean-tools clean-all $(clean-tools) 
