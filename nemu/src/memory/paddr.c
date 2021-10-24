@@ -90,21 +90,17 @@ void paddr_write(paddr_t addr, int len, word_t data)
   #ifdef CONFIG_MTRACE
   char *p=(&s)->mtrace_logbuf;
   //printf(" %02x",pmem_read(addr,1));
-  int temp;
-  temp=snprintf(p, sizeof((&s)->mtrace_logbuf), "W pc:"FMT_WORD"  addr:0x%08x", (&s)->pc,addr);//格式宏 FMT_WORD 
-  p=p+temp;
+  p+=snprintf(p, sizeof((&s)->mtrace_logbuf), "W pc:"FMT_WORD"  addr:0x%08x", (&s)->pc,addr);//格式宏 FMT_WORD 
  // p += snprintf(p, sizeof((&s)->mtrace_logbuf), FMT_WORD ":", (&s)->pc);
   for (int i = 0; i < len; i ++) 
   {
-    int step=0;
-    step= snprintf(p, 4, " %02x", pmem_read(addr,1));//打印指令
-    temp+=step;
-    p+=step;
+    p+= snprintf(p, 4, " %02x", pmem_read(addr,1));//打印指令
     addr++;
   }
+  addr=addr-len;
 #endif
 
-addr=addr-len;
+
 
   if (likely(in_pmem(addr))) { pmem_write(addr, len, data); return; }
   MUXDEF(CONFIG_DEVICE, mmio_write(addr, len, data),
