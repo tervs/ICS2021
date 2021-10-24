@@ -41,6 +41,11 @@ static void trace_and_difftest(Decode *_this, vaddr_t dnpc)
   if (ITRACE_COND) log_write("%s\n", _this->logbuf);//此处用于输出到文件
   //printf("%s\n",_this->logbuf);
 #endif
+
+#ifdef CONFIG_MTRACE_COND
+  if (CONFIG_MTRACE_COND) mtrace_log_write("%s\n", _this->mtrace_logbuf);//此处用于输出到文件
+  //printf("%s\n",_this->logbuf);
+#endif
   if (g_print_step) 
   //{ IFDEF(CONFIG_ITRACE, puts(_this->logbuf)); }//itrace
   IFDEF(CONFIG_DIFFTEST, difftest_step(_this->pc, dnpc));//diff
