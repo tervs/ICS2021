@@ -11,9 +11,11 @@ void init_log(const char *log_file) {
     log_fp = fp;
   }
   Log("Log is written to %s", log_file ? log_file : "stdout");
+  printf("test init\n");
 }
 
 bool log_enable() {
+  printf("test init\n");
   return MUXDEF(CONFIG_TRACE, (g_nr_guest_instr >= CONFIG_TRACE_START) &&
          (g_nr_guest_instr <= CONFIG_TRACE_END), false);
 }
