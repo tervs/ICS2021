@@ -55,6 +55,7 @@ word_t paddr_read(paddr_t addr, int len)
     p+=step;
     addr++;
   }
+  addr=addr-len;
  //printf("%s\n",p);
 #endif
 
