@@ -46,7 +46,7 @@ word_t paddr_read(paddr_t addr, int len)
   char *p=(&s)->mtrace_logbuf;
   //printf(" %02x",pmem_read(addr,1));
   int temp;
-  temp=snprintf(p, sizeof((&s)->mtrace_logbuf), "R pc:"FMT_WORD"  addr:0x%08x", (&s)->pc,addr);//格式宏 FMT_WORD
+  temp=snprintf(p, sizeof((&s)->mtrace_logbuf), "  pc:"FMT_WORD"  addr:0x%08x", (&s)->pc,addr);//格式宏 FMT_WORD
 
  
   p=p+temp;
@@ -100,7 +100,7 @@ void paddr_write(paddr_t addr, int len, word_t data)
     addr++;
   }
 p=p-temp;
- //printf("%s\n",p);
+ printf("%s\n",p);
   
 
 #endif
