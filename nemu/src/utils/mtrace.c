@@ -14,6 +14,6 @@ void init_mtrace(const char *log_file) {
   Log("Mtrace Log is written to %s", log_file ? log_file : "stdout");
 }
 
-bool log_enable() {
+bool mtrace_log_enable() {
   return MUXDEF(CONFIG_MTRACE, (addr>=0x80000000)&&(addr<=0x88000000), false);
 }
