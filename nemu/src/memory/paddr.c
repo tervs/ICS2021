@@ -73,9 +73,7 @@ void paddr_write(paddr_t addr, int len, word_t data)
   char *p=(&s)->mtrace_logbuf;
   //printf(" %02x",pmem_read(addr,1));
   int temp;
-  temp=snprintf(p, sizeof((&s)->mtrace_logbuf), "W pc:"FMT_WORD"  addr:0x%08x", (&s)->pc,addr);//格式宏 FMT_WORD
-
- 
+  temp=snprintf(p, sizeof((&s)->mtrace_logbuf), "W pc:"FMT_WORD"  addr:0x%08x", (&s)->pc,addr);//格式宏 FMT_WORD 
   p=p+temp;
  // p += snprintf(p, sizeof((&s)->mtrace_logbuf), FMT_WORD ":", (&s)->pc);
   for (int i = 0; i < len; i ++) 
@@ -86,7 +84,6 @@ void paddr_write(paddr_t addr, int len, word_t data)
     p+=step;
     addr++;
   }
-
 #endif
 
 
