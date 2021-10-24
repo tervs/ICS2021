@@ -68,8 +68,11 @@ void paddr_write(paddr_t addr, int len, word_t data)
 
   #ifdef CONFIG_MTRACE
   char *p=(&s)->mtrace_logbuf;
-  printf(" %02x",pmem_read(addr,1));
-
+  //printf(" %02x",pmem_read(addr,1));
+  int temp;
+  temp=snprintf(p, sizeof((&s)->mtrace_logbuf), FMT_WORD ":", (&s)->pc);
+printf("%s\n",p);
+p=p+temp;
   p += snprintf(p, sizeof((&s)->mtrace_logbuf), FMT_WORD ":", (&s)->pc);
   for (int i = 0; i < len; i ++) 
   {
@@ -77,7 +80,7 @@ void paddr_write(paddr_t addr, int len, word_t data)
      //printf("%02s\n",p);
     addr++;
   }
-  printf("%s\n",p);
+  
 
 #endif
 
