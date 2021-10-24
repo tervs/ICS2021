@@ -5,7 +5,7 @@ extern uint64_t addr;
 FILE *mtrace_log_fp = NULL;
 
 void init_mtrace(const char *log_file) {
-  printf("test init\n");
+  //printf("test init\n");
   mtrace_log_fp = stdout;
   if (log_file != NULL) {
     FILE *fp = fopen(log_file, "w");
