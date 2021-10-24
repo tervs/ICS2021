@@ -18,6 +18,7 @@ static uint64_t g_timer = 0; // unit: us
 static bool g_print_step = false;
 const rtlreg_t rzero = 0;
 rtlreg_t tmp_reg[4];
+Decode s;
 
 void device_update();
 void fetch_decode(Decode *s, vaddr_t pc);
@@ -145,7 +146,7 @@ void cpu_exec(uint64_t n)
 
   uint64_t timer_start = get_time();
 
-  Decode s;
+  //Decode s;
   for (;n > 0; n --) 
   {//两处引用了itace这个宏
     fetch_decode_exec_updatepc(&s);
