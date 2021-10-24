@@ -104,7 +104,9 @@ void fetch_decode(Decode *s, vaddr_t pc)
                                                                   //itace 的实现在这个地方
 #ifdef CONFIG_ITRACE
   char *p = s->logbuf;
+  printf("init %s\n",p);
   p += snprintf(p, sizeof(s->logbuf), FMT_WORD ":", s->pc);//打印pc
+  printf("%s\n",p);
   int ilen = s->snpc - s->pc;
   int i;
   uint8_t *instr = (uint8_t *)&s->isa.instr.val;
