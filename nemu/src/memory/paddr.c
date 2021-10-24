@@ -42,7 +42,7 @@ void init_mem() {
 word_t paddr_read(paddr_t addr, int len) 
 {
 
-/*
+
     #ifdef CONFIG_MTRACE
   char *p=(&s)->mtrace_logbuf;
   //printf(" %02x",pmem_read(addr,1));
@@ -65,7 +65,7 @@ p=p-temp;
   
 
 #endif
-*/
+
 
 
 
