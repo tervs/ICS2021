@@ -44,15 +44,10 @@ word_t paddr_read(paddr_t addr, int len)
   
   #ifdef CONFIG_MTRACE
   char *p=(&s)->mtrace_logbuf;
-  int temp;
-  temp=snprintf(p, sizeof((&s)->mtrace_logbuf), "  pc:"FMT_WORD"  addr:0x%08x", (&s)->pc,addr);//格式宏 FMT_WORD
-  p=p+temp;
+  p+=snprintf(p, sizeof((&s)->mtrace_logbuf), "  pc:"FMT_WORD"  addr:0x%08x", (&s)->pc,addr);//格式宏 FMT_WORD
   for (int i = 0; i < len; i ++) 
   {
-    int step=0;
-    step= snprintf(p, 4, " %02x", pmem_read(addr,1));//打印指令
-    temp+=step;
-    p+=step;
+    p+= snprintf(p, 4, " %02x", pmem_read(addr,1));//打印指令
     addr++;
   }
   addr=addr-len;
