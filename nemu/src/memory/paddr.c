@@ -83,9 +83,9 @@ void paddr_write(paddr_t addr, int len, word_t data)
   MUXDEF(CONFIG_DEVICE, mmio_write(addr, len, data),
     panic("address = " FMT_PADDR " is out of bound of pmem [" FMT_PADDR ", " FMT_PADDR ") at pc = " FMT_WORD,
       addr, CONFIG_MBASE, CONFIG_MBASE + CONFIG_MSIZE, cpu.pc));
-/*
+
 #ifdef CONFIG_MTRACE
-  p+=snprintf(p, sizeof((&s)->mtrace_logbuf), "W pc:"FMT_WORD"  addr:0x%08x", (&s)->pc,addr);//格式宏 FMT_WORD 
+  p+=snprintf(p, sizeof((&s)->mtrace_logbuf), "  After:");//格式宏 FMT_WORD 
   for (int i = 0; i < len; i ++) 
   {
     p+= snprintf(p, 4, " %02x", pmem_read(addr,1));//打印指令
@@ -93,7 +93,7 @@ void paddr_write(paddr_t addr, int len, word_t data)
   }
   addr=addr-len;
 #endif
-*/
+
 
 
     
