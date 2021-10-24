@@ -41,25 +41,41 @@ void init_mem() {
 
 word_t paddr_read(paddr_t addr, int len) 
 {
+
+    #ifdef CONFIG_MTRACE
+  char *p=(&s)->mtrace_logbuf;
+  //printf(" %02x",pmem_read(addr,1));
+  int temp;
+  temp=snprintf(p, sizeof((&s)->mtrace_logbuf), "R pc:"FMT_WORD"  addr:0x%08x", (&s)->pc,addr);//格式宏 FMT_WORD
+
+ 
+  p=p+temp;
+ // p += snprintf(p, sizeof((&s)->mtrace_logbuf), FMT_WORD ":", (&s)->pc);
+  for (int i = 0; i < len; i ++) 
+  {
+    int step=0;
+    step= snprintf(p, 4, " %02x", pmem_read(addr,1));//打印指令
+    temp+=step;
+    p+=step;
+    addr++;
+  }
+p=p-temp;
+ //printf("%s\n",p);
+  
+
+#endif
+
+
+
+
+
   if (likely(in_pmem(addr))) return pmem_read(addr, len);
   MUXDEF(CONFIG_DEVICE, return mmio_read(addr, len),
     panic("address = " FMT_PADDR " is out of bound of pmem [" FMT_PADDR ", " FMT_PADDR ") at pc = " FMT_WORD,
       addr, CONFIG_MBASE, CONFIG_MBASE + CONFIG_MSIZE, cpu.pc));
 
 
-#ifdef CONFIG_MTRACE
-  char *p=(&s)->mtrace_logbuf;
 
-
-  p += snprintf(p, sizeof((&s)->mtrace_logbuf), FMT_WORD ":", (&s)->pc);
-  for (int i = 0; i < len; i ++) 
-  {
-    p += snprintf(p, 4, " %02x", pmem_read(addr,1));//打印指令
-    addr++;
-  }
-  printf("%s\n",p);
-
-#endif
     
 }
 
@@ -84,7 +100,7 @@ void paddr_write(paddr_t addr, int len, word_t data)
     addr++;
   }
 p=p-temp;
- printf("%s\n",p);
+ //printf("%s\n",p);
   
 
 #endif
