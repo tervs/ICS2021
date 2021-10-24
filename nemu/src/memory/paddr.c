@@ -74,6 +74,7 @@ void paddr_write(paddr_t addr, int len, word_t data)
   for (int i = 0; i < len; i ++) 
   {
     p += snprintf(p, 4, " %02x", pmem_read(addr,1));//打印指令
+     //printf("%02s\n",p);
     addr++;
   }
   printf("%s\n",p);
