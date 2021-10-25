@@ -19,7 +19,7 @@ static int isletter(char c)
 
 
 
-int printf(const char *fmt, ...) {
+int myprintf(const char *fmt, ...) {
   
   /*
   static char printf_buffer[2*BUFFER_SIZE];
@@ -34,8 +34,8 @@ int printf(const char *fmt, ...) {
     t++;
   }
   return ret;
-
-  */
+*/
+  
   //panic("Not implemented");
   return 0;
 }
@@ -46,7 +46,7 @@ int printf(const char *fmt, ...) {
 
 
 
-int vsnprintf(char *out, size_t n, const char *fmt, va_list ap) {
+int myvsnprintf(char *out, size_t n, const char *fmt, va_list ap) {
   
   static char vsn_buffer[BUFFER_SIZE];
   static char *presentation ="0123456789abcdef";
@@ -241,15 +241,15 @@ return ret;
 }
 
 
-int vsprintf(char *out, const char *fmt, va_list ap) {
-  return vsnprintf(out,-1,fmt,ap);
+int myvsprintf(char *out, const char *fmt, va_list ap) {
+  return myvsnprintf(out,-1,fmt,ap);
 
 }
 
-int sprintf(char *out, const char *fmt, ...) {
+int mysprintf(char *out, const char *fmt, ...) {
   va_list arg;
   va_start(arg,fmt);
-  int ret =vsprintf(out,fmt,arg);
+  int ret =myvsprintf(out,fmt,arg);
   va_end(arg);
 
   return ret;
