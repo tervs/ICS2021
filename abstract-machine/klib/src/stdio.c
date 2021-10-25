@@ -148,7 +148,7 @@ int vsnprintf(char *out, size_t n, const char *fmt, va_list ap) {
             } while (var);
             break;
         }
-       /* 
+      /* 
         case'f':
         {
           double var =va_arg(ap,double);
