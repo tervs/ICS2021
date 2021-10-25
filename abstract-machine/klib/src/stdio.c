@@ -36,7 +36,8 @@ int printf(const char *fmt, ...) {
   return ret;
 
   */
-  panic("Not implemented");
+  //panic("Not implemented");
+  return 0;
 }
 
 
