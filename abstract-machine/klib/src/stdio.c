@@ -20,6 +20,8 @@ static int isletter(char c)
 
 
 int printf(const char *fmt, ...) {
+  
+  /*
   static char printf_buffer[2*BUFFER_SIZE];
   va_list arg;
   va_start(arg,fmt);
@@ -32,7 +34,9 @@ int printf(const char *fmt, ...) {
     t++;
   }
   return ret;
-  //panic("Not implemented");
+
+  */
+  panic("Not implemented");
 }
 
 
