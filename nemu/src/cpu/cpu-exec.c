@@ -47,6 +47,7 @@ static void trace_and_difftest(Decode *_this, vaddr_t dnpc)
   memset(_this->mtrace_logbuf,' ',sizeof(_this->mtrace_logbuf));//此处用于输出到文件
   //printf("%s\n",_this->logbuf);
 #endif
+
   if (g_print_step) 
 //  { IFDEF(CONFIG_ITRACE, puts(_this->logbuf)); }//itrace
   IFDEF(CONFIG_DIFFTEST, difftest_step(_this->pc, dnpc));//diff
@@ -109,9 +110,6 @@ void fetch_decode(Decode *s, vaddr_t pc)
    //isa_reg_display();
   s->dnpc = s->snpc;
   s->EHelper = g_exec_table[idx];
-
-
-
                                                                   //itace 的实现在这个地方
 #ifdef CONFIG_ITRACE
   char *p = s->logbuf;
@@ -137,13 +135,6 @@ void fetch_decode(Decode *s, vaddr_t pc)
   void disassemble(char *str, int size, uint64_t pc, uint8_t *code, int nbyte);
   disassemble(p, s->logbuf + sizeof(s->logbuf) - p, MUXDEF(CONFIG_ISA_x86, s->snpc, s->pc), (uint8_t *)&s->isa.instr.val, ilen);
 #endif
-
-
-/*
-  #ifdef CONFIG_MTRACE
-    mtrace();
-  #endif // DEBUG
-*/
 
 }
 

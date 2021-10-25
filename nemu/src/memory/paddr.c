@@ -63,9 +63,9 @@ word_t paddr_read(paddr_t addr, int len)
 void paddr_write(paddr_t addr, int len, word_t data) 
 {
 
-  
+ 
 #ifdef CONFIG_MTRACE
-char *p=(&s)->mtrace_logbuf;
+  char *p=(&s)->mtrace_logbuf;
   p+=snprintf(p, sizeof((&s)->mtrace_logbuf), "W pc:"FMT_WORD"  addr:0x%08x", (&s)->pc,addr);//格式宏 FMT_WORD 
   for (int i = 0; i < len; i ++) 
   {
@@ -75,9 +75,7 @@ char *p=(&s)->mtrace_logbuf;
   addr=addr-len;
 #endif
 
-
   if (likely(in_pmem(addr))) { pmem_write(addr, len, data); }
-
 
 #ifdef CONFIG_MTRACE
   p+=snprintf(p, sizeof((&s)->mtrace_logbuf), "     After:");//格式宏 FMT_WORD 
