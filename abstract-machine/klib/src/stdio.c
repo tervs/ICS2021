@@ -18,7 +18,7 @@ static int isletter(char c)
 }
 
 
-
+/*
 int printf(const char *fmt, ...) {
   static char printf_buffer[2*BUFFER_SIZE];
   va_list arg;
@@ -34,7 +34,7 @@ int printf(const char *fmt, ...) {
   return ret;
   //panic("Not implemented");
 }
-
+*/
 
 int vsprintf(char *out, const char *fmt, va_list ap) {
   
@@ -55,7 +55,7 @@ int vsnprintf(char *out, size_t n, const char *fmt, va_list ap) {
   char *buffer=vsn_buffer;
   char *outp=out;
   int ret =0;
-  const char *ori=fmt;
+  //const char *ori=fmt;
   while(*fmt)
   {
     char cur=*fmt;
@@ -92,7 +92,7 @@ int vsnprintf(char *out, size_t n, const char *fmt, va_list ap) {
       switch(type)
       {
         case'd':
-          {
+        {
             int32_t var =va_arg(ap,int32_t);
             int isneg=0;
             if(var<0)
@@ -113,8 +113,8 @@ int vsnprintf(char *out, size_t n, const char *fmt, va_list ap) {
             break;
           }
 
-          case'u':
-          {
+        case'u':
+        {
             uint32_t var=va_arg(ap,uint32_t);
             do
             {
@@ -125,8 +125,8 @@ int vsnprintf(char *out, size_t n, const char *fmt, va_list ap) {
             break;
           }
 
-          case'p':
-          {
+        case'p':
+        {
             unsigned long var =(unsigned long)(va_arg(ap,void*));
             do{
               *(--cp)=presentation[var%16];
@@ -139,6 +139,7 @@ int vsnprintf(char *out, size_t n, const char *fmt, va_list ap) {
             outWidth++;
             break;
           }
+        
         case 'x':
         {
           uint32_t var=va_arg(ap,uint32_t);
@@ -150,6 +151,7 @@ int vsnprintf(char *out, size_t n, const char *fmt, va_list ap) {
             } while (var);
             break;
         }
+        
         case'f':
         {
           double var =va_arg(ap,double);
@@ -199,13 +201,18 @@ int vsnprintf(char *out, size_t n, const char *fmt, va_list ap) {
         }
 
         default:
+        
+        /*
         putch('!');
         while(*ori)
         {
           putch(*ori);
           ori++;
         }
+
+        */
         assert(0);
+
         break;
       }
 
