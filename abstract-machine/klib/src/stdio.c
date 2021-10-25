@@ -28,7 +28,7 @@ int printf(const char *fmt, ...) {
   char *t=printf_buffer;
   while(*t)
   {
-    putch(*t);
+    _putc(*t);
     t++;
   }
   return ret;
