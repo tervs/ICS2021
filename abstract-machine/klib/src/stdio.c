@@ -21,11 +21,11 @@ static int isletter(char c)
 
 int myprintf(const char *fmt, ...) {
   
-  /*
+  
   static char printf_buffer[2*BUFFER_SIZE];
   va_list arg;
   va_start(arg,fmt);
-  int ret =vsnprintf(printf_buffer,2*BUFFER_SIZE,fmt,arg);
+  int ret =myvsnprintf(printf_buffer,2*BUFFER_SIZE,fmt,arg);
   va_end(arg);
   char *t=printf_buffer;
   while(*t)
@@ -34,10 +34,10 @@ int myprintf(const char *fmt, ...) {
     t++;
   }
   return ret;
-*/
+
   
   //panic("Not implemented");
-  return 0;
+  //return 0;
 }
 
 
