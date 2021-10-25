@@ -2,7 +2,7 @@
 #include <klib.h>
 #include <klib-macros.h>
 #include <stdarg.h>
-
+//#include<stdio.h>
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 #define BUFFER_SIZE (400)
 
@@ -18,7 +18,7 @@ static int isletter(char c)
 }
 
 
-/*
+
 int printf(const char *fmt, ...) {
   static char printf_buffer[2*BUFFER_SIZE];
   va_list arg;
@@ -34,15 +34,8 @@ int printf(const char *fmt, ...) {
   return ret;
   //panic("Not implemented");
 }
-*/
 
-int vsprintf(char *out, const char *fmt, va_list ap) {
-  
-  
-  
-  
-  panic("Not implemented");
-}
+
 
 
 
@@ -151,7 +144,7 @@ int vsnprintf(char *out, size_t n, const char *fmt, va_list ap) {
             } while (var);
             break;
         }
-        
+       /* 
         case'f':
         {
           double var =va_arg(ap,double);
@@ -186,7 +179,7 @@ int vsnprintf(char *out, size_t n, const char *fmt, va_list ap) {
             break;
         
         }
-
+*/
         case's':
         {
           char *sb=va_arg(ap,char*);
@@ -202,15 +195,7 @@ int vsnprintf(char *out, size_t n, const char *fmt, va_list ap) {
 
         default:
         
-        /*
-        putch('!');
-        while(*ori)
-        {
-          putch(*ori);
-          ori++;
-        }
-
-        */
+        
         assert(0);
 
         break;
@@ -250,6 +235,12 @@ return ret;
   //panic("Not implemented");
 }
 
+
+int vsprintf(char *out, const char *fmt, va_list ap) {
+  return vsnprintf(out,-1,fmt,ap);
+
+}
+
 int sprintf(char *out, const char *fmt, ...) {
   va_list arg;
   va_start(arg,fmt);
@@ -262,8 +253,18 @@ int sprintf(char *out, const char *fmt, ...) {
 }
 
 
+
+/*
 int snprintf(char *out, size_t n, const char *fmt, ...) {
   panic("Not implemented");
 }
+*/
+
+
+
 
 #endif
+
+
+
+
