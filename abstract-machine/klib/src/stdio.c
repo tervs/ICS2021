@@ -250,7 +250,7 @@ return ret;
   //panic("Not implemented");
 }
 
-int sprintf(char *out, const char *fmt, ...) {
+int mysprintf(char *out, const char *fmt, ...) {
   va_list arg;
   va_start(arg,fmt);
   int ret =vsprintf(out,fmt,arg);
