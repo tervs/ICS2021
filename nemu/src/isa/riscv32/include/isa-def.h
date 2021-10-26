@@ -78,3 +78,4 @@ typedef struct {
 #define isa_mmu_check(vaddr, len, type) (MMU_DIRECT)
 
 #endif
+

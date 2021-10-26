@@ -10,12 +10,10 @@ void init_log(const char *log_file) {
     Assert(fp, "Can not open '%s'", log_file);
     log_fp = fp;
   }
-
   Log("Log is written to %s", log_file ? log_file : "stdout");
 }
 
 bool log_enable() {
-
   return MUXDEF(CONFIG_TRACE, (g_nr_guest_instr >= CONFIG_TRACE_START) &&
          (g_nr_guest_instr <= CONFIG_TRACE_END), false);
 }

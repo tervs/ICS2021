@@ -13,73 +13,57 @@
 
 CPU_state cpu = {};
 uint64_t g_nr_guest_instr = 0;
-uint64_t addr=0x80000000;
 static uint64_t g_timer = 0; // unit: us
 static bool g_print_step = false;
 const rtlreg_t rzero = 0;
 rtlreg_t tmp_reg[4];
-Decode s;
+//Decode s;
+
 
 void device_update();
 void fetch_decode(Decode *s, vaddr_t pc);
 int diff();
 
-
-
-
-/*
-static void mtrace(Decode *s)
-{
-    char *p=s->mtrace_logbuf;
-    p += snprintf(p, sizeof(s->mtrace_logbuf), FMT_WORD ":", s->pc);
-}
-*/
 static void trace_and_difftest(Decode *_this, vaddr_t dnpc) 
 {
- // printf("test\n");
 #ifdef CONFIG_ITRACE_COND
-  if (CONFIG_ITRACE_COND) log_write("%s\n", _this->logbuf);//此处用于输出到文件
-  //printf("%s\n",_this->logbuf);
+  if (ITRACE_COND) log_write("%s\n", _this->logbuf);
 #endif
 
+/*todo 
 #ifdef CONFIG_MTRACE_COND
   if (CONFIG_MTRACE_COND) mtrace_log_write("%s\n", _this->mtrace_logbuf);
   memset(_this->mtrace_logbuf,' ',sizeof(_this->mtrace_logbuf));//此处用于输出到文件
-  //printf("%s\n",_this->logbuf);
 #endif
+*/
 
-  if (g_print_step) 
-//  { IFDEF(CONFIG_ITRACE, puts(_this->logbuf)); }//itrace
-  IFDEF(CONFIG_DIFFTEST, difftest_step(_this->pc, dnpc));//diff
+
+  if (g_print_step) { IFDEF(CONFIG_ITRACE, puts(_this->logbuf)); }
+  IFDEF(CONFIG_DIFFTEST, difftest_step(_this->pc, dnpc));
   int x=diff();
   if(x!=0)
   {
     printf("watchpoint %d has changed!\n",(x-1));
     nemu_state.state = NEMU_STOP;
   }
+
+
 }
 
 #include <isa-exec.h>
 
 #define FILL_EXEC_TABLE(name) [concat(EXEC_ID_, name)] = concat(exec_, name),
-static const void* g_exec_table[TOTAL_INSTR] = 
-{
+static const void* g_exec_table[TOTAL_INSTR] = {
   MAP(INSTR_LIST, FILL_EXEC_TABLE)
 };
 
-
-
-static void fetch_decode_exec_updatepc(Decode *s) 
-{
+static void fetch_decode_exec_updatepc(Decode *s) {
   fetch_decode(s, cpu.pc);
   s->EHelper(s);
   cpu.pc = s->dnpc;
 }
 
-
-
-static void statistic() 
-{
+static void statistic() {
   IFNDEF(CONFIG_TARGET_AM, setlocale(LC_NUMERIC, ""));
 #define NUMBERIC_FMT MUXDEF(CONFIG_TARGET_AM, "%ld", "%'ld")
   Log("host time spent = " NUMBERIC_FMT " us", g_timer);
@@ -88,44 +72,29 @@ static void statistic()
   else Log("Finish running in less than 1 us and can not calculate the simulation frequency");
 }
 
-void assert_fail_msg() 
-{
+void assert_fail_msg() {
   isa_reg_display();
   statistic();
 }
 
-
-
-
-
-
-
-void fetch_decode(Decode *s, vaddr_t pc) 
-{
-
+void fetch_decode(Decode *s, vaddr_t pc) {
   s->pc = pc;
   s->snpc = pc;
   int idx = isa_fetch_decode(s);
-   //Log("pc is 0x%08x  ",s->pc);
-   //isa_reg_display();
+     //Log("pc is 0x%08x  ",s->pc);
+      //isa_reg_display();
   s->dnpc = s->snpc;
   s->EHelper = g_exec_table[idx];
-                                                                  //itace 的实现在这个地方
 #ifdef CONFIG_ITRACE
   char *p = s->logbuf;
-  //printf("%s\n",p);
-  p += snprintf(p, sizeof(s->logbuf), FMT_WORD ":", s->pc);//打印pc
-  //if(strcmp(p," ")!=0){printf("%s\n",p);}
-  //printf("is pc ? %02x\n",s->pc);
+  p += snprintf(p, sizeof(s->logbuf), FMT_WORD ":", s->pc);
   int ilen = s->snpc - s->pc;
   int i;
   uint8_t *instr = (uint8_t *)&s->isa.instr.val;
-  for (i = 0; i < ilen; i ++) 
-  {
-    p += snprintf(p, 4, " %02x", instr[i]);//打印指令
-   // printf("%s\n",p);
+  for (i = 0; i < ilen; i ++) {
+    p += snprintf(p, 4, " %02x", instr[i]);
   }
-  int ilen_max = MUXDEF(CONFIG_ISA_x86, 8, 4);//似乎是x86专用命令
+  int ilen_max = MUXDEF(CONFIG_ISA_x86, 8, 4);
   int space_len = ilen_max - ilen;
   if (space_len < 0) space_len = 0;
   space_len = space_len * 3 + 1;
@@ -133,25 +102,15 @@ void fetch_decode(Decode *s, vaddr_t pc)
   p += space_len;
 
   void disassemble(char *str, int size, uint64_t pc, uint8_t *code, int nbyte);
-  disassemble(p, s->logbuf + sizeof(s->logbuf) - p, MUXDEF(CONFIG_ISA_x86, s->snpc, s->pc), (uint8_t *)&s->isa.instr.val, ilen);
+  disassemble(p, s->logbuf + sizeof(s->logbuf) - p,
+      MUXDEF(CONFIG_ISA_x86, s->snpc, s->pc), (uint8_t *)&s->isa.instr.val, ilen);
 #endif
-
 }
 
-
-
-
-
-
-
-
-
 /* Simulate how the CPU works. */
-void cpu_exec(uint64_t n) 
-{
+void cpu_exec(uint64_t n) {
   g_print_step = (n < MAX_INSTR_TO_PRINT);
-  switch (nemu_state.state) 
-  {
+  switch (nemu_state.state) {
     case NEMU_END: case NEMU_ABORT:
       printf("Program execution has ended. To restart the program, exit NEMU and run again.\n");
       return;
@@ -160,9 +119,8 @@ void cpu_exec(uint64_t n)
 
   uint64_t timer_start = get_time();
 
-  //Decode s;
-  for (;n > 0; n --) 
-  {//两处引用了itace这个宏
+  Decode s;//todo tobe delete
+  for (;n > 0; n --) {
     fetch_decode_exec_updatepc(&s);
     g_nr_guest_instr ++;
     trace_and_difftest(&s, cpu.pc);
@@ -173,8 +131,7 @@ void cpu_exec(uint64_t n)
   uint64_t timer_end = get_time();
   g_timer += timer_end - timer_start;
 
-  switch (nemu_state.state) 
-  {
+  switch (nemu_state.state) {
     case NEMU_RUNNING: nemu_state.state = NEMU_STOP; break;
 
     case NEMU_END: case NEMU_ABORT:

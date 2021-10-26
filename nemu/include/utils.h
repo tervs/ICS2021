@@ -51,8 +51,7 @@ uint64_t get_time();
     } \
   } while (0) \
 )
-
-
+/*todo
 #define mtrace_log_write(...) IFDEF(CONFIG_TARGET_NATIVE_ELF, \
   do { \
     extern FILE* mtrace_log_fp; \
@@ -64,10 +63,7 @@ uint64_t get_time();
   } while (0) \
 )
 
-
-
-
-
+*/
 
 #define _Log(...) \
   do { \

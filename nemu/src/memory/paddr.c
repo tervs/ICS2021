@@ -2,8 +2,6 @@
 #include <memory/paddr.h>
 #include <device/mmio.h>
 #include <isa.h>
-#include <cpu/decode.h>
-extern Decode s;
 
 #if   defined(CONFIG_TARGET_AM)
 static uint8_t *pmem = NULL;
@@ -39,58 +37,16 @@ void init_mem() {
       (paddr_t)CONFIG_MBASE, (paddr_t)CONFIG_MBASE + CONFIG_MSIZE);
 }
 
-word_t paddr_read(paddr_t addr, int len) 
-{
-#ifdef CONFIG_MTRACE
-  char *p=(&s)->mtrace_logbuf;
-  p+=snprintf(p, sizeof((&s)->mtrace_logbuf), "  pc:"FMT_WORD"  addr:0x%08x", (&s)->pc,addr);//格式宏 FMT_WORD
-  for (int i = 0; i < len; i ++) 
-  {
-    p+= snprintf(p, 4, " %02x", pmem_read(addr,1));//打印指令
-    addr++;
-  }
-  addr=addr-len;
-#endif
-
+word_t paddr_read(paddr_t addr, int len) {
   if (likely(in_pmem(addr))) return pmem_read(addr, len);
   MUXDEF(CONFIG_DEVICE, return mmio_read(addr, len),
     panic("address = " FMT_PADDR " is out of bound of pmem [" FMT_PADDR ", " FMT_PADDR ") at pc = " FMT_WORD,
       addr, CONFIG_MBASE, CONFIG_MBASE + CONFIG_MSIZE, cpu.pc));
 }
 
-
-
-void paddr_write(paddr_t addr, int len, word_t data) 
-{
-
- 
-#ifdef CONFIG_MTRACE
-  char *p=(&s)->mtrace_logbuf;
-  p+=snprintf(p, sizeof((&s)->mtrace_logbuf), "W pc:"FMT_WORD"  addr:0x%08x", (&s)->pc,addr);//格式宏 FMT_WORD 
-  for (int i = 0; i < len; i ++) 
-  {
-    p+= snprintf(p, 4, " %02x", pmem_read(addr,1));//打印指令
-    addr++;
-  }
-  addr=addr-len;
-#endif
-
-  if (likely(in_pmem(addr))) { pmem_write(addr, len, data); }
-
-#ifdef CONFIG_MTRACE
-  p+=snprintf(p, sizeof((&s)->mtrace_logbuf), "     After:");//格式宏 FMT_WORD 
-  for (int i = 0; i < len; i ++) 
-  {
-    p+= snprintf(p, 4, " %02x", pmem_read(addr,1));//打印指令
-    addr++;
-  }
-  addr=addr-len;
-#endif
-
-return;
-
+void paddr_write(paddr_t addr, int len, word_t data) {
+  if (likely(in_pmem(addr))) { pmem_write(addr, len, data); return; }
   MUXDEF(CONFIG_DEVICE, mmio_write(addr, len, data),
     panic("address = " FMT_PADDR " is out of bound of pmem [" FMT_PADDR ", " FMT_PADDR ") at pc = " FMT_WORD,
       addr, CONFIG_MBASE, CONFIG_MBASE + CONFIG_MSIZE, cpu.pc));
-    
 }

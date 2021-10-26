@@ -252,10 +252,8 @@ void wp_info()
 
 int diff()
 {
-  if(is_empty(head))//{printf("empty linklist!\n");return 0;}
-  {
-    return 0;
-  }
+  if(is_empty(head)){printf("empty linklist!\n");return 0;}
+
   else
   {
     int first=head->NO;
