@@ -36,7 +36,7 @@ f(blt)\
 f(slt)\
 f(sra)\
 f(bltu)\
-f(mulh)
-
+f(mulh)\
+f(divu)
 
 def_all_EXEC_ID();
