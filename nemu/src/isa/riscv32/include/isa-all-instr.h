@@ -39,6 +39,7 @@ f(bltu)\
 f(mulh)\
 f(divu)\
 f(bgeu)\
-f(mulhu)
+f(mulhu)\
+f(remu)
 
 def_all_EXEC_ID();

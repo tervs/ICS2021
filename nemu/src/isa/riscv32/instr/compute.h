@@ -185,6 +185,11 @@ def_EHelper(rem) {
   rtl_divs_r(s, ddest, dsrc1,dsrc2);
 }//maybe wrong
 
+def_EHelper(remu) {
+  //printf("test\n");
+  rtl_divu_r(s, ddest, dsrc1,dsrc2);
+}//maybe wrong
+
 def_EHelper(divu) {
   rtl_divu_q(s, ddest, dsrc1,dsrc2);
 }//maybe wrong
