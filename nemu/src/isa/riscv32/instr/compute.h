@@ -49,7 +49,10 @@ def_EHelper(jalr) {
 
 def_EHelper(beq) {
   rtl_li(s, s0, s->pc);
+  printf("s->pc  0x%08x\n",s->pc);
   rtl_addi(s, s0, s0, id_src2->imm);
+  printf("imm  0x%08x\n",id_src2->imm);
+  printf("s0 0x%08x\n",*s0);
   rtl_jrelop(s,RELOP_EQ,dsrc1,ddest,*s0);
 }
 

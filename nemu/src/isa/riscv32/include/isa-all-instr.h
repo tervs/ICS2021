@@ -41,6 +41,6 @@ f(divu)\
 f(bgeu)\
 f(mulhu)\
 f(remu)\
-f(lb)
+f(lb)\
 
 def_all_EXEC_ID();
