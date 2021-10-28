@@ -2,6 +2,27 @@
 #include <cpu/ifetch.h>
 #include <isa-all-instr.h>
 
+
+uint32_t sign_extend(uint32_t value, uint16_t bits,uint32_t sign)
+{
+    assert(bits > 0 && bits < 32);
+    uint32_t mask = ((~0U) >> (bits - 1)) << (bits - 1);
+    if (sign != 0)
+        value |= mask;
+    else
+        value &= ~mask;
+    return value;
+}
+
+
+
+
+
+
+
+
+
+
 def_all_THelper();
 
 static uint32_t get_instr(Decode *s) {
@@ -59,10 +80,11 @@ static def_DHelper(B) {
 
   decode_op_r(s, id_src1, s->isa.instr.s.rs1, false);
   word_t offset = (s->isa.instr.b.imm12 << 31) | (s->isa.instr.b.imm12 << 12) | (s->isa.instr.b.imm11 << 11) |(s->isa.instr.b.imm10_5 << 5) |(s->isa.instr.b.imm4_1 << 1) ;
-   
+   offset=sign_extend(offset,13,s->isa.instr.b.imm12);
+   printf("0x%08x\n",offset);
   decode_op_i(s, id_src2, offset, false);
   decode_op_r(s, id_dest, s->isa.instr.s.rs2, false);
-  printf("0x%02x\n",offset);
+  
 }
 
 
