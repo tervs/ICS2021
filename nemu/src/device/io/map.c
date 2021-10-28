@@ -12,7 +12,7 @@ uint8_t* new_space(int size) {
   uint8_t *p = p_space;
   // page aligned;
   size = (size + (PAGE_SIZE - 1)) & ~PAGE_MASK;
-  p_space += size;
+  p_space += size;//给每个设备分配空间,起始地址p,然后将整体空间的p_space移动到未使用的最初地址.此地址是物理地址,不是nemu中的虚拟地址
   assert(p_space - io_space < IO_SPACE_MAX);
   return p;
 }
@@ -33,8 +33,9 @@ static void invoke_callback(io_callback_t c, paddr_t offset, int len, bool is_wr
 
 void init_map() {
   io_space = malloc(IO_SPACE_MAX);
+  printf("0x%02x\n",*io_space);
   assert(io_space);
-  p_space = io_space;
+  p_space = io_space;//初始化整个设备内存空间,并且赋值给p_space起始地址.此地址是物理地址,不是nemu中的虚拟地址
 }
 
 word_t map_read(paddr_t addr, int len, IOMap *map) {
