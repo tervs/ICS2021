@@ -35,5 +35,6 @@ void init_timer()
  //调用rtc_io_handler.实际上初次调用,初始化而已,整个handler结构都没有被调用,仅仅是将函数附加到结构体中.以后将在第一次读写的时候初次赋值
 #endif                                         
   IFNDEF(CONFIG_TARGET_AM, add_alarm_handle(timer_intr));
-  //但是最后调用的这个是啥玩意?串口里可没有这个东西.
+  //但是最后调用的这个是啥玩意?
+  //进行定时器(alarm)相关的初始化工作
 }
