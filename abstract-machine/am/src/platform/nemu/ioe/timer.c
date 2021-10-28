@@ -13,9 +13,9 @@ void __am_timer_init() {
 void __am_timer_uptime(AM_TIMER_UPTIME_T *uptime) 
 {
   uint64_t low=inll(RTC_ADDR)-start;
-  printf("%d\n",low);
+  printf("64  %d\n",low);
   uint32_t high=inl(RTC_ADDR+4);
-  printf("%d\n",high);
+  printf("32  %d\n",high);
   uptime->us = low;
 }
 
