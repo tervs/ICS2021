@@ -58,7 +58,7 @@ static def_DHelper(R) {
 static def_DHelper(B) {
   decode_op_r(s, id_src1, s->isa.instr.s.rs1, false);
   word_t offset = (s->isa.instr.b.imm12 << 31) | (s->isa.instr.b.imm12 << 12) | (s->isa.instr.b.imm11 << 11) |(s->isa.instr.b.imm10_5 << 5) |(s->isa.instr.b.imm4_1 << 1) ;
-  printf("offset is 0x%08x\n",s->isa.instr.b.imm12 << 31);
+  printf("offset is 0x%08x\n",offset);//s->isa.instr.b.imm12 << 31);
   decode_op_i(s, id_src2, offset, false);
   decode_op_r(s, id_dest, s->isa.instr.s.rs2, false);
 }
