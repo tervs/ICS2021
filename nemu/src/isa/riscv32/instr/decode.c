@@ -83,7 +83,7 @@ static def_DHelper(B) {
     printf("16    0x%04x\n",offset);
     offset=(sword_t)offset;
     printf("32    0x%08x\n",offset);
-  offset=sign_extend(offset,13,s->isa.instr.b.imm12);
+  offset=sign_extend(offset,32,s->isa.instr.b.imm12);
    
   decode_op_i(s, id_src2, offset, false);
   decode_op_r(s, id_dest, s->isa.instr.s.rs2, false);
