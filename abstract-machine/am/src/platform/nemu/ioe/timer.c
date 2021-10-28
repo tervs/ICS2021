@@ -1,13 +1,26 @@
 #include <am.h>
 #include <nemu.h>
 
+
+struct timeval
+{ 
+   uint32_t low;
+   uint32_t high;
+   
+}now;
+
 void __am_timer_init() {
+
+     now.low=inl(RTC_ADDR);
+  now.high=inl(RTC_ADDR+4); 
+ 
+ 
  // cfg->present = cfg->has_rtc = true;
 }
 
 void __am_timer_uptime(AM_TIMER_UPTIME_T *uptime) {
-  uint32_t low=inl(RTC_ADDR);
-  uint32_t high=inl(RTC_ADDR+4); 
+  uint32_t low=inl(RTC_ADDR)-now.low;
+  uint32_t high=inl(RTC_ADDR+4)-now.high;
   uptime->us = low+(high<32);
 }
 
