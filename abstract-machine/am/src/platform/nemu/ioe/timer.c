@@ -3,19 +3,23 @@
 #include <stdio.h>
 
 
-uint64_t start;
+uint32_t start_low;
+uint32_t start_high;
 
 void __am_timer_init() {
 
-     start=inll(RTC_ADDR);
+     start_low=inl(RTC_ADDR);
+start_high=inl(RTC_ADDR+4);
+
+
 }
 
 void __am_timer_uptime(AM_TIMER_UPTIME_T *uptime) 
 {
-  uint64_t low=inll(RTC_ADDR)-start;
-  printf("64  %d\n",low);
-  uint32_t high=inl(RTC_ADDR+4);
-  printf("32  %d\n",high);
+  uint32_t low=inl(RTC_ADDR)-start_low;
+  printf("low  %d\n",low);
+  uint32_t high=inl(RTC_ADDR+4)-start_high;
+  printf("high  %d\n",high);
   uptime->us = low;
 }
 
