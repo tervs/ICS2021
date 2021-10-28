@@ -80,9 +80,9 @@ static def_DHelper(B) {
 
   decode_op_r(s, id_src1, s->isa.instr.s.rs1, false);
   uint16_t offset = (s->isa.instr.b.imm12 << 15) |(s->isa.instr.b.imm12 << 14) |(s->isa.instr.b.imm12 << 13) |(s->isa.instr.b.imm12 << 12) | (s->isa.instr.b.imm11 << 11) |(s->isa.instr.b.imm10_5 << 5) |(s->isa.instr.b.imm4_1 << 1) ;
-    printf("16    0x%08x\n",offset);
+    printf("16    0x%04x\n",offset);
     offset=(uint32_t)offset;
-    printf("32    0x%04x\n",offset);
+    printf("32    0x%08x\n",offset);
   offset=sign_extend(offset,13,s->isa.instr.b.imm12);
    
   decode_op_i(s, id_src2, offset, false);
