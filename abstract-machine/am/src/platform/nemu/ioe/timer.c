@@ -13,7 +13,7 @@ struct timeval
 void __am_timer_init() {
 
      now.low=inl(RTC_ADDR);
-  now.high=inl(RTC_ADDR+4); 
+  now.high=0;//inl(RTC_ADDR+4); 
  
  
  // cfg->present = cfg->has_rtc = true;
@@ -22,7 +22,7 @@ void __am_timer_init() {
 void __am_timer_uptime(AM_TIMER_UPTIME_T *uptime) {
   uint32_t low=inl(RTC_ADDR)-now.low;
   printf("%du\n",now.low);
-  uint32_t high=inl(RTC_ADDR+4)-now.high;
+  uint32_t high=0;//inl(RTC_ADDR+4)-now.high;
   uptime->us = low+(high<32);
 }
 
