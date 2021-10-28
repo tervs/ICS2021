@@ -17,7 +17,8 @@ uint32_t sign_extend(uint32_t value, uint32_t bits,uint32_t sign)
 
 struct Bimm 
 { 
-  uint32_t imm:13; 
+  uint32_t imm:13;
+  uint32_t :0; 
 }data; 
 
 
