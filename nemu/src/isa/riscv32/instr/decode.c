@@ -62,7 +62,7 @@ static def_DHelper(B) {
    
   decode_op_i(s, id_src2, offset, false);
   decode_op_r(s, id_dest, s->isa.instr.s.rs2, false);
-  printf("0x%08x\n",offset);
+  printf("0x%02x\n",offset);
 }
 
 
