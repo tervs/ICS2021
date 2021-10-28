@@ -3,7 +3,7 @@
 #include <isa-all-instr.h>
 
 
-uint32_t sign_extend(uint16_t value, uint32_t bits,uint32_t sign)
+uint32_t sign_extend(uint32_t value, uint32_t bits,uint32_t sign)
 {
     assert(bits > 0 && bits < 32);
     uint32_t mask = ((~0U) >> (bits - 1)) << (bits - 1);
@@ -82,7 +82,7 @@ static def_DHelper(B) {
   uint16_t offset = (s->isa.instr.b.imm12 << 15) |(s->isa.instr.b.imm12 << 14) |(s->isa.instr.b.imm12 << 13) |(s->isa.instr.b.imm12 << 12) | (s->isa.instr.b.imm11 << 11) |(s->isa.instr.b.imm10_5 << 5) |(s->isa.instr.b.imm4_1 << 1) ;
     printf("0x%08x\n",offset);
     offset=(uint32_t)offset;
-  // offset=sign_extend(offset,13,s->isa.instr.b.imm12);
+  offset=sign_extend(offset,13,s->isa.instr.b.imm12);
    printf("0x%08x\n",offset);
   decode_op_i(s, id_src2, offset, false);
   decode_op_r(s, id_dest, s->isa.instr.s.rs2, false);
