@@ -81,6 +81,7 @@ static def_DHelper(R) {
 }
 
 static def_DHelper(B) {
+  printf("12 0x%08x  11 0x%08x  10_5 0x%08x  4_1 0x%08x \n",s->isa.instr.b.imm12,s->isa.instr.b.imm11,s->isa.instr.b.imm10_5,s->isa.instr.b.imm4_1);
   sword_t offset=(s->isa.instr.b.imm12 << 12) | (s->isa.instr.b.imm11 << 11) |(s->isa.instr.b.imm10_5 << 5) |(s->isa.instr.b.imm4_1 << 1) ;
    decode_op_i(s, id_src2, offset, false);
   decode_op_r(s, id_src1, s->isa.instr.s.rs1, false);
