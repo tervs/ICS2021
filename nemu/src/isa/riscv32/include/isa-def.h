@@ -66,7 +66,7 @@ typedef struct {
       uint32_t funct3    : 3;
       uint32_t rs1       : 5;
       uint32_t rs2       : 5;
-      int32_t  imm10_5   : 6;
+      uint32_t imm10_5   : 6;
       uint32_t imm12     : 1;
     } b;
 

@@ -3,23 +3,6 @@
 #include <isa-all-instr.h>
 
 
-uint32_t sign_extend(uint32_t value, uint32_t bits,uint32_t sign)
-{
-    assert(bits > 0 && bits < 32);
-    uint32_t mask = ((~0U) >> (bits - 1)) << (bits - 1);
-    if (sign != 0)
-        value |= mask;
-    else
-        value &= ~mask;
-    return value;
-}
-
-
-struct Bimm 
-{ 
-  uint32_t imm:13;
-  uint32_t :0; 
-}data; 
 
 
 
@@ -81,17 +64,9 @@ static def_DHelper(R) {
 }
 
 static def_DHelper(B) {
-  printf("12 0x%08x  11 0x%08x  10_5 0x%08x  4_1 0x%08x \n",s->isa.instr.b.imm12,s->isa.instr.b.imm11,s->isa.instr.b.imm10_5,s->isa.instr.b.imm4_1);
   sword_t offset=(s->isa.instr.b.imm12 << 12) | (s->isa.instr.b.imm11 << 11) |(s->isa.instr.b.imm10_5 << 5) |(s->isa.instr.b.imm4_1 << 1) ;
    decode_op_i(s, id_src2, offset, false);
   decode_op_r(s, id_src1, s->isa.instr.s.rs1, false);
-  /*
-  struct Bimm data ;
-  data.imm = (s->isa.instr.b.imm12 << 12) | (s->isa.instr.b.imm11 << 11) |(s->isa.instr.b.imm10_5 << 5) |(s->isa.instr.b.imm4_1 << 1) ;
-  printf("0x%08x\n",data.imm);
-  sword_t offset=sign_extend(data.imm,13,s->isa.instr.b.imm12);
-   */
- 
   decode_op_r(s, id_dest, s->isa.instr.s.rs2, false);
   
 }
