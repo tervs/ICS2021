@@ -14,7 +14,7 @@ uint8_t* new_space(int size) {
   size = (size + (PAGE_SIZE - 1)) & ~PAGE_MASK;
   p_space += size;//给每个设备分配空间,起始地址p,然后将整体空间的p_space移动到未使用的最初地址.此地址是物理地址,不是nemu中的虚拟地址
   assert(p_space - io_space < IO_SPACE_MAX);
-    printf("0x%02x  p_space  0x%02x   size %d\n ",*p,*p_space, size);
+    printf("0x%02x  p_space  0x%02x   size 0x%08x\n ",*p,*p_space, size);
   return p;
 }
 
