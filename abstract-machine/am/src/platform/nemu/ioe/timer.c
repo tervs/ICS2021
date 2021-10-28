@@ -20,10 +20,10 @@ void __am_timer_init() {
 }
 
 void __am_timer_uptime(AM_TIMER_UPTIME_T *uptime) {
-  uint32_t low=inl(RTC_ADDR)-now.low;
+  uint64_t low=inl(RTC_ADDR)-now.low;
   //printf("%du\n",now.low);
-  uint32_t high=inl(RTC_ADDR+4)-now.high;
-  uptime->us = low+(high<32);
+  //uint32_t high=inl(RTC_ADDR+4)-now.high;
+  uptime->us = low;
 }
 
 void __am_timer_rtc(AM_TIMER_RTC_T *rtc) {
