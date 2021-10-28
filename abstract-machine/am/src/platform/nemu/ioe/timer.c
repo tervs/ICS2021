@@ -3,24 +3,15 @@
 #include <stdio.h>
 
 
-struct timeval
-{ 
-   uint32_t low;
-   uint32_t high;
-   
-}now;
+uint64_t start;
 
 void __am_timer_init() {
 
-     now.low=inl(RTC_ADDR);
-  now.high=inl(RTC_ADDR+4); 
- 
- 
- // cfg->present = cfg->has_rtc = true;
+     start=inll(RTC_ADDR);
 }
 
 void __am_timer_uptime(AM_TIMER_UPTIME_T *uptime) {
-  uint64_t low=inll(RTC_ADDR)-now.low;
+  uint64_t low=inll(RTC_ADDR)-start;
   //printf("%du\n",now.low);
   //uint32_t high=inl(RTC_ADDR+4)-now.high;
   uptime->us = low;
