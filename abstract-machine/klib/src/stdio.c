@@ -42,11 +42,11 @@ int vsnprintf(char *out, size_t n, const char *fmt, va_list ap){
 #define output(A) if(cnt<n-1){out[cnt++]=A;}else{va_end(ap);out[cnt]='\0';return cnt;}
     size_t cnt=0;
     int i=0;
-    double d;
+    //double d;
     const char *p, *sval;
     char fill,num[10];
     int ival,fill_width;
-    double dval;
+    //double dval;
     uintptr_t uval;
     char cval;
     for(p=fmt;*p!='\0';++p){
@@ -125,6 +125,7 @@ int vsnprintf(char *out, size_t n, const char *fmt, va_list ap){
                         }
                     }
                     break;
+					/*
                 case 'f':
                     dval = va_arg(ap, double);
                     d=10000;
@@ -135,6 +136,7 @@ int vsnprintf(char *out, size_t n, const char *fmt, va_list ap){
                         d /= 10;
                     }
                     break;
+					*/
                 case 's':
                     for (sval = va_arg(ap, char * ); *sval != '\0'; ++sval) {
                         output(*sval);
