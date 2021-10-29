@@ -22,10 +22,6 @@ void __am_gpu_config(AM_GPU_CONFIG_T *cfg)
 
 void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl) 
 {
-  if (ctl->sync) 
-  {
-    outl(SYNC_ADDR, 1);
-  }
 
   for(int i=(ctl->y);i<(ctl->y)+(ctl->h);i++)
   {
@@ -33,9 +29,18 @@ void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl)
     {
       //printf("%d  %d  %d\n",i,j,(uint32_t)(ctl->pixels));
       outl(FB_ADDR+i*(ctl->w)+j,(uint32_t)(ctl->pixels));
-      
+      if (ctl->sync) 
+      {
+        outl(SYNC_ADDR, 1);
+      }
+
     }
   }
+
+
+  
+
+  
   //outl()
 
 //(x,y),地址为base+(y-1)*width+(x-1)
