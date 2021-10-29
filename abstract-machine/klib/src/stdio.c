@@ -36,8 +36,8 @@ int snprintf(char *out, size_t n, const char *fmt, ...) {
     va_start(ap,fmt);
     return vsnprintf(out,n,fmt,ap);
 }
-//Added my Michael
-//Should work as a assistant.
+
+
 int vsnprintf(char *out, size_t n, const char *fmt, va_list ap){
 #define output(A) if(cnt<n-1){out[cnt++]=A;}else{va_end(ap);out[cnt]='\0';return cnt;}
     size_t cnt=0;
