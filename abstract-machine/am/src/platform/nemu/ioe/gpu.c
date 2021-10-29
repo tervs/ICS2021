@@ -32,7 +32,7 @@ void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl)
 
 
 
-
+/*
   for(int i=(ctl->y);i<(ctl->y)+(ctl->h);i++)
   {
     for(int j=(ctl->x);j<(ctl->x)+(ctl->w);j++)
@@ -46,8 +46,11 @@ void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl)
 
     }
   }
-
-
+*/
+      if (ctl->sync) 
+      {
+        outl(SYNC_ADDR, 1);
+      }
   
 
   
