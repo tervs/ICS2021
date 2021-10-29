@@ -47,7 +47,7 @@ void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl)
       for(int j=x;j<x+w;j++)
       {
         outl(FB_ADDR+4*(i*width+j),*(pixels+cnt));
-        printf("%d\n",*(pixels+4*cnt));
+        printf("%d\n",*(pixels+cnt));
         cnt++ ;
       }
     }
