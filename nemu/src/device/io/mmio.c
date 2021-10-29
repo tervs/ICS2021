@@ -20,7 +20,7 @@ void add_mmio_map(const char *name, paddr_t addr, void *space, uint32_t len, io_
 {
   assert(nr_map < NR_MAP);
   maps[nr_map] = (IOMap){ .name = name, .low = addr, .high = addr + len - 1, .space = space, .callback = callback };
-  Log("Add mmio map '%s' at [" FMT_PADDR ", " FMT_PADDR "]", maps[nr_map].name, maps[nr_map].low, maps[nr_map].high);
+  Log("Add mmio map '%s' at [" FMT_PADDR ", " FMT_PADDR "]   nr_map %d", maps[nr_map].name, maps[nr_map].low, maps[nr_map].high,nr_map);
   nr_map ++;
 }
 //将物理地址映射到指定的nemu字段(虚拟字段),并且将已经初始化的设备加入maps数组,给定一个编号.
