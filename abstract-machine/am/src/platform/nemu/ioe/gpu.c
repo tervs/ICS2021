@@ -34,7 +34,8 @@ void __am_gpu_config(AM_GPU_CONFIG_T *cfg)
 void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl) 
 {
 
-
+      int width = io_read(AM_GPU_CONFIG).width;
+      //int height = io_read(AM_GPU_CONFIG).height;
 
 
     int x=ctl->x;
@@ -54,7 +55,7 @@ void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl)
     {
         //fb[i*w+j]=pixels;
         
-      outl(FB_ADDR+i*w+j,(uint32_t)(pixels+4*cnt));
+      outl(FB_ADDR+i*width+j,(uint32_t)(pixels+4*cnt));
       cnt++ ;
     }
     cnt++;
