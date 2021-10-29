@@ -55,7 +55,7 @@ void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl)
     {
         //fb[i*w+j]=pixels;
         
-      outl(FB_ADDR+4*(i*width+j),0x000000ff);
+      outl(FB_ADDR+4*(i*width+j),(0xbbbbbbbb^(i*width+j)));
 
       cnt++ ;
     }
