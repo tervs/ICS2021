@@ -47,14 +47,12 @@ void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl)
       //printf("%d  %d  %d\n",i,j,(uint32_t)(ctl->pixels));
       fb[i*w+j]=pixels;
       //outl(FB_ADDR+i*(ctl->w)+j,(uint32_t)(ctl->pixels));
+    }
+  }
       if (ctl->sync) 
       {
         outl(SYNC_ADDR, 1);
       }
-
-    }
-  }
-
 
   //outl()
 
