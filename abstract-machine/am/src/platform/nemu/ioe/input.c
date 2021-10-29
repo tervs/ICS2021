@@ -10,9 +10,9 @@ void __am_input_keybrd(AM_INPUT_KEYBRD_T *kbd) {
 
   if(keyinfo&KEYDOWN_MASK)
   {
-    kbd->keydown=true;
+    kbd->keydown=1;
   }
-  else{kbd->keydown=false;}
+  else{kbd->keydown=0;}
   //kbd->keydown=keyinfo&KEYDOWN_MASK;
   kbd->keycode=keyinfo;//^KEYDOWN_MASK;
   
