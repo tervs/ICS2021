@@ -43,7 +43,7 @@ void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl)
     int w=ctl->w;
     int h=ctl->h;
     //int block_size = w * h;
-    uintptr_t *pixels=ctl->pixels;
+    //uintptr_t *pixels=ctl->pixels;
 
     //uint32_t *fb = (uint32_t *)(uintptr_t)FB_ADDR;
 
@@ -55,7 +55,7 @@ void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl)
     {
         //fb[i*w+j]=pixels;
         
-      outl(FB_ADDR+4*(i*width+j),(uint32_t)(pixels+4*cnt));
+      outl(FB_ADDR+4*(i*width+j),(uint32_t)(ctl->pixels));
       cnt++ ;
     }
     cnt++;
