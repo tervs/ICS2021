@@ -4,7 +4,7 @@
 
 #define NR_MAP 16
 
-static IOMap maps[NR_MAP] = {};//定义映射列表
+ IOMap maps[NR_MAP] = {};//定义映射列表
 static int nr_map = 0;
 
 static IOMap* fetch_mmio_map(paddr_t addr) 
