@@ -18,7 +18,7 @@ static uint32_t screen_size() {
 
 
 
- extern IOMap maps;
+ extern IOMap maps[];
 
 
 
@@ -75,7 +75,7 @@ static inline void update_screen() {
 
 void vga_update_screen() 
 {
-  if(map_read(CONFIG_VGA_CTL_MMIO + 4,4,&maps))
+  if(map_read(CONFIG_VGA_CTL_MMIO + 4,4,&(maps[2])))
   {update_screen();}
   // TODO: call `update_screen()` when the sync register is non-zero,
   // then zero out the sync register
