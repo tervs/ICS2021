@@ -16,7 +16,7 @@ void __am_gpu_config(AM_GPU_CONFIG_T *cfg)
     .width=inw(VGACTL_ADDR+2),
     .height=inw(VGACTL_ADDR),
     //.width = 0, .height = 0,
-    .vmemsz = 0x80808080
+    .vmemsz = 0
   };
 }
 
@@ -26,6 +26,18 @@ void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl)
   {
     outl(SYNC_ADDR, 1);
   }
+
+  for(int i=(ctl->y)-1;i<(ctl->y)+(ctl->h)-1;i++)
+  {
+    for(int j=(ctl->x)-1;j<(ctl->x)+(ctl->w)-1;j++)
+    {
+      outl(FB_ADDR+i*(ctl->w)+j,(uint32_t)(ctl->pixels));
+    }
+  }
+  //outl()
+
+//(x,y),地址为base+(y-1)*width+(x-1)
+
 }
 
 void __am_gpu_status(AM_GPU_STATUS_T *status) 
