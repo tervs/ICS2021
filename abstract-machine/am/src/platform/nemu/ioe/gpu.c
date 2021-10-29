@@ -27,11 +27,11 @@ void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl)
     outl(SYNC_ADDR, 1);
   }
 
-  for(int i=(ctl->y)-1;i<(ctl->y)+(ctl->h)-1;i++)
+  for(int i=(ctl->y);i<(ctl->y)+(ctl->h);i++)
   {
-    for(int j=(ctl->x)-1;j<(ctl->x)+(ctl->w)-1;j++)
+    for(int j=(ctl->x);j<(ctl->x)+(ctl->w);j++)
     {
-      printf("%d  %d  ",i,j);
+      //printf("%d  %d  ",i,j);
       outl(FB_ADDR+i*(ctl->w)+j,(uint32_t)(ctl->pixels));
       
     }
