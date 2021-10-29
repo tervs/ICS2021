@@ -32,6 +32,9 @@ static uint32_t *vgactl_port_base = NULL;
 static SDL_Renderer *renderer = NULL;
 static SDL_Texture *texture = NULL;
 
+
+
+
 static void init_screen() 
 {
   SDL_Window *window = NULL;
@@ -44,9 +47,13 @@ static void init_screen()
       SCREEN_H * (MUXDEF(CONFIG_VGA_SIZE_400x300, 2, 1)),
       0, &window, &renderer);
   SDL_SetWindowTitle(window, title);
-  texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB32,
+  texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888,
       SDL_TEXTUREACCESS_STATIC, SCREEN_W, SCREEN_H);
 }
+
+
+
+
 
 static inline void update_screen() 
 {
@@ -83,5 +90,5 @@ void init_vga()
   vmem = new_space(screen_size());
   add_mmio_map("vmem", CONFIG_FB_ADDR, vmem, screen_size(), NULL);
   IFDEF(CONFIG_VGA_SHOW_SCREEN, init_screen());
-  IFDEF(CONFIG_VGA_SHOW_SCREEN, memset(vmem, 0, screen_size()));
+  IFDEF(CONFIG_VGA_SHOW_SCREEN, memset(vmem, 0x00FF0000, screen_size()));
 }
