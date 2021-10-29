@@ -47,14 +47,17 @@ void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl)
     //uint32_t *fb = (uint32_t *)(uintptr_t)FB_ADDR;
 
 
-
+  int cnt=0;
   for(int i=y;i<y+h;i++)
   {
     for(int j=x;j<x+w;j++)
     {
         //fb[i*w+j]=pixels;
-      outl(FB_ADDR+i*w+j,(uint32_t)(pixels));
+        
+      outl(FB_ADDR+i*w+j,(uint32_t)(pixels+4*cnt));
+      cnt++ ;
     }
+    cnt++;
   }
 
 
