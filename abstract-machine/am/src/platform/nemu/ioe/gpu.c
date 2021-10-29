@@ -5,7 +5,7 @@
 #define N   32
 void __am_gpu_init() 
 {
-
+/*
   int w = io_read(AM_GPU_CONFIG).width;
   int h = io_read(AM_GPU_CONFIG).height;
   int i;
@@ -13,7 +13,7 @@ void __am_gpu_init()
   uint32_t *fb = (uint32_t *)(uintptr_t)FB_ADDR;
   for (i = 0; i < w * h; i ++) fb[i] = (0xbbbbbbbb)&i;
   outl(SYNC_ADDR, 1);
-  
+    */ 
 }
 
 void __am_gpu_config(AM_GPU_CONFIG_T *cfg) 
