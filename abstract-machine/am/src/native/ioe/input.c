@@ -24,6 +24,7 @@ static int event_thread(void *args) {
         SDL_Keysym k = event.key.keysym;
         int keydown = event.key.type == SDL_KEYDOWN;
         int scancode = k.scancode;
+        //printf("%d\n",keymap[scancode]);
         if (keymap[scancode] != 0) {
           int am_code = keymap[scancode] | (keydown ? KEYDOWN_MASK : 0);
           SDL_LockMutex(key_queue_lock);
