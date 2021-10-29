@@ -7,7 +7,7 @@ def_EHelper(lb) {
 }
 
 def_EHelper(lbu) {
-  printf("0x%08x\n",*dsrc1);
+ // printf("0x%08x\n",*dsrc1);
   rtl_lm(s, ddest, dsrc1, id_src2->imm, 1);
 }//zero extend
 
