@@ -59,7 +59,7 @@ void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl)
       //printf("%d\n",*(pixels+4*cnt));
       cnt++ ;
     }
-    cnt++;
+    //cnt++;
   }
 
 
