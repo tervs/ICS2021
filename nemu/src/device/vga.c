@@ -76,7 +76,15 @@ static inline void update_screen() {
 void vga_update_screen() 
 {
   if(map_read(CONFIG_VGA_CTL_MMIO + 4,4,&(maps[2])))
-  {update_screen();}
+  {
+    update_screen();
+
+    map_write(CONFIG_VGA_CTL_MMIO + 4,4,0,&(maps[2])); 
+  }
+
+    
+
+
   // TODO: call `update_screen()` when the sync register is non-zero,
   // then zero out the sync register
 }
