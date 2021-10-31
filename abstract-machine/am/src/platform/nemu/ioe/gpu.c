@@ -27,7 +27,6 @@ void __am_gpu_config(AM_GPU_CONFIG_T *cfg)
     .vmemsz = 0
   };
 
-
 }
 
 void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl) 
