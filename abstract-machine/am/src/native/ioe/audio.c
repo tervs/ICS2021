@@ -40,7 +40,9 @@ static void audio_write(uint8_t *buf, int len) {
   }
 }
 
-void __am_audio_ctrl(AM_AUDIO_CTRL_T *ctrl) {
+
+void __am_audio_ctrl(AM_AUDIO_CTRL_T *ctrl) 
+{
   SDL_AudioSpec s = {};
   s.freq = ctrl->freq;
   s.format = AUDIO_S16SYS;
@@ -57,16 +59,28 @@ void __am_audio_ctrl(AM_AUDIO_CTRL_T *ctrl) {
   }
 }
 
-void __am_audio_status(AM_AUDIO_STATUS_T *stat) {
+void __am_audio_status(AM_AUDIO_STATUS_T *stat) 
+{
   stat->count = count;
 }
 
-void __am_audio_play(AM_AUDIO_PLAY_T *ctl) {
+
+
+
+
+void __am_audio_play(AM_AUDIO_PLAY_T *ctl) 
+{
   int len = ctl->buf.end - ctl->buf.start;
   audio_write(ctl->buf.start, len);
 }
 
-void __am_audio_config(AM_AUDIO_CONFIG_T *cfg) {
+
+
+
+
+
+void __am_audio_config(AM_AUDIO_CONFIG_T *cfg) 
+{
   cfg->present = true;
   cfg->bufsize = fcntl(rfd, F_GETPIPE_SZ);
 }

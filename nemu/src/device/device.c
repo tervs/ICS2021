@@ -18,50 +18,56 @@ void init_alarm();
 void send_key(uint8_t, bool);
 void vga_update_screen();
 
-void device_update() {
+void device_update() 
+{
   static uint64_t last = 0;
   uint64_t now = get_time();
-  if (now - last < 1000000 / TIMER_HZ) {
+  if (now - last < 1000000 / TIMER_HZ) 
+  {
     return;
   }
   last = now;
 
   IFDEF(CONFIG_HAS_VGA, vga_update_screen());
 
-#ifndef CONFIG_TARGET_AM
+  #ifndef CONFIG_TARGET_AM
   SDL_Event event;
-  while (SDL_PollEvent(&event)) {
-    switch (event.type) {
+  while (SDL_PollEvent(&event)) 
+  {
+    switch (event.type) 
+    {
       case SDL_QUIT:
         nemu_state.state = NEMU_QUIT;
         break;
-#ifdef CONFIG_HAS_KEYBOARD
+      #ifdef CONFIG_HAS_KEYBOARD
       // If a key was pressed
-      case SDL_KEYDOWN:
-      case SDL_KEYUP: {
+      case SDL_KEYDOWN:  //妙啊,利用case的击穿特性!
+      case SDL_KEYUP: 
+      {
         uint8_t k = event.key.keysym.scancode;
         bool is_keydown = (event.key.type == SDL_KEYDOWN);
         send_key(k, is_keydown);
         break;
       }
-#endif
+      #endif
       default: break;
     }
   }
-#endif
+  #endif
 }
 
-void sdl_clear_event_queue() {
+void sdl_clear_event_queue() 
+{
 #ifndef CONFIG_TARGET_AM
   SDL_Event event;
   while (SDL_PollEvent(&event));
 #endif
 }
 
-void init_device() {
+void init_device() 
+{
   IFDEF(CONFIG_TARGET_AM, ioe_init());
   init_map();
-
   IFDEF(CONFIG_HAS_SERIAL, init_serial());
   IFDEF(CONFIG_HAS_TIMER, init_timer());
   IFDEF(CONFIG_HAS_VGA, init_vga());
@@ -71,4 +77,5 @@ void init_device() {
   IFDEF(CONFIG_HAS_SDCARD, init_sdcard());
 
   IFNDEF(CONFIG_TARGET_AM, init_alarm());
+  //进行定时器(alarm)相关的初始化工作
 }

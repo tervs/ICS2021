@@ -17,6 +17,8 @@ static uint64_t g_timer = 0; // unit: us
 static bool g_print_step = false;
 const rtlreg_t rzero = 0;
 rtlreg_t tmp_reg[4];
+//Decode s;
+
 
 void device_update();
 void fetch_decode(Decode *s, vaddr_t pc);
@@ -27,6 +29,15 @@ static void trace_and_difftest(Decode *_this, vaddr_t dnpc)
 #ifdef CONFIG_ITRACE_COND
   if (ITRACE_COND) log_write("%s\n", _this->logbuf);
 #endif
+
+/*todo 
+#ifdef CONFIG_MTRACE_COND
+  if (CONFIG_MTRACE_COND) mtrace_log_write("%s\n", _this->mtrace_logbuf);
+  memset(_this->mtrace_logbuf,' ',sizeof(_this->mtrace_logbuf));//此处用于输出到文件
+#endif
+*/
+
+
   if (g_print_step) { IFDEF(CONFIG_ITRACE, puts(_this->logbuf)); }
   IFDEF(CONFIG_DIFFTEST, difftest_step(_this->pc, dnpc));
   int x=diff();
@@ -70,6 +81,8 @@ void fetch_decode(Decode *s, vaddr_t pc) {
   s->pc = pc;
   s->snpc = pc;
   int idx = isa_fetch_decode(s);
+     //Log("pc is 0x%08x  ",s->pc);
+      //isa_reg_display();
   s->dnpc = s->snpc;
   s->EHelper = g_exec_table[idx];
 #ifdef CONFIG_ITRACE
@@ -106,7 +119,7 @@ void cpu_exec(uint64_t n) {
 
   uint64_t timer_start = get_time();
 
-  Decode s;
+  Decode s;//todo tobe delete
   for (;n > 0; n --) {
     fetch_decode_exec_updatepc(&s);
     g_nr_guest_instr ++;
