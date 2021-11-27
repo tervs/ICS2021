@@ -30,7 +30,7 @@ typedef struct Decode {
 #define id_src1 (&s->src1)
 #define id_src2 (&s->src2)
 #define id_dest (&s->dest)
-extern uint32_t csr[4096];
+//extern uint32_t csr[4096];
 
 // `INSTR_LIST` is defined at src/isa/$ISA/include/isa-all-instr.h
 #define def_EXEC_ID(name) concat(EXEC_ID_, name),

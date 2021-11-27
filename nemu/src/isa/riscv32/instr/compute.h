@@ -206,7 +206,7 @@ def_EHelper(divu) {
 
 
 
-uint32_t csr[4096];
+//uint32_t csr[4096];
 
 def_EHelper(csrrwi) {
   rtl_li(s, ddest, csr[id_src2->imm]);
