@@ -203,3 +203,10 @@ def_EHelper(remu) {
 def_EHelper(divu) {
   rtl_divu_q(s, ddest, dsrc1,dsrc2);
 }//maybe wrong
+
+
+
+
+def_EHelper(csrrwi) {
+  rtl_addi(s, ddest, dsrc1, (id_src2->imm));
+}
