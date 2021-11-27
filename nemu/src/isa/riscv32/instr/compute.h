@@ -209,6 +209,7 @@ def_EHelper(divu) {
 //uint32_t csr[4096];
 
 def_EHelper(csrrwi) {
+  printf("test\n");
   rtl_li(s, ddest, csr[id_src2->imm]);
   rtl_li(s, &csr[id_src2->imm], *(id_src1->preg));
   printf("%d\n" ,(csr[id_src2->imm]));
