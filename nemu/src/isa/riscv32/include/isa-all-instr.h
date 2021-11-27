@@ -43,6 +43,7 @@ f(mulhu)\
 f(remu)\
 f(lb)\
 f(slti)\
-f(csrrwi)
+f(csrrwi)\
+f(csrrs)
 
 def_all_EXEC_ID();
