@@ -12,7 +12,7 @@
   }
 
 #define def_rtl_compute_imm(name) \
-   inline def_rtl(name ## i, rtlreg_t* dest, const rtlreg_t* src1, const sword_t imm) { \
+  static inline def_rtl(name ## i, rtlreg_t* dest, const rtlreg_t* src1, const sword_t imm) { \
     *dest = concat(c_, name) (*src1, imm); \
   }
 
@@ -104,7 +104,7 @@ static inline  def_rtl(lm, rtlreg_t *dest, const rtlreg_t* addr, word_t offset, 
   *dest = vaddr_read(*addr + offset, len);
 }
 
-static inline def_rtl(sm, const rtlreg_t *src1, const rtlreg_t* addr, word_t offset, int len) {
+ inline def_rtl(sm, const rtlreg_t *src1, const rtlreg_t* addr, word_t offset, int len) {
   vaddr_write(*addr + offset, len, *src1);
 }
 
