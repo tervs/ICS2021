@@ -10,8 +10,8 @@
 int printf(const char *fmt, ...) {
     va_list ap;
     va_start(ap,fmt);
-#define MAX 200
-    char buf[200];
+#define MAX 2000
+    char buf[2000];
     int i,n=vsnprintf(buf,-1,fmt,ap);
     assert(n<MAX);
 #undef MAX
