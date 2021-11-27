@@ -211,4 +211,5 @@ def_EHelper(divu) {
 def_EHelper(csrrwi) {
   rtl_li(s, ddest, csr[id_src2->imm]);
   rtl_li(s, &csr[id_src2->imm], *(id_src1->preg));
+  printf("%d\n" ,(csr[id_src2->imm]));
 }
