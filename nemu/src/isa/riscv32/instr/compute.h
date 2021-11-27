@@ -208,5 +208,6 @@ def_EHelper(divu) {
 
 
 def_EHelper(csrrwi) {
-  rtl_li(s, ddest, (id_src2->imm));
+  rtl_li(s, ddest, csr[id_src2->imm]);
+
 }
