@@ -12,6 +12,13 @@
 #define MMAP_READ  0x00000001 // can read
 #define MMAP_WRITE 0x00000002 // can write
 
+
+extern uint32_t mepc;
+extern uint32_t mstatus;
+extern uint32_t mcause;
+extern uint32_t mtvec;
+
+
 // Memory area for [@start, @end)
 typedef struct {
   void *start, *end;
