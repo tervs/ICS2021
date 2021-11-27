@@ -19,7 +19,7 @@ extern rtlreg_t tmp_reg[4];
 //extern uint32_t mstatus;
 //extern uint32_t mcause;
 //extern uint32_t mtvec;
-extern uint32_t csr[4096];
+extern rtlreg_t csr[4096];
 
 
 
