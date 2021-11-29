@@ -1,6 +1,6 @@
 def_EHelper(lui) {
-  printf("test\n\n\n\n\n\n\n\n");
-  //rtl_li(s, ddest, id_src1->imm);
+  //printf("test\n\n\n\n\n\n\n\n");
+  rtl_li(s, ddest, id_src1->imm);
 }
 
 def_EHelper(auipc) {
