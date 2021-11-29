@@ -264,4 +264,5 @@ def_EHelper(ecall) {
   //rtl_li(s, &csr[id_src2->imm], *(id_src1->preg));
   //printf("%d\n" ,(csr[id_src2->imm]));
   isa_raise_intr(0x0000000b,&(s->pc));
+  printf("0x%08x\n\n\n",s->pc);
 }
