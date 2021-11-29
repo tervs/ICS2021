@@ -18,11 +18,11 @@ static bool g_print_step = false;
 const rtlreg_t rzero = 0;
 rtlreg_t tmp_reg[4];
 //Decode s;
-rtlreg_t csr[4096];
-extern rtlreg_t _mepc;
-extern rtlreg_t _mstatus;
-extern rtlreg_t _mcause;
-extern rtlreg_t _mtvec;
+//rtlreg_t csr[4096];
+rtlreg_t _mepc;
+rtlreg_t _mstatus;
+rtlreg_t _mcause;
+rtlreg_t _mtvec;
 
 void device_update();
 void fetch_decode(Decode *s, vaddr_t pc);
