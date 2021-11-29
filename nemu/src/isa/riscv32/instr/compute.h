@@ -244,7 +244,7 @@ def_EHelper(csrrw) {
   case 834: temp=mcause;break;
   case 773: temp=mtvec;break;
   }
-  rtl_li(s, ddest, *temp);
+  //rtl_li(s, ddest, *temp);
   //rtl_or(s, &csr[id_src2->imm], dsrc1, &csr[id_src2->imm]);
   //printf("test\n\n\n\n\n\n\n\n");
   //rtl_li(s, ddest, csr[id_src2->imm]);
