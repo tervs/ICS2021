@@ -247,6 +247,8 @@ def_EHelper(csrrw) {
 def_EHelper(ecall) {
   printf("test\n\n\n\n\n\n\n\n");
   rtl_li(s, mepc, s->pc);
+
+  rtl_j(s,*mtvec);
   //rtl_li(s, ddest, csr[id_src2->imm]);
   //rtl_or(s, &csr[id_src2->imm], dsrc1, &csr[id_src2->imm]);
   //printf("test\n\n\n\n\n\n\n\n");
