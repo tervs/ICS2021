@@ -45,6 +45,7 @@ f(lb)\
 f(slti)\
 f(csrrwi)\
 f(csrrs)\
-f(csrrw)
+f(csrrw)\
+f(ecall)
 
 def_all_EXEC_ID();
