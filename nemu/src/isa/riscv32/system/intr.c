@@ -1,9 +1,9 @@
 #include <isa.h>
 
-rtlreg_t _mepc;
-rtlreg_t _mstatus=0x1800;
-rtlreg_t _mcause;
-rtlreg_t _mtvec;
+extern rtlreg_t _mepc;
+//rtlreg_t _mstatus=0x1800;
+//rtlreg_t _mcause;
+//rtlreg_t _mtvec;
 
 
 word_t isa_raise_intr(word_t NO, vaddr_t epc) {
