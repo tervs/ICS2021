@@ -21,7 +21,7 @@ rtlreg_t tmp_reg[4];
 //rtlreg_t csr[4096];
 rtlreg_t _mepc;
 rtlreg_t _mstatus;
-rtlreg_t _mcause;
+rtlreg_t _mcause=0x1800;
 rtlreg_t _mtvec;
 
 void device_update();
