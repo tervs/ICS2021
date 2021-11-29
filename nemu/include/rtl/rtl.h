@@ -20,10 +20,10 @@ extern rtlreg_t _mstatus;
 extern rtlreg_t _mcause;
 extern rtlreg_t _mtvec;
 //extern rtlreg_t csr[4096];
-#define mepc (&_mepc);
-#define mstatus (&_mstatus);
-#define mcause (&_mcause);
-#define mtvec (&_mtvec);
+#define mepc (&_mepc)
+#define mstatus (&_mstatus)
+#define mcause (&_mcause)
+#define mtvec (&_mtvec)
 
 
 #define def_rtl(name, ...) void concat(rtl_, name)(Decode *s, __VA_ARGS__)
