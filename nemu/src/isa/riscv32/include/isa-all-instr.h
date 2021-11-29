@@ -44,6 +44,7 @@ f(remu)\
 f(lb)\
 f(slti)\
 f(csrrwi)\
-f(csrrs)
+f(csrrs)\
+f(csrrw)
 
 def_all_EXEC_ID();
