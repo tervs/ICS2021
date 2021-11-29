@@ -8,7 +8,7 @@ def_EHelper(auipc) {
 }
 
 def_EHelper(addi) {
-  printf("test\n\n\n\n\n\n\n\n");
+  //printf("test\n\n\n\n\n\n\n\n");
   rtl_addi(s, ddest, dsrc1, (id_src2->imm));
 }
 
