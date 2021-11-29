@@ -228,7 +228,7 @@ def_EHelper(csrrs) {
 }
 
 def_EHelper(csrrw) {
-  printf("test\n\n\n\n\n\n\n\n");
+  //printf("test\n\n\n\n\n\n\n\n");
 
   rtl_li(s, ddest, csr[id_src2->imm]);
   //rtl_or(s, &csr[id_src2->imm], dsrc1, &csr[id_src2->imm]);
