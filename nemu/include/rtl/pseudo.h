@@ -40,8 +40,5 @@ static inline def_rtl(msb, rtlreg_t* dest, const rtlreg_t* src1, int width) {
   TODO();
 }
 
-static inline def_rtl(csrw, rtlreg_t* dest, const rtlreg_t imm) {
-  printf("test\n\n\n\n\n\n\n\n");
-  //rtl_addi(s, dest, rz, imm);
-}
+
 #endif
