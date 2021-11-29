@@ -14,11 +14,12 @@ extern rtlreg_t tmp_reg[4];
 #define s2    (&tmp_reg[2])
 #define t0    (&tmp_reg[3])
 #define rz (&rzero)
-
+/*
 extern rtlreg_t _mepc;
 extern rtlreg_t _mstatus;
 extern rtlreg_t _mcause;
 extern rtlreg_t _mtvec;
+*/
 //rtlreg_t _mstatus=0x1800;
 //extern rtlreg_t csr[4096];
 #define mepc (&_mepc)
