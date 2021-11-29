@@ -226,7 +226,7 @@ def_EHelper(csrrs) {
   case 834: temp=mcause;break;
   case 773: temp=mtvec;break;
   }
-  printf("%d\n" ,(id_src2->imm));
+  //printf("%d\n" ,(id_src2->imm));
   rtl_li(s, ddest, *temp);
   rtl_or(s, temp, dsrc1, temp);
   //printf("test\n\n\n\n\n\n\n\n");
@@ -255,7 +255,7 @@ def_EHelper(csrrw) {
 def_EHelper(ecall) {
   //printf("test\n\n\n\n\n\n\n\n");
   rtl_li(s, mepc, s->pc);
-  *mcause=0x0000000b;
+  *mcause=0x0000000b;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   rtl_j(s,*mtvec);
   //rtl_li(s, ddest, csr[id_src2->imm]);
   //rtl_or(s, &csr[id_src2->imm], dsrc1, &csr[id_src2->imm]);
