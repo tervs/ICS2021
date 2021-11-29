@@ -15,11 +15,11 @@ extern rtlreg_t tmp_reg[4];
 #define t0    (&tmp_reg[3])
 #define rz (&rzero)
 
-//extern uint32_t mepc;
-//extern uint32_t mstatus;
-//extern uint32_t mcause;
-//extern uint32_t mtvec;
-extern rtlreg_t csr[4096];
+extern rtlreg_t mepc;
+extern uint32_t mstatus;
+extern uint32_t mcause;
+extern uint32_t mtvec;
+//extern rtlreg_t csr[4096];
 
 
 
