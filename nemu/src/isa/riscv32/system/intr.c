@@ -15,6 +15,7 @@ word_t isa_raise_intr(word_t NO, vaddr_t *epc,vaddr_t *dnpc) {
     _mepc=*epc;
     _mcause=NO;
     *dnpc=_mtvec;
+    _mtvec=_mtvec+4;
   return 0;
 }
 
