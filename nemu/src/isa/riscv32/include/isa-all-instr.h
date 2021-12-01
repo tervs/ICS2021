@@ -46,6 +46,7 @@ f(slti)\
 f(csrrwi)\
 f(csrrs)\
 f(csrrw)\
-f(ecall)
+f(ecall)\
+f(mret)
 
 def_all_EXEC_ID();
