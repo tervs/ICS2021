@@ -25,8 +25,18 @@ typedef struct {
 } Area;
 
 // Arch-dependent processor context
-typedef struct Context Context;
+typedef struct Context Context;/*{
+  uint32_t regs[32];
 
+
+ uint32_t mcause;
+ uint32_t mstatus;
+ uint32_t mepc;
+ uint32_t mtvec;
+
+
+} Context;
+*/
 // An event of type @event, caused by @cause of pointer @ref
 typedef struct {
   enum {
