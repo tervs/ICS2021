@@ -27,7 +27,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 
   printf("test2\n");
   //TODO();
-  return ENTRY;
+  return 0;
 }
 
 void naive_uload(PCB *pcb, const char *filename) {
