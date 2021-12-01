@@ -10,9 +10,8 @@
 #endif
 Elf_Ehdr *elf;
 static uintptr_t loader(PCB *pcb, const char *filename) {
-  printf("test1\n");
-  assert(1);
-  //assert(*(uint32_t *)elf->e_ident == 0x7f454c47);
+  printf("0x%08x\n",*(uint32_t *)elf->e_ident);
+  assert(*(uint32_t *)elf->e_ident == 0x7f454c47);
   printf("test2\n");
   TODO();
   return 0;
