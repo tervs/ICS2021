@@ -275,7 +275,7 @@ def_EHelper(ecall) {
 def_EHelper(mret) {
 
   printf("test\n\n\n\n\n\n\n\n");
-  s->dnpc=*mepc;
+  s->dnpc=*mepc+4;
 
   //
 }
