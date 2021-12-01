@@ -14,18 +14,18 @@ size_t get_ramdisk_size();
 size_t ramdisk_read(void *buf, size_t offset, size_t len) ;
 size_t ramdisk_write(const void *buf, size_t offset, size_t len) ;
 size_t buf[N];
+//extern void vaddr_write(vaddr_t addr, int len, word_t data);
+
+
 
 Elf_Ehdr *elf;
 static uintptr_t loader(PCB *pcb, const char *filename) {
   //printf("0x%08x\n",*(uint32_t *)elf->e_ident);
   //assert(*(uint32_t *)elf->e_ident == 0x7f454c47);
-  ramdisk_read(buf,0x000000,0x04df0);
-  for(int i=0;i<0x04df0;i++)
-  {
-    printf("0x%08x  0x%08x  ",i,buf[i]);
-  }
-  uint32_t x=get_ramdisk_size();
-  printf("%d\n",x);
+  ramdisk_read(buf,0x000000,get_ramdisk_size());
+  
+  //uint32_t x=get_ramdisk_size();
+  //printf("%d\n",x);
   printf("test2\n");
   TODO();
   return 0;
