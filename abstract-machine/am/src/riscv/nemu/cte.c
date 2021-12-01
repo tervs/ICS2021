@@ -8,7 +8,7 @@ Context* __am_irq_handle(Context *c) {
 
  printf("0x%08x\n",c->mcause);
 //printf("0x%08x\n",c->mepc);
-  printf("\n\n\n\n\n\n\n");
+  //printf("\n\n\n\n\n\n\n");
   if (user_handler) {
     Event ev = {0};
     switch (c->mcause) {
