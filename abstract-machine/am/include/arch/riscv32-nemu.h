@@ -3,7 +3,7 @@
 
 struct Context {
   // TODO: fix the order of these members to match trap.S
-  uintptr_t gpr[32], mstatus,mepc,  mcause;
+  uintptr_t gpr[32], mstatus,  mcause,mepc;
   void *pdir;
 };
 
