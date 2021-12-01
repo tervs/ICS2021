@@ -1,7 +1,7 @@
 #include <am.h>
 #include <riscv/riscv.h>
 #include <klib.h>
-
+extern uint32_t _mepc;
 static Context* (*user_handler)(Event, Context*) = NULL;
 
 Context* __am_irq_handle(Context *c) {
@@ -19,7 +19,7 @@ Context* __am_irq_handle(Context *c) {
     c = user_handler(ev, c);
     assert(c != NULL);
   }
-
+  //_mepc=_mepc+4;
   return c;
 }
 
