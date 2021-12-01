@@ -1,7 +1,8 @@
 #include <am.h>
 #include <riscv/riscv.h>
 #include <klib.h>
-extern uint32_t _mepc;
+//extern uint32_t _mepc;
+//extern rtlreg_t _mtvec;
 static Context* (*user_handler)(Event, Context*) = NULL;
 
 Context* __am_irq_handle(Context *c) {
