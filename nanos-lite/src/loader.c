@@ -22,7 +22,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   ramdisk_read(buf,0x000000,0x04df0);
   for(int i=0;i<0x04df0;i++)
   {
-    printf("0x%08x  ",buf[i]);
+    printf("0x%08x  0x%08x  ",i,buf[i]);
   }
   uint32_t x=get_ramdisk_size();
   printf("%d\n",x);
