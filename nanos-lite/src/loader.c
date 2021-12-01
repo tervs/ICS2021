@@ -9,15 +9,17 @@
 # define Elf_Phdr Elf32_Phdr
 #endif
 
+#define N 100000
 size_t get_ramdisk_size();
-
-
+size_t ramdisk_read(void *buf, size_t offset, size_t len) ;
+size_t ramdisk_write(const void *buf, size_t offset, size_t len) ;
+size_t buf[N];
 
 Elf_Ehdr *elf;
 static uintptr_t loader(PCB *pcb, const char *filename) {
   //printf("0x%08x\n",*(uint32_t *)elf->e_ident);
   //assert(*(uint32_t *)elf->e_ident == 0x7f454c47);
-
+  ramdisk_read(buf,0x000000,0x04df0);
   uint32_t x=get_ramdisk_size();
   printf("%d\n",x);
   printf("test2\n");
