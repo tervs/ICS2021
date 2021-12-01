@@ -21,7 +21,7 @@ def_EHelper(lhu) {
 
 def_EHelper(sw) {
   rtl_sm(s, ddest, dsrc1, id_src2->imm, 4);
-  printf("0x%08x\n",s->pc);
+  //printf("0x%08x\n",s->pc);
 }
 
 def_EHelper(sb) {
