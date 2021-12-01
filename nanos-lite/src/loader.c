@@ -20,6 +20,10 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   //printf("0x%08x\n",*(uint32_t *)elf->e_ident);
   //assert(*(uint32_t *)elf->e_ident == 0x7f454c47);
   ramdisk_read(buf,0x000000,0x04df0);
+  for(int i=0;i<0x04df0;i++)
+  {
+    printf("0x%08x  ",buf[i]);
+  }
   uint32_t x=get_ramdisk_size();
   printf("%d\n",x);
   printf("test2\n");
