@@ -10,15 +10,15 @@
 #endif
 Elf_Ehdr *elf;
 static uintptr_t loader(PCB *pcb, const char *filename) {
-
+  printf("test\n");
   assert(*(uint32_t *)elf->e_ident == 0x7f454c47);
-  
+  printf("test\n");
   TODO();
   return 0;
 }
 
 void naive_uload(PCB *pcb, const char *filename) {
-  printf("test\n");
+  
   uintptr_t entry = loader(pcb, filename);
   Log("Jump to entry = %p", entry);
   ((void(*)())entry) ();
