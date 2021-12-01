@@ -268,9 +268,6 @@ def_EHelper(ecall) {
   //printf("%d\n" ,(csr[id_src2->imm]));
   //printf("0x%08x\n\n\n",s->dnpc);
   isa_raise_intr(0x0000000b,&(s->pc),&(s->dnpc));
-  isa_reg_display();
-  printf("0x%08x\n",*mcause);
-  printf("0x%08x\n",*mstatus);
-  printf("0x%08x\n",*mepc);
+
   //
 }
