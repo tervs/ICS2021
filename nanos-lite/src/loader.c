@@ -11,7 +11,7 @@
 Elf_Ehdr *elf;
 static uintptr_t loader(PCB *pcb, const char *filename) {
   printf("test1\n");
-  assert(0);
+  assert(1);
   //assert(*(uint32_t *)elf->e_ident == 0x7f454c47);
   printf("test2\n");
   TODO();
