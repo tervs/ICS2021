@@ -49,7 +49,7 @@ def_EHelper(jalr) {
  // isa_reg_display();
  printf("before 0x%08x\n", (id_src2->imm));
   rtl_li(s, s0, s->pc);
-  rtl_sext(s,&(id_src2->imm),&(id_src2->imm),12);
+ // rtl_sext(s,&(id_src2->imm),&(id_src2->imm),12);
   printf("after 0x%08x\n", (id_src2->imm));
   rtl_addi(s,dsrc1,dsrc1, (id_src2->imm));
   rtl_andi(s,dsrc1,dsrc1,0xfffffffe);
