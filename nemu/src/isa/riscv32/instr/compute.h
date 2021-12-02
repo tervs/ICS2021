@@ -53,7 +53,7 @@ def_EHelper(jalr) {
   rtl_addi(s,dsrc1,dsrc1, (id_src2->imm));
   rtl_andi(s,dsrc1,dsrc1,0xfffffffe);
   rtl_jr(s,dsrc1);
-  //rtl_addi(s,dsrc1,s0, 0x00000004);
+  rtl_addi(s,ddest,s0, 0x00000004);
   //rtl_li(s, dsrc1, (*dsrc1>>1)<<1);
   
 }
