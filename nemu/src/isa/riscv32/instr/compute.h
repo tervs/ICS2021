@@ -51,9 +51,9 @@ def_EHelper(jalr) {
   rtl_li(s, s0, s->pc);
  // rtl_sext(s,&(id_src2->imm),&(id_src2->imm),12);
   printf("after 0x%08x\n", (id_src2->imm));
-  rtl_addi(s,dsrc1,dsrc1, (id_src2->imm));
-  rtl_andi(s,dsrc1,dsrc1,0xfffffffe);
-  rtl_jr(s,dsrc1);
+  rtl_addi(s,s1,dsrc1, (id_src2->imm));
+  rtl_andi(s,s1,s1,0xfffffffe);
+  rtl_jr(s,s1);
   rtl_addi(s,ddest,s0, 0x00000004);
   //rtl_li(s, dsrc1, (*dsrc1>>1)<<1);
   
