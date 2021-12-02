@@ -27,13 +27,7 @@ Elf_Ehdr *elf;
 static uintptr_t loader(PCB *pcb, const char *filename) {
 
 
-  FILE* file = fopen("/build/ramdisk.img", "rb");
-  if(file) {
-    // read the header
-    fread(elf, 1, sizeof(elf), file);
-  }
 
-  printf("0x%08x\n",elf->e_ident);
 
 
   //printf("0x%08x\n",*(uint32_t *)elf->e_ident);
