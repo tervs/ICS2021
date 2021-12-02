@@ -49,7 +49,7 @@ def_EHelper(jalr) {
 
   rtl_li(s, ddest, s->pc+4);
   rtl_sext(s,&(id_src2->imm),&(id_src2->imm),12);
-  //printf("0x%08x\n", (id_src2->imm));
+  printf("0x%08x\n", (id_src2->imm));
   rtl_addi(s,dsrc1,dsrc1, (id_src2->imm));
   
 
