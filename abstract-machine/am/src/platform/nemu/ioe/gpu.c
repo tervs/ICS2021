@@ -40,15 +40,15 @@ void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl)
     int h=ctl->h;
     uintptr_t *pixels=ctl->pixels;
 
-    //int cnt=0;
+    int cnt=0;
 
     for(int i=y;i<y+h;i++)
     {
       for(int j=x;j<x+w;j++)
       {
-        outl(FB_ADDR+4*(i*width+j),*(pixels));
+        outl(FB_ADDR+4*(i*width+j),*(pixels+cnt));
         //printf("%d\n",*(pixels+cnt));
-        //cnt++ ;
+        cnt++ ;
       }
     }
 
