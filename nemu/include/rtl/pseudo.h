@@ -5,6 +5,18 @@
 #error "Should be only included by <rtl/rtl.h>"
 #endif
 
+extern int32_t sign_extend(int32_t value, uint32_t bits,uint32_t sign);
+
+/*{
+    assert(bits > 0 && bits < 32);
+    uint32_t mask = ((~0U) >> (bits - 1)) << (bits - 1);
+    if (sign != 0)
+        value |= mask;
+    else
+        value &= ~mask;
+    return value;
+}
+*/
 /* RTL pseudo instructions */
 
 static inline def_rtl(li, rtlreg_t* dest, const rtlreg_t imm) {
@@ -26,8 +38,10 @@ static inline def_rtl(neg, rtlreg_t *dest, const rtlreg_t* src1) {
 }
 
 static inline def_rtl(sext, rtlreg_t* dest, const rtlreg_t* src1, int width) {
+  *dest=sign_extend(*dest,width,*src1);
+  
   // dest <- signext(src1[(width * 8 - 1) .. 0])
-  TODO();
+  //TODO();
 }
 
 static inline def_rtl(zext, rtlreg_t* dest, const rtlreg_t* src1, int width) {
