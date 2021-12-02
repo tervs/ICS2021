@@ -13,7 +13,7 @@ Context* __am_irq_handle(Context *c) {
   if (user_handler) {
     Event ev = {0};
     switch (c->mcause) {
-      case 0xfffffffe: ev.event = EVENT_YIELD;break;
+      case 0x0000000b: ev.event = EVENT_YIELD;break;
       default: ev.event = EVENT_ERROR; break;
     }
 
@@ -41,7 +41,7 @@ Context *kcontext(Area kstack, void (*entry)(void *), void *arg) {
 }
 
 void yield() {
-  asm volatile("li a7, -1; ecall");
+  asm volatile("li a7, 0x0000000b; ecall");
 }
 
 bool ienabled() {
