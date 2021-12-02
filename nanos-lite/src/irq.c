@@ -21,6 +21,11 @@ void init_irq(void) {
 
 void syscall_ex(Event e, Context* c)
 {
-  //case(c->mcause)
+      switch (c->mcause) {
+      case 0: ;break;
+      case 1: yield();break;
+      //case 0:ev.event = EVENT_SYSCALL;break;
+      default: panic("syscall_ex fail\n"); break;
+    }
 
 }
