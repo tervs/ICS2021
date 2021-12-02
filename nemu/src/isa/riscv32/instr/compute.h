@@ -273,7 +273,7 @@ def_EHelper(ecall) {
   printf("0x%08x\n\n\n",gpr(17));
   isa_reg_display();
   isa_raise_intr(gpr(17),&(s->pc),&(s->dnpc));
-  
+  printf("\n\n\n");
   isa_reg_display();
 }
 
