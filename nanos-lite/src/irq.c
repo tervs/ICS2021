@@ -1,5 +1,8 @@
 #include <common.h>
 
+
+void syscall_ex(Event e, Context* c);
+
 static Context* do_event(Event e, Context* c) {
   switch (e.event) {
     case 1:printf("yield here!\n");break;
