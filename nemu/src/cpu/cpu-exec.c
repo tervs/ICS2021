@@ -20,7 +20,7 @@ rtlreg_t tmp_reg[4];
 //Decode s;
 //rtlreg_t csr[4096];
 rtlreg_t _mepc;
-rtlreg_t _mstatus=0x1800;
+rtlreg_t _mstatus;//=0x1800;
 rtlreg_t _mcause;
 rtlreg_t _mtvec;
 
@@ -126,9 +126,9 @@ void cpu_exec(uint64_t n) {
   Decode s;//todo tobe delete
   for (;n > 0; n --) {
     fetch_decode_exec_updatepc(&s);
-    //printf("pc:  0x%08x\n",s.pc);
-    //if(s.pc==0x830000d4)
-    //{nemu_state.state=NEMU_ABORT;}
+    printf("pc:  0x%08x\n",s.pc);
+    if(s.pc==0x830000d4)
+    {nemu_state.state=NEMU_ABORT;}
     g_nr_guest_instr ++;
     trace_and_difftest(&s, cpu.pc);
     if (nemu_state.state != NEMU_RUNNING) break;
