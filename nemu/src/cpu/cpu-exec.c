@@ -126,7 +126,7 @@ void cpu_exec(uint64_t n) {
   Decode s;//todo tobe delete
   for (;n > 0; n --) {
     fetch_decode_exec_updatepc(&s);
-   // printf(" pc:  0x%08x\n",s.pc);
+    printf(" pc:  0x%08x\n",s.pc);
     if(s.pc==0x830000d4)
     {nemu_state.state=NEMU_ABORT;}
     g_nr_guest_instr ++;
