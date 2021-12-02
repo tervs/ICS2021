@@ -46,14 +46,15 @@ def_EHelper(jal) {
 def_EHelper(jalr) {
   //printf("origin is 0x%08x\n",id_src2->imm);
   //printf("shift is 0x%08x\n",((id_src2->imm)<<20)>>20);
-  isa_reg_display();
+  //isa_reg_display();
   rtl_li(s, s0, s->pc);
   rtl_sext(s,&(id_src2->imm),&(id_src2->imm),12);
   //printf("0x%08x\n", (id_src2->imm));
   rtl_addi(s,dsrc1,dsrc1, (id_src2->imm));
   rtl_andi(s,dsrc1,dsrc1,0xfffffffe);
   rtl_jr(s,dsrc1);
-  rtl_li(s, dsrc1, (*dsrc1>>1)<<1);
+  rtl_addi(s,dsrc1,s0, 0x00000004);
+  //rtl_li(s, dsrc1, (*dsrc1>>1)<<1);
   
 }
 
