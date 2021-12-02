@@ -23,7 +23,7 @@ int syscall_ex(Event e, Context* c)
 {
       switch (c->mcause) 
       {
-      case 0: ;break;
+      case 0: halt(1);;break;
       case 1: printf("syscall 1\n");yield();break;
       //case 0:ev.event = EVENT_SYSCALL;break;
       default: panic("syscall_ex fail\n"); break;
