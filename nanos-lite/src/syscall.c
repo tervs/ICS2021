@@ -56,7 +56,7 @@ if(a[1]==1||a[1]==2)
   count++;
   printf("%d\n",count);
   char *ch=(char *)(a[2]);
-  for(int i=0;i<a[3];i++)
+  for(int i=0;i<13;i++)
   {
     putch(*(ch+i));
   }
