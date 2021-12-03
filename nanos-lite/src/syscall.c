@@ -67,7 +67,7 @@ return -1;
 
 uintptr_t sys_brk()
 {
-  printf("syscall brk\n");
+  printf("syscall brk   addr: 0x%08x\n",a[1]);
 
   return 0;
 }
