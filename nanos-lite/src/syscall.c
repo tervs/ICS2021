@@ -27,7 +27,7 @@ void do_syscall(Context *c) {
 
 
 
-  //printf("a0  %d\n\n",a[0]);
+  printf("\n");
   printf("a0 %d  a1 %d  a2 0x%08x  a3 %d\n",a[0],a[1],a[2],a[3]);
   switch (a[0]) {
     case 0: c->GPRx=sys_exit();break;
