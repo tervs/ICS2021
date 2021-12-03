@@ -132,6 +132,7 @@ void cpu_exec(uint64_t n) {
     #ifdef ENDCYCLE
     if(cpu.pc==0x830000e0)
     {
+      isa_reg_display();
       nemu_state.state=NEMU_ABORT;
     }
     #endif
