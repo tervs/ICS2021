@@ -43,7 +43,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   for(int i=0;i<5000;i++)
   {
     
-    printf("0x%08x\n",*x);
+    printf("0x%08x  0x%08x\n",x,*x);
     x=x+i;
 
   }
