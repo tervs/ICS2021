@@ -61,7 +61,7 @@ int fs_open(const char *pathname, int flags, int mode)
   for(int i=0;i<23;i++)
   {
     printf("%s\n",file_table[i].name);
-    if(strcmp(file_table[i].name,pathname))
+    if(file_table[i].name==pathname)//if(strcmp(file_table[i].name,pathname))
     {
       
       return i;
