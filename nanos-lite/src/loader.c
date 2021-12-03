@@ -17,7 +17,11 @@ size_t ramdisk_write(const void *buf, size_t offset, size_t len) ;
 
 Elf_Ehdr *elf;
 
-
+int fs_open(const char *pathname, int flags, int mode);
+size_t fs_read(int fd, void *buf, size_t len);
+size_t fs_write(int fd, const void *buf, size_t len);
+size_t fs_lseek(int fd, size_t offset, int whence);
+int fs_close(int fd);
 
 
  
@@ -27,10 +31,12 @@ Elf_Ehdr *elf;
 static uintptr_t loader(PCB *pcb, const char *filename) {
 
 
-  printf("0x%08x\n",get_ramdisk_size());
+  //printf("0x%08x\n",get_ramdisk_size());
+  int fd=fs_open(filename,0,0);
+
   //assert(*(uint32_t *)elf->e_ident == 0x7f454c47);
-  ramdisk_read((void *)ENTRY,0x000000,get_ramdisk_size());
-  
+  //ramdisk_read((void *)ENTRY,0x000000,get_ramdisk_size());
+  printf("%d\n",fd);
 
   printf("test2\n");
   return ENTRY+0x4d8c;
