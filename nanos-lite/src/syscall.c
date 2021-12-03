@@ -23,10 +23,7 @@ void do_syscall(Context *c) {
     case 4: c->GPRx=sys_write();break;
     default: panic("Unhandled syscall ID = %d", a[1]);
   }
-  for(int i=0;i<32;i++)
-  {
-    printf("%d: 0x%08x \n",i,c->gpr[i]);
-  }
+
   //is_reg_display();
 }
 
@@ -58,6 +55,6 @@ uintptr_t sys_write()
     //printf("  %p\n",ch+i);
   }
   //printf("\n");
-  printf("a0: %d  a1: %d  a2: 0x%08x  a3: %d\n",a[0],a[1],a[2],a[3]);
+  //printf("a0: %d  a1: %d  a2: 0x%08x  a3: %d\n",a[0],a[1],a[2],a[3]);
   return a[3];
 }
