@@ -33,15 +33,15 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 
 
   //printf("0x%08x\n",get_ramdisk_size());
-  //int fd=fs_open(filename,0,0);
-  //size_t len=fs_len(fd);
-  //fs_read(fd,(void *)ENTRY,len);
+  int fd=fs_open(filename,0,0);
+  size_t len=fs_len(fd);
+  fs_read(fd,(void *)ENTRY,len);
   //assert(*(uint32_t *)elf->e_ident == 0x7f454c47);
-  ramdisk_read((void *)ENTRY,0x000000,get_ramdisk_size());
+  //ramdisk_read((void *)ENTRY,0x000000,get_ramdisk_size());
   //printf("%d   %d\n",fd,len);
 
   printf("test2\n");
-  return ENTRY+0x7d9c;
+  return ENTRY+0x7d84;
 
 #ifdef TEST
   uint32_t *x= (uint32_t*)(ENTRY);
