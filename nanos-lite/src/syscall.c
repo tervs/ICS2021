@@ -52,10 +52,10 @@ uintptr_t sys_write()
   char *ch=(char *)(a[2]);
   
   
-  for(int i=0;i<a[3];i=i+0x00000001)
+  for(int i=0;i<a[3];i++)
   {
     putch(*(ch+i));
-    printf("  %p\n",ch+i);
+    //printf("  %p\n",ch+i);
   }
   printf("\n");
   printf("a0: %d  a1: %d  a2: 0x%08x  a3: %d\n",a[0],a[1],a[2],a[3]);
