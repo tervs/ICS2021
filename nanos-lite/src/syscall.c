@@ -9,6 +9,7 @@ uintptr_t sys_write();
 uintptr_t sys_brk();
 uintptr_t sys_open();
 uintptr_t sys_lseek();
+uintptr_t sys_read();
 int fs_open(const char *pathname, int flags, int mode);
 size_t fs_read(int fd, void *buf, size_t len);
 size_t fs_write(int fd, const void *buf, size_t len);
@@ -32,6 +33,7 @@ void do_syscall(Context *c) {
     case 0: c->GPRx=sys_exit();break;
     case 1: c->GPRx=sys_yield();break;
     case 2: c->GPRx=sys_open();break;
+    case 3: c->GPRx=sys_read();break;
     case 4: c->GPRx=sys_write();break;
     case 8: c->GPRx=sys_lseek();break;
     case 9: c->GPRx=0;sys_brk();break;
@@ -105,7 +107,10 @@ uintptr_t sys_lseek()
   //return 1;
 }
 
-
+uintptr_t sys_read()
+{
+  return 0;
+}
 
 
 
