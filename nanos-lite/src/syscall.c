@@ -52,7 +52,7 @@ uintptr_t sys_write()
 if(a[1]==1||a[1]==2)
 {
   //printf("syscall 4\n");
-  printf("%d\n",count);
+  
   count++;
   char *ch=(char *)(a[2]);
   for(int i=0;i<a[3];i++)
@@ -62,6 +62,7 @@ if(a[1]==1||a[1]==2)
 
   return a[3];
 }
+printf("you see here?\n");
 return -1;
 }
 
