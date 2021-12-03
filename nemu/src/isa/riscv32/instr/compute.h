@@ -263,11 +263,11 @@ def_EHelper(csrrw) {
 def_EHelper(ecall) {
  
   //printf("0x%08x\n\n\n",s->pc);
-  isa_reg_display();
+  //isa_reg_display();
   //isa_raise_intr(gpr(17),&(s->pc),&(s->dnpc));
   isa_raise_intr(0x0000000b,&(s->pc),&(s->dnpc));//no more independent yield
-  printf("\n\n\n");
-  isa_reg_display();
+  //printf("\n\n\n");
+  //isa_reg_display();
 }
 
 def_EHelper(mret) {
