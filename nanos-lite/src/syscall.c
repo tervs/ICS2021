@@ -7,6 +7,9 @@ uintptr_t sys_yield();
 uintptr_t sys_exit();
 uintptr_t sys_write();
 uintptr_t sys_brk();
+
+
+int count=0;
 void do_syscall(Context *c) {
  
   a[0] = c->GPR1;
@@ -48,7 +51,9 @@ uintptr_t sys_write()
 {
 if(a[1]==1||a[1]==2)
 {
-  printf("syscall 4\n");
+  //printf("syscall 4\n");
+  printf("%d\n",count);
+  count++;
   char *ch=(char *)(a[2]);
   for(int i=0;i<a[3];i++)
   {
@@ -63,6 +68,6 @@ return -1;
 uintptr_t sys_brk()
 {
   printf("syscall brk\n");
-  
+
   return 0;
 }
