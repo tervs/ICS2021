@@ -62,5 +62,7 @@ return -1;
 
 uintptr_t sys_brk()
 {
+  printf("syscall brk\n");
+  
   return 0;
 }

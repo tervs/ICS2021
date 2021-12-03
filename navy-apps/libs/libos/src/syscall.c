@@ -70,9 +70,18 @@ int _write(int fd, void *buf, size_t count) {
   //return 0;
 }
 
+extern char end;
+static intptr_t oldaddr=(intptr_t)(&(end));
 void *_sbrk(intptr_t increment) {
-  //return (void *)-1;
-  return (void *)_syscall_(SYS_brk, increment, 0, 0);
+  intptr_t newaddr=oldaddr+increment;
+  if(_syscall_(SYS_brk, newaddr, 0, 0)==0)
+  {
+    intptr_t temp=oldaddr;
+    oldaddr=+increment;
+    return (void *)temp;
+  }
+  return (void *)-1;
+  //return (void *)_syscall_(SYS_brk, increment, 0, 0);
 }
 
 int _read(int fd, void *buf, size_t count) {
