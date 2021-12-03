@@ -57,6 +57,7 @@ size_t fs_write(int fd, const void *buf, size_t len)
 
 int fs_open(const char *pathname, int flags, int mode)
 {
+  printf("%s\n",pathname);
   for(int i=0;i<23;i++)
   {
     if(file_table[i].name==pathname)
