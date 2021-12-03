@@ -53,14 +53,13 @@ if(a[1]==1||a[1]==2)
 {
   //printf("syscall 4\n");
   
-  count++;
-  printf("%d\n",count);
+
   char *ch=(char *)(a[2]);
   for(int i=0;i<a[3];i++)
   {
     putch(*(ch+i));
   }
-  printf("a0 %d  a1 0x%08x  a2 %d\n",a[1],a[2],a[3]);
+  //printf("a0 %d  a1 0x%08x  a2 %d\n",a[1],a[2],a[3]);
   return a[3];
 }
 //printf("you see here?\n");
@@ -69,7 +68,7 @@ return -1;
 
 uintptr_t sys_brk()
 {
-  printf("syscall brk   addr: 0x%08x  incre: 0x%08x\n",a[1],a[2]);
+  //printf("syscall brk   addr: 0x%08x  incre: 0x%08x\n",a[1],a[2]);
 
   return 0;
 }
