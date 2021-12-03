@@ -18,7 +18,7 @@ void init_irq(void) {
   cte_init(do_event);
 }
 
-
+/*
 int syscall_ex(Event e, Context* c)
 {
       switch (c->mcause) 
@@ -30,3 +30,4 @@ int syscall_ex(Event e, Context* c)
     }
 return 0;
 }
+*/
