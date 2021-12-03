@@ -111,7 +111,7 @@ uintptr_t sys_read()
 {
   printf("syscall read\n");
   int ret=fs_read(a[1],(void *)(a[2]),a[3]);
-  //printf("0x%08x\n",ret);
+  printf("0x%08x\n",ret);
   return ret;
 }
 
