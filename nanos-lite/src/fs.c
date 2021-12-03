@@ -53,7 +53,7 @@ void init_fs() {
 
 size_t fs_write(int fd, const void *buf, size_t len)
 {
-
+  printf("open: 0x%08x    size: 0x%08x\n",file_table[fd].open_offset,file_table[fd].size);
   int ret=0;
   if(file_table[fd].open_offset+len>file_table[fd].size)
   {len = file_table[fd].size- file_table[fd].open_offset;}
@@ -117,7 +117,7 @@ size_t fs_lseek(int fd, size_t offset, int whence)
   {
 		case SEEK_SET:file_table[fd].open_offset=offset;break;
 		case SEEK_CUR:file_table[fd].open_offset+=offset;break;
-		case SEEK_END:file_table[fd].open_offset=file_table[fd].size-offset;break;//file_table[fd].open_offset=file_table[fd].size+offset;break;
+		case SEEK_END:file_table[fd].open_offset=file_table[fd].size+offset;break;
     default: assert(0);
   }
     
