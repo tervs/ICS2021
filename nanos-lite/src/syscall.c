@@ -83,11 +83,11 @@ uintptr_t sys_brk()
 uintptr_t sys_open()
 {
   char *ch=(char *)(a[1]);
-  printf("%s\n",ch);
+  //printf("%s\n",ch);
 
   printf("syscall open\n");
   int fd=fs_open(ch,0,0);
-  printf("%d\n",fd);
+  //printf("%d\n",fd);
 
   return fd; 
 }
