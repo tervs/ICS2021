@@ -121,7 +121,7 @@ size_t fs_lseek(int fd, size_t offset, int whence)
 		case SEEK_END:file_table[fd].open_offset=file_table[fd].size+offset;break;
     default: assert(0);
   }
-    
+   printf("before: 0x%08x    after: 0x%08x\n",old_offset,file_table[fd].open_offset); 
     if(file_table[fd].open_offset>file_table[fd].size)
     {
         file_table[fd].open_offset=old_offset;
