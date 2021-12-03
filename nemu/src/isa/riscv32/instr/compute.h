@@ -1,5 +1,6 @@
 def_EHelper(lui) {
   //printf("test\n\n\n\n\n\n\n\n");
+  isa_reg_display();
   rtl_li(s, ddest, id_src1->imm);
 }
 
