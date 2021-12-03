@@ -59,7 +59,7 @@ void init_fs() {
 
 size_t fs_write(int fd, const void *buf, size_t len)
 {
-  printf("open: 0x%08x    size: 0x%08x\n",file_table[fd].open_offset,file_table[fd].size);
+  //printf("open: 0x%08x    size: 0x%08x\n",file_table[fd].open_offset,file_table[fd].size);
   int ret=0;
   if(file_table[fd].open_offset+len>file_table[fd].size)
   {len = file_table[fd].size- file_table[fd].open_offset;}
@@ -107,7 +107,7 @@ int fs_close(int fd)
 
 size_t fs_read(int fd, void *buf, size_t len)
 {
-  printf("open: 0x%08x    size: 0x%08x\n",file_table[fd].open_offset,file_table[fd].size);
+  //printf("open: 0x%08x    size: 0x%08x\n",file_table[fd].open_offset,file_table[fd].size);
   int ret=0;
   if(file_table[fd].open_offset+len>file_table[fd].size)
   {len = file_table[fd].size- file_table[fd].open_offset;}
@@ -142,7 +142,7 @@ size_t fs_lseek(int fd, size_t offset, int whence)
 		case SEEK_END:file_table[fd].open_offset=file_table[fd].size+offset;break;
     default: assert(0);
   }
-   printf("before: 0x%08x    after: 0x%08x\n",old_offset,file_table[fd].open_offset); 
+   //printf("before: 0x%08x    after: 0x%08x\n",old_offset,file_table[fd].open_offset); 
     if(file_table[fd].open_offset>file_table[fd].size)
     {
         file_table[fd].open_offset=old_offset;
