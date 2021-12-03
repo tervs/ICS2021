@@ -7,7 +7,7 @@ uintptr_t sys_yield();
 uintptr_t sys_exit();
 uintptr_t sys_write();
 uintptr_t sys_brk();
-
+uintptr_t sys_open();
 
 int count=0;
 void do_syscall(Context *c) {
@@ -24,6 +24,7 @@ void do_syscall(Context *c) {
   switch (a[0]) {
     case 0: c->GPRx=sys_exit();break;
     case 1: c->GPRx=sys_yield();break;
+    case 2: c->GPRx=sys_open();break;
     case 4: c->GPRx=sys_write();break;
     case 9: c->GPRx=0;sys_brk();break;
     default: panic("Unhandled syscall ID = %d", a[1]);
@@ -70,6 +71,24 @@ return -1;
 uintptr_t sys_brk()
 {
   //printf("syscall brk   addr: 0x%08x  incre: 0x%08x\n",a[1],a[2]);
-
   return 0;
 }
+
+uintptr_t sys_open()
+{
+  printf("syscall open\n");
+  return 0;
+  //fs_open()
+}
+
+
+
+
+
+
+
+
+
+
+
+
