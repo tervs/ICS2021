@@ -47,7 +47,13 @@ uintptr_t sys_exit()
 
 uintptr_t sys_write()
 {
+
   printf("syscall 4\n");
+  uintptr_t *ch=(uintptr_t *)(a[2]);
+  for(int i=0;i<a[3];i++)
+  {
+    putch(*(ch+i));
+  }
   printf("a0: %d  a1: %d  a2: 0x%08x  a3: %d\n",a[0],a[1],a[2],a[3]);
   return a[3];
 }
