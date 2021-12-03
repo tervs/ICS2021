@@ -99,7 +99,7 @@ uintptr_t sys_open()
 uintptr_t sys_lseek()
 {
   printf("syscall lseek\n");
-  return 0;
+  return 1;
 }
 
 
