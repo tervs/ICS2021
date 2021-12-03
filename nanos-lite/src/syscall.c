@@ -77,6 +77,7 @@ uintptr_t sys_brk()
 uintptr_t sys_open()
 {
   char *ch=(char *)a[0];
+  printf("%d\n",a[0]);
     for(int i=0;i<10;i++)
   {
     putch(*(ch+i));
