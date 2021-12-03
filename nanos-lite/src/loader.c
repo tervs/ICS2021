@@ -44,7 +44,8 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   {
     
     printf("0x%08x  0x%08x\n",x,*x);
-    x=x+i;
+    x++;
+    //x=x+i;
 
   }
   return 0;
