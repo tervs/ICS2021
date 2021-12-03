@@ -49,12 +49,9 @@ void init_fs() {
 int fs_open(const char *pathname, int flags, int mode)
 {
   int i=0;
-  for(;;i++)
+  for(;i<23;i++)
   {
-    if(&(file_table[i].name)==NULL)
-    {
-      assert(0);return i;
-    }
+
     if(file_table[i].name==pathname)
     {
       //assert(0);
@@ -62,6 +59,6 @@ int fs_open(const char *pathname, int flags, int mode)
     }
   }
 
-  assert(1);
+  assert(0);
   return 0;
 }
