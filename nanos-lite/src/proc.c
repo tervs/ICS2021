@@ -25,6 +25,7 @@ void init_proc() {
   
   Log("Initializing processes...");
   naive_uload(NULL,NULL);
+  Log("test");
   // load program here
 
 }
