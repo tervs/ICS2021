@@ -77,7 +77,8 @@ uintptr_t sys_brk()
 uintptr_t sys_open()
 {
   //char *ch=(char *)a[0];
-  printf("0x%08x\n",a[1]);
+  printf("%s\n",(char *)(a[1]));
+  //printf("0x%08x\n",a[1]);
   /*
     for(int i=0;i<10;i++)
   {
