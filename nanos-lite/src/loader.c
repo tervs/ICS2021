@@ -11,7 +11,7 @@
 #endif
 #define ENTRY 0x83000000
 //extern static Finfo file_table[];
-
+//#define TEST
 
 Elf_Ehdr *elf;
 
@@ -39,15 +39,16 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 
   printf("test2\n");
   //return ENTRY+0x4d8c;
+
+#ifdef TEST
   uint32_t *x= (uint32_t*)(ENTRY);
   for(int i=0;i<5000;i++)
   {
-    
     printf("0x%08x  0x%08x\n",x,*x);
     x++;
     //x=x+i;
-
   }
+#endif
   return 0;
 }
 

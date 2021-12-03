@@ -20,7 +20,7 @@ void do_syscall(Context *c) {
 
 
 
-  //printf("%d\n\n\n\n",a[0]);
+  printf("%d\n\n",a[0]);
   switch (a[0]) {
     case 0: c->GPRx=sys_exit();break;
     case 1: c->GPRx=sys_yield();break;

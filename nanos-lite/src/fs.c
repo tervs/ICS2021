@@ -50,6 +50,10 @@ void init_fs() {
   // TODO: initialize the size of /dev/fb
 }
 
+size_t fs_write(int fd, const void *buf, size_t len)
+{
+  return ramdisk_write(buf, file_table[fd].disk_offset,len) ;
+}
 
 int fs_open(const char *pathname, int flags, int mode)
 {
@@ -63,7 +67,6 @@ int fs_open(const char *pathname, int flags, int mode)
   assert(0);
   return 0;
 }
-
 
 int fs_close(int fd)
 {
@@ -83,4 +86,13 @@ size_t fs_len(int fd)
 {
   return file_table[fd].size;
 }
+
+
+
+
+
+
+
+
+
 
