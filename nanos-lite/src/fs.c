@@ -81,8 +81,11 @@ int fs_close(int fd)
 
 size_t fs_read(int fd, void *buf, size_t len)
 {
+  if(file_table[fd].open_offset+len>file_table[fd].size)
+  {return 0;}
 
-  ramdisk_read(buf,file_table[fd].disk_offset,len);
+
+  else ramdisk_read(buf,file_table[fd].disk_offset+file_table[fd].open_offset,len);
 
   //printf("%d\n",file_table[fd].disk_offset);
   return len;
@@ -101,7 +104,8 @@ size_t fs_lseek(int fd, size_t offset, int whence)
 		case SEEK_CUR:file_table[fd].open_offset+=offset;break;
 		case SEEK_END:file_table[fd].open_offset=file_table[fd].size+offset;break;
     default: assert(0);
-  } 
+  }
+
   return file_table[fd].open_offset;
   //return 0;
 }
