@@ -110,6 +110,7 @@ uintptr_t sys_lseek()
 uintptr_t sys_read()
 {
   printf("syscall read\n");
+  printf("0x%08x\n",a[2]);
   return fs_read(a[1],(void *)(a[2]),a[3]);
 }
 
