@@ -266,7 +266,7 @@ def_EHelper(ecall) {
   isa_reg_display();
   //isa_raise_intr(gpr(17),&(s->pc),&(s->dnpc));
   isa_raise_intr(0x0000000b,&(s->pc),&(s->dnpc));//no more independent yield
-  //printf("\n\n\n");
+  printf("\n\n\n");
   isa_reg_display();
 }
 
