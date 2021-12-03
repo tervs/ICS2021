@@ -73,6 +73,9 @@ size_t fs_write(int fd, const void *buf, size_t len)
   return ret;
 }
 
+
+
+
 int fs_open(const char *pathname, int flags, int mode)
 {
   //printf("%s\n",pathname);
@@ -91,10 +94,16 @@ int fs_open(const char *pathname, int flags, int mode)
   return 0;
 }
 
+
+
+
 int fs_close(int fd)
 {
   return 0;
 }
+
+
+
 
 size_t fs_read(int fd, void *buf, size_t len)
 {
@@ -116,6 +125,9 @@ size_t fs_len(int fd)
 {
   return file_table[fd].size;
 }
+
+
+
 
 
 
