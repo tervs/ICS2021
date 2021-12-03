@@ -25,7 +25,7 @@ void do_syscall(Context *c) {
     case 0: c->GPRx=sys_exit();break;
     case 1: c->GPRx=sys_yield();break;
     case 4: c->GPRx=sys_write();break;
-    case 9: c->GPRx=sys_brk();break;
+    case 9: c->GPRx=0;sys_brk();break;
     default: panic("Unhandled syscall ID = %d", a[1]);
   }
 
@@ -56,14 +56,14 @@ if(a[1]==1||a[1]==2)
   count++;
   printf("%d\n",count);
   char *ch=(char *)(a[2]);
-  for(int i=0;i<23;i++)
+  for(int i=0;i<a[3];i++)
   {
     putch(*(ch+i));
   }
   printf("a0 %d  a1 0x%08x  a2 %d\n",a[1],a[2],a[3]);
   return a[3];
 }
-printf("you see here?\n");
+//printf("you see here?\n");
 return -1;
 }
 
