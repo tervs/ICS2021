@@ -112,6 +112,7 @@ size_t fs_len(int fd)
 
 size_t fs_lseek(int fd, size_t offset, int whence)
 {
+  size_t old_offset=file_table[fd].open_offset;
   switch(whence)
   {
 		case SEEK_SET:file_table[fd].open_offset=offset;break;
@@ -119,7 +120,12 @@ size_t fs_lseek(int fd, size_t offset, int whence)
 		case SEEK_END:file_table[fd].open_offset=file_table[fd].size+offset;break;
     default: assert(0);
   }
-
+    
+    if(file_table[fd].open_offset>file_table[fd].size)
+    {
+        file_table[fd].open_offset=old_offset;
+        return -1;
+    }
   return file_table[fd].open_offset;
   //return 0;
 }
