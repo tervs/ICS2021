@@ -64,7 +64,7 @@ int _open(const char *path, int flags, mode_t mode) {
 int _write(int fd, void *buf, size_t count) {
   
   //printf("fd  %d   buf  %d   count %d\n",fd, (intptr_t)buf,count);
-  return _syscall_(SYS_write,fd,(intptr_t)buf,count);
+  return (_syscall_(SYS_write,fd,(intptr_t)buf,count)==count)?0:(-1);
  
   //_exit(SYS_write);
   //return 0;
