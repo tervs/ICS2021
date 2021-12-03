@@ -49,15 +49,17 @@ uintptr_t sys_yield()
 
 uintptr_t sys_exit()
 {
-  printf("syscall 0\n");
+  printf("syscall exit\n");
   halt(0);
   return 0;
 }
 
 uintptr_t sys_write()
 {
+
 if(a[1]==1||a[1]==2)
 {
+  printf("syscall write \n");
   //printf("syscall 4\n");
   
   //printf("%d\n",count);
@@ -76,7 +78,7 @@ return -1;
 
 uintptr_t sys_brk()
 {
-  //printf("syscall brk   addr: 0x%08x  incre: 0x%08x\n",a[1],a[2]);
+  printf("syscall brk \n");
   return 0;
 }
 
