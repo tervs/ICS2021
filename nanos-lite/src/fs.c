@@ -48,17 +48,28 @@ void init_fs() {
 
 int fs_open(const char *pathname, int flags, int mode)
 {
-  int i=0;
-  for(;i<23;i++)
+  for(int i=0;i<23;i++)
   {
-
     if(file_table[i].name==pathname)
     {
-      //assert(0);
       return i;
     }
   }
-
   assert(0);
   return 0;
 }
+
+
+int fs_close(int fd)
+{
+  return 0;
+}
+
+size_t fs_read(int fd, void *buf, size_t len)
+{
+  printf("%d\n",file_table[fd].disk_offset);
+  return 0;
+}
+
+
+
