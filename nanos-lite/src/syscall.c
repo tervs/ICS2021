@@ -9,6 +9,12 @@ uintptr_t sys_write();
 uintptr_t sys_brk();
 uintptr_t sys_open();
 
+int fs_open(const char *pathname, int flags, int mode);
+size_t fs_read(int fd, void *buf, size_t len);
+size_t fs_write(int fd, const void *buf, size_t len);
+size_t fs_lseek(int fd, size_t offset, int whence);
+int fs_close(int fd);
+
 int count=0;
 void do_syscall(Context *c) {
  
@@ -77,17 +83,13 @@ uintptr_t sys_brk()
 uintptr_t sys_open()
 {
   char *ch=(char *)(a[1]);
-  printf("%s\n",ch);
-  //printf("0x%08x\n",a[1]);
-  /*
-    for(int i=0;i<10;i++)
-  {
-    putch(*(ch+i));
-  }
-  */
+  //printf("%s\n",ch);
+
   printf("syscall open\n");
-  return 0;
-  //fs_open()
+  int fd=fs_open(ch,0,0);
+  printf("%d\n",fd);
+
+  return fd; 
 }
 
 
