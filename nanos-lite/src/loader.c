@@ -31,7 +31,8 @@ size_t fs_len(int fd);
 
 static uintptr_t loader(PCB *pcb, const char *filename) {
 
-
+  if(filename!=NULL)
+  {
   //printf("0x%08x\n",get_ramdisk_size());
   int fd=fs_open(filename,0,0);
   size_t len=fs_len(fd);
@@ -43,6 +44,13 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   printf("test2\n");
   return ENTRY+0x7d84;
 
+
+
+
+
+  }
+
+return 0;
 #ifdef TEST
   uint32_t *x= (uint32_t*)(ENTRY);
   for(int i=0;i<5000;i++)
