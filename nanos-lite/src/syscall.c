@@ -61,7 +61,7 @@ if(a[1]==1||a[1]==2)
     putch(*(ch+i));
   }
   printf("a0 %d  a1 0x%08x  a2 %d\n",a[1],a[2],a[3]);
-  return 1;//a[3];
+  return a[3];
 }
 //printf("you see here?\n");
 return -1;
@@ -69,7 +69,7 @@ return -1;
 
 uintptr_t sys_brk()
 {
-  printf("syscall brk   addr: 0x%08x\n",a[1]);
+  printf("syscall brk   addr: 0x%08x  incre: 0x%08x\n",a[1],a[2]);
 
   return 0;
 }
