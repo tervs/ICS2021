@@ -43,6 +43,6 @@ uintptr_t sys_exit()
 uintptr_t sys_write()
 {
   printf("syscall 4\n");
-  printf("a0: %d  a1: %d  a2: %u  a3: %d\n",a[0],a[1],a[2],a[3]);
+  printf("a0: %d  a1: %d  a2: 0x%08x  a3: %d\n",a[0],a[1],a[2],a[3]);
   return 0;
 }
