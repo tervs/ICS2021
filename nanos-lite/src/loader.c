@@ -27,16 +27,12 @@ Elf_Ehdr *elf;
 static uintptr_t loader(PCB *pcb, const char *filename) {
 
 
-
-
-
   printf("0x%08x\n",get_ramdisk_size());
   //assert(*(uint32_t *)elf->e_ident == 0x7f454c47);
   ramdisk_read((void *)ENTRY,0x000000,get_ramdisk_size());
   
 
   printf("test2\n");
-  //TODO();
   return ENTRY+0x4d8c;
 }
 

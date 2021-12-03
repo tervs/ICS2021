@@ -13,6 +13,16 @@ typedef struct {
 
 enum {FD_STDIN, FD_STDOUT, FD_STDERR, FD_FB};
 
+
+int fs_open(const char *pathname, int flags, int mode);
+size_t fs_read(int fd, void *buf, size_t len);
+size_t fs_write(int fd, const void *buf, size_t len);
+size_t fs_lseek(int fd, size_t offset, int whence);
+int fs_close(int fd);
+
+
+
+
 size_t invalid_read(void *buf, size_t offset, size_t len) {
   panic("should not reach here");
   return 0;
@@ -33,4 +43,20 @@ static Finfo file_table[] __attribute__((used)) = {
 
 void init_fs() {
   // TODO: initialize the size of /dev/fb
+}
+
+
+int fs_open(const char *pathname, int flags, int mode)
+{
+  int i=0;
+  for(;i<22;i++)
+  {
+    if(file_table[i].name==pathname)
+    {
+      return i;
+    }
+  }
+
+  assert(1);
+  return 0;
 }
