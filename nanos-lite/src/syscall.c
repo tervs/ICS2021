@@ -98,6 +98,7 @@ uintptr_t sys_open()
 
 uintptr_t sys_lseek()
 {
+  printf("a1 %d  a2 0x%08x  a3 %d\n",a[1],a[2],a[3]);
   printf("syscall lseek\n");
   return 1;
 }
