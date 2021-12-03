@@ -10,6 +10,8 @@
  * You can modify this value as you want.
  */
 #define MAX_INSTR_TO_PRINT 10
+//#define ENDCYCLE
+
 
 CPU_state cpu = {};
 uint64_t g_nr_guest_instr = 0;
@@ -127,10 +129,12 @@ void cpu_exec(uint64_t n) {
   for (;n > 0; n --) {
     fetch_decode_exec_updatepc(&s);
     //printf(" pc:  0x%08x\n",s.pc);
+    #ifdef ENDCYCLE
     if(cpu.pc==0x830000e4)
     {
       nemu_state.state=NEMU_ABORT;
     }
+    #endif
     g_nr_guest_instr ++;
     trace_and_difftest(&s, cpu.pc);
     if (nemu_state.state != NEMU_RUNNING) break;
