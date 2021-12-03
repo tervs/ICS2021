@@ -261,19 +261,10 @@ def_EHelper(csrrw) {
 }
 
 def_EHelper(ecall) {
-  //printf("test\n\n\n\n\n\n\n\n");
-  //rtl_li(s, mepc, s->pc);
-  //*mcause=0x0000000b;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  //rtl_j(s,*mtvec);
-  //rtl_li(s, ddest, csr[id_src2->imm]);
-  //rtl_or(s, &csr[id_src2->imm], dsrc1, &csr[id_src2->imm]);
-  //printf("test\n\n\n\n\n\n\n\n");
-  //rtl_li(s, ddest, csr[id_src2->imm]);
-  //rtl_li(s, &csr[id_src2->imm], *(id_src1->preg));
-  //printf("%d\n" ,(csr[id_src2->imm]));
+ 
   printf("0x%08x\n\n\n",s->pc);
- // isa_reg_display();
-  isa_raise_intr(gpr(17),&(s->pc),&(s->dnpc));
+  //isa_raise_intr(gpr(17),&(s->pc),&(s->dnpc));
+  isa_raise_intr(0x0000000b,&(s->pc),&(s->dnpc));//no more independent yield
   //printf("\n\n\n");
   //isa_reg_display();
 }
