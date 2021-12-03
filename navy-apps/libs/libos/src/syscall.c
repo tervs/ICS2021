@@ -78,7 +78,7 @@ void *_sbrk(intptr_t increment) {
  
   
     intptr_t temp=oldaddr;
-    oldaddr=+increment;
+    oldaddr=newaddr;
     return (void *)temp;
   
   //return (void *)-1;
