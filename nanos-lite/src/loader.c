@@ -37,7 +37,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 
   printf("test2\n");
   //TODO();
-  return ENTRY+0x4d60;
+  return ENTRY+0x4d6c;
 }
 
 void naive_uload(PCB *pcb, const char *filename) {
