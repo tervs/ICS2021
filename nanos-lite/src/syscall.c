@@ -75,7 +75,7 @@ uintptr_t sys_write()
   else
   {
     int ret=fs_write(a[1],(void *)(a[2]),a[3]);
-    //printf("0x%08x\n",ret);
+    printf("0x%08x\n",ret);
     return ret;
   }
 return -1;
