@@ -57,7 +57,7 @@ int fs_open(const char *pathname, int flags, int mode)
     }
     if(file_table[i].name==pathname)
     {
-      assert(0);
+      //assert(0);
       return i;
     }
   }
