@@ -39,6 +39,14 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 
   printf("test2\n");
   //return ENTRY+0x4d8c;
+  uint32_t *x= (uint32_t*)(ENTRY);
+  for(int i=0;i<5000;i++)
+  {
+    
+    printf("%d\n",x);
+    x=x+i;
+
+  }
   return 0;
 }
 
