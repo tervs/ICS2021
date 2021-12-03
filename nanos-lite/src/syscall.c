@@ -60,24 +60,24 @@ uintptr_t sys_exit()
 
 uintptr_t sys_write()
 {
-
-if(a[1]==1||a[1]==2)
-{
   printf("syscall write \n");
-  //printf("syscall 4\n");
-  
-  //printf("%d\n",count);
-  //count++;
+  if(a[1]==1||a[1]==2)
+{
   char *ch=(char *)(a[2]);
   for(int i=0;i<a[3];i++)
   {
     putch(*(ch+i));
   }
   printf("\n");
-  //printf("a0 %d  a1 0x%08x  a2 %d\n",a[1],a[2],a[3]);
   return a[3];
 }
-//printf("you see here?\n");
+
+  else
+  {
+    int ret=fs_write(a[1],(void *)(a[2]),a[3]);
+    //printf("0x%08x\n",ret);
+    return ret;
+  }
 return -1;
 }
 
@@ -111,7 +111,7 @@ uintptr_t sys_read()
 {
   printf("syscall read\n");
   int ret=fs_read(a[1],(void *)(a[2]),a[3]);
-  printf("0x%08x\n",ret);
+  //printf("0x%08x\n",ret);
   return ret;
 }
 
