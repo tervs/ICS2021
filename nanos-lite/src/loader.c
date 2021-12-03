@@ -14,6 +14,9 @@
 //#define TEST
 
 Elf_Ehdr *elf;
+size_t get_ramdisk_size();
+size_t ramdisk_read(void *buf, size_t offset, size_t len) ;
+size_t ramdisk_write(const void *buf, size_t offset, size_t len) ;
 
 int fs_open(const char *pathname, int flags, int mode);
 size_t fs_read(int fd, void *buf, size_t len);
@@ -30,12 +33,12 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 
 
   //printf("0x%08x\n",get_ramdisk_size());
-  int fd=fs_open(filename,0,0);
-  size_t len=fs_len(fd);
-  fs_read(fd,(void *)ENTRY,len);
+  //int fd=fs_open(filename,0,0);
+  //size_t len=fs_len(fd);
+  //fs_read(fd,(void *)ENTRY,len);
   //assert(*(uint32_t *)elf->e_ident == 0x7f454c47);
-  //ramdisk_read((void *)ENTRY,0x000000,get_ramdisk_size());
-  printf("%d   %d\n",fd,len);
+  ramdisk_read((void *)ENTRY,0x000000,get_ramdisk_size());
+  //printf("%d   %d\n",fd,len);
 
   printf("test2\n");
   return ENTRY+0x7d9c;
