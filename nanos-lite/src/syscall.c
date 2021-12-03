@@ -60,7 +60,7 @@ if(a[1]==1||a[1]==2)
   {
     putch(*(ch+i));
   }
-  //printf("a0 %d  a1 0x%08x  a2 %d\n",a[1],a[2],a[3]);
+  printf("a0 %d  a1 0x%08x  a2 %d\n",a[1],a[2],a[3]);
   return a[3];
 }
 printf("you see here?\n");
