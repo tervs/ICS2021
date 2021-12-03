@@ -59,7 +59,7 @@ if(a[1]==1||a[1]==2)
   {
     putch(*(ch+i));
   }
-
+  printf("a0 %d  a1 %d  a2 %d\n",a[0],a[1],a[2]);
   return a[3];
 }
 printf("you see here?\n");
