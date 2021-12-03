@@ -130,6 +130,9 @@ size_t fs_len(int fd)
   return file_table[fd].size;
 }
 
+
+
+/*
 size_t fs_lseek(int fd, size_t offset, int whence)
 {
   size_t old_offset=file_table[fd].open_offset;
@@ -150,9 +153,27 @@ size_t fs_lseek(int fd, size_t offset, int whence)
   //return 0;
 }
 
+*/
 
+size_t fs_lseek(int fd, size_t offset, int whence){
+		size_t start;
+		switch (whence) {
+				case SEEK_SET: start = file_table[fd].disk_offset; break;
+				case SEEK_CUR: start = file_table[fd].disk_offset + file_table[fd].open_offset; break;
+				case SEEK_END: start = file_table[fd].disk_offset + file_table[fd].size; break;
+				default: panic("fs_lseek: whence Invalid!");
+		}
 
+		size_t pos = start + offset;
+		if ((file_table[fd].disk_offset<=pos && pos <= file_table[fd].disk_offset + file_table[fd].size)){
+            file_table[fd].open_offset = pos - file_table[fd].disk_offset;
+		} else {
+		  panic("End of File is %u, pointer locates %u. Out of file bound!", file_table[fd].disk_offset+file_table[fd].size, pos);
+		  return -1;
+		}
 
+		return file_table[fd].open_offset;
+}
 
 
 
