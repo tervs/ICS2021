@@ -54,22 +54,9 @@ void init_fs() {
 
 
 
-size_t fs_write(int fd, const void *buf, size_t len){
-		if (file_table[fd].write!=NULL){
-			size_t real_len = file_table[fd].write(buf, file_table[fd].open_offset, len);
-			file_table[fd].open_offset += real_len;
-			return real_len;
-		} else {
-		  size_t left = file_table[fd].size - file_table[fd].open_offset;
-		  if (left<len) panic("Out of File Boundary!");
-		  ramdisk_write(buf, file_table[fd].disk_offset + file_table[fd].open_offset, len);
-		  file_table[fd].open_offset += len;
-		  return len;
-		}
-}
 
 
-/*
+
 size_t fs_write(int fd, const void *buf, size_t len)
 {
   printf("open: 0x%08x    size: 0x%08x\n",file_table[fd].open_offset,file_table[fd].size);
@@ -85,7 +72,7 @@ size_t fs_write(int fd, const void *buf, size_t len)
   //printf("%d\n",file_table[fd].disk_offset);
   return ret;
 }
-*/
+
 int fs_open(const char *pathname, int flags, int mode)
 {
   //printf("%s\n",pathname);
@@ -132,7 +119,7 @@ size_t fs_len(int fd)
 
 
 
-/*
+
 size_t fs_lseek(int fd, size_t offset, int whence)
 {
   size_t old_offset=file_table[fd].open_offset;
@@ -153,27 +140,9 @@ size_t fs_lseek(int fd, size_t offset, int whence)
   //return 0;
 }
 
-*/
 
-size_t fs_lseek(int fd, size_t offset, int whence){
-		size_t start;
-		switch (whence) {
-				case SEEK_SET: start = file_table[fd].disk_offset; break;
-				case SEEK_CUR: start = file_table[fd].disk_offset + file_table[fd].open_offset; break;
-				case SEEK_END: start = file_table[fd].disk_offset + file_table[fd].size; break;
-				default: panic("fs_lseek: whence Invalid!");
-		}
 
-		size_t pos = start + offset;
-		if ((file_table[fd].disk_offset<=pos && pos <= file_table[fd].disk_offset + file_table[fd].size)){
-            file_table[fd].open_offset = pos - file_table[fd].disk_offset;
-		} else {
-		  panic("End of File is %u, pointer locates %u. Out of file bound!", file_table[fd].disk_offset+file_table[fd].size, pos);
-		  return -1;
-		}
 
-		return file_table[fd].open_offset;
-}
 
 
 
