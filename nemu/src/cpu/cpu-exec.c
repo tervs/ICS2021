@@ -10,7 +10,7 @@
  * You can modify this value as you want.
  */
 #define MAX_INSTR_TO_PRINT 10
-//#define ENDCYCLE
+
 
 
 CPU_state cpu = {};
@@ -112,7 +112,7 @@ void fetch_decode(Decode *s, vaddr_t pc) {
       MUXDEF(CONFIG_ISA_x86, s->snpc, s->pc), (uint8_t *)&s->isa.instr.val, ilen);
 #endif
 }
-
+#define ENDCYCLE
 /* Simulate how the CPU works. */
 void cpu_exec(uint64_t n) {
   g_print_step = (n < MAX_INSTR_TO_PRINT);
@@ -130,7 +130,7 @@ void cpu_exec(uint64_t n) {
     fetch_decode_exec_updatepc(&s);
     printf(" pc:  0x%08x\n",s.pc);
     #ifdef ENDCYCLE
-    if(cpu.pc==0x830000e4)
+    if(cpu.pc==0x830000e0)
     {
       nemu_state.state=NEMU_ABORT;
     }
