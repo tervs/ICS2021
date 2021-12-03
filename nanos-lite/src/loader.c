@@ -22,7 +22,7 @@ size_t fs_lseek(int fd, size_t offset, int whence);
 int fs_close(int fd);
 size_t fs_len(int fd);
 
- 
+ //static size_t open_offset[100];
 
 
 
@@ -38,7 +38,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   printf("%d   %d\n",fd,len);
 
   printf("test2\n");
-  //return ENTRY+0x4d8c;
+  return ENTRY+0x7d9c;
 
 #ifdef TEST
   uint32_t *x= (uint32_t*)(ENTRY);
@@ -49,7 +49,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
     //x=x+i;
   }
 #endif
-  return 0;
+  //return 0;
 }
 
 void naive_uload(PCB *pcb, const char *filename) {
