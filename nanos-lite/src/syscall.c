@@ -49,8 +49,9 @@ uintptr_t sys_write()
 {
 
   printf("syscall 4\n");
-  uintptr_t *ch=(uintptr_t *)(a[2]);
-
+  char *ch=(char *)(a[2]);
+  
+  
   for(int i=0;i<a[3];i=i+0x00000001)
   {
     putch(*(ch+i));
