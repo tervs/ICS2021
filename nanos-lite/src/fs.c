@@ -62,7 +62,7 @@ int fs_open(const char *pathname, int flags, int mode)
   {
     printf("%s\n",file_table[i].name);
     //if(file_table[i].name==pathname)
-    if(strcmp(file_table[i].name,pathname)==1)
+    if(strcmp(file_table[i].name,pathname))
     {
       
       return i;
