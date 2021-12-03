@@ -1,11 +1,13 @@
 #include <common.h>
 #include "syscall.h"
 
+ uintptr_t a[4];
+
 uintptr_t sys_yield();
 uintptr_t sys_exit();
 uintptr_t sys_write();
 void do_syscall(Context *c) {
-  uintptr_t a[4];
+ 
   a[0] = c->GPR1;
   a[1] = c->GPR2;
   a[2] = c->GPR3;
@@ -41,5 +43,6 @@ uintptr_t sys_exit()
 uintptr_t sys_write()
 {
   printf("syscall 4\n");
+  printf("a0: %d  a1: %d  a2: %d  a3: %d\n",a[0],a[1],a[2],a[3]);
   return 0;
 }
