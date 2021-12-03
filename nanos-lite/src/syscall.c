@@ -109,7 +109,8 @@ uintptr_t sys_lseek()
 
 uintptr_t sys_read()
 {
-  return 0;
+  printf("syscall read\n");
+  return fs_read(a[1],(void *)(a[2]),a[3]);
 }
 
 
