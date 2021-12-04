@@ -31,9 +31,11 @@ printf("5 from main\n");
 
   for (i = 500; i < 1000; i ++) 
   {
-    printf("%d\n",i);
+    printf("1     %d\n",i);
     fscanf(fp, "%d", &n);
+    printf("2     %d\n",i);
     assert(n == i + 1);
+    printf("3     %d\n",i);
   }
 
 printf("6 from main\n");
