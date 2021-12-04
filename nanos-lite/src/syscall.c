@@ -1,8 +1,8 @@
 #include <common.h>
 #include "syscall.h"
 
- uintptr_t a[4];
-#define RTC_ADDR        (DEVICE_BASE + 0x0000048)
+uintptr_t a[4];
+
 uintptr_t sys_yield();
 uintptr_t sys_exit();
 uintptr_t sys_write();
@@ -12,22 +12,27 @@ uintptr_t sys_lseek();
 uintptr_t sys_read();
 uintptr_t sys_close();
 uintptr_t sys_gettimeofday();
+
+
 int fs_open(const char *pathname, int flags, int mode);
 size_t fs_read(int fd, void *buf, size_t len);
 size_t fs_write(int fd, const void *buf, size_t len);
 size_t fs_lseek(int fd, size_t offset, int whence);
 int fs_close(int fd);
 
-int count=0;
+static uint32_t sec;
+static uint32_t usec;
+
+
+
+
+
 void do_syscall(Context *c) {
  
   a[0] = c->GPR1;
   a[1] = c->GPR2;
   a[2] = c->GPR3;
   a[3] = c->GPR4;
-  
-
-
 
   printf("\n");
   printf("a0 %d  a1 %d  a2 0x%08x  a3 %d\n",a[0],a[1],a[2],a[3]);
@@ -43,7 +48,6 @@ void do_syscall(Context *c) {
     case 19:c->GPRx=sys_gettimeofday();break;
     default: panic("Unhandled syscall ID = %d", a[1]);
   }
-
   //is_reg_display();
 }
 
@@ -117,26 +121,18 @@ uintptr_t sys_close()
 uintptr_t sys_gettimeofday()
 {
 
-printf("syscall  gettimeofday\n");
+  printf("syscall  gettimeofday\n");
   uint32_t x=(uint32_t)(io_read(AM_TIMER_UPTIME).us);
- 
-printf("time_us  %d\n",x);
-  //printf("fusck you\n");
+  sec=x/1000000;
+  usec=x;
 
-  //uint32_t low=inl(RTC_ADDR)-start_low;
-  //printf("low  %d\n",low);
-  //uint32_t high=inl(RTC_ADDR+4)-start_high;
-  //printf("high  %d\n",high);
 
   uint32_t* times=( uint32_t * )(a[1]);
-    uint32_t* timeus=( uint32_t * )(a[2]);
-    *times=65153445;
-    *timeus=8888888;
-  //time_us = low|(((uint64_t)high)<<32);
-  
+  uint32_t* timeus=( uint32_t * )(a[2]);
+  *times=sec;
+  *timeus=usec;
+ 
 
-    //*time_us=io_read(AM_TIMER_UPTIME).us;
-    
   
   return 0;
 }
