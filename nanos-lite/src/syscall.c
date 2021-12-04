@@ -65,8 +65,7 @@ uintptr_t sys_exit()
 uintptr_t sys_write()
 {
   
-  printf("syscall write \n");
-
+    printf("syscall write \n");
     int ret=fs_write(a[1],(void *)(a[2]),a[3]);
     //printf("0x%08x\n",ret);
     return ret;

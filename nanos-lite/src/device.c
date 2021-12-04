@@ -26,7 +26,7 @@ size_t serial_write(const void *buf, size_t offset, size_t len)
   printf("\n");
   return len;
   
-  return 0;
+  //return len;
 }
 
 size_t events_read(void *buf, size_t offset, size_t len) {

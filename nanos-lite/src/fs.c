@@ -63,7 +63,7 @@ size_t fs_write(int fd, const void *buf, size_t len)
   if(len>0)
   {
     ret=write(buf,file_table[fd].disk_offset+file_table[fd].open_offset,len);
-    }
+  }
   file_table[fd].open_offset+=len;
 
   //printf("open_offset %d\n",file_table[fd].open_offset);
