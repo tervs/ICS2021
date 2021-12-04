@@ -71,7 +71,7 @@ uintptr_t sys_write()
     putch(*(ch+i));
   }
   printf("\n");
-  return a[3];
+  return 0;
 }
 
   else
