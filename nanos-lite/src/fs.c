@@ -121,6 +121,7 @@ size_t fs_read(int fd, void *buf, size_t len)
     ret=ramdisk_read(buf,file_table[fd].disk_offset+file_table[fd].open_offset,len);
     }
   file_table[fd].open_offset+=len;
+   printf("open_offset %d\n",file_table[fd].open_offset);
   //printf("%d\n",file_table[fd].disk_offset);
   return ret;
 }
@@ -152,6 +153,7 @@ size_t fs_lseek(int fd, size_t offset, int whence)
         file_table[fd].open_offset=old_offset;
         return -1;
     }
+     printf("open_offset %d\n",file_table[fd].open_offset);
   return file_table[fd].open_offset;
   //return 0;
 }
