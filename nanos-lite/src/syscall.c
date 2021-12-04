@@ -117,7 +117,7 @@ uintptr_t sys_close()
 uintptr_t sys_gettimeofday()
 {
 
-
+printf("syscall  gettimeofday\n");
   uint64_t x=io_read(AM_TIMER_UPTIME).us;
 printf("time_us  %lu\n",x);
   //printf("fusck you\n");
