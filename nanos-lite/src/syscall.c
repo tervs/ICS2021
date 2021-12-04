@@ -10,6 +10,7 @@ uintptr_t sys_brk();
 uintptr_t sys_open();
 uintptr_t sys_lseek();
 uintptr_t sys_read();
+uintptr_t sys_close();
 int fs_open(const char *pathname, int flags, int mode);
 size_t fs_read(int fd, void *buf, size_t len);
 size_t fs_write(int fd, const void *buf, size_t len);
@@ -35,6 +36,7 @@ void do_syscall(Context *c) {
     case 2: c->GPRx=sys_open();break;
     case 3: c->GPRx=sys_read();break;
     case 4: c->GPRx=sys_write();break;
+    case 7: c->GPRx=sys_close();break;
     case 8: c->GPRx=sys_lseek();break;
     case 9: c->GPRx=0;sys_brk();break;
     default: panic("Unhandled syscall ID = %d", a[1]);
@@ -115,7 +117,10 @@ uintptr_t sys_read()
   return ret;
 }
 
-
+uintptr_t sys_close()
+{
+  return fs_close(a[1]);
+}
 
 
 
