@@ -51,18 +51,21 @@ intptr_t _syscall_(intptr_t type, intptr_t a0, intptr_t a1, intptr_t a2) {
   return ret;
 }
 
-void _exit(int status) {
+void _exit(int status) 
+{
   _syscall_(SYS_exit, status, 0, 0);
   while (1);
 }
 
-int _open(const char *path, int flags, mode_t mode) {
+int _open(const char *path, int flags, mode_t mode)
+{
 
   //printf("sys:  0x%08x\n",(intptr_t)path);
   return _syscall_(SYS_open, (intptr_t)path, flags, mode);
 }
 
-int _write(int fd, void *buf, size_t count) {
+int _write(int fd, void *buf, size_t count) 
+{
   
   //printf("fd  %d   buf  %d   count %d\n",fd, (intptr_t)buf,count);
   return (_syscall_(SYS_write,fd,(intptr_t)buf,count)==count)?0:(-1);
@@ -73,7 +76,8 @@ int _write(int fd, void *buf, size_t count) {
 
 extern char _end;
 static intptr_t oldaddr=(intptr_t)(&(_end));
-void *_sbrk(intptr_t increment) {
+void *_sbrk(intptr_t increment) 
+{
   intptr_t newaddr=oldaddr+increment;
   _syscall_(SYS_brk, newaddr, increment, 0);
  
@@ -91,16 +95,19 @@ int _read(int fd, void *buf, size_t count)
   return _syscall_(SYS_read, fd, (intptr_t)buf, count);
 }
 
-int _close(int fd) {
+int _close(int fd) 
+{
   
   return _syscall_(SYS_close, fd, 0, 0);;
 }
 
-off_t _lseek(int fd, off_t offset, int whence) {
+off_t _lseek(int fd, off_t offset, int whence) 
+{
   return _syscall_(SYS_lseek, fd, (intptr_t)offset, whence);
 }
 
-int _gettimeofday(struct timeval *tv, struct timezone *tz) {
+int _gettimeofday(struct timeval *tv, struct timezone *tz) 
+{
   _exit(SYS_gettimeofday);
   return 0;
 }
