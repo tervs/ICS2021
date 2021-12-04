@@ -130,10 +130,7 @@ uintptr_t sys_gettimeofday()
   uint32_t* times=( uint32_t * )(a[1]);
   uint32_t* timeus=( uint32_t * )(a[2]);
   *times=sec;
-  *timeus=usec;
- 
-
-  
+  *timeus=usec; 
   return 0;
 }
 
