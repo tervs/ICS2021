@@ -6,19 +6,19 @@ int main() {
   assert(fp);
 
   fseek(fp, 0, SEEK_END);
-  printf("1\n");
   long size = ftell(fp);
-  printf("2\n");
   assert(size == 5000);
-  printf("3\n");
 
   fseek(fp, 500 * 5, SEEK_SET);
   int i, n;
   for (i = 500; i < 1000; i ++) {
+    printf("test       1      %d\n",i);
     fscanf(fp, "%d", &n);
+    printf("test       2      %d\n",n);
     assert(n == i + 1);
+    printf("test       3      %d\n",i);
   }
-  printf("4 from main\n");
+
 
 
 
@@ -27,7 +27,11 @@ int main() {
     fprintf(fp, "%4d\n", i + 1 + 1000);
   }
 
-printf("5 from main\n");
+
+
+
+
+
 
   for (i = 500; i < 1000; i ++) 
   {
