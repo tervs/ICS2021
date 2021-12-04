@@ -53,7 +53,7 @@ void init_fs() {
 
 size_t fs_write(int fd, const void *buf, size_t len)
 {
-  WriteFn write = (file_table[fd].write == NULL) ? (WriteFn) ramdisk_write : serial_write;//file_table[fd].write;
+  WriteFn write = (file_table[fd].write == NULL) ? (WriteFn) ramdisk_write : file_table[fd].write;
   Log(" 0x%08x" ,(intptr_t *)write );
   int ret=0;
   

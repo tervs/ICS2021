@@ -16,8 +16,8 @@ static const char *keyname[256] __attribute__((used)) = {
 
 size_t serial_write(const void *buf, size_t offset, size_t len) 
 {
-  printf("test\n\n\n\n\n\n\n\n\n");  
-
+  //printf("test\n\n\n\n\n\n\n\n\n");  
+Log("serial write test"  );
   char *ch=(char *)(buf);
   for(int i=0;i<len;i++)
   {
