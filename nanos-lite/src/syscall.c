@@ -62,16 +62,19 @@ uintptr_t sys_exit()
 
 uintptr_t sys_write()
 {
+  
   printf("syscall write \n");
   if(a[1]==1||a[1]==2)
 {
+  fs_write(a[1],(void *)(a[2]),a[3]);
+
   char *ch=(char *)(a[2]);
   for(int i=0;i<a[3];i++)
   {
     putch(*(ch+i));
   }
   printf("\n");
-  return 0;
+  return a[3];
 }
 
   else
