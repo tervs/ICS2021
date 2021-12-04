@@ -1,9 +1,14 @@
-
 #include <fs.h>
 
+#define ENTRY 0x83000000
 typedef size_t (*ReadFn) (void *buf, size_t offset, size_t len);
 typedef size_t (*WriteFn) (const void *buf, size_t offset, size_t len);
-#define ENTRY 0x83000000
+
+
+size_t serial_write(const void *buf, size_t offset, size_t len) ;
+size_t get_ramdisk_size();
+size_t ramdisk_read(void *buf, size_t offset, size_t len) ;
+size_t ramdisk_write(const void *buf, size_t offset, size_t len) ;
 typedef struct {
   char *name;
   size_t size;
@@ -16,21 +21,6 @@ typedef struct {
 enum {FD_STDIN, FD_STDOUT, FD_STDERR, FD_FB};
 
 
-int fs_open(const char *pathname, int flags, int mode);
-size_t fs_read(int fd, void *buf, size_t len);
-size_t fs_write(int fd, const void *buf, size_t len);
-size_t fs_lseek(int fd, size_t offset, int whence);
-int fs_close(int fd);
-size_t fs_len(int fd);
-
-
-
-size_t serial_write(const void *buf, size_t offset, size_t len) ;
-
-
-size_t get_ramdisk_size();
-size_t ramdisk_read(void *buf, size_t offset, size_t len) ;
-size_t ramdisk_write(const void *buf, size_t offset, size_t len) ;
 
 
 size_t invalid_read(void *buf, size_t offset, size_t len) {
