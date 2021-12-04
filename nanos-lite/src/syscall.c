@@ -126,8 +126,10 @@ printf("syscall  gettimeofday\n");
   //printf("low  %d\n",low);
   //uint32_t high=inl(RTC_ADDR+4)-start_high;
   //printf("high  %d\n",high);
-    uint32_t* time_us=( uint32_t * )(a[2]);
-    *time_us=8888888;
+  uint32_t* times=( uint32_t * )(a[1]);
+    uint32_t* timeus=( uint32_t * )(a[2]);
+    *times=65153445;
+    *timeus=8888888;
   //time_us = low|(((uint64_t)high)<<32);
   
 
