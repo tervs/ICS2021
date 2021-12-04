@@ -118,14 +118,15 @@ uintptr_t sys_gettimeofday()
 {
 
 printf("syscall  gettimeofday\n");
-  //uint64_t x=io_read(AM_TIMER_UPTIME).us;
-//printf("time_us  %lu\n",x);
+  uint64_t x=io_read(AM_TIMER_UPTIME).us;
+printf("time_us  %lu\n",x);
   //printf("fusck you\n");
 
   //uint32_t low=inl(RTC_ADDR)-start_low;
   //printf("low  %d\n",low);
   //uint32_t high=inl(RTC_ADDR+4)-start_high;
   //printf("high  %d\n",high);
+
   uint32_t* times=( uint32_t * )(a[1]);
     uint32_t* timeus=( uint32_t * )(a[2]);
     *times=65153445;
