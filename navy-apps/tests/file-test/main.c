@@ -37,7 +37,7 @@ int main() {
     printf("1     %d\n",i);
     fscanf(fp, "%d", &n);
     printf("2     %d     %d\n",i,  n);
-    assert(n == i + 1000+1);
+    assert(n == i + 1000);
     printf("3     %d\n",i);
   }
 
