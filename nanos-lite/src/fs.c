@@ -25,6 +25,9 @@ size_t fs_len(int fd);
 
 
 
+size_t serial_write(const void *buf, size_t offset, size_t len) ;
+
+
 size_t get_ramdisk_size();
 size_t ramdisk_read(void *buf, size_t offset, size_t len) ;
 size_t ramdisk_write(const void *buf, size_t offset, size_t len) ;
@@ -43,8 +46,8 @@ size_t invalid_write(const void *buf, size_t offset, size_t len) {
 /* This is the information about all files in disk. */
 static Finfo file_table[] __attribute__((used)) = {
   [FD_STDIN]  = {"stdin", 0, 0, 0, invalid_read, invalid_write},
-  [FD_STDOUT] = {"stdout", 0, 0, 0, invalid_read, invalid_write},
-  [FD_STDERR] = {"stderr", 0, 0, 0, invalid_read, invalid_write},
+  [FD_STDOUT] = {"stdout", 0, 0, 0, invalid_read, serial_write},
+  [FD_STDERR] = {"stderr", 0, 0, 0, invalid_read, serial_write},
 #include "files.h"
 };
 
@@ -60,15 +63,16 @@ void init_fs() {
 
 size_t fs_write(int fd, const void *buf, size_t len)
 {
-  
+  WriteFn write = file_table[fd].write == NULL ? (WriteFn) ramdisk_write : file_table[fd].write;
  
-      int ret=0;
+  int ret=0;
+  
   if(file_table[fd].open_offset+len>file_table[fd].size)
   {len = file_table[fd].size- file_table[fd].open_offset;}
 
   if(len>0)
   {
-    ret=ramdisk_write(buf,file_table[fd].disk_offset+file_table[fd].open_offset,len);
+    ret=write(buf,file_table[fd].disk_offset+file_table[fd].open_offset,len);
     }
   file_table[fd].open_offset+=len;
 
