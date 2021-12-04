@@ -120,7 +120,7 @@ uintptr_t sys_gettimeofday()
 printf("syscall  gettimeofday\n");
   uint64_t x=io_read(AM_TIMER_UPTIME).us;
   x++;
-//printf("time_us  %lu\n",x);
+printf("time_us  %llu\n",x);
   //printf("fusck you\n");
 
   //uint32_t low=inl(RTC_ADDR)-start_low;
