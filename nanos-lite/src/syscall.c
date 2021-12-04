@@ -117,8 +117,10 @@ uintptr_t sys_close()
 uintptr_t sys_gettimeofday()
 {
   //printf("fusck you\n");
-  intptr_t * time_us=(intptr_t *) (a[2]);
+  intptr_t * time_us;
+  time_us=( intptr_t * )(a[2]);
     *time_us=io_read(AM_TIMER_UPTIME).us;
+    printf("time_us  %lu\n",io_read(AM_TIMER_UPTIME).us);
   
   return 0;
 }
