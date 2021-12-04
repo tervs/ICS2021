@@ -29,7 +29,9 @@ int main() {
 
 printf("5 from main\n");
 
-  for (i = 500; i < 1000; i ++) {
+  for (i = 500; i < 1000; i ++) 
+  {
+    printf("%d\n",i);
     fscanf(fp, "%d", &n);
     assert(n == i + 1);
   }
