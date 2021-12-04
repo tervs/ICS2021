@@ -18,7 +18,7 @@ gettimeofday(&tv,NULL);
 
 printf("tv_sec:%ld\n",tv.tv_sec);
 
-printf("tv_usec:%ld\n",tv.tv_usec);
+printf("tv_usec:0x%lu\n",tv.tv_usec);
 
 //printf("tz_minuteswest:%d\n",tz.tz_minuteswest);
 
