@@ -39,7 +39,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   fs_read(fd,(void *)ENTRY,len);
   //assert(*(uint32_t *)elf->e_ident == 0x7f454c47);
   //ramdisk_read((void *)ENTRY,0x000000,get_ramdisk_size());
-  //printf("%d   %d\n",fd,len);
+  printf("%d   %d\n",fd,len);
 
   printf("test2\n");
   return ENTRY+0x7de4;
