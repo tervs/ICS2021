@@ -32,12 +32,12 @@ int main() {
 
 
 
-  for (i = 0; i < 500; i ++) 
+  for (i = 500; i < 1000; i ++) 
   {
     printf("1     %d\n",i);
     fscanf(fp, "%d", &n);
     printf("2     %d     %d\n",i,  n);
-    assert(n == i + 1000);
+    assert(n == i + 1);
     printf("3     %d\n",i);
   }
 
