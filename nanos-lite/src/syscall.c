@@ -2,7 +2,7 @@
 #include "syscall.h"
 
  uintptr_t a[4];
-
+#define RTC_ADDR        (DEVICE_BASE + 0x0000048)
 uintptr_t sys_yield();
 uintptr_t sys_exit();
 uintptr_t sys_write();
@@ -116,11 +116,22 @@ uintptr_t sys_close()
 
 uintptr_t sys_gettimeofday()
 {
+
+
+  uint64_t x=io_read(AM_TIMER_UPTIME).us;
+printf("time_us  %lu\n",x);
   //printf("fusck you\n");
-  printf("time_us  %lu\n",io_read(AM_TIMER_UPTIME).us);
-  intptr_t * time_us;
-  time_us=( intptr_t * )(a[2]);
-    *time_us=io_read(AM_TIMER_UPTIME).us;
+
+  //uint32_t low=inl(RTC_ADDR)-start_low;
+  //printf("low  %d\n",low);
+  //uint32_t high=inl(RTC_ADDR+4)-start_high;
+  //printf("high  %d\n",high);
+    //intptr_t * time_us;
+  //time_us=( intptr_t * )(a[2]);
+  //time_us = low|(((uint64_t)high)<<32);
+  
+
+    //*time_us=io_read(AM_TIMER_UPTIME).us;
     
   
   return 0;
