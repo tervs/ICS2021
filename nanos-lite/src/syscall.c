@@ -64,26 +64,12 @@ uintptr_t sys_write()
 {
   
   printf("syscall write \n");
-  if(a[1]==1||a[1]==2)
-{
-  
 
-  char *ch=(char *)(a[2]);
-  for(int i=0;i<a[3];i++)
-  {
-    putch(*(ch+i));
-  }
-  printf("\n");
-  return a[3];
-}
-
-  else
-  {
     int ret=fs_write(a[1],(void *)(a[2]),a[3]);
     //printf("0x%08x\n",ret);
     return ret;
-  }
-return -1;
+  
+
 }
 
 uintptr_t sys_brk()
