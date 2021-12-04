@@ -119,6 +119,7 @@ uintptr_t sys_read()
 
 uintptr_t sys_close()
 {
+  printf("syscall close\n");
   return fs_close(a[1]);
 }
 
