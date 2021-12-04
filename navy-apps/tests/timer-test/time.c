@@ -11,14 +11,17 @@ int main()
 struct timeval tv;
 
 struct timezone tz;
- printf("test\n");
-gettimeofday(&tv,NULL);
 
- printf("test\n");
+ while(tv.tv_sec<10)
+ {
+     gettimeofday(&tv,NULL);
 
-printf("tv_sec:%ld\n",tv.tv_sec);
 
-printf("tv_usec:0x%lu\n",tv.tv_usec);
+    printf("tv_sec:%ld   tv_usec:%lu\n",tv.tv_sec,tv.tv_usec);
+
+
+ }
+
 
 //printf("tz_minuteswest:%d\n",tz.tz_minuteswest);
 
