@@ -5,7 +5,7 @@ typedef size_t (*ReadFn) (void *buf, size_t offset, size_t len);
 typedef size_t (*WriteFn) (const void *buf, size_t offset, size_t len);
 
 
-extern size_t serial_write(const void *buf, size_t offset, size_t len) ;
+size_t serial_write(const void *buf, size_t offset, size_t len) ;
 size_t get_ramdisk_size();
 size_t ramdisk_read(void *buf, size_t offset, size_t len) ;
 size_t ramdisk_write(const void *buf, size_t offset, size_t len) ;
