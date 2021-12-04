@@ -34,6 +34,11 @@ printf("5 from main\n");
     assert(n == i + 1);
   }
 
+printf("6 from main\n");
+
+
+
+
   fseek(fp, 0, SEEK_SET);
   for (i = 0; i < 500; i ++) {
     fscanf(fp, "%d", &n);
