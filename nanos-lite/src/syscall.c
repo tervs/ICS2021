@@ -116,6 +116,7 @@ uintptr_t sys_close()
 
 uintptr_t sys_gettimeofday()
 {
+  printf("fusck you\n");
   return 0;
 }
 
