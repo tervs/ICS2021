@@ -54,7 +54,7 @@ void init_fs() {
 size_t fs_write(int fd, const void *buf, size_t len)
 {
   WriteFn write = (file_table[fd].write == NULL) ? (WriteFn) ramdisk_write : file_table[fd].write;
- 
+  Log("write test  %s" ,(char *)write );
   int ret=0;
   
   if(file_table[fd].open_offset+len>file_table[fd].size)
