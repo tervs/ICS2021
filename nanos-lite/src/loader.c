@@ -37,12 +37,19 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   int fd=fs_open(filename,0,0);
   size_t len=fs_len(fd);
   fs_read(fd,(void *)ENTRY,len);
+
+
+  //struct Elf32_Ehdr *Elf_header = NULL;
+
+
+
+  //fread(Elf_header,sizeof(struct Elf32_Ehdr),1,file_elf);
   //assert(*(uint32_t *)elf->e_ident == 0x7f454c47);
   //ramdisk_read((void *)ENTRY,0x000000,get_ramdisk_size());
   printf("%d   %d\n",fd,len);
 
   printf("test2\n");
-  return ENTRY+0x4e04;
+  return ENTRY+0x4df0;
 
 
 
