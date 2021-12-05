@@ -7,13 +7,14 @@
 int main() {
   NDL_Init(0);
   int w, h;
-  void *bmp = BMP_Load("/share/pictures/projectn.bmp", &w, &h);
-  assert(bmp);
+  //void *bmp = BMP_Load("/share/pictures/projectn.bmp", &w, &h);
+  //assert(bmp);
+  w=400;h=300;
   NDL_OpenCanvas(&w, &h);
   printf("w %d    h %d\n",w,h);
   printf("test\n");
-  NDL_DrawRect(bmp, 0, 0, w, h);
-  free(bmp);
+  //NDL_DrawRect(bmp, 0, 0, w, h);
+  //free(bmp);
   NDL_Quit();
   printf("Test ends! Spinning...\n");
   while (1);
