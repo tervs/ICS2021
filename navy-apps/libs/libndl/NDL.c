@@ -8,7 +8,7 @@
 static int evtdev = -1;
 static int fbdev = -1;
 static int screen_w = 0, screen_h = 0;
-
+//size_t fs_read(int fd, void *buf, size_t len);
 //int gettimeofday(struct timeval *tv, struct timezone *tz) ;
 
 uint32_t NDL_GetTicks() {
@@ -23,6 +23,9 @@ uint32_t NDL_GetTicks() {
 }
 
 int NDL_PollEvent(char *buf, int len) {
+  read(3,buf,len);
+printf("NDL_read %s\n",buf);
+
   return 0;
 }
 

@@ -49,7 +49,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   printf("%d   %d\n",fd,len);
 
   printf("test2\n");
-  return ENTRY+0x4e84;
+  return ENTRY+0x4ec8;
 
 
 
