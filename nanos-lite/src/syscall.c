@@ -19,6 +19,7 @@ size_t fs_read(int fd, void *buf, size_t len);
 size_t fs_write(int fd, const void *buf, size_t len);
 size_t fs_lseek(int fd, size_t offset, int whence);
 int fs_close(int fd);
+void strace();
 
 static uint32_t sec;
 static uint32_t usec;
@@ -34,8 +35,8 @@ void do_syscall(Context *c) {
   a[2] = c->GPR3;
   a[3] = c->GPR4;
 
-  //printf("\n");
-  //printf("a0 %d  a1 %d  a2 0x%08x  a3 %d\n",a[0],a[1],a[2],a[3]);
+  //strace();
+
   switch (a[0]) {
     case 0: c->GPRx=sys_exit();break;
     case 1: c->GPRx=sys_yield();break;
@@ -46,7 +47,7 @@ void do_syscall(Context *c) {
     case 8: c->GPRx=sys_lseek();break;
     case 9: c->GPRx=0;sys_brk();break;
     case 19:c->GPRx=sys_gettimeofday();break;
-    default: panic("Unhandled syscall ID = %d", a[1]);
+    default: panic("Unhandled syscall ID = %d", a[0]);
   }
   //is_reg_display();
 }
@@ -54,14 +55,14 @@ void do_syscall(Context *c) {
 
 uintptr_t sys_yield()
 {
-  printf("syscall 1\n");
+  
   yield();
   return 0;
 }
 
 uintptr_t sys_exit()
 {
-  printf("syscall exit\n");
+  
   halt(0);
   return 0;
 }
@@ -69,7 +70,7 @@ uintptr_t sys_exit()
 uintptr_t sys_write()
 {
   
-    printf("syscall write \n");
+   
     int ret=fs_write(a[1],(void *)(a[2]),a[3]);
     //printf("0x%08x\n",ret);
     return ret;
@@ -79,7 +80,7 @@ uintptr_t sys_write()
 
 uintptr_t sys_brk()
 {
-  printf("syscall brk \n");
+  
   return 0;
 }
 
@@ -88,7 +89,7 @@ uintptr_t sys_open()
   char *ch=(char *)(a[1]);
   //printf("%s\n",ch);
 
-  printf("syscall open\n");
+  
   int fd=fs_open(ch,0,0);
   //printf("%d\n",fd);
 
@@ -98,14 +99,14 @@ uintptr_t sys_open()
 uintptr_t sys_lseek()
 {
   //printf("a1 %d  a2 0x%08x  a3 %d\n",a[1],a[2],a[3]);
-  printf("syscall lseek\n");
+  
   return fs_lseek(a[1],a[2],a[3]);
   //return 1;
 }
 
 uintptr_t sys_read()
 {
-  printf("syscall read\n");
+  
   int ret=fs_read(a[1],(void *)(a[2]),a[3]);
   //printf("0x%08x\n",ret);
   return ret;
@@ -113,7 +114,7 @@ uintptr_t sys_read()
 
 uintptr_t sys_close()
 {
-  printf("syscall close\n");
+  
   return fs_close(a[1]);
 }
 
@@ -121,7 +122,7 @@ uintptr_t sys_close()
 uintptr_t sys_gettimeofday()
 {
 
-  printf("syscall  gettimeofday\n");
+  
   uint32_t x=(uint32_t)(io_read(AM_TIMER_UPTIME).us);
   sec=x/1000000;
   usec=x;
@@ -135,4 +136,20 @@ uintptr_t sys_gettimeofday()
 }
 
 
-
+void strace()
+{
+  printf("\n");
+  printf("a0 %d  a1 %d  a2 0x%08x  a3 %d\n",a[0],a[1],a[2],a[3]);
+  switch (a[0]) {
+    case 0: printf("syscall exit\n");break;
+    case 1: printf("syscall yield\n");break;
+    case 2: printf("syscall open\n");break;
+    case 3: printf("syscall read\n");break;
+    case 4: printf("syscall write \n");break;
+    case 7: printf("syscall close\n");break;
+    case 8: printf("syscall lseek\n");break;
+    case 9: printf("syscall brk \n");break;
+    case 19:printf("syscall  gettimeofday\n");break;
+    default: panic("Unhandled syscall ID = %d", a[0]);
+  }
+}
