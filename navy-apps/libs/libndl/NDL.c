@@ -23,10 +23,12 @@ uint32_t NDL_GetTicks() {
 }
 
 int NDL_PollEvent(char *buf, int len) {
-  read(3,buf,len);
+  FILE *fp = fopen("/share/files/num", "r+");
+  //int fd=open("/dev/events",0,0);
+  fread(buf,1,len,fp);
   //printf("%d",len);
 //printf("NDL_read %s \n",buf);
-
+  fclose(fp);
   return len;
 }
 
