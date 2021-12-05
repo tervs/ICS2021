@@ -41,7 +41,7 @@ size_t events_read(void *buf, size_t offset, size_t len) {
       else
       {
           //printf("")
-         snprintf(buf,len,"%s%s",keyname[ev.keycode],(ev.keydown ? "DOWN" : "UP"));
+         snprintf(buf,len,"%s %s\n",keyname[ev.keycode],(ev.keydown ? "DOWN" : "UP"));
           //strcpy(buf,keyname[ev.keycode]);
           //strcat(buf,(ev.keydown ? "DOWN" : "UP"));
           //printf("event test %s\n",buf);
