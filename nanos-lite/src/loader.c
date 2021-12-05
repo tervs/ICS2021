@@ -44,15 +44,13 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 
   //struct Elf32_Ehdr *Elf_header = NULL;
 
-
-
   //fread(Elf_header,sizeof(struct Elf32_Ehdr),1,file_elf);
   //assert(*(uint32_t *)elf->e_ident == 0x7f454c47);
   //ramdisk_read((void *)ENTRY,0x000000,get_ramdisk_size());
-  printf("%d   %d\n",fd,len);
+  //printf("%d   %d\n",fd,len);
 
   printf("test2\n");
-  return ENTRY+0x62f8;
+  return ENTRY+0x6320;
 
 
 
