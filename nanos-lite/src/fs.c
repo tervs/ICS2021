@@ -20,7 +20,7 @@ typedef struct {
   WriteFn write;
 } Finfo;
 
-enum {FD_STDIN, FD_STDOUT, FD_STDERR, DEV_KBD,DEV_FB,DEC_DISPINFO,FD_FB};
+enum {FD_STDIN, FD_STDOUT, FD_STDERR, DEV_KBD,  DEC_DISPINFO, DEV_FB,    FD_FB};
 
 
 
