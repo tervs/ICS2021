@@ -4,7 +4,7 @@
 typedef size_t (*ReadFn) (void *buf, size_t offset, size_t len);
 typedef size_t (*WriteFn) (const void *buf, size_t offset, size_t len);
 
-
+size_t events_read(void *buf, size_t offset, size_t len) ;
 size_t serial_write(const void *buf, size_t offset, size_t len) ;
 size_t get_ramdisk_size();
 size_t ramdisk_read(void *buf, size_t offset, size_t len) ;
@@ -18,7 +18,7 @@ typedef struct {
   WriteFn write;
 } Finfo;
 
-enum {FD_STDIN, FD_STDOUT, FD_STDERR, FD_FB};
+enum {FD_STDIN, FD_STDOUT, FD_STDERR, FD_FB,DEV_EVENT};
 
 
 
@@ -38,6 +38,7 @@ static Finfo file_table[] __attribute__((used)) = {
   [FD_STDIN]  = {"stdin", -1, 0, 0, invalid_read, invalid_write},
   [FD_STDOUT] = {"stdout", -1, 0, 0, invalid_read, serial_write},
   [FD_STDERR] = {"stderr", -1, 0, 0, invalid_read, serial_write},
+  [DEV_EVENT] = {"/dev/events",-1,0,0,events_read,invalid_write},
 #include "files.h"
 };
 
@@ -107,6 +108,7 @@ int fs_close(int fd)
 
 size_t fs_read(int fd, void *buf, size_t len)
 {
+  ReadFn read = (file_table[fd].read == NULL) ? (ReadFn) ramdisk_read : file_table[fd].read;
   //printf("open: 0x%08x    size: 0x%08x\n",file_table[fd].open_offset,file_table[fd].size);
   int ret=0;
   if(file_table[fd].open_offset+len>file_table[fd].size)
@@ -114,7 +116,7 @@ size_t fs_read(int fd, void *buf, size_t len)
 
   if(len>0)
   {
-    ret=ramdisk_read(buf,file_table[fd].disk_offset+file_table[fd].open_offset,len);
+    ret=read(buf,file_table[fd].disk_offset+file_table[fd].open_offset,len);
     }
   file_table[fd].open_offset+=len;
   // printf("open_offset %d\n",file_table[fd].open_offset);
