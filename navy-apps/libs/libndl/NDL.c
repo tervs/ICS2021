@@ -23,7 +23,7 @@ uint32_t NDL_GetTicks() {
 }
 
 int NDL_PollEvent(char *buf, int len) {
-  read(3,buf,len);
+  read(3,buf,2*len);
 printf("NDL_read %s  %s\n",buf,buf+4);
 
   return 0;
