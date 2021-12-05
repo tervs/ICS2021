@@ -34,8 +34,8 @@ void do_syscall(Context *c) {
   a[2] = c->GPR3;
   a[3] = c->GPR4;
 
-  printf("\n");
-  printf("a0 %d  a1 %d  a2 0x%08x  a3 %d\n",a[0],a[1],a[2],a[3]);
+  //printf("\n");
+  //printf("a0 %d  a1 %d  a2 0x%08x  a3 %d\n",a[0],a[1],a[2],a[3]);
   switch (a[0]) {
     case 0: c->GPRx=sys_exit();break;
     case 1: c->GPRx=sys_yield();break;
