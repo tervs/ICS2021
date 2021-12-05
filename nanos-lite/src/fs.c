@@ -18,7 +18,7 @@ typedef struct {
   WriteFn write;
 } Finfo;
 
-enum {FD_STDIN, FD_STDOUT, FD_STDERR, FD_FB,DEV_EVENT};
+enum {FD_STDIN, FD_STDOUT, FD_STDERR, DEV_EVENT,FD_FB};
 
 
 
