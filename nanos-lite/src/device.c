@@ -63,7 +63,9 @@ size_t dispinfo_read(void *buf, size_t offset, size_t len) {
   printf("%u  %u \n",h,w);
   //strcpy(buf,(char *)h);
   char s[128];
+  char s2[128];
   sprintf(s,"%d\n",h);
+  strcat(s,s2);
   sprintf(s,"%d\n",w);
   printf("test   %s\n",s);
   /*
