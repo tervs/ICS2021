@@ -8,6 +8,7 @@
 static int evtdev = -1;
 static int fbdev = -1;
 static int screen_w = 0, screen_h = 0;
+static int canvas_w = 0, canvas_h = 0;
 //size_t fs_read(int fd, void *buf, size_t len);
 //int gettimeofday(struct timeval *tv, struct timezone *tz) ;
 
@@ -33,7 +34,7 @@ int NDL_PollEvent(char *buf, int len) {
 }
 
 void NDL_OpenCanvas(int *w, int *h) 
-{
+{/*
   if (getenv("NWM_APP")) 
   {
     int fbctl = 4;
@@ -55,7 +56,19 @@ void NDL_OpenCanvas(int *w, int *h)
     }
     close(fbctl);
   }
+
+  */
+
+  canvas_w = *w; canvas_h = *h;
+  //read()
+  //int fd=fopen("")
+  uint64_t *a;
+  read(4,a,8);
+  //return 0;
+
+
 }
+
 
 void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
 }
