@@ -66,6 +66,7 @@ void NDL_OpenCanvas(int *w, int *h)
   //printf("fuck you\n");
 
   read(4,buf,16);
+  printf("bufsize%d\n",sizeof(buf));
   //printf("fuck you too\n");
   printf("%s\n",buf);
   //return 0;
