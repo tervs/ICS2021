@@ -115,7 +115,7 @@ int fs_close(int fd)
 size_t fs_read(int fd, void *buf, size_t len)
 {
   printf("test in read\n");
-  printf("%s\n",(char *)(file_table[fd].read));
+  printf("%d\n",fd);
   ReadFn read = (file_table[fd].read == NULL) ? (ReadFn) ramdisk_read : file_table[fd].read;
   //printf("open: 0x%08x    size: 0x%08x\n",file_table[fd].open_offset,file_table[fd].size);
   int ret=0;
