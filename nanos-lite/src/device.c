@@ -56,7 +56,7 @@ size_t events_read(void *buf, size_t offset, size_t len) {
 }
 
 size_t dispinfo_read(void *buf, size_t offset, size_t len) {
-  printf("0x%08x\n",(uint32_t)(buf));
+  //printf("0x%08x\n",(uint32_t)(buf));
   int h = io_read(AM_GPU_CONFIG).height;
   int w = io_read(AM_GPU_CONFIG).width;
   //uint64_t src=(w<<32)|h;
@@ -64,9 +64,9 @@ size_t dispinfo_read(void *buf, size_t offset, size_t len) {
   //strcpy(buf,(char *)h);
   char s[128];
   sprintf(s,"%s%d\n%s%d\n","WIDTH:",w,"HEIGHT:",h);
-  printf("test   %s\n",s);
+  //printf("test   %s\n",s);
   strcpy(buf,s);
-  printf("buf %s\n",buf);
+  //printf("buf %s\n",buf);
   /*
   //uint64_t w = (uint64_t)io_read(AM_GPU_CONFIG).width;
   //printf("%d\n",io_read(AM_GPU_CONFIG).width);

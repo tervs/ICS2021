@@ -64,7 +64,7 @@ void NDL_OpenCanvas(int *w, int *h)
   //int fd=fopen("")
   char buf[128];
   read(4,buf,8);
-
+  printf("%s\n",buf);
   //return 0;
 
 
