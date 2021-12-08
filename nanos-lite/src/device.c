@@ -63,7 +63,7 @@ size_t dispinfo_read(void *buf, size_t offset, size_t len) {
   //printf("%u  %u \n",h,w);
   //strcpy(buf,(char *)h);
   //char s[128];
-  sprintf(buf,"%s%d%s%d\n","WIDTH:",w,"HEIGHT:",h);
+  sprintf(buf,"%s%d\r%s%d\n","WIDTH:",w,"HEIGHT:",h);
   //printf("test   %s\n",s);
   //strcpy(buf,s);
   int t=sizeof(buf);
