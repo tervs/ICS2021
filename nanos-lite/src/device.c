@@ -60,6 +60,7 @@ size_t dispinfo_read(void *buf, size_t offset, size_t len) {
   //printf("%d\n",io_read(AM_GPU_CONFIG).width);
   int h = io_read(AM_GPU_CONFIG).height;
   uint64_t src=w<<32||h;
+  printf("%ld\n",src);
   memcpy(buf,&src,len);
  
   return len;
