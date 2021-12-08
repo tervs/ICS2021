@@ -58,7 +58,8 @@ size_t events_read(void *buf, size_t offset, size_t len) {
 size_t dispinfo_read(void *buf, size_t offset, size_t len) {
   printf("just for test\n");
   int h = io_read(AM_GPU_CONFIG).height;
-  printf("%d\n",h);
+  uint64_t w = (uint64_t)io_read(AM_GPU_CONFIG).width;
+  printf("%d  %d\n",h,w);
   /*
   //uint64_t w = (uint64_t)io_read(AM_GPU_CONFIG).width;
   //printf("%d\n",io_read(AM_GPU_CONFIG).width);
