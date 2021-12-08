@@ -62,8 +62,9 @@ void NDL_OpenCanvas(int *w, int *h)
   canvas_w = *w; canvas_h = *h;
   //read()
   //int fd=fopen("")
-  uint64_t *a;
-  read(4,a,8);
+  char buf[128];
+  read(4,buf,8);
+
   //return 0;
 
 
