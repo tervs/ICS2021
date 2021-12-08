@@ -20,7 +20,7 @@ typedef struct {
   WriteFn write;
 } Finfo;
 
-enum {FD_STDIN, FD_STDOUT, FD_STDERR, DEV_KBD,  DEC_DISPINFO, DEV_FB,    FD_FB};
+enum {FD_STDIN, FD_STDOUT, FD_STDERR, DEV_KBD,  DEC_CTL, DEV_FB,    FD_FB};
 
 
 
@@ -41,7 +41,7 @@ static Finfo file_table[] __attribute__((used)) = {
   [FD_STDOUT] = {"stdout", -1, 0, 0, invalid_read, serial_write},
   [FD_STDERR] = {"stderr", -1, 0, 0, invalid_read, serial_write},
   [DEV_KBD]   = {"/dev/events",-1,0,0,events_read,invalid_write},
-  [DEC_DISPINFO]    = {"/proc/dispinfo",-1,0,0,dispinfo_read,invalid_write},
+  [DEC_CTL]    = {"/proc/dispinfo",-1,0,0,dispinfo_read,invalid_write},
   [DEV_FB]    = {"/dev/fb",-1,0,0,invalid_read,fb_write},
 
   ///
@@ -114,6 +114,7 @@ int fs_close(int fd)
 
 size_t fs_read(int fd, void *buf, size_t len)
 {
+  printf("test\n");
   ReadFn read = (file_table[fd].read == NULL) ? (ReadFn) ramdisk_read : file_table[fd].read;
   //printf("open: 0x%08x    size: 0x%08x\n",file_table[fd].open_offset,file_table[fd].size);
   int ret=0;
