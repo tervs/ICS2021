@@ -15,7 +15,8 @@ static const char *keyname[256] __attribute__((used)) = {
 };
 
 
-
+  extern int screen_w;
+  extern int screen_h;
 
 
 
@@ -84,6 +85,13 @@ size_t dispinfo_read(void *buf, size_t offset, size_t len) {
 }
 
 size_t fb_write(const void *buf, size_t offset, size_t len) {
+  
+ // int x=(screen_w-(len/4))/2;
+
+  uint32_t *pixels= (uint32_t *)buf;
+  
+  io_write(AM_GPU_FBDRAW, 32, 32,pixels, len, 1, true);
+  
   return 0;
 }
 
