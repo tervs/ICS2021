@@ -77,6 +77,7 @@ size_t dispinfo_read(void *buf, size_t offset, size_t len) {
   printf("%ld\n",src);
   memcpy(buf,&src,len);
  */
+printf("fuck\n");
   return len;
   
   //return 0;
