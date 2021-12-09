@@ -102,7 +102,7 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h)
 
   //memset(pixels,0x00ff0000,sizeof(pixels));
 
- FILE *fd=fopen("/dev/fb","+r");
+ //FILE *fd=fopen("/dev/fb","+r");
  //printf("fd  %d\n",fd);
   x=center_x+x;
   y=center_y+y;
@@ -110,8 +110,8 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h)
   {
     for(int i=x;i<x+canvas_w;i++)
     {
-      //write(fd,(pixels),(4*(canvas_w)));
-      fwrite((pixels),4,(canvas_w),fd);
+      write(5,(pixels),(4*(canvas_w)));
+      //fwrite((pixels),4,(canvas_w),fd);
       pixels=pixels+canvas_w;
       //fprintf(fd,)
     }
