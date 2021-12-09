@@ -67,7 +67,7 @@ void NDL_OpenCanvas(int *w, int *h)
 
   read(4,buf,16);
   char *w1=strtok(buf,":");
-  printf("%s\n",w);
+  printf("%s\n",w1);
   //printf("bufsize%d\n",sizeof(buf));
   //printf("fuck you too\n");
   //printf("%s",buf);
