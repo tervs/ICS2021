@@ -108,13 +108,13 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h)
   y=center_y+y;
   for(int j=y;j<y+canvas_h;j++)
   {
-    for(int i=x;i<x+canvas_w;i++)
-    {
+    
       write(5,(pixels),(4*(canvas_w)));
       //fwrite((pixels),4,(canvas_w),fd);
+      
       pixels=pixels+canvas_w;
       //fprintf(fd,)
-    }
+    
   }
   
 
