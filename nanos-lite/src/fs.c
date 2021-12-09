@@ -2,7 +2,8 @@
 
 
 #define ENTRY 0x83000000
-
+extern int screen_w;
+extern int screen_h;
 typedef size_t (*ReadFn) (void *buf, size_t offset, size_t len);
 typedef size_t (*WriteFn) (const void *buf, size_t offset, size_t len);
 
@@ -58,8 +59,8 @@ void init_fs()
   char *h1=strtok(NULL,"\0");
 
 
-  int screen_w=atoi(w1);
-  int screen_h=atoi(h1);
+  screen_w=atoi(w1);
+  screen_h=atoi(h1);
   file_table[DEV_FB].size=4*screen_h*screen_w;
   printf("0x%08x\n",file_table[DEV_FB].size);
 

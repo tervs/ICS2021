@@ -90,7 +90,7 @@ size_t fb_write(const void *buf, size_t offset, size_t len) {
 
   uint32_t *pixels= (uint32_t *)buf;
   
-  
+ printf("w:   %d   h  %d\n",screen_w,screen_h); 
   if(i!=64)
   {
 

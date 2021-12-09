@@ -17,6 +17,8 @@ size_t fs_lseek(int fd, size_t offset, int whence);
 int fs_close(int fd);
 size_t fs_len(int fd);
 
+int screen_w;
+int screen_h;
 
 
 
