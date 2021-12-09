@@ -60,7 +60,7 @@ void init_fs()
   int screen_w=atoi(w1);
   int screen_h=atoi(h1);
   uint32_t *p=NULL;
-  p=(uint32_t *)malloc(screen_h*screen_w);
+  p=(uint32_t *)malloc(4*screen_h*screen_w);
 
   printf("%d  %d  in init\n",screen_w,screen_h);
   printf("0x%08x\n",p);
