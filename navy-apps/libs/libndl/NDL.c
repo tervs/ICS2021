@@ -80,10 +80,10 @@ void NDL_OpenCanvas(int *w, int *h)
   char *w1=strtok(buf,":");
   char *h1=strtok(NULL,"\0");
 
-  printf("%s\n",w1);
-  int w2=atoi2(w1);
-  printf("w2   %d\n",w2);
-  printf("%s\n",h1);
+
+  screen_w=atoi2(w1);
+  screen_h=atoi2(h1);
+  printf("w %d  h %d \n",screen_w,screen_w);
   //printf("bufsize%d\n",sizeof(buf));
   //printf("fuck you too\n");
   //printf("%s",buf);
