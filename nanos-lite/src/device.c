@@ -17,7 +17,7 @@ static const char *keyname[256] __attribute__((used)) = {
 
   extern int screen_w;
   extern int screen_h;
-
+static int i=0;
 
 
 size_t serial_write(const void *buf, size_t offset, size_t len) 
@@ -90,8 +90,8 @@ size_t fb_write(const void *buf, size_t offset, size_t len) {
 
   uint32_t *pixels= (uint32_t *)buf;
   
-  io_write(AM_GPU_FBDRAW, 32, 32,pixels, len, 1, true);
-  
+  io_write(AM_GPU_FBDRAW, 32, i,pixels, len, 1, true);
+  i++;
   return 0;
 }
 
