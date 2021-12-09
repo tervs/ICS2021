@@ -1,6 +1,10 @@
 #include <fs.h>
 
-
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 #define ENTRY 0x83000000
 typedef size_t (*ReadFn) (void *buf, size_t offset, size_t len);
 typedef size_t (*WriteFn) (const void *buf, size_t offset, size_t len);
@@ -53,12 +57,12 @@ void init_fs()
 {
   char initbuf[128];
   dispinfo_read(initbuf,0,8);
-  //char *w1=strtok(initbuf,":");
-  //char *h1=strtok(NULL,"\0");
+  char *w1=strtok(initbuf,":");
+  char *h1=strtok(NULL,"\0");
 
 
-  int screen_w=atoi(initbuf);
-  int screen_h=atoi(initbuf);
+  int screen_w=atoi(w1);
+  int screen_h=atoi(h1);
   printf("%d  %d  in init\n",screen_w,screen_h);
 
 
