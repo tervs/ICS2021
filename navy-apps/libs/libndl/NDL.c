@@ -99,7 +99,7 @@ void NDL_OpenCanvas(int *w, int *h)
 
 void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) 
 {
-/*
+
   memset(pixels,0x00ff0000,sizeof(pixels));
 
  FILE *fd=fopen("/dev/fb","+r");
@@ -116,7 +116,7 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h)
       //fprintf(fd,)
     }
   }
-  */
+  
 
 }
 

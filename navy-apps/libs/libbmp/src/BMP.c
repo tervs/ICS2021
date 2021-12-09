@@ -20,7 +20,7 @@ struct BitmapHeader {
 } __attribute__((packed));
 
 void* BMP_Load(const char *filename, int *width, int *height) {
-  printf("here? 1\n");
+
   FILE *fp = fopen(filename, "r");
   //printf("%d in bmp load\n",(int)fp);
   if (!fp) return NULL;
@@ -37,7 +37,7 @@ void* BMP_Load(const char *filename, int *width, int *height) {
 
   int line_off = (w * 3 + 3) & ~0x3;
   for (int i = 0; i < h; i ++) {
-    printf("here? 2\n");
+
     fseek(fp, hdr.offset + (h - 1 - i) * line_off, SEEK_SET);
     int nread = fread(&pixels[w * i], 3, w, fp);
     for (int j = w - 1; j >= 0; j --) {
@@ -47,7 +47,7 @@ void* BMP_Load(const char *filename, int *width, int *height) {
       pixels[w * i + j] = (r << 16) | (g << 8) | b;
     }
   }
-printf("here? 3\n");
+//printf("here? 3\n");
   fclose(fp);
   if (width) *width = w;
   if (height) *height = h;
