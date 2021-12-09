@@ -89,7 +89,7 @@ size_t fb_write(const void *buf, size_t offset, size_t len) {
  // int x=(screen_w-(len/4))/2;
 
   uint32_t *pixels= (uint32_t *)buf;
-  if(i!=32)
+  if(i!=64)
   {
 
   
