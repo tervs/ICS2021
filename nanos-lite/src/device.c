@@ -90,15 +90,15 @@ size_t fb_write(const void *buf, size_t offset, size_t len) {
 
   uint32_t *pixels= (uint32_t *)buf;
   
- printf("w:   %d   h  %d\n",screen_w,screen_h); 
+ //printf("w:   %d   h  %d\n",screen_w,screen_h); 
   int x=offset%(screen_w);
   int y=offset/(screen_w);
-  printf("x  %d   y %d ",x,y);
+  //printf("x  %d   y %d ",x,y);
 
 
   
   
-  io_write(AM_GPU_FBDRAW, x, y,pixels, len/4, 1, true);
+  io_write(AM_GPU_FBDRAW, x, y,pixels, len, 1, true);
 
   return 0;
 }
