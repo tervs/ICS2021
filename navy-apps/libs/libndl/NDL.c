@@ -29,8 +29,6 @@ uint32_t NDL_GetTicks() {
   gettimeofday(&tv,NULL);
   return tv.tv_usec;
 
-
-  
   //printf("tv_sec:%ld   tv_usec:%lu\n",tv.tv_sec,tv.tv_usec);
   //return 0;
 }
@@ -99,7 +97,26 @@ void NDL_OpenCanvas(int *w, int *h)
 }
 
 
-void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
+void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) 
+{
+
+  memset(pixels,0x00ff0000,sizeof(pixels));
+
+ FILE *fd=fopen("/dev/fb","+r");
+ //printf("fd  %d\n",fd);
+  x=center_x+x;
+  y=center_y+y;
+  for(int j=y;j<y+canvas_h;j++)
+  {
+    for(int i=x;i<x+canvas_w;i++)
+    {
+      //write(fd,(pixels),(4*(canvas_w)));
+      fwrite((pixels),4,(canvas_w),fd);
+      pixels=pixels+canvas_w;
+      //fprintf(fd,)
+    }
+  }
+  
 }
 
 void NDL_OpenAudio(int freq, int channels, int samples) {
