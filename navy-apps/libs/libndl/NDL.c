@@ -68,6 +68,7 @@ void NDL_OpenCanvas(int *w, int *h)
   read(4,buf,16);
   char *w1=strtok(buf,":");
   char *h1=strtok(NULL,"\0");
+  printf("fuck you\n");
   printf("%s\n",w1);
   int w2=atoi(w1);
   printf("w2   %d\n",w2);
