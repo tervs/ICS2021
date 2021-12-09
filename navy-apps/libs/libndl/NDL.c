@@ -83,7 +83,9 @@ void NDL_OpenCanvas(int *w, int *h)
 
   screen_w=atoi2(w1);
   screen_h=atoi2(h1);
+  canvas_w = *w, canvas_h = *h;
   printf("w %d  h %d \n",screen_w,screen_w);
+  printf("w %d  h %d \n",canvas_w,canvas_w);
   //printf("bufsize%d\n",sizeof(buf));
   //printf("fuck you too\n");
   //printf("%s",buf);
