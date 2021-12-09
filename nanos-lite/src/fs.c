@@ -2,6 +2,7 @@
 
 
 #define ENTRY 0x83000000
+
 typedef size_t (*ReadFn) (void *buf, size_t offset, size_t len);
 typedef size_t (*WriteFn) (const void *buf, size_t offset, size_t len);
 
@@ -59,11 +60,12 @@ void init_fs()
 
   int screen_w=atoi(w1);
   int screen_h=atoi(h1);
-  uint32_t *p=NULL;
-  p=(uint32_t *)malloc(4*screen_h*screen_w);
+  file_table[DEV_FB].size=4*screen_h*screen_w;
+  printf("0x%08x\n",file_table[DEV_FB].size);
 
-  printf("%d  %d  in init\n",screen_w,screen_h);
-  printf("0x%08x\n",p);
+  //fb_start=(uint32_t *)malloc(4*screen_h*screen_w);
+  
+
 
 
   // TODO: initialize the size of /dev/fb
