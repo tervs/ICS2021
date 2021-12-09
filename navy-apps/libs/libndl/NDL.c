@@ -9,6 +9,17 @@ static int evtdev = -1;
 static int fbdev = -1;
 static int screen_w = 0, screen_h = 0;
 static int canvas_w = 0, canvas_h = 0;
+
+
+int atoi2(char* nptr) {
+  int x = 0;
+  while (*nptr == ' ') { nptr ++; }
+  while (*nptr >= '0' && *nptr <= '9') {
+    x = x * 10 + *nptr - '0';
+    nptr ++;
+  }
+  return x;
+}
 //size_t fs_read(int fd, void *buf, size_t len);
 //int gettimeofday(struct timeval *tv, struct timezone *tz) ;
 
@@ -70,7 +81,7 @@ void NDL_OpenCanvas(int *w, int *h)
   char *h1=strtok(NULL,"\0");
 
   printf("%s\n",w1);
-  int w2=atoi(w1);
+  int w2=atoi2(w1);
   printf("w2   %d\n",w2);
   printf("%s\n",h1);
   //printf("bufsize%d\n",sizeof(buf));
