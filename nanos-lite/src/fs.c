@@ -1,10 +1,6 @@
 #include <fs.h>
 
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
+
 #define ENTRY 0x83000000
 typedef size_t (*ReadFn) (void *buf, size_t offset, size_t len);
 typedef size_t (*WriteFn) (const void *buf, size_t offset, size_t len);
@@ -63,8 +59,11 @@ void init_fs()
 
   int screen_w=atoi(w1);
   int screen_h=atoi(h1);
-  printf("%d  %d  in init\n",screen_w,screen_h);
+  uint32_t *p=NULL;
+  p=(uint32_t *)malloc(screen_h*screen_w);
 
+  printf("%d  %d  in init\n",screen_w,screen_h);
+  printf("0x%08x\n",p);
 
 
   // TODO: initialize the size of /dev/fb
