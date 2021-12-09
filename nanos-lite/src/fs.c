@@ -1,5 +1,6 @@
 #include <fs.h>
 
+
 #define ENTRY 0x83000000
 typedef size_t (*ReadFn) (void *buf, size_t offset, size_t len);
 typedef size_t (*WriteFn) (const void *buf, size_t offset, size_t len);
@@ -48,7 +49,20 @@ static Finfo file_table[] __attribute__((used)) = {
 #include "files.h"
 };
 
-void init_fs() {
+void init_fs() 
+{
+  char initbuf[128];
+  dispinfo_read(initbuf,0,8);
+  //char *w1=strtok(initbuf,":");
+  //char *h1=strtok(NULL,"\0");
+
+
+  int screen_w=atoi(initbuf);
+  int screen_h=atoi(initbuf);
+  printf("%d  %d  in init\n",screen_w,screen_h);
+
+
+
   // TODO: initialize the size of /dev/fb
 }
 
