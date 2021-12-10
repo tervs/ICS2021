@@ -21,8 +21,11 @@ static int cur = 0;
 
 void render() {
   if (slide) {
+    printf("test before slide\n");
     SDL_FreeSurface(slide);
+    printf("test after slide\n");
   }
+  printf("test out slide\n");
   char fname[256];
   sprintf(fname, path, cur);
   slide = SDL_LoadBMP(fname);
