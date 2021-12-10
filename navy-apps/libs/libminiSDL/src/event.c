@@ -20,14 +20,15 @@ int SDL_PollEvent(SDL_Event *ev) {
 int SDL_WaitEvent(SDL_Event *event) {
   
   char buf[64];
-  //char *a;
+  char *a;
   //char *b;
 
   
   if (NDL_PollEvent(buf, sizeof(buf)))
   {
     printf("waitevent %s\n",buf);
-    //a=strtok(buf," ");
+    a=strtok(buf," ");
+    printf("a  %s\n",a);
     //b=strtok(NULL,"\n");
 
    // printf("a: %s   b %s\n",a,b);
