@@ -30,6 +30,7 @@ SDL_Surface *slide = NULL;
   char fname[256];
   sprintf(fname, path, 0);
   slide = SDL_LoadBMP(fname);
+  printf("slide w %d slide h %d\n",slide->w,slide->h);
   assert(slide);
   SDL_UpdateRect(slide, 0, 0, 0, 0);
 }

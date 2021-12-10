@@ -4,6 +4,8 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/time.h>
+#include <assert.h>
+
 
 static int evtdev = -1;
 static int fbdev = -1;
@@ -82,12 +84,21 @@ void NDL_OpenCanvas(int *w, int *h)
 
   screen_w=atoi2(w1);
   screen_h=atoi2(h1);
-  canvas_w = *w, canvas_h = *h;
+
+  if(*w==0&&*h==0)
+  {
+    canvas_w = screen_w;
+    canvas_h = screen_h;
+  }
+
+  else if(*w!=0&&*h!=0) 
+  {canvas_w = *w; canvas_h = *h;}
+  else {assert(0);}
   center_x=(screen_w-canvas_w)/2;
   center_y=(screen_h-canvas_h)/2;
   //todo要求画布大小不能超过屏幕大小
-  printf("w %d  h %d \n",screen_w,screen_w);
-  printf("canvas w %d  canvas h %d \n",canvas_w,canvas_w);
+  printf("screen w %d  screen h %d \n",screen_w,screen_h);
+  printf("canvas w %d  canvas h %d \n",canvas_w,canvas_h);
   printf("center x %d  center y %d \n",center_x,center_y);
   //printf("bufsize%d\n",sizeof(buf));
   //printf("fuck you too\n");
