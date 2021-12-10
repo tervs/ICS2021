@@ -29,10 +29,10 @@ int SDL_WaitEvent(SDL_Event *event) {
   if (NDL_PollEvent(buf, sizeof(buf)))
   {
     printf("waitevent %c\n",buf[0]);
-    keycode=strtok(buf," ");
+    //keycode=strtok(buf," ");
     //char *type=strtok(NULL,"\0");
 
-    printf("%c \n",buf[0]);
+    //printf("%c \n",buf[0]);
     /*
     for(int i=0;i<64;i++)
     {
