@@ -126,35 +126,54 @@ typedef	__uint128_t fixedptud;
 #define fixedpt_tofloat(T) ((float) ((T)*((float)(1)/(float)(1L << FIXEDPT_FBITS))))
 
 /* Multiplies a fixedpt number with an integer, returns the result. */
+
+fixedpt C=0x599;
+fixedpt D=0xfffffecd;
 static inline fixedpt fixedpt_muli(fixedpt A, int B) {
-	return 0;
+	//printf("%d\n\n\n",C+D);
+	fixedpt res=A*B;
+	printf("muli A:%d  B%d  res:0x08x\n",A,B,res);
+	return res;
 }
 
 /* Divides a fixedpt number with an integer, returns the result. */
 static inline fixedpt fixedpt_divi(fixedpt A, int B) {
-	return 0;
+	fixedpt res=A/B;
+	printf("divi A:%d  B%d  res:0x08x\n",A,B,res);
+	
+	return res;
 }
 
 /* Multiplies two fixedpt numbers, returns the result. */
 static inline fixedpt fixedpt_mul(fixedpt A, fixedpt B) {
-	return 0;
+	uint64_t t=A*B;
+	fixedpt res=(int32_t)(t>>8);
+	printf("mul A:%d  B%d  res:0x08x\n",A,B,res);
+	
+	
+	return res;
 }
 
 
 /* Divides two fixedpt numbers, returns the result. */
 static inline fixedpt fixedpt_div(fixedpt A, fixedpt B) {
+	printf("div tobedone\n");
 	return 0;
 }
 
 static inline fixedpt fixedpt_abs(fixedpt A) {
+	printf("abs tobedone\n");
+	
 	return 0;
 }
 
 static inline fixedpt fixedpt_floor(fixedpt A) {
+	printf("floor tobedone\n");
 	return 0;
 }
 
 static inline fixedpt fixedpt_ceil(fixedpt A) {
+	printf("ceil tobedone\n");
 	return 0;
 }
 

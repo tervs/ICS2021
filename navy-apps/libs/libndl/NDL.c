@@ -27,7 +27,7 @@ int atoi2(char* nptr) {
 uint32_t NDL_GetTicks() {
   struct timeval tv;
   gettimeofday(&tv,NULL);
-  return tv.tv_usec;
+  return tv.tv_sec;
 
   //printf("tv_sec:%ld   tv_usec:%lu\n",tv.tv_sec,tv.tv_usec);
   //return 0;
@@ -100,7 +100,7 @@ void NDL_OpenCanvas(int *w, int *h)
 void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) 
 {
 
-  memset(pixels,0x00ff0000,sizeof(pixels));
+ // memset(pixels,0x00ff0000,sizeof(pixels));
 
  //FILE *fd=fopen("/dev/fb","+r");
  //printf("fd  %d\n",fd);
