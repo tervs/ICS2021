@@ -26,7 +26,7 @@ int SDL_WaitEvent(SDL_Event *event) {
     a=strtok(buf," ");
     b=strtok(NULL,"\n");
 
-    printf("a: %s   b %s\n",a,b);
+   // printf("a: %s   b %s\n",a,b);
   }
   return 1;
 }
