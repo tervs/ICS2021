@@ -16,16 +16,17 @@ const int N = 11;
 // slides path pattern (starts from 0)
 const char *path = "/share/slides/slides-%d.bmp";
 
-SDL_Surface *slide = NULL;
+static SDL_Surface *slide = NULL;
 //SDL_Surface *slide=NULL;
 static int cur = 0;
 
 void render() {
-  if (slide) {
-    printf("test before slide\n");
-    SDL_FreeSurface(slide);
-    printf("test after slide\n");
-  }
+
+  //if (slide) {
+    //printf("test before slide\n");
+    //SDL_FreeSurface(slide);
+    //printf("test after slide\n");
+  //}
   printf("test out slide\n");
   char fname[256];
   sprintf(fname, path, cur);
@@ -49,14 +50,14 @@ void next(int rep) {
 }
 
 int main() {
-   if(slide!=NULL) {printf("0  slide : 0x%08x\n",(uint32_t)(slide));}
-  else {printf("0  fuck\n");} 
+   //if(slide!=NULL) {printf("0  slide : 0x%08x\n",(uint32_t)(slide));}
+  //else {printf("0  fuck\n");} 
   SDL_Init(0);
 
   SDL_Surface *screen = SDL_SetVideoMode(W, H, 32, SDL_HWSURFACE);
   //printf("format 0x%08x\n",(uint32_t)(screen->format));
-  if(slide!=NULL) {printf("slide : 0x%08x\n",(uint32_t)(slide));}
-  else {printf("fuck\n");}
+  //if(slide!=NULL) {printf("slide : 0x%08x\n",(uint32_t)(slide));}
+  //else {printf("fuck\n");}
   int rep = 0, g = 0;
 
   render();
