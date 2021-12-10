@@ -84,22 +84,28 @@ SDL_Surface* SDL_CreateRGBSurfaceFrom(void *pixels, int width, int height, int d
 }
 
 void SDL_FreeSurface(SDL_Surface *s) {
-  if (s != NULL) {
-    if (s->format != NULL) {
-      if (s->format->palette != NULL) {
-        if (s->format->palette->colors != NULL) free(s->format->palette->colors);
+  if (s != NULL) 
+  {printf("1\n");
+    if (s->format != NULL) 
+    {printf("2\n");
+      if (s->format->palette != NULL) 
+      {printf("3\n");
+        if (s->format->palette->colors != NULL) 
+        free(s->format->palette->colors);
         free(s->format->palette);
+        printf("4\n");
       }
       free(s->format);
     }
-    if (s->pixels != NULL && !(s->flags & SDL_PREALLOC)) free(s->pixels);
+    if (s->pixels != NULL && !(s->flags & SDL_PREALLOC)) 
+    free(s->pixels);
     free(s);
   }
 }
 
 SDL_Surface* SDL_SetVideoMode(int width, int height, int bpp, uint32_t flags) {
   if (flags & SDL_HWSURFACE) {NDL_OpenCanvas(&width, &height) ;
-  printf("test in  w %d  h %d\n",width,height);
+ // printf("test in  w %d  h %d\n",width,height);
   }
   return SDL_CreateRGBSurface(flags, width, height, bpp,
       DEFAULT_RMASK, DEFAULT_GMASK, DEFAULT_BMASK, DEFAULT_AMASK);
