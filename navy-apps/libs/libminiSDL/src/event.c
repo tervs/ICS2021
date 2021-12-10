@@ -4,6 +4,8 @@
 #include <string.h>
 #define keyname(k) #k,
 
+    char *keycode=NULL;
+    char *type=NULL;
 static const char *keyname[] = {
   "NONE",
   _KEYS(keyname)
@@ -27,10 +29,10 @@ int SDL_WaitEvent(SDL_Event *event) {
   if (NDL_PollEvent(buf, sizeof(buf)))
   {
     printf("waitevent %c\n",buf[0]);
-    char *keycode=strtok(buf," ");
+    keycode=strtok(buf," ");
     //char *type=strtok(NULL,"\0");
 
-    //printf("%c \n",buf[0]);
+    printf("%c \n",buf[0]);
     /*
     for(int i=0;i<64;i++)
     {
