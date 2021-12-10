@@ -16,11 +16,12 @@ const int N = 11;
 // slides path pattern (starts from 0)
 const char *path = "/share/slides/slides-%d.bmp";
  
-//SDL_Surface *slide=NULL;
+static SDL_Surface *slide=NULL;
+
 static int cur = 0;
 
 void render() {
-SDL_Surface *slide = NULL;
+//SDL_Surface *slide = NULL;
   if (slide) {
     //printf("test before slide\n");
     SDL_FreeSurface(slide);
