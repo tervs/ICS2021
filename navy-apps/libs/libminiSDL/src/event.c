@@ -27,9 +27,13 @@ int SDL_WaitEvent(SDL_Event *event) {
   if (NDL_PollEvent(buf, sizeof(buf)))
   {
     printf("waitevent %s\n",buf);
-    char *w1=strtok(buf," ");
-    char *h1=strtok(NULL,"\0");
-    printf("a  %s  %s\n",w1,h1);
+    for(int i=0;buf!=NULL;i++)
+    {
+      printf("%d  %c",i,buf[i]);
+    }
+    //char *w1=strtok(buf," ");
+    //char *h1=strtok(NULL,"\0");
+    //printf("a  %s  %s\n",w1,h1);
     //b=strtok(NULL,"\n");
 
    // printf("a: %s   b %s\n",a,b);
