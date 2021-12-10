@@ -48,8 +48,7 @@ void next(int rep) {
 }
 
 int main() {
-    if(slide!=NULL) {printf("1  slide : 0x%08x\n",(uint32_t)(slide));}
-  else {printf("1  fuck\n");}
+
   SDL_Init(0);
     if(slide!=NULL) {printf("2  slide : 0x%08x\n",(uint32_t)(slide));}
   else {printf("2  fuck\n");}
