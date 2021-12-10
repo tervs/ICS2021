@@ -27,7 +27,7 @@ int SDL_WaitEvent(SDL_Event *event) {
   if (NDL_PollEvent(buf, sizeof(buf)))
   {
     printf("waitevent %s\n",buf);
-    printf("%c \n",buf[0]);
+    //printf("%c \n",buf[0]);
     /*
     for(int i=0;i<64;i++)
     {
