@@ -29,7 +29,7 @@ void render() {
   //}
   printf("test out slide\n");
   char fname[256];
-  sprintf(fname, path, 0);
+  sprintf(fname, path, cur);
   slide = SDL_LoadBMP(fname);
   assert(slide);
   SDL_UpdateRect(slide, 0, 0, 0, 0);
