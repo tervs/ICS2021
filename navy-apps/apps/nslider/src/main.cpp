@@ -29,7 +29,7 @@ SDL_Surface *slide = NULL;
   }
   printf("test out slide\n");
   char fname[256];
-  sprintf(fname, path, cur);
+  sprintf(fname, path, 1);
   slide = SDL_LoadBMP(fname);
   printf("slide w %d slide h %d\n",slide->w,slide->h);
   assert(slide);
