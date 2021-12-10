@@ -1,6 +1,7 @@
 #include <NDL.h>
 #include <SDL.h>
-
+#include <stdio.h>
+#include <string.h>
 #define keyname(k) #k,
 
 static const char *keyname[] = {
@@ -17,6 +18,16 @@ int SDL_PollEvent(SDL_Event *ev) {
 }
 
 int SDL_WaitEvent(SDL_Event *event) {
+  char buf[64];
+  char *a;
+  char *b;
+  if (NDL_PollEvent(buf, sizeof(buf)))
+  {
+    a=strtok(buf," ");
+    b=strtok(NULL,"\n");
+
+    printf("a: %s   b %s\n",a,b);
+  }
   return 1;
 }
 
