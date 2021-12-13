@@ -43,27 +43,11 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 
   uint32_t *p;
   p=(uint32_t *)(ENTRY);
-  printf("0x%08x\n",*(p+6));
-  /*
-  for(int i=0;i<10;i++)
-  {
-    printf("%d  0x%08x\n",i,*p);
-    p++;
-  }
-*/
-  //struct Elf32_Ehdr *Elf_header = NULL;
-
-  //fread(Elf_header,sizeof(struct Elf32_Ehdr),1,file_elf);
-  //assert(*(uint32_t *)elf->e_ident == 0x7f454c47);
-  //ramdisk_read((void *)ENTRY,0x000000,get_ramdisk_size());
-  //printf("%d   %d\n",fd,len);
-
   printf("test2\n");
-  return ENTRY+0x8da0;
-
-
-
-
+  
+  //void *p1=(void *)(p);
+  return *(p+6);
+  //printf("0x%08x\n",*(p+6));
 
   }
 
@@ -77,13 +61,13 @@ return 0;
     //x=x+i;
   }
 #endif
-  //return 0;
+
 }
 
 void naive_uload(PCB *pcb, const char *filename) {
   
   uintptr_t entry = loader(pcb, filename);
-  //Log("Jump to entry = %p", entry);
+  Log("Jump to entry = 0x%08x", entry);
  
   ((void(*)())entry) ();
   
