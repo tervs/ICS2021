@@ -147,8 +147,8 @@ size_t fs_read(int fd, void *buf, size_t len)
     ret=read(buf,file_table[fd].disk_offset+file_table[fd].open_offset,len);
     }
   file_table[fd].open_offset+=len;
-  // printf("open_offset %d\n",file_table[fd].open_offset);
-  printf("%d\n",file_table[fd].disk_offset);
+   printf("open_offset %d\n",file_table[fd].open_offset);
+  //printf("%d\n",file_table[fd].disk_offset);
   return ret;
 }
 
