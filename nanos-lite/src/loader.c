@@ -43,12 +43,14 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 
   uint32_t *p;
   p=(uint32_t *)(ENTRY);
+  printf("0x%08x\n",*(p+6));
+  /*
   for(int i=0;i<10;i++)
   {
     printf("%d  0x%08x\n",i,*p);
     p++;
   }
-
+*/
   //struct Elf32_Ehdr *Elf_header = NULL;
 
   //fread(Elf_header,sizeof(struct Elf32_Ehdr),1,file_elf);
