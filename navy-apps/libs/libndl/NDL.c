@@ -100,9 +100,9 @@ void NDL_OpenCanvas(int *w, int *h)
   printf("screen w %d  screen h %d \n",screen_w,screen_h);
   printf("canvas w %d  canvas h %d \n",canvas_w,canvas_h);
   printf("center x %d  center y %d \n",center_x,center_y);
-  printf("screen w %d  screen h %d \n",screen_w,screen_h);
-  printf("canvas w %d  canvas h %d \n",canvas_w,canvas_h);
-  printf("center x %d  center y %d \n",center_x,center_y);
+  //printf("screen w %d  screen h %d \n",screen_w,screen_h);
+  //printf("canvas w %d  canvas h %d \n",canvas_w,canvas_h);
+  //printf("center x %d  center y %d \n",center_x,center_y);
   //printf("bufsize%d\n",sizeof(buf));
   //printf("fuck you too\n");
   //printf("%s",buf);
