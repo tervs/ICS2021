@@ -139,7 +139,7 @@ uintptr_t sys_gettimeofday()
 void strace()
 {
   printf("\n");
-  printf("a0 %d  a1 %d  a2 0x%08x  a3 %d\n",a[0],a[1],a[2],a[3]);
+  printf("a0 %d  a1 0x%08x  a2 0x%08x  a3 %d\n",a[0],a[1],a[2],a[3]);
   switch (a[0]) {
     case 0: printf("syscall exit\n");break;
     case 1: printf("syscall yield\n");break;
