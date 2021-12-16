@@ -31,7 +31,7 @@ size_t fs_len(int fd);
 
 static uintptr_t loader(PCB *pcb, const char *filename) {
 
-printf("nimade\n");
+
   if(filename!=NULL)
   {
   //printf("0x%08x\n",get_ramdisk_size());
@@ -45,6 +45,10 @@ printf("nimade\n");
   uint32_t *p;
   p=(uint32_t *)(ENTRY);
   printf("test2\n");
+  uint32_t *ph;
+  ph=p+7;
+  printf("ph  0x%08x\n",*ph);
+  
   
   //void *p1=(void *)(p);
   return *(p+6);
