@@ -26,11 +26,11 @@ void render() {
   //printf("addr is 0x%08x\n",(uint32_t)(slide));
 
   if (slide) {
-    //printf("test before slide\n");
+    printf("test before slide\n");
     SDL_FreeSurface(slide);
-    //printf("test after slide\n");
+    printf("test after slide\n");
   }
-  //printf("test out slide\n");
+  printf("test out slide\n");
   char fname[256];
   sprintf(fname, path, 2);
   slide = SDL_LoadBMP(fname);
