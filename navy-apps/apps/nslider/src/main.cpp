@@ -28,9 +28,9 @@ int cur = 0;
 
 void render() {
   SDL_Surface *slide = NULL;
-  if (slide) {
-    SDL_FreeSurface(slide);
-  }
+  //if (slide) {
+  //  SDL_FreeSurface(slide);
+  //}
   char fname[256];
   sprintf(fname, path, 0);
   slide = SDL_LoadBMP(fname);
