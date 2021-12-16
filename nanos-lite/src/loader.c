@@ -56,7 +56,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 
   get_elf();
 
-
+  printf("0x%08x\n\n\n\n",*enterpoint);
   
   
   //void *p1=(void *)(p);
