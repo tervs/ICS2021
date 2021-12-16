@@ -94,7 +94,7 @@ int _read(int fd, void *buf, size_t count)
 {
   
   //int temp=_syscall_(SYS_read, fd, (intptr_t)buf, count);
-  printf("test in syscall read\n");
+  //printf("test in syscall read\n");
   //printf("test in syscall read\n");
 
 
