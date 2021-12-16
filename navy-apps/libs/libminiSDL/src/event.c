@@ -22,15 +22,16 @@ int SDL_PollEvent(SDL_Event *ev) {
 int SDL_WaitEvent(SDL_Event *event) {
   
   char buf[64];
-  char *a;
-  char *b;
+  //char *a;
+  //char *b;
 
   
   if (NDL_PollEvent(buf, sizeof(buf)))
   {
     printf("waitevent %c\n",buf[0]);
-    keycode=strtok(buf," ");
-    printf("%s\n",keycode);
+    
+    //keycode=strtok(buf," ");
+    //printf("%s\n",keycode);
     //char *type=strtok(NULL,"\0");
 
     //printf("%c \n",buf[0]);
@@ -40,8 +41,8 @@ int SDL_WaitEvent(SDL_Event *event) {
       printf("%d  %c",i,buf[i]);
     }
     */
-    //char *w1=strtok(buf," ");
-    //char *h1=strtok(NULL,"\0");
+    char *w1=strtok(buf," ");
+    char *h1=strtok(NULL,"\0");
     //printf("a  %s  %s\n",w1,h1);
     //b=strtok(NULL,"\n");
 
