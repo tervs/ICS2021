@@ -94,7 +94,7 @@ int _read(int fd, void *buf, size_t count)
 {
   
   //int temp=_syscall_(SYS_read, fd, (intptr_t)buf, count);
-  //printf("test in syscall read\n");
+  printf("test in syscall read\n");
   //printf("test in syscall read\n");
 
 
@@ -110,7 +110,7 @@ int _close(int fd)
 
 off_t _lseek(int fd, off_t offset, int whence) 
 {
-  printf("test in syscall read\n");
+ 
   return _syscall_(SYS_lseek, fd, (intptr_t)offset, whence);
 }
 
