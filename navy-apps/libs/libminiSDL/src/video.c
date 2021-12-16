@@ -14,10 +14,10 @@ void SDL_FillRect(SDL_Surface *dst, SDL_Rect *dstrect, uint32_t color) {
   
   //printf("is  %p\n\n\n",dstrect);
   printf("w %d   h %d\n",dst->w,dst->h);
-  //uint32_t *x=malloc((dstrect->h)*(dstrect->w));
-  //printf("x is %p\n",&color);
- // memset(x,color,(dstrect->h)*(dstrect->w));
-  //NDL_DrawRect(&color,dstrect->x,dstrect->y,dstrect->w,dstrect->h);
+  uint32_t *x=malloc(400*300);
+  printf("x is %p\n",&color);
+  memset(x,color,400*300);
+  NDL_DrawRect(&color,0,0,dst->w,dst->h);
   //SDL_UpdateRect(dst,)
 
 }
