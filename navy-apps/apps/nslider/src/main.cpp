@@ -21,7 +21,7 @@ static SDL_Surface *slide=NULL;
  static int cur = 0;
 
 void render() {
-  //SDL_Surface *slide = NULL;
+  SDL_Surface *slide = NULL;
 
   //printf("addr is 0x%08x\n",(uint32_t)(slide));
 
