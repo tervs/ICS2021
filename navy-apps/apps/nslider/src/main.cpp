@@ -15,9 +15,11 @@
 const int N = 10;
 // slides path pattern (starts from 0)
 const char *path = "/share/slides/slides-%d.bmp";
-static SDL_Surface *slide = NULL;
-static int cur = 0;
 
+
+//static SDL_Surface *slide = NULL;
+//static int cur = 0;
+int cur = 0;
 //static uint32_t x=0x12345678;
 
 //x=(uint32_t *)(0x8300a500);
@@ -25,6 +27,7 @@ static int cur = 0;
 
 
 void render() {
+  SDL_Surface *slide = NULL;
   if (slide) {
     SDL_FreeSurface(slide);
   }
