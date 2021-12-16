@@ -31,11 +31,11 @@ void render() {
     //printf("test after slide\n");
   }
   //printf("test out slide\n");
- // printf("test\n");
+  printf("test\n");
   char fname[256];
   sprintf(fname, path, 2);
   slide = SDL_LoadBMP(fname);
- // printf("slide w %d slide h %d\n",slide->w,slide->h);
+  printf("slide w %d slide h %d\n",slide->w,slide->h);
   assert(slide);
   SDL_UpdateRect(slide, 0, 0, 0, 0);
 }
