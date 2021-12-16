@@ -110,6 +110,7 @@ int _close(int fd)
 
 off_t _lseek(int fd, off_t offset, int whence) 
 {
+  printf("test in syscall read\n");
   return _syscall_(SYS_lseek, fd, (intptr_t)offset, whence);
 }
 
