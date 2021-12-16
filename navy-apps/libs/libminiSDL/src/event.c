@@ -23,13 +23,14 @@ int SDL_WaitEvent(SDL_Event *event) {
   
   char buf[64];
   char *a;
-  //char *b;
+  char *b;
 
   
   if (NDL_PollEvent(buf, sizeof(buf)))
   {
     printf("waitevent %c\n",buf[0]);
-    //keycode=strtok(buf," ");
+    keycode=strtok(buf," ");
+    printf("%s\n",keycode);
     //char *type=strtok(NULL,"\0");
 
     //printf("%c \n",buf[0]);
