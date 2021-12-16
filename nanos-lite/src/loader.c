@@ -46,7 +46,13 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   p=(uint32_t *)(ENTRY);
   printf("test2\n");
   uint32_t *ph;  ph=p+7;
-  uint16_t *phsize; phsize=(uint16_t *)(ENTRY);phsize=phsize+20;
+  uint16_t *phsize; phsize=(uint16_t *)(ENTRY);phsize=phsize+21;
+  uint32_t size=*phsize;
+  for(int i=0;i<size;i++)
+  {
+    printf("i %d   0x%08x",i,*ph );
+    ph++;
+  }
   printf("ph  0x%08x\n",*ph);
   printf("phsize 0x%08x\n",*(phsize));
   
