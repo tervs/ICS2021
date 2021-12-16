@@ -53,7 +53,7 @@ p=(uint32_t *)(ENTRY);
   uint32_t size=*phsize;
   for(int i=0;i<size;i++)
   {
-    printf("i %d   0x%08x\n",i,*(uint32_t *)(ENTRY+*ph+i) );
+    printf("i %d   0x%08x\n",i,*(uint32_t *)(ENTRY+*ph+4*i) );
     
     }
   printf("ph  0x%08x\n",*ph);
