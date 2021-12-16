@@ -58,7 +58,7 @@ int main() {
    //if(slide!=NULL) {printf("0  slide : 0x%08x\n",(uint32_t)(slide));}
   //else {printf("0  fuck\n");} 
   SDL_Init(0);
-
+  printf("cur %p\n",&cur);
   SDL_Surface *screen = SDL_SetVideoMode(W, H, 32, SDL_HWSURFACE);
   //printf("format 0x%08x\n",(uint32_t)(screen->format));
   //if(slide!=NULL) {printf("slide : 0x%08x\n",(uint32_t)(slide));}
