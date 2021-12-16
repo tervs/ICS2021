@@ -26,11 +26,14 @@ int fs_close(int fd);
 size_t fs_len(int fd);
 
  //static size_t open_offset[100];
+//static uint32_t *p;
+//p=(uint32_t *)(ENTRY);
+
+//static uint32_t *phstart=
 
 
 
 static uintptr_t loader(PCB *pcb, const char *filename) {
-
 
   if(filename!=NULL)
   {
@@ -42,17 +45,17 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 
   fs_read(fd,(void *)ENTRY,len);
 
-  uint32_t *p;
-  p=(uint32_t *)(ENTRY);
+ uint32_t *p;
+p=(uint32_t *)(ENTRY);
   printf("test2\n");
   uint32_t *ph;  ph=p+7;
   uint16_t *phsize; phsize=(uint16_t *)(ENTRY);phsize=phsize+21;
   uint32_t size=*phsize;
   for(int i=0;i<size;i++)
   {
-    printf("i %d   0x%08x\n",i,*ph );
-    ph++;
-  }
+    printf("i %d   0x%08x\n",i,*(uint32_t *)(ENTRY+*ph+i) );
+    
+    }
   printf("ph  0x%08x\n",*ph);
   printf("phsize 0x%08x\n",*(phsize));
   
