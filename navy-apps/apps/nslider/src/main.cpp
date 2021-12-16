@@ -22,7 +22,8 @@ static SDL_Surface *slide=NULL;
 
 void render() {
   SDL_Surface *slide = NULL;
-  printf("addr is 0x%08x\n",(uint32_t)(slide));
+
+  //printf("addr is 0x%08x\n",(uint32_t)(slide));
 
   if (slide) {
     //printf("test before slide\n");
@@ -33,7 +34,7 @@ void render() {
   char fname[256];
   sprintf(fname, path, 2);
   slide = SDL_LoadBMP(fname);
-  //printf("slide w %d slide h %d\n",slide->w,slide->h);
+printf("slide w %d slide h %d\n",slide->w,slide->h);
   assert(slide);
   SDL_UpdateRect(slide, 0, 0, 0, 0);
 }
