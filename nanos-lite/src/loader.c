@@ -99,7 +99,7 @@ void get_elf()
 
     for(int i=0;i<(*program_size/2);i++)
   {
-    printf("i %d   0x%08x\n",i,*(uint32_t *)(program_start+4*i) );
+    printf("i %d   0x%08x\n",i,*(program_start+i) );
     
     }
 
