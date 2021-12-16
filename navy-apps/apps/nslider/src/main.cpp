@@ -17,9 +17,9 @@ const int N = 10;
 const char *path = "/share/slides/slides-%d.bmp";
 
 
-//static SDL_Surface *slide = NULL;
-//static int cur = 0;
-int cur = 0;
+static SDL_Surface *slide = NULL;
+static int cur = 0;
+//int cur = 0;
 //static uint32_t x=0x12345678;
 
 //x=(uint32_t *)(0x8300a500);
@@ -27,10 +27,10 @@ int cur = 0;
 
 
 void render() {
-  SDL_Surface *slide = NULL;
-  //if (slide) {
-  //  SDL_FreeSurface(slide);
-  //}
+//  SDL_Surface *slide = NULL;
+  if (slide) {
+    SDL_FreeSurface(slide);
+  }
   char fname[256];
   sprintf(fname, path, 0);
   slide = SDL_LoadBMP(fname);
