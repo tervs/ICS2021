@@ -26,7 +26,9 @@ int fs_close(int fd);
 size_t fs_len(int fd);
 static uint32_t *elf_start;
 static uint32_t *enterpoint;
+static uint32_t *program_offset;
 static uint32_t *program_start;
+
 static uint16_t *program_size;
 void get_elf();
 
@@ -89,14 +91,15 @@ void get_elf()
 {
   elf_start=(uint32_t *)(ENTRY);
   enterpoint=elf_start+6;
-  program_start=elf_start+7;
+  program_offset=elf_start+7;
+  program_start=(uint32_t *)(*program_offset+ENTRY);
   program_size=(uint16_t *)(ENTRY);
   program_size=program_size+21;
 
 
     for(int i=0;i<(*program_size/2);i++)
   {
-    printf("i %d   0x%08x\n",i,*(uint32_t *)(ENTRY+*program_start+4*i) );
+    printf("i %d   0x%08x\n",i,*(uint32_t *)(program_start+4*i) );
     
     }
 
