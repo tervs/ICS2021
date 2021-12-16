@@ -99,7 +99,7 @@ void NDL_OpenCanvas(int *w, int *h)
   //todo要求画布大小不能超过屏幕大小
   printf("screen w %d  screen h %d \n",screen_w,screen_h);
   printf("canvas w %d  canvas h %d \n",canvas_w,canvas_h);
-  printf("center x %d  center y %d \n",center_x,center_y);
+  //printf("center x %d  center y %d \n",center_x,center_y);
   //printf("screen w %d  screen h %d \n",screen_w,screen_h);
   //printf("canvas w %d  canvas h %d \n",canvas_w,canvas_h);
   //printf("center x %d  center y %d \n",center_x,center_y);
