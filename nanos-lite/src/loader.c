@@ -24,6 +24,12 @@ size_t fs_write(int fd, const void *buf, size_t len);
 size_t fs_lseek(int fd, size_t offset, int whence);
 int fs_close(int fd);
 size_t fs_len(int fd);
+static uint32_t *elf_start;
+static uint32_t *enterpoint;
+static uint32_t *program_start;
+static uint16_t *program_size;
+void get_elf();
+
 
  //static size_t open_offset[100];
 //static uint32_t *p;
@@ -51,7 +57,7 @@ p=(uint32_t *)(ENTRY);
   uint32_t *ph;  ph=p+7;
   uint16_t *phsize; phsize=(uint16_t *)(ENTRY);phsize=phsize+21;
   uint32_t size=*phsize;
-  for(int i=0;i<size;i++)
+  for(int i=0;i<(size/2);i++)
   {
     printf("i %d   0x%08x\n",i,*(uint32_t *)(ENTRY+*ph+4*i) );
     
@@ -88,3 +94,17 @@ void naive_uload(PCB *pcb, const char *filename) {
   
 }
 
+void get_elf()
+{
+  elf_start=(uint32_t *)(ENTRY);
+  enterpoint=elf_start+6;
+  program_start=elf_start+7;
+  program_size=(uint16_t *)(ENTRY);
+  program_size=program_size+21;
+}
+/*
+static uint32_t *elf_start;
+static uint32_t *enterpoint;
+static uint32_t *program_start;
+static uint16_t *program_size;
+*/
