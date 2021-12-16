@@ -99,18 +99,15 @@ void get_elf()
   program_size=program_size+21;
 
 
-
+/*
     for(int i=0;i<(*program_size/2);i=i+8)
   {
     printf("test 0x%08x\n",*(program_start+i+5)-*(program_start+i+4));
     printf("file 0x%08x\n",(*(program_start+i+3)+*(program_start+i+4)));
     memset((uint32_t *)(*(program_start+i+3)+*(program_start+i+4)),0,*(program_start+i+5)-*(program_start+i+4));
-    
-
-    //printf("i %d   0x%08x\n",i,*(program_start+i) );
-    
+        //printf("i %d   0x%08x\n",i,*(program_start+i) );
     }
-
+*/
 
 }
 /*
