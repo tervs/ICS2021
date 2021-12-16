@@ -60,7 +60,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   
   
   //void *p1=(void *)(p);
-  return *enterpoint;
+  return (uintptr_t)(*enterpoint);
   //printf("0x%08x\n",*(p+6));
 
   }
