@@ -30,7 +30,8 @@ void render() {
     SDL_FreeSurface(slide);
     //printf("test after slide\n");
   }
-  printf("test out slide\n");
+  //printf("test out slide\n");
+  printf("test\n");
   char fname[256];
   sprintf(fname, path, 2);
   slide = SDL_LoadBMP(fname);
