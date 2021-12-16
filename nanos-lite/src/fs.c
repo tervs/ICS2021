@@ -62,6 +62,7 @@ void init_fs()
   screen_w=atoi(w1);
   screen_h=atoi(h1);
   file_table[DEV_FB].size=4*screen_h*screen_w;
+  Log("fs init");
   //printf("0x%08x\n",file_table[DEV_FB].size);
 
   //fb_start=(uint32_t *)malloc(4*screen_h*screen_w);
