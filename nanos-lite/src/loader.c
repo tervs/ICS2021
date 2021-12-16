@@ -31,6 +31,7 @@ size_t fs_len(int fd);
 
 static uintptr_t loader(PCB *pcb, const char *filename) {
 
+printf("nimade\n");
   if(filename!=NULL)
   {
   //printf("0x%08x\n",get_ramdisk_size());
