@@ -1,155 +1,65 @@
 #include <common.h>
 #include "syscall.h"
+#include<sys/time.h>
+#include <proc.h>
 
-uintptr_t a[4];
-
-uintptr_t sys_yield();
-uintptr_t sys_exit();
-uintptr_t sys_write();
-uintptr_t sys_brk();
-uintptr_t sys_open();
-uintptr_t sys_lseek();
-uintptr_t sys_read();
-uintptr_t sys_close();
-uintptr_t sys_gettimeofday();
-
-
-int fs_open(const char *pathname, int flags, int mode);
-size_t fs_read(int fd, void *buf, size_t len);
-size_t fs_write(int fd, const void *buf, size_t len);
-size_t fs_lseek(int fd, size_t offset, int whence);
+int sys_execve(const char *fname, char * const argv[], char *const envp[]);
+int sys_write(int fd, void *buf, size_t count);
 int fs_close(int fd);
-void strace();
-
-static uint32_t sec;
-static uint32_t usec;
-
-
-
-
+int fs_open(const char* pathname,int flags);
+size_t fs_read(int fd,void* buf,size_t len);
+size_t fs_lseek(int fd,size_t offset,int whence);
+size_t fs_write(int fd,const void *buf,size_t len);
+void naive_uload(PCB *pcb, const char *filename);
+int sys_gettimeofday(struct timeval *tv,struct timezone *tz);
+void sys_yield(Context *c){
+  yield();
+  c->GPRx=0;
+}
+void sys_exit(Context *c){
+  //halt(c->GPR2);//wait to modify
+  sys_execve("/bin/menu",NULL,NULL);
+}
 
 void do_syscall(Context *c) {
- 
+
+  uintptr_t a[4];
   a[0] = c->GPR1;
-  a[1] = c->GPR2;
-  a[2] = c->GPR3;
-  a[3] = c->GPR4;
-
-  strace();
-
-  switch (a[0]) {
-    case 0: c->GPRx=sys_exit();break;
-    case 1: c->GPRx=sys_yield();break;
-    case 2: c->GPRx=sys_open();break;
-    case 3: c->GPRx=sys_read();break;
-    case 4: c->GPRx=sys_write();break;
-    case 7: c->GPRx=sys_close();break;
-    case 8: c->GPRx=sys_lseek();break;
-    case 9: c->GPRx=0;sys_brk();break;
-    case 19:c->GPRx=sys_gettimeofday();break;
+  a[1]=c->GPR2;
+  a[2]=c->GPR3;
+  a[3]=c->GPR4;
+  //Log("you caused a write_syscall!!");
+    switch (a[0]) {
+      case SYS_yield:/*Log("you caused a yield_syscall!!");*/sys_yield(c);break;
+      case SYS_exit:/*Log("you caused a exit_syscall!!");*/sys_exit(c);break;
+      case SYS_write:c->GPRx=fs_write(a[1],(void*)a[2],a[3]); break;
+      //case SYS_write:c->GPRx=sys_write(a[1],(void*)a[2],a[3]); break;
+      case SYS_brk: /*Log("you caused a brk_syscall!!");*/c->GPRx=0;break;
+      case SYS_open:/*Log("you casued a open_syscall!!");*/c->GPRx=fs_open((char*)a[1],a[2]);break;
+      case SYS_close:/*Log("you casued a close_syscall!!");*/c->GPRx=fs_close(a[1]);break;
+      case SYS_read:c->GPRx=fs_read(a[1],(void*)a[2],a[3]);break;
+      case SYS_lseek:c->GPRx=fs_lseek(a[1],a[2],a[3]);break;
+      case SYS_gettimeofday:c->GPRx=sys_gettimeofday((struct timeval*)a[1],(struct timezone*)a[2]);break;
+      case SYS_execve:c->GPRx=sys_execve((char*)a[1],(char**)a[2],(char**)a[3]);break;
     default: panic("Unhandled syscall ID = %d", a[0]);
   }
-  //is_reg_display();
-}
+}//Log("you casued a timer_syscall!!");
+//Log("you casued a lseek_syscall!!");
+//Log("you casued a read_syscall!!");
 
-
-uintptr_t sys_yield()
-{
-  
-  yield();
-  return 0;
-}
-
-uintptr_t sys_exit()
-{
-  
-  halt(0);
-  return 0;
-}
-
-uintptr_t sys_write()
-{
-  
-   
-    int ret=fs_write(a[1],(void *)(a[2]),a[3]);
-    //printf("0x%08x\n",ret);
-    return ret;
-  
-
-}
-
-uintptr_t sys_brk()
-{
-  
-  return 0;
-}
-
-uintptr_t sys_open()
-{
-  char *ch=(char *)(a[1]);
-  //printf("%s\n",ch);
-
-  
-  int fd=fs_open(ch,0,0);
-  //printf("%d\n",fd);
-
-  return fd; 
-}
-
-uintptr_t sys_lseek()
-{
-  //printf("a1 %d  a2 0x%08x  a3 %d\n",a[1],a[2],a[3]);
-  
-  return fs_lseek(a[1],a[2],a[3]);
-  //return 1;
-}
-
-uintptr_t sys_read()
-{
-  
-  int ret=fs_read(a[1],(void *)(a[2]),a[3]);
-  //printf("0x%08x\n",ret);
-  return ret;
-}
-
-uintptr_t sys_close()
-{
-  
-  return fs_close(a[1]);
-}
-
-
-uintptr_t sys_gettimeofday()
-{
-
-  
-  uint32_t x=(uint32_t)(io_read(AM_TIMER_UPTIME).us);
-  sec=x/1000000;
-  usec=x;
-
-
-  uint32_t* times=( uint32_t * )(a[1]);
-  uint32_t* timeus=( uint32_t * )(a[2]);
-  *times=sec;
-  *timeus=usec; 
-  return 0;
-}
-
-
-void strace()
-{
-  printf("\n");
-  printf("a0 %d  a1 0x%08x  a2 0x%08x  a3 %d\n",a[0],a[1],a[2],a[3]);
-  switch (a[0]) {
-    case 0: printf("syscall exit\n");break;
-    case 1: printf("syscall yield\n");break;
-    case 2: printf("syscall open\n");break;
-    case 3: printf("syscall read\n");break;
-    case 4: printf("syscall write \n");break;
-    case 7: printf("syscall close\n");break;
-    case 8: printf("syscall lseek\n");break;
-    case 9: printf("syscall brk \n");break;
-    case 19:printf("syscall  gettimeofday\n");break;
-    default: panic("Unhandled syscall ID = %d", a[0]);
+int sys_execve(const char *fname, char * const argv[], char *const envp[]){
+  int flag=fs_open(fname,0);
+  printf("filename:%s\n",fname);
+  if(flag==-1)return -1;
+  else{
+    naive_uload(NULL,fname);//wait to be modify
+    return 0;
   }
+}
+int sys_write(int fd, void *buf, size_t count){
+  if(fd==1||fd==2){
+    char* buff=(char*)buf;
+    for(int i=0;i<count;i++) putch(buff[i]); 
+  }
+  return count;
 }
