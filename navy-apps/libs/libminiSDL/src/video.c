@@ -12,10 +12,10 @@ void SDL_BlitSurface(SDL_Surface *src, SDL_Rect *srcrect, SDL_Surface *dst, SDL_
 
 void SDL_FillRect(SDL_Surface *dst, SDL_Rect *dstrect, uint32_t color) {
   
-  uint32_t *x=malloc((dstrect->h)*(dstrect->w));
+  //uint32_t *x=malloc((dstrect->h)*(dstrect->w));
   //printf("x is %p\n",x);
  // memset(x,color,(dstrect->h)*(dstrect->w));
-  //NDL_DrawRect(x,dstrect->x,dstrect->y,dstrect->w,dstrect->h);
+  NDL_DrawRect(&color,dstrect->x,dstrect->y,dstrect->w,dstrect->h);
   //SDL_UpdateRect(dst,)
 
 }
