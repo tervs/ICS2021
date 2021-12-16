@@ -41,8 +41,8 @@ int SDL_WaitEvent(SDL_Event *event) {
       printf("%d  %c",i,buf[i]);
     }
     */
-    char *w1=strtok(buf," ");
-    char *h1=strtok(NULL,"\0");
+    //char *w1=strtok(buf," ");
+    //char *h1=strtok(NULL,"\0");
     //printf("a  %s  %s\n",w1,h1);
     //b=strtok(NULL,"\n");
 
