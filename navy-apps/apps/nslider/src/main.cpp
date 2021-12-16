@@ -21,7 +21,7 @@ static SDL_Surface *slide=NULL;
  int cur = 0;
 
 void render() {
-SDL_Surface *slide = NULL;
+//SDL_Surface *slide = NULL;
   if (slide) {
     //printf("test before slide\n");
     SDL_FreeSurface(slide);
