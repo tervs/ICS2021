@@ -50,24 +50,15 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   size_t len=fs_len(fd);
 
   fs_read(fd,(void *)ENTRY,len);
-
- uint32_t *p;
-p=(uint32_t *)(ENTRY);
   printf("test2\n");
-  uint32_t *ph;  ph=p+7;
-  uint16_t *phsize; phsize=(uint16_t *)(ENTRY);phsize=phsize+21;
-  uint32_t size=*phsize;
-  for(int i=0;i<(size/2);i++)
-  {
-    printf("i %d   0x%08x\n",i,*(uint32_t *)(ENTRY+*ph+4*i) );
-    
-    }
-  printf("ph  0x%08x\n",*ph);
-  printf("phsize 0x%08x\n",*(phsize));
+
+  get_elf();
+
+
   
   
   //void *p1=(void *)(p);
-  return *(p+6);
+  return *enterpoint;
   //printf("0x%08x\n",*(p+6));
 
   }
@@ -101,6 +92,15 @@ void get_elf()
   program_start=elf_start+7;
   program_size=(uint16_t *)(ENTRY);
   program_size=program_size+21;
+
+
+    for(int i=0;i<(*program_size/2);i++)
+  {
+    printf("i %d   0x%08x\n",i,*(uint32_t *)(ENTRY+*program_start+4*i) );
+    
+    }
+
+
 }
 /*
 static uint32_t *elf_start;
