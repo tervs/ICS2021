@@ -43,7 +43,7 @@ void *malloc(size_t size)
   }
 
   mem_start+=size;
-  printf("0x%08x\n",size);
+ // printf("0x%08x\n",size);
   
   //panic("Not implemented");
 
