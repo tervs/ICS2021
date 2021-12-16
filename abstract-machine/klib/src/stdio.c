@@ -8,7 +8,7 @@
 
 
 
-#define BUFFER_SIZE (400)
+#define BUFFER_SIZE (4000)
 
 static int isdigit(char c){
   return '0' <= c && c <= '9';
