@@ -18,7 +18,7 @@ const char *path = "/share/slides/slides-%d.bmp";
  
 static SDL_Surface *slide=NULL;
 
- int cur = 0;
+ static int cur = 0;
 
 void render() {
   SDL_Surface *slide = NULL;
@@ -33,7 +33,7 @@ void render() {
   //printf("test out slide\n");
  // printf("test\n");
   char fname[256];
-  sprintf(fname, path, 2);
+  sprintf(fname, path, cur);
   slide = SDL_LoadBMP(fname);
   printf("slide w %d slide h %d\n",slide->w,slide->h);
   assert(slide);
