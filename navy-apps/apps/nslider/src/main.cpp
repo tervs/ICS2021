@@ -35,10 +35,12 @@ void render() {
   char fname[256];
   sprintf(fname, path, 0);
   slide = SDL_LoadBMP(fname);
+  printf("cur %p\n",&cur);
  // printf("slide w %d slide h %d\n",slide->w,slide->h);
   assert(slide);
   SDL_UpdateRect(slide, 0, 0, 0, 0);
 }
+
 
 void prev(int rep) {
   if (rep == 0) rep = 1;
@@ -58,7 +60,7 @@ int main() {
    //if(slide!=NULL) {printf("0  slide : 0x%08x\n",(uint32_t)(slide));}
   //else {printf("0  fuck\n");} 
   SDL_Init(0);
-  printf("cur %p\n",&cur);
+  
   SDL_Surface *screen = SDL_SetVideoMode(W, H, 32, SDL_HWSURFACE);
   //printf("format 0x%08x\n",(uint32_t)(screen->format));
   //if(slide!=NULL) {printf("slide : 0x%08x\n",(uint32_t)(slide));}
