@@ -39,7 +39,7 @@ uint32_t NDL_GetTicks() {
 int NDL_PollEvent(char *buf, int len) {
   FILE *fp = fopen("/dev/events", "r+");
   //printf("fp %d\n",(int)(fp));
-  return 0;
+  return 1;
   //strcpy("testest\n",buf);
   //open("/dev/events",0);
   //printf("fd  %d\n",fd);
