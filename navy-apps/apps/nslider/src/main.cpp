@@ -12,34 +12,38 @@
 //   gg - first page
 
 // number of slides
-const int N = 10;
+const int N = 11;
 // slides path pattern (starts from 0)
 const char *path = "/share/slides/slides-%d.bmp";
+ 
+static SDL_Surface *slide=NULL;
 
-
-//static SDL_Surface *slide = NULL;
-static int cur = 0;
-//int cur = 0;
-//static uint32_t x=0x12345678;
-
-//x=(uint32_t *)(0x8300a500);
-//*x=0x12345678;
-
+ static int cur = 0;
 
 void render() {
-  SDL_Surface *slide = NULL;
+  //SDL_Surface *slide = NULL;
+
+  //printf("addr is 0x%08x\n",(uint32_t)(slide));
+
   if (slide) {
+    //printf("test before slide\n");
     SDL_FreeSurface(slide);
+    //printf("test after slide\n");
   }
+  //printf("test out slide\n");
+ // printf("test\n");
   char fname[256];
+  
   sprintf(fname, path, 0);
   slide = SDL_LoadBMP(fname);
+  //printf("cur 0x%08x\n",(uint32_t)(&cur));
+  printf("slide w %d slide h %d \n",slide->w,slide->h);
   assert(slide);
   SDL_UpdateRect(slide, 0, 0, 0, 0);
 }
 
+
 void prev(int rep) {
-  //int cur=0;
   if (rep == 0) rep = 1;
   cur -= rep;
   if (cur < 0) cur = 0;
@@ -47,7 +51,6 @@ void prev(int rep) {
 }
 
 void next(int rep) {
-  //int cur=0;
   if (rep == 0) rep = 1;
   cur += rep;
   if (cur >= N) cur = N - 1;
@@ -55,10 +58,14 @@ void next(int rep) {
 }
 
 int main() {
-
+   //if(slide!=NULL) {printf("0  slide : 0x%08x\n",(uint32_t)(slide));}
+  //else {printf("0  fuck\n");} 
   SDL_Init(0);
+  
   SDL_Surface *screen = SDL_SetVideoMode(W, H, 32, SDL_HWSURFACE);
-
+  //printf("format 0x%08x\n",(uint32_t)(screen->format));
+  //if(slide!=NULL) {printf("slide : 0x%08x\n",(uint32_t)(slide));}
+  //else {printf("fuck\n");}
   int rep = 0, g = 0;
 
   render();
