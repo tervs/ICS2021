@@ -67,7 +67,7 @@ def_EHelper(beq) {
   //printf("imm  0x%08x\n",id_src2->imm);
   //printf("s0 0x%08x\n",*s0);
   //printf("\n");
-  //rtl_jrelop(s,RELOP_EQ,dsrc1,ddest,*s0);
+  rtl_jrelop(s,RELOP_EQ,dsrc1,ddest,*s0);
 }
 
 def_EHelper(bne) {
