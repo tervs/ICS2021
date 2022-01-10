@@ -38,7 +38,8 @@ int SDL_WaitEvent(SDL_Event *event) {
     }
     for(int j=0;j<i;j++)
     {
-      printf("%c",buf[j]);
+      return 1;
+      //printf("%c",buf[j]);
     }
     //printf("djskfklf\n");
     //keycode=strtok(buf," ");
