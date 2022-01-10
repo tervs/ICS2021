@@ -36,11 +36,14 @@ int SDL_WaitEvent(SDL_Event *event) {
     {
       i++;
     }
+    printf("%c\n",buf[0]);
+    /*
     for(int j=0;j<i;j++)
     {
-      return 1;
-      //printf("%c",buf[j]);
+      //return 1;
+      printf("%c",buf[j]);
     }
+    */
     //printf("djskfklf\n");
     //keycode=strtok(buf," ");
     //printf("%s\n",keycode);
