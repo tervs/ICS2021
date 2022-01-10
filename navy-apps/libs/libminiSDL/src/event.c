@@ -21,7 +21,7 @@ int SDL_PollEvent(SDL_Event *ev) {
     NDL_PollEvent(buf, sizeof(buf));
   
   keycode=strtok(buf," ");
-  type=strtok(NULL,"\0");
+  //type=strtok(NULL,"\0");
   return 0;
 }
 
