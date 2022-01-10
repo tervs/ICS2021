@@ -52,7 +52,7 @@ int SDL_WaitEvent(SDL_Event *event) {
 
    // printf("a: %s   b %s\n",a,b);
   }
-  printf("%s\n",keycode);
+  //printf("%s\n",keycode);
   return 1;
 }
 
