@@ -18,8 +18,8 @@ const char *path = "/share/slides/slides-%d.bmp";
 
 
 //static SDL_Surface *slide = NULL;
-static int cur = 0;
-//int cur = 0;
+//static int cur = 0;
+int cur = 0;
 //static uint32_t x=0x12345678;
 
 //x=(uint32_t *)(0x8300a500);
