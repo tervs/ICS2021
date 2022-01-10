@@ -33,6 +33,10 @@ int SDL_WaitEvent(SDL_Event *event) {
   //type=strtok(NULL,"\0");
   //printf("%s\n",keyname[10]);
   printf("%s\n",buf);
+  if(buf!=NULL)
+  {
+    printf("fuck");
+  }
   //printf("%s\n",buf);
   //printf("%s\n",buf);
  // printf("djksa\n");
