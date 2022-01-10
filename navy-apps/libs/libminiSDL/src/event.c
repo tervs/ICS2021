@@ -17,7 +17,7 @@ int SDL_PushEvent(SDL_Event *ev) {
 }
 
 int SDL_PollEvent(SDL_Event *ev) {
-
+printf("djksa\n");printf("djksa\n");printf("djksa\n");printf("djksa\n");
   //type=strtok(NULL,"\0");
   return 0;
 }
@@ -37,8 +37,7 @@ int SDL_WaitEvent(SDL_Event *event) {
   //printf("%s\n",buf);
  // printf("djksa\n");
 //printf("%s\n",buf);
-printf("sfkhsklajhd \n");
-printf("sfkhsklajhd \n");printf("sfkhsklajhd \n");
+
 //printf("dsfdsfds   %c\n",buf[0]);
   //if (NDL_PollEvent(buf, sizeof(buf)))
   //{
