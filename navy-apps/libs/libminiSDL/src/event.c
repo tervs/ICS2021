@@ -45,7 +45,7 @@ int SDL_WaitEvent(SDL_Event *event) {
     //event->key.type=SDL_KEYDOWN;
     //event->key.keysym.sym=SDLK_UP;//keyname[keycode];
     //event->key.keysym.sym=keycode;
-    //printf("%s\n",keycode);
+    printf("%s\n",keycode);
     //char *type=strtok(NULL,"\0");
 
     //printf("%c \n",buf[0]);
