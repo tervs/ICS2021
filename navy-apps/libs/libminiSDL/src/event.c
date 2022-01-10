@@ -12,10 +12,16 @@ static const char *keyname[] = {
 };
 
 int SDL_PushEvent(SDL_Event *ev) {
+
   return 0;
 }
 
 int SDL_PollEvent(SDL_Event *ev) {
+  char buf[64];
+    NDL_PollEvent(buf, sizeof(buf));
+  
+  keycode=strtok(buf," ");
+  type=strtok(NULL,"\0");
   return 0;
 }
 
@@ -27,7 +33,7 @@ int SDL_WaitEvent(SDL_Event *event) {
   NDL_PollEvent(buf, sizeof(buf));
   
   keycode=strtok(buf," ");
-  type=strtok(NULL,"\0");
+  //type=strtok(NULL,"\0");
   //printf("%s\n",keyname[10]);
   //printf("%s\n",buf);
  // printf("djksa\n");
