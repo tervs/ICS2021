@@ -30,7 +30,7 @@ int SDL_WaitEvent(SDL_Event *event) {
   {
     
     //return -1;
-    printf("waitevent %c\n",buf[0]);
+    printf("waitevent %s\n",buf);
     //printf("djskfklf\n");
     //keycode=strtok(buf," ");
     //printf("%s\n",keycode);
