@@ -29,12 +29,12 @@ int SDL_WaitEvent(SDL_Event *event) {
   if (NDL_PollEvent(buf, sizeof(buf)))
   {
     
-    //return 1;
+    return 0;
     //printf("waitevent %c\n",buf[0]);
     //printf("djskfklf\n");
-    keycode=strtok(buf," ");
+    //keycode=strtok(buf," ");
     //printf("%s\n",keycode);
-    char *type=strtok(NULL,"\0");
+    //char *type=strtok(NULL,"\0");
 
     //printf("%c \n",buf[0]);
     /*
