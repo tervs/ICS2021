@@ -25,6 +25,7 @@ int SDL_WaitEvent(SDL_Event *event) {
   //char *a;
   //char *b;
   NDL_PollEvent(buf, sizeof(buf));
+  keycode=strtok(buf," ");
   printf("%s\n",buf);
 printf("%s\n",buf);
 //printf("sfkhsklajhd \n");
