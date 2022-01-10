@@ -18,7 +18,7 @@ const char *path = "/share/slides/slides-%d.bmp";
 
 
 //static SDL_Surface *slide = NULL;
-//static int cur = 0;
+static int cur = 0;
 //int cur = 0;
 //static uint32_t x=0x12345678;
 
@@ -39,7 +39,7 @@ void render() {
 }
 
 void prev(int rep) {
-  int cur=0;
+  //int cur=0;
   if (rep == 0) rep = 1;
   cur -= rep;
   if (cur < 0) cur = 0;
@@ -47,7 +47,7 @@ void prev(int rep) {
 }
 
 void next(int rep) {
-  int cur=0;
+  //int cur=0;
   if (rep == 0) rep = 1;
   cur += rep;
   if (cur >= N) cur = N - 1;
