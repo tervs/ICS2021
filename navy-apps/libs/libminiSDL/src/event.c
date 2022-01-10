@@ -34,6 +34,7 @@ int SDL_WaitEvent(SDL_Event *event) {
   //printf("%s\n",keyname[10]);
   printf("%s\n",buf);
   printf("%s\n",buf);
+  printf("%s\n",buf);
  // printf("djksa\n");
 //printf("%s\n",buf);
 //printf("sfkhsklajhd \n");
