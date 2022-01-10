@@ -18,7 +18,7 @@ const int N = 10;
 const char *path = "/share/slides/slides-%d.bmp";
 
 //static SDL_Surface *slide = NULL;
-static int cur = 0;
+ int cur = 0;
 
 void render() {
   SDL_Surface *slide = NULL;
