@@ -17,7 +17,7 @@ int SDL_PushEvent(SDL_Event *ev) {
 }
 
 int SDL_PollEvent(SDL_Event *ev) {
-printf("djksa\n");printf("djksa\n");printf("djksa\n");printf("djksa\n");
+//printf("djksa\n");printf("djksa\n");printf("djksa\n");printf("djksa\n");
   //type=strtok(NULL,"\0");
   return 0;
 }
