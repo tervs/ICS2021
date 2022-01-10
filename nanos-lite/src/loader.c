@@ -94,7 +94,7 @@ void get_elf()
   elf_start=(uint32_t *)(ENTRY);
   enterpoint=elf_start+6;
   program_offset=elf_start+7;
-  program_start=(uint32_t *)(*program_offset+ENTRY);
+  program_start=(uint32_t *)((uintptr_t)(*program_offset+ENTRY));
   program_size=(uint16_t *)(ENTRY);
   program_size=program_size+21;
 
@@ -104,7 +104,7 @@ void get_elf()
   {
     //printf("test 0x%08x\n",*(program_start+i+5)-*(program_start+i+4));
     //printf("file 0x%08x\n",(*(program_start+i+3)+*(program_start+i+4)));
-    memset((uint32_t *)(*(program_start+i+3)+*(program_start+i+4)),0,*(program_start+i+5)-*(program_start+i+4));
+    memset((uint32_t *)((uintptr_t)(*(program_start+i+3)+*(program_start+i+4))),0,*(program_start+i+5)-*(program_start+i+4));
         //printf("i %d   0x%08x\n",i,*(program_start+i) );
     }
 
