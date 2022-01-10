@@ -17,10 +17,7 @@ int SDL_PushEvent(SDL_Event *ev) {
 }
 
 int SDL_PollEvent(SDL_Event *ev) {
-  char buf[64];
-    NDL_PollEvent(buf, sizeof(buf));
-  
-  keycode=strtok(buf," ");
+
   //type=strtok(NULL,"\0");
   return 0;
 }
