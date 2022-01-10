@@ -29,15 +29,16 @@ int SDL_WaitEvent(SDL_Event *event) {
   //char *b;
   NDL_PollEvent(buf, sizeof(buf));
   
-  keycode=strtok(buf," ");
-  type=strtok(NULL,"\0");
+  //keycode=strtok(buf," ");
+  //type=strtok(NULL,"\0");
   //printf("%s\n",keyname[10]);
-  printf("%s\n",buf);
+  //printf("%s\n",buf);
   //printf("%s\n",buf);
   //printf("%s\n",buf);
  // printf("djksa\n");
 //printf("%s\n",buf);
-//printf("sfkhsklajhd \n");
+printf("sfkhsklajhd \n");
+printf("sfkhsklajhd \n");printf("sfkhsklajhd \n");
 //printf("dsfdsfds   %c\n",buf[0]);
   //if (NDL_PollEvent(buf, sizeof(buf)))
   //{
