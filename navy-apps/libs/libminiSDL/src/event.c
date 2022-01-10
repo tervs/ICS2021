@@ -32,7 +32,7 @@ int SDL_WaitEvent(SDL_Event *event) {
     //return -1;
     printf("waitevent %s\n",buf);
     //printf("djskfklf\n");
-    //keycode=strtok(buf," ");
+    keycode=strtok(buf," ");
     //printf("%s\n",keycode);
     //char *type=strtok(NULL,"\0");
 
@@ -52,7 +52,7 @@ int SDL_WaitEvent(SDL_Event *event) {
 
    // printf("a: %s   b %s\n",a,b);
   }
-  
+  printf("%s\n",keycode);
   return 1;
 }
 
