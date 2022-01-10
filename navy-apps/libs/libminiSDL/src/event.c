@@ -31,11 +31,7 @@ int SDL_WaitEvent(SDL_Event *event) {
     
     //return -1;
     printf("%s\n",buf);
-    int i=0;
-    while(buf[i]!=' ') 
-    {
-      i++;
-    }
+ 
     printf("%s\n",buf);
     /*
     for(int j=0;j<i;j++)
