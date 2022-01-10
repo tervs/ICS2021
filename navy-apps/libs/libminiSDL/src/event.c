@@ -36,7 +36,7 @@ int SDL_WaitEvent(SDL_Event *event) {
     {
       i++;
     }
-    printf("%c\n",buf[0]);
+    printf("%s\n",buf);
     /*
     for(int j=0;j<i;j++)
     {
