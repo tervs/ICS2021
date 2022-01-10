@@ -52,11 +52,11 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   size_t len=fs_len(fd);
 
   fs_read(fd,(void *)ENTRY,len);
-  printf("test2\n");
+  //printf("test2\n");
 
   get_elf();
 
-  printf("0x%08x\n\n\n\n",*enterpoint);
+  //printf("0x%08x\n\n\n\n",*enterpoint);
   
   
   //void *p1=(void *)(p);
