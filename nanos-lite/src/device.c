@@ -98,12 +98,7 @@ size_t fb_sync(const void *buf,size_t offset,size_t len)
   return 1;
 }
 
-int sys_gettimeofday(struct timeval *tz,struct timezone *tv)
-{
-  tz->tv_sec = io_read(AM_TIMER_UPTIME).us /1000000;
-  tz->tv_usec = io_read(AM_TIMER_UPTIME).us%1000000;
-  return 0;
-}
+
 
 void init_device() {
   Log("Initializing devices...");
