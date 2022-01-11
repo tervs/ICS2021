@@ -61,18 +61,20 @@ int SDL_WaitEvent(SDL_Event *event) {
   int keycode = 0;
   while(1);
   {
+    printf("wait  %d\n",NDL_PollEvent(key,sizeof(key)));
+
     if(NDL_PollEvent(key,sizeof(key)))
     {
 
-  char* str = key+3;
-  for(int i = 0,cnt = 0;i < sizeof(keyname);i+=sizeof(keyname[cnt]),cnt+=1)
-  {
+    char* str = key+3;
+    for(int i = 0,cnt = 0;i < sizeof(keyname);i+=sizeof(keyname[cnt]),cnt+=1)
+    {
     if(!strncmp(keyname[cnt],str,strlen(str))&&!strncmp(keyname[cnt],str,strlen(keyname[cnt]))) {
         keycode = cnt;
         break;
       }
     assert(i <= sizeof(keyname));
-  }
+    }
   //printf("in waitevent\n");
   if(key[1] == 'u')
   {
