@@ -43,7 +43,7 @@ int SDL_WaitEvent(SDL_Event *event) {
 //printf("dsfdsfds   %c\n",buf[0]);
   if (NDL_PollEvent(buf, sizeof(buf)))
   {
-    printf("hit good\n");
+    //printf("hit good\n");
     printf("key %s\n",buf);
     return 1;
     //return -1;
