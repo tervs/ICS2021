@@ -91,12 +91,7 @@ size_t fs_lseek(int fd, size_t offset, int whence);
 int fs_close(int fd);
 size_t fs_len(int fd);
 
-static uint32_t *enterpoint;
 
-static uint32_t *program_start;
-
-static uint16_t *program_size;
-void get_elf();
 
 
  //static size_t open_offset[100];
@@ -173,7 +168,7 @@ void naive_uload(PCB *pcb, const char *filename) {
   ((void(*)())entry) ();
   
 }
-
+/*
 void get_elf()
 {
    uint32_t *elf_start;
@@ -198,3 +193,4 @@ void get_elf()
 
 }
 
+*/
