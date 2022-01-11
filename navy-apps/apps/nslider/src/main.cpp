@@ -31,6 +31,7 @@ void render() {
   assert(slide);
   printf("updata\n");
   SDL_UpdateRect(slide, 0, 0, 0, 0);
+  printf("wrong");
 }
 
 void prev(int rep) {
