@@ -59,7 +59,7 @@ int SDL_WaitEvent(SDL_Event *event) {
   memset(key,0,sizeof(key));
   key[0] = '0';
   int keycode = 0;
-  printf("enter\n");
+  //printf("enter\n");
   while(0);
   {
     printf("wait  %d\n",NDL_PollEvent(key,sizeof(key)));
