@@ -162,7 +162,8 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h)
       //fprintf(fd,)
     
   }
-  
+
+  lseek(DEV_FB,0,SEEK_SET);
 
 }
 
