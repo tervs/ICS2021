@@ -18,7 +18,7 @@ int SDL_PushEvent(SDL_Event *ev) {
 }
 
 int SDL_PollEvent(SDL_Event *ev) {
-//printf("djksa\n");printf("djksa\n");printf("djksa\n");printf("djksa\n");
+
   //type=strtok(NULL,"\0");
   return 0;
 }
@@ -26,36 +26,11 @@ int SDL_PollEvent(SDL_Event *ev) {
 int SDL_WaitEvent(SDL_Event *event) {
 
   char buf[64];
-  //char *a;
-  //char *b;
-  //NDL_PollEvent(buf, sizeof(buf));
-  
-  //keycode=strtok(buf," ");
-  //type=strtok(NULL,"\0");
-  //printf("%s\n",keyname[10]);
-  //printf("%s\n",buf);
 
-  //printf("%s\n",buf);
-  //printf("%s\n",buf);
- // printf("djksa\n");
-//printf("%s\n",buf);
 
-//printf("dsfdsfds   %c\n",buf[0]);
   if (NDL_PollEvent(buf, sizeof(buf)))
   {
-    //printf("hit good\n");
-    //printf("key %s\n",buf);
-    //return 1;
-    //return -1;
-    //printf("%s\n",buf);
-    /*
-    for(int j=0;j<i;j++)
-    {
-      //return 1;
-      printf("%c",buf[j]);
-    }
-    */
-    //printf("djskfklf\n");
+
     keycode=strtok(buf," ");
     type=strtok(NULL,"\0");
     //event->key.type=SDL_KEYDOWN;
@@ -63,23 +38,7 @@ int SDL_WaitEvent(SDL_Event *event) {
     //event->key.keysym.sym=keycode;
     printf("key %s   type  %s\n",keycode,type);
     return 1;
-    //char *type=strtok(NULL,"\0");
 
-    //printf("%c \n",buf[0]);
-    /*
-    for(int i=0;i<64;i++)
-    {
-      printf("%d  %c",i,buf[i]);
-    }
-    */
-    //char *w1=strtok(buf," ");
-    //printf("%s\n",w1);
-    //event->key
-    //char *h1=strtok(NULL,"\0");
-    //printf("a  %s  %s\n",w1,h1);
-    //b=strtok(NULL,"\n");
-
-   // printf("a: %s   b %s\n",a,b);
   }
   //printf("%s\n",keycode);
   return 1;
