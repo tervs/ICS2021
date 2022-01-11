@@ -1,12 +1,13 @@
 #include <common.h>
 
-
-int syscall_ex(Event e, Context* c);
 void do_syscall(Context *c);
+
 static Context* do_event(Event e, Context* c) {
+  //printf("%d\n",e.event);
   switch (e.event) {
-    case 1:printf("yield here!\n");break;
-    case 2:do_syscall(c);break;
+    case EVENT_SYSCALL: do_syscall(c); break;
+    case EVENT_YIELD: printf("Yield\n"); break;
+    
     default: panic("Unhandled event ID = %d", e.event);
   }
 
@@ -17,17 +18,3 @@ void init_irq(void) {
   Log("Initializing interrupt/exception handler...");
   cte_init(do_event);
 }
-
-/*
-int syscall_ex(Event e, Context* c)
-{
-      switch (c->mcause) 
-      {
-      case 0: printf("syscall 0\n");halt(0);break;
-      case 1: printf("syscall 1\n");yield();break;
-      //case 0:ev.event = EVENT_SYSCALL;break;
-      default: panic("syscall_ex fail\n"); break;
-    }
-return 0;
-}
-*/

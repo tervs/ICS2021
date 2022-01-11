@@ -5,6 +5,7 @@
 static PCB pcb[MAX_NR_PROC] __attribute__((used)) = {};
 static PCB pcb_boot = {};
 PCB *current = NULL;
+
 void naive_uload(PCB *pcb, const char *filename);
 
 void switch_boot_pcb() {
@@ -22,10 +23,9 @@ void hello_fun(void *arg) {
 
 void init_proc() {
   switch_boot_pcb();
-  
+
   Log("Initializing processes...");
-  naive_uload(NULL,"/bin/nslider");
-  Log("test");
+  naive_uload(NULL, "/dev/events");
   // load program here
 
 }
