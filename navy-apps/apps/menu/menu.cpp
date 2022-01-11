@@ -48,7 +48,7 @@ static int i_max = 0;
 
 static void set_i_max() {
   i_max = (page == MAX_PAGE ? MAX_IDX_LAST_PAGE : 9);
-  printf("addrpage %p\n",&(page));
+  //printf("addrpage %p\n",&(page));
   printf("page = %d, MAX_PAGE = %d, MAX_IDX_LAST_PAGE = %d\n", page, MAX_PAGE, MAX_IDX_LAST_PAGE);
 }
 static void next() {
@@ -72,7 +72,7 @@ static void clear_display(void) {
 int main(int argc, char *argv[], char *envp[]) {
   SDL_Init(0);
   screen = SDL_SetVideoMode(0, 0, 32, SDL_HWSURFACE);
-  printf("in test %d  %d\n",screen->w,screen->h);
+  //printf("in test %d  %d\n",screen->w,screen->h);
   font = new BDF_Font(font_fname);
   logo_sf = SDL_LoadBMP("/share/pictures/projectn.bmp");
   assert(logo_sf);
