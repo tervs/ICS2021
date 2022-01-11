@@ -49,7 +49,7 @@ static Finfo file_table[] __attribute__((used)) = {
   [FD_FB] = {"/dev/fb",0,0,invalid_read,fb_write},
   [FD_EVENTS] = {"/dev/events",0,0,events_read,invalid_write},
   [FD_DISPINFO] = {"/proc/dispinfo",64,0,dispinfo_read,invalid_write},
-  [FD_SYNC] = {"/dev/sync",0,0,invalid_read,fb_sync},
+  //[FD_SYNC] = {"/dev/sync",0,0,invalid_read,fb_sync},
 #include "files.h"
 };
 
