@@ -295,6 +295,7 @@ void init_fs()
 
 size_t fs_write(int fd, const void *buf, size_t len)
 {
+  printf("write   %d\n",fd);
   WriteFn write = (file_table[fd].write == NULL) ? (WriteFn) ramdisk_write : file_table[fd].write;
   int ret=0;
 
@@ -350,7 +351,7 @@ int fs_close(int fd)
 size_t fs_read(int fd, void *buf, size_t len)
 {
  // printf("test in read\n");
-  //printf("%d\n",fd);
+  printf("read   %d\n",fd);
   ReadFn read = (file_table[fd].read == NULL) ? (ReadFn) ramdisk_read : file_table[fd].read;
   //printf("open: 0x%08x    size: 0x%08x\n",file_table[fd].open_offset,file_table[fd].size);
   int ret=0;
