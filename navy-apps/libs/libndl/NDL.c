@@ -42,7 +42,8 @@ int NDL_PollEvent(char *buf, int len) {
   int res=fread(buf,1,len,fp);
 
   //printf("res %d\n",res);
-  printf("NDL pollevent %s\n",buf);
+
+  printf("NDL pollevent %s   %d\n",buf,res);
   //printf("fp %d\n",(int)(fp));
   return 1;
   //strcpy("testest\n",buf);
