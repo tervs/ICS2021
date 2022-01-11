@@ -12,7 +12,8 @@ size_t fs_read(int fd, void *buf, size_t len);
 size_t fs_write(int fd, const void *buf, size_t len);
 size_t fs_lseek(int fd, size_t offset, int whence);
 int fs_close(int fd);
-
+  extern int screen_w;
+  extern int screen_h;
 
 
 #define NAME(key) \
@@ -58,30 +59,33 @@ size_t dispinfo_read(void *buf, size_t offset, size_t len) {
 }
 
 size_t fb_write(const void *buf, size_t offset, size_t len) {
+  /*
   int w = io_read(AM_GPU_CONFIG).width;
   int h = io_read(AM_GPU_CONFIG).height;
   int x = (offset/4)%w;
   int y = (offset/4)/w;
   if(offset+len > w*h*4) len = w*h*4 - offset;
-  //printf("x = %d y = %d offset = %d len = %d fb = %x\n",x,y,offset,len,((uint32_t*)buf)[0]);
-  /* for(int i = 0; i < len/4;i ++)
-    printf("i = %d buf = %x\n",i,((uint32_t*)buf)[i]);
-  printf("\n"); */
-  //printf("fb = %d\n",*(uint32_t*)buf);
-  /* for(int i = 0;i < len/4;i++)
-  {
-    x = (offset+i)%w;
-    y = (offset+i)/w;
-    io_write(AM_GPU_FBDRAW,1,1,(uint32_t*)(buf+4*i),x,y,false);
-  } */
-/*   if(((uint32_t*)buf)[0] == 0xff000000||((char*)buf)[sizeof(buf)-4]==0xff) {
-    io_write(AM_GPU_FBDRAW, 0, 0, NULL, 0, 0, true);
-    return 4;
-  } */
+
   io_write(AM_GPU_FBDRAW,x,y,(uint32_t*)buf,len/4,1,false);
   //io_write(AM_GPU_FBDRAW, 0, 0, NULL, 0, 0, true);
   assert(offset <= w*h*4);
   return len;
+  */
+
+
+    uint32_t *pixels= (uint32_t *)buf;
+  
+ //printf("w:   %d   h  %d\n",screen_w,screen_h); 
+  int x=offset%(screen_w);
+  int y=offset/(screen_w);
+  //printf("x  %d   y %d ",x,y);
+
+
+  
+  
+  io_write(AM_GPU_FBDRAW, x, y,pixels, len, 1, true);
+
+  return 0;
 }
 //在这里处理超出的字符
 
