@@ -59,11 +59,12 @@ int SDL_WaitEvent(SDL_Event *event) {
   memset(key,0,sizeof(key));
   key[0] = '0';
   int keycode = 0;
-
-  printf("%s\n",key);
-  char* str = key+3;
-  if(NDL_PollEvent(key,sizeof(key)))
+  while(1);
   {
+    if(NDL_PollEvent(key,sizeof(key)))
+    {
+
+  char* str = key+3;
   for(int i = 0,cnt = 0;i < sizeof(keyname);i+=sizeof(keyname[cnt]),cnt+=1)
   {
     if(!strncmp(keyname[cnt],str,strlen(str))&&!strncmp(keyname[cnt],str,strlen(keyname[cnt]))) {
@@ -71,7 +72,6 @@ int SDL_WaitEvent(SDL_Event *event) {
         break;
       }
     assert(i <= sizeof(keyname));
-  }
   }
   //printf("in waitevent\n");
   if(key[1] == 'u')
@@ -86,6 +86,9 @@ int SDL_WaitEvent(SDL_Event *event) {
     keystate[keycode] = 1;
   }
   else assert(0);
-  printf("keycode %s ",keyname[keycode]);
   return 0;
+  }
+    }
+
+return 0;
 }
