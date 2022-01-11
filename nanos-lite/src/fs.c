@@ -25,6 +25,10 @@ typedef struct {
   size_t open_offset;
 } Finfo;
 
+
+ int screen_w;
+int screen_h;
+
 enum {FD_STDIN, FD_STDOUT, FD_STDERR, FD_FB,FD_EVENTS,FD_DISPINFO,FD_SYNC};
 
 size_t invalid_read(void *buf, size_t offset, size_t len) {
@@ -56,6 +60,9 @@ void init_fs() {
   //TODO: initialize the size of /dev/fb
   int w = io_read(AM_GPU_CONFIG).width;
   int h = io_read(AM_GPU_CONFIG).height;
+  screen_h=h;
+  screen_w=w;
+  printf("disinfo %d  %d\n",screen_w,screen_h);
   file_table[FD_FB].size = w * h * 4;
 }
 
