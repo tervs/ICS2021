@@ -44,7 +44,7 @@ size_t serial_write(const void *buf, size_t offset, size_t len)
   
   //return len;
 }
-
+/*
 size_t events_read(void *buf, size_t offset, size_t len) {
   AM_INPUT_KEYBRD_T ev = io_read(AM_INPUT_KEYBRD);
   if(ev.keycode == AM_KEY_NONE) {
@@ -62,6 +62,28 @@ size_t events_read(void *buf, size_t offset, size_t len) {
     return strlen((char*)buf);
 
   }
+}
+*/
+size_t events_read(void *buf, size_t offset, size_t len) {
+
+//printf("test\n");
+      AM_INPUT_KEYBRD_T ev = io_read(AM_INPUT_KEYBRD);
+      if (ev.keycode == AM_KEY_NONE) return 0;
+      else
+      {
+          //printf("")
+         snprintf(buf,len,"%s %s\n",keyname[ev.keycode],(ev.keydown ? "DOWN" : "UP"));
+          //strcpy(buf,keyname[ev.keycode]);
+          //strcat(buf,(ev.keydown ? "DOWN" : "UP"));
+          //printf("event test %s\n",buf);
+          return len;
+      }
+
+  
+      //printf("Got  (kbd): %s (%d) %s\n", keyname[ev.keycode], ev.keycode, ev.keydown ? "DOWN" : "UP");
+    
+  
+  return -1;
 }
 
 size_t dispinfo_read(void *buf, size_t offset, size_t len) {
