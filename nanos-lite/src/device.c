@@ -141,6 +141,7 @@ size_t fb_write(const void *buf, size_t offset, size_t len) {
 
 size_t fb_sync(const void *buf,size_t offset,size_t len)
 {
+  printf("call sync");
   assert(((char*)buf)[0] == '1');
   //printf("refresh\n");
   assert(offset == 0);
