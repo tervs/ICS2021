@@ -41,11 +41,17 @@ int NDL_PollEvent(char *buf, int len) {
   FILE *fp = fopen("/dev/events", "r+");
   int res=fread(buf,1,len,fp);
 
+  if(res)
+  {
+    printf("NDL pollevent %s   %d\n",buf,res);
+  }
+  else return 0;
+  return -1;
   //printf("res %d\n",res);
-printf("res   %d\n",res);
+//printf("res   %d\n",res);
   //printf("NDL pollevent %s   %d\n",buf,res);
   //printf("fp %d\n",(int)(fp));
-  return 1;
+  //return 1;
   //strcpy("testest\n",buf);
   //open("/dev/events",0);
   //printf("fd  %d\n",fd);
