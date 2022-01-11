@@ -100,15 +100,15 @@ SDL_Surface* SDL_CreateRGBSurfaceFrom(void *pixels, int width, int height, int d
 void SDL_FreeSurface(SDL_Surface *s) {
   if (s != NULL) 
   { //printf("format %p\n",s->format);
-    printf("1\n");
+    //printf("1\n");
     if (s->format != NULL) 
-    {printf("2\n");
+    {//printf("2\n");
       if (s->format->palette != NULL) 
-      {printf("3\n");
+      {//printf("3\n");
         if (s->format->palette->colors != NULL) 
         free(s->format->palette->colors);
         free(s->format->palette);
-        printf("4\n");
+        //printf("4\n");
       }
       free(s->format);
     }
