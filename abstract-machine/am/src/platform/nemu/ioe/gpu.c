@@ -34,7 +34,7 @@ void __am_gpu_config(AM_GPU_CONFIG_T *cfg)
 void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl) 
 {
   //assert(ctl==NULL);
-    printf("call fb draw\n");
+    //printf("call fb draw\n");
     int width = io_read(AM_GPU_CONFIG).width;
     int x=ctl->x;
     int y=ctl->y;
