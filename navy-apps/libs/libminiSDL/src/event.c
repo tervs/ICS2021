@@ -72,11 +72,14 @@ int SDL_WaitEvent(SDL_Event *event) {
     {
       printf("cnt %d  keyname[cnt] %s   str  %s\n",cnt,keyname[cnt],str);
       printf("%d    %d \n",strncmp(keyname[cnt],str,strlen(str)),strncmp(keyname[cnt],str,strlen(keyname[cnt])));
-    if(!strncmp(keyname[cnt],str,strlen(str))&&!strncmp(keyname[cnt],str,strlen(keyname[cnt]))) {
+    //if(!strncmp(keyname[cnt],str,strlen(str))&&!strncmp(keyname[cnt],str,strlen(keyname[cnt]))) {
+        if(!strcmp(keyname[cnt],str))
+        {
         keycode = cnt;
         break;
       }
     assert(i <= sizeof(keyname));
+    
     }
   //printf("in waitevent\n");
   if(key[1] == 'u')
