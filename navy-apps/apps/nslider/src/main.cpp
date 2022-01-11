@@ -30,6 +30,7 @@ void render() {
   slide = SDL_LoadBMP(fname);
   assert(slide);
   printf("updata\n");
+  printf("slides  %x\n",(intptr_t)slide);
   SDL_UpdateRect(slide, 0, 0, 0, 0);
   printf("wrong");
 }
