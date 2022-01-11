@@ -24,35 +24,16 @@ int SDL_PollEvent(SDL_Event *ev) {
 }
 
 int SDL_WaitEvent(SDL_Event *event) {
-    char buf[64] = {0};
-  NDL_PollEvent(buf, sizeof(buf));
-  buf[strlen(buf)] = '\0';
-  int i;
-  for (i = 0; i < NR_KEY; i++) {
-    if (strcmp(keyname[i], buf + 3) == 0) {
-      event->key.keysym.sym = i;
-      break;
-    }
-  }
-  if (buf[1] == 'd') {
-    // keydown
-    event->type = SDL_KEYDOWN;
-    keystate[i] = 1;
-  } else if (buf[1] == 'u') {
-    // keyup
-    event->type = SDL_KEYUP;
-    keystate[i] = 0;
-  }
-  return 1;
-  //char buf[64];
+
+  char buf[64];
   //char *a;
   //char *b;
-  //NDL_PollEvent(buf, sizeof(buf));
+  NDL_PollEvent(buf, sizeof(buf));
   
   //keycode=strtok(buf," ");
   //type=strtok(NULL,"\0");
   //printf("%s\n",keyname[10]);
-  //printf("%s\n",buf);
+  printf("%s\n",buf);
 
   //printf("%s\n",buf);
   //printf("%s\n",buf);
