@@ -129,6 +129,7 @@ size_t fs_read(int fd, void *buf, size_t len)
 
 size_t fs_write(int fd, const void *buf, size_t len)
 {
+  printf("write %d\n",fd);
   Finfo* f = &file_table[fd];
   if(f->write!=NULL) 
   {
