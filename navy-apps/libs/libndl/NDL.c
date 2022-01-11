@@ -153,10 +153,10 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h)
   lseek(3,y*screen_w+x,SEEK_SET);
   for(int j=y;j<y+canvas_h;j++)
   {
-      //printf("j %d  \n",j);
+      printf("y:%d  pixels:%x\n",j,*pixels);
       write(DEV_FB,(pixels),(canvas_w));
       lseek(DEV_FB,(j+1)*screen_w+x,SEEK_SET);
-      printf("pixel %x\n",*pixels);
+      //printf("pixel %x\n",*pixels);
       //fwrite((pixels),4,(canvas_w),fd);
       
       pixels=pixels+canvas_w;
