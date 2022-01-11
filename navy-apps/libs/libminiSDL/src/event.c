@@ -83,5 +83,6 @@ int SDL_WaitEvent(SDL_Event *event) {
     keystate[keycode] = 1;
   }
   else assert(0);
+  printf("keycode %s ",keyname[keycode]);
   return 0;
 }
