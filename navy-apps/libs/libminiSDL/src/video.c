@@ -31,9 +31,7 @@ void SDL_FillRect(SDL_Surface *dst, SDL_Rect *dstrect, uint32_t color) {
     memset(x,color,sizeof(x));
     NDL_DrawRect(x,dstrect->x,dstrect->y,dstrect->w,dstrect->h);
   }
-  printf("is  %p\n\n\n",dstrect);
-  printf("w %d   h %d\n",dst->w,dst->h);
-  printf("x  %d  y %d\n",dstrect->w,dstrect->h);
+
   
   //printf("x is %p\n",&color);
   //printf("x is %p\n",&color);
