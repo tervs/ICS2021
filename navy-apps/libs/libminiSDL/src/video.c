@@ -14,19 +14,21 @@ void SDL_FillRect(SDL_Surface *dst, SDL_Rect *dstrect, uint32_t color) {
   
   if(dstrect==NULL)
   {
-    //printf("here?\n");
+    printf("here?\n");
     uint32_t *x=malloc(4*400*300);
     memset(x,color,4*400*300);
     NDL_DrawRect(x,0,0,0,0);
   }
   else if((!dstrect->w)&&(dstrect->h==0))
   {
+    printf("no null\n");
     uint32_t *x=malloc(400*300);
     memset(x,color,400*300);
     NDL_DrawRect(x,0,0,0,0);
   }
   else
   {
+    printf(" nnnn\n");
     uint32_t *x=malloc(dstrect->w*dstrect->h);
     memset(x,color,sizeof(x));
     NDL_DrawRect(x,dstrect->x,dstrect->y,dstrect->w,dstrect->h);
