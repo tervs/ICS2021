@@ -1,5 +1,5 @@
 
-
+/*
 #include <proc.h>
 #include <elf.h>
 #include <fs.h>
@@ -61,8 +61,8 @@ void naive_uload(PCB *pcb, const char *filename) {
   Log("Jump to entry = %p", entry);
   ((void(*)())entry) ();
 }
+*/
 
-/*
 
 #include <proc.h>
 #include <elf.h>
@@ -108,7 +108,36 @@ void get_elf();
 
 
 static uintptr_t loader(PCB *pcb, const char *filename) {
+  //TODO();
+  //uint32_t size = get_ramdisk_size();
+  //printf("%d\n",size);
+  Elf_Ehdr elfhdr;
+  Elf_Phdr prohdr;
+  printf("%s\n",filename);
+  size_t fd = fs_open(filename,0,0);
+  printf("%d\n",fd);
+  fs_read(fd,&elfhdr,sizeof(Elf_Ehdr));
+  //printf("%x %x\n",elfhdr.e_phoff,elfhdr.e_phnum);
+  assert(fd != -1);
+  //printf("%x %x %x\n",elfhdr.e_entry,elfhdr.e_phentsize,elfhdr.e_ehsize);
+  for(int i = 0;i < elfhdr.e_phnum;i++)
+  {
+    fs_lseek(fd,elfhdr.e_phoff+i*sizeof(Elf_Phdr),SEEK_SET);
+    fs_read(fd,&prohdr,sizeof(Elf_Phdr));
+    if(prohdr.p_type == PT_LOAD){
+      fs_lseek(fd,prohdr.p_offset,SEEK_SET);
+      fs_read(fd,(void *)prohdr.p_vaddr,prohdr.p_filesz);
+      //printf("from %x %x size = %x \n",prohdr.p_vaddr,prohdr.p_offset,prohdr.p_filesz);
+      memset((void*)(prohdr.p_vaddr+prohdr.p_filesz),0,prohdr.p_memsz-prohdr.p_filesz);
+    }//之前用的memcpy，不愧是我
+    
+  }
+  fd = fs_close(fd);
+  assert(fd == 0);
+  printf("%s File Loaded\n",filename);
+  return elfhdr.e_entry;
 
+/*
   if(filename!=NULL)
   {
   //printf("0x%08x\n",get_ramdisk_size());
@@ -132,16 +161,8 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   }
 
 return 0;
-#ifdef TEST
-  uint32_t *x= (uint32_t*)(ENTRY);
-  for(int i=0;i<5000;i++)
-  {
-    printf("0x%08x  0x%08x\n",x,*x);
-    x++;
-    //x=x+i;
-  }
-#endif
 
+*/
 }
 
 void naive_uload(PCB *pcb, const char *filename) {
@@ -177,4 +198,3 @@ void get_elf()
 
 }
 
-*/
