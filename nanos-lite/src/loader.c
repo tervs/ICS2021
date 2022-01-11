@@ -1,5 +1,5 @@
 
-/*
+
 #include <proc.h>
 #include <elf.h>
 #include <fs.h>
@@ -62,7 +62,7 @@ void naive_uload(PCB *pcb, const char *filename) {
   ((void(*)())entry) ();
 }
 
-*/
+/*
 
 #include <proc.h>
 #include <elf.h>
@@ -176,3 +176,5 @@ void get_elf()
 
 
 }
+
+*/
