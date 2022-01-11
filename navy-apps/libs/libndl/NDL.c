@@ -13,7 +13,7 @@ static int fbdev = -1;
 static int screen_w = 0, screen_h = 0;
 static int canvas_w = 0, canvas_h = 0;
 static int center_x = 0, center_y = 0;
-
+enum {FD_STDIN, FD_STDOUT, FD_STDERR, DEV_KBD,  DEC_CTL, DEV_FB,    FD_FB};
 
 int atoi2(char* nptr) {
   int x = 0;
@@ -100,7 +100,7 @@ void NDL_OpenCanvas(int *w, int *h)
   char buf[128];
   //printf("fuck you\n");
 
-  read(5,buf,16);
+  read(DEC_CTL,buf,16);
   char *w1=strtok(buf,":");
   char *h1=strtok(NULL,"\0");
 
@@ -153,8 +153,8 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h)
   for(int j=y;j<y+canvas_h;j++)
   {
       //printf("j %d  \n",j);
-      write(3,(pixels),(canvas_w));
-      lseek(3,(j+1)*screen_w+x,SEEK_SET);
+      write(DEV_FB,(pixels),(canvas_w));
+      lseek(DEV_FB,(j+1)*screen_w+x,SEEK_SET);
       //fwrite((pixels),4,(canvas_w),fd);
       
       pixels=pixels+canvas_w;
