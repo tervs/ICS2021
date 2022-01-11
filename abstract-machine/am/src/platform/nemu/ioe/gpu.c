@@ -1,6 +1,7 @@
 #include <am.h>
 #include <nemu.h>
 #include<stdio.h>
+#include <assert.h>
 #define SYNC_ADDR (VGACTL_ADDR + 4)
 #define N   32
 void __am_gpu_init() 
@@ -32,7 +33,11 @@ void __am_gpu_config(AM_GPU_CONFIG_T *cfg)
 
 void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl) 
 {
-
+  //assert(ctl==NULL);
+  if(ctl==NULL)
+  {
+    panic("fuck tou");
+  }
     int width = io_read(AM_GPU_CONFIG).width;
     int x=ctl->x;
     int y=ctl->y;
