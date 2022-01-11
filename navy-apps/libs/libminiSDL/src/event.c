@@ -71,7 +71,7 @@ int SDL_WaitEvent(SDL_Event *event) {
     for(int i = 0,cnt = 0;i < sizeof(keyname);i+=sizeof(keyname[cnt]),cnt+=1)
     {
       printf("cnt %d  keyname[cnt] %s   str  %s\n",cnt,keyname[cnt],str);
-      printf("%d    %d \n",strncmp(keyname[cnt],str,strlen(str)),strncmp(keyname[cnt],str,strlen(keyname[cnt])));
+      printf("%d    %d   %d\n",strncmp(keyname[cnt],str,strlen(str)),strncmp(keyname[cnt],str,strlen(keyname[cnt])),strcmp(keyname[cnt],str));
     //if(!strncmp(keyname[cnt],str,strlen(str))&&!strncmp(keyname[cnt],str,strlen(keyname[cnt]))) {
         if(!strcmp(keyname[cnt],str))
         {
