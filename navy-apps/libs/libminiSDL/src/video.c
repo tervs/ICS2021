@@ -51,7 +51,7 @@ void SDL_BlitSurface(SDL_Surface *src, SDL_Rect *srcrect, SDL_Surface *dst, SDL_
   
     for(int i = dst_y;i < src_h+dst_h;i++)
     {
-        memcpy(dst_color+(i*dst->w+dst_x),src_color+(i*src->w+src_x),src_w);
+        memcpy(dst_color+(i*dst->w+dst_x),src_color+(i*src->w+src_x),4*src_w);
     }
     
   //NDL_DrawRect(p,dst_x,dst_y,src_w,src_h);
