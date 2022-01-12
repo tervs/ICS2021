@@ -145,7 +145,7 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h)
   //printf("x:%d  y:%d  w:%d  h:%d\n",x,y,w,h);
  //FILE *fd=fopen("/dev/fb","+r");
  //printf("fd  %d\n",fd);
- if(x==0&&y==0&&w==0&&h==0)
+ if(w==0&&h==0)
  {
    w=screen_w;
    h=screen_h;
