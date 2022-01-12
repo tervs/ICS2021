@@ -149,7 +149,7 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h)
  {
    w=screen_w;
    h=screen_h;
-   lseek(DEV_FB,0,SEEK_SET);
+   //lseek(DEV_FB,0,SEEK_SET);
  }
   x=center_x+x;
   y=center_y+y;
