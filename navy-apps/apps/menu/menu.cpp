@@ -163,7 +163,7 @@ static void display_menu(int n) {
   //SDL_UpdateRect(screen,0,0,0,0);
   //while(1);
   SDL_BlitSurface(logo_sf, NULL, screen, &rect);
-  while(1);
+  //while(1);
   printf("Available applications:\n");
   char buf[80];
   int i;
