@@ -84,7 +84,7 @@ int main(int argc, char *argv[], char *envp[]) {
   while (1) {
 
     display_menu(i_max);
-  while(1);
+  
     SDL_Event e;
     do {
       SDL_WaitEvent(&e);
@@ -156,7 +156,7 @@ static void display_menu(int n) {
   printf("rect x:%d  y:%d  w:%d  h:%d\n",rect.x,rect.y,rect.w,rect.h);
   
   SDL_BlitSurface(logo_sf, NULL, screen, &rect);
-
+  while(1);
   printf("Available applications:\n");
   char buf[80];
   int i;
