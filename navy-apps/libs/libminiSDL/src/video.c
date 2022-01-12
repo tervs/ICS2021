@@ -76,7 +76,7 @@ void SDL_FillRect(SDL_Surface *dst, SDL_Rect *dstrect, uint32_t color) {
   p=p+y*screen_w+x;
   for(int i=y;i<=y+h;i++)
   {
-    memset(p,color,w);
+    memset(p,color,4*w);
     p=p+screen_w;
 
   }
