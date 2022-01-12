@@ -13,26 +13,26 @@ void SDL_BlitSurface(SDL_Surface *src, SDL_Rect *srcrect, SDL_Surface *dst, SDL_
   //printf("dst x:%d\n",dstrect->x);
   if(srcrect == NULL)
   {
-    printf("1\n");
+    //printf("1\n");
     src_x = src_y = 0;
     src_w = src->w;
     src_h = src->h;
   }
   else {
-    printf("2\n");
+    //printf("2\n");
     src_x = srcrect->x;
     src_y = srcrect->y;
     src_w = srcrect->w;
     src_h = srcrect->h;
   }
   if(dstrect == NULL)
-  {printf("3\n");
+  {//printf("3\n");
     dst_x = dst_y = 0;
     dst_w = dst->w;
     dst_h = dst->h;
   }
   else {
-    printf("4\n");
+    //printf("4\n");
     dst_x = dstrect->x;
     dst_y = dstrect->y;
     dst_w = dstrect->w;
