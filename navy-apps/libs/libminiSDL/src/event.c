@@ -61,7 +61,7 @@ int SDL_PollEvent(SDL_Event *ev) {
     keystate[keycode] = 1;
   }
     printf("keycode %s\n",keyname[keycode]);
-    return 0;
+    return 1;
   }
   else 
   {
