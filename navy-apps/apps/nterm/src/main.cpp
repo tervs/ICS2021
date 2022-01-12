@@ -54,8 +54,8 @@ void refresh_terminal() {
     int x = term->cursor.x, y = term->cursor.y;
     uint32_t color = (flip ? term->foreground(x, y) : term->background(x, y));
     draw_ch(x * font->w, y * font->h, ' ', 0, color);
-    while(1);
-    SDL_UpdateRect(screen, 0, 0, 0, 0);
+    //while(1);
+    //SDL_UpdateRect(screen, 0, 0, 0, 0);
     //while(1);
     if (now - last > 500) {
       flip = !flip;
