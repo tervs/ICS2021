@@ -41,10 +41,7 @@ void SDL_BlitSurface(SDL_Surface *src, SDL_Rect *srcrect, SDL_Surface *dst, SDL_
   //uint32_t color_width = dst->format->palette?1:4;
   //printf("x:%d  y:%d  w:%d  h:%d   in bilt\n",dst_x,dst_y,src_w,src_h);
   NDL_DrawRect(x,dst_x,dst_y,src_w,src_h);
-    while(1)
-  {
-    printf("test\n");
-  }
+
   //printf("color width %d\n",color_width);
   ///for(int i = 0;i < src_h;i++)
   //  memcpy(dst_color+color_width*((i+dst_y)*dst->w+dst_x),src_color+color_width*((i+src_y)*src->w+src_x),color_width*src_w);
