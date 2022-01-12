@@ -156,7 +156,7 @@ static void display_menu(int n) {
   printf("rect x:%d  y:%d  w:%d  h:%d\n",rect.x,rect.y,rect.w,rect.h);
   
   SDL_BlitSurface(logo_sf, NULL, screen, &rect);
-  while(1);
+  
   printf("Available applications:\n");
   char buf[80];
   int i;
@@ -165,7 +165,7 @@ static void display_menu(int n) {
     sprintf(buf, "  [%d] %s", i, item->name);
     draw_text_row(buf, i);
   }
-
+  while(1);
   i = 11;
 
   sprintf(buf, "  page = %2d, #total apps = %d", page, nitems);
