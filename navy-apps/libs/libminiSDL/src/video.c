@@ -54,30 +54,31 @@ void SDL_BlitSurface(SDL_Surface *src, SDL_Rect *srcrect, SDL_Surface *dst, SDL_
 }
 
 void SDL_FillRect(SDL_Surface *dst, SDL_Rect *dstrect, uint32_t color) {
-  
+  int screen_w=dst->w,screen_h=dst->h;
+  int x,y,w,h;
   if(dstrect==NULL)
   {
-    printf("here?\n");
-    uint32_t *x=malloc(4*400*300);
-    memset(x,color,4*400*300);
-    NDL_DrawRect(x,0,0,0,0);
+    x = y = 0;
+    w = dst->w;
+    h = dst->h;
+    //printf("here?\n");
+    //uint32_t *x=malloc(4*400*300);
+    //memset(x,color,4*400*300);
+    //NDL_DrawRect(x,0,0,0,0);
   }
-  else if((!dstrect->w)&&(dstrect->h==0))
+  else 
   {
-    printf("no null\n");
-    uint32_t *x=malloc(400*300);
-    memset(x,color,400*300);
-    NDL_DrawRect(x,0,0,0,0);
+      x = dstrect->x,y = dstrect->y,w = dstrect->w,h = dstrect->h;
   }
-  else
+  //uint32_t *ptr_color=dst->pixels
+  uint32_t *p=(uint32_t *)(dst->pixels);
+  p=p+y*screen_w+x;
+  for(int i=y;i<=y+h;i++)
   {
-    printf(" nnnn\n");
-    uint32_t *x=malloc(dstrect->w*dstrect->h);
-    memset(x,color,sizeof(x));
-    NDL_DrawRect(x,dstrect->x,dstrect->y,dstrect->w,dstrect->h);
-  }
+    memset(p,color,w);
+    p=p+screen_w;
 
-  
+  }
   //printf("x is %p\n",&color);
   //printf("x is %p\n",&color);
   //printf("x is %p\n",&color);
