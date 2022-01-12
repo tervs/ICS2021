@@ -82,7 +82,7 @@ int main(int argc, char *argv[], char *envp[]) {
   set_i_max();
 
   while (1) {
-    printf("dfds logo %d\n",logo_sf->w);
+    //printf("dfds logo %d\n",logo_sf->w);
     display_menu(i_max);
   
     SDL_Event e;
@@ -149,6 +149,7 @@ static void draw_text_row(char *s, int r) {
 }
 
 static void display_menu(int n) {
+  printf("kjkjlogo %d\n",logo_sf->w);
   clear_display();
  printf("logo %d\n",logo_sf->w);
   SDL_Rect rect = { .x = screen->w - logo_sf->w, .y = 0 };
