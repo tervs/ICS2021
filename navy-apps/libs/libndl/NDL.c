@@ -138,7 +138,7 @@ void NDL_OpenCanvas(int *w, int *h)
 
 void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) 
 {
-lseek(DEV_FB,0,SEEK_SET);
+
  // memset(pixels,0x00ff0000,sizeof(pixels));
 
  //FILE *fd=fopen("/dev/fb","+r");
@@ -161,10 +161,10 @@ lseek(DEV_FB,0,SEEK_SET);
       
       pixels=pixels+canvas_w;
       //fprintf(fd,)
-    
+
   }
 
-  
+  lseek(DEV_FB,0,SEEK_SET);
 
 }
 
