@@ -150,6 +150,8 @@ static void draw_text_row(char *s, int r) {
 
 static void display_menu(int n) {
   printf("kjkjlogo %d\n",logo_sf->w);
+  SDL_UpdateRect(screen,0,0,0,0);
+  while(1);
   clear_display();
   SDL_UpdateRect(screen,0,0,0,0);
  // while(1);
