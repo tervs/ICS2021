@@ -49,7 +49,7 @@ void SDL_BlitSurface(SDL_Surface *src, SDL_Rect *srcrect, SDL_Surface *dst, SDL_
   //uint8_t* dst_color = dst->pixels,*src_color = src->pixels;
   //uint32_t color_width = dst->format->palette?1:4;
   
-    for(int i = dst_y;i < src_h+dst_y;i++)
+    for(int i = dst_y;i < dst_h+dst_y;i++)
     {
         memcpy(dst_color+(i*dst->w+dst_x),src_color+(i*src->w+src_x),4*src_w);
     }
