@@ -59,7 +59,7 @@ int SDL_WaitEvent(SDL_Event *event) {
   memset(key,0,sizeof(key));
   key[0] = '0';
   int keycode = 0;
-  int flag=1;
+  int flag=0;
   //printf("enter\n");
   while(flag);
   {
@@ -77,7 +77,7 @@ int SDL_WaitEvent(SDL_Event *event) {
         //if(!strcmp(keyname[cnt],str))
         //{
         keycode = cnt;
-        flag=0;
+        flag=1;
         break;
       }
     assert(i <= sizeof(keyname));
