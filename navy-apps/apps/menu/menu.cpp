@@ -152,7 +152,8 @@ static void display_menu(int n) {
 
   SDL_Rect rect = { .x = screen->w - logo_sf->w, .y = 0 };
   //printf("dstretc  x%d   \n",rect.x);
-  //printf(" screen_w %d    logo %d\n ",screen->w,logo_sf->w);
+  printf(" screen_w %d    logo %d\n ",screen->w,logo_sf->w);
+  printf("rect x:%d  y:%d  w:%d  h:%d\n",rect.x,rect.y,rect.w,rect.h);
   SDL_BlitSurface(logo_sf, NULL, screen, &rect);
 
   printf("Available applications:\n");
