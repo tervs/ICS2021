@@ -30,7 +30,7 @@ int atoi2(char* nptr) {
 uint32_t NDL_GetTicks() {
   struct timeval tv;
   gettimeofday(&tv,NULL);
-  return tv.tv_usec;
+  return tv.tv_usec/1000;
 
   //printf("tv_sec:%ld   tv_usec:%lu\n",tv.tv_sec,tv.tv_usec);
   //return 0;
