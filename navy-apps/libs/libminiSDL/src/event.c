@@ -26,8 +26,7 @@ int SDL_PollEvent(SDL_Event *ev) {
   int keycode = 0;
   int flag=0;
   //printf("enter\n");
-  while(flag);
-  {
+
     //printf("wait  %d\n",NDL_PollEvent(key,sizeof(key)));
 
     if(NDL_PollEvent(key,sizeof(key)))
@@ -38,7 +37,8 @@ int SDL_PollEvent(SDL_Event *ev) {
     {
       //printf("cnt %d  keyname[cnt] :%s:   str  :%s:\n",cnt,keyname[cnt],str);
       //printf("%d    %d   %d\n",strncmp(keyname[cnt],str,strlen(str)),strncmp(keyname[cnt],str,strlen(keyname[cnt])),strcmp(keyname[cnt],str));
-    if(!strncmp(keyname[cnt],str,strlen(str))&&!strncmp(keyname[cnt],str,strlen(keyname[cnt]))) {
+    if(!strncmp(keyname[cnt],str,strlen(str))&&!strncmp(keyname[cnt],str,strlen(keyname[cnt]))) 
+    {
         //if(!strcmp(keyname[cnt],str))
         //{
         keycode = cnt;
@@ -49,26 +49,27 @@ int SDL_PollEvent(SDL_Event *ev) {
     
     }
   //printf("in waitevent\n");
-  if(key[1] == 'u')
+    if(key[1] == 'u')
   {
     ev->key.keysym.sym = keycode;
     ev->type = SDL_KEYUP;
     keystate[keycode] = 0;
   }
-  else if(key[1] == 'd'){
+    else if(key[1] == 'd'){
     ev->key.keysym.sym = keycode;
     ev->type = SDL_KEYDOWN;
     keystate[keycode] = 1;
   }
-  printf("keycode %s\n",keyname[keycode]);
-  return 0;
+    printf("keycode %s\n",keyname[keycode]);
+    return 0;
   }
-  else flag=1;
+  else return 0;;
+  return 0;
     }
 
-return 0;
-  return 0;
-}
+
+
+
 /*
 int SDL_WaitEvent(SDL_Event *event) {
 
@@ -141,7 +142,7 @@ int SDL_WaitEvent(SDL_Event *event) {
     event->type = SDL_KEYDOWN;
     keystate[keycode] = 1;
   }
-  printf("keycode %s\n",keyname[keycode]);
+  //printf("keycode %s\n",keyname[keycode]);
   return 0;
   }
     }
