@@ -153,7 +153,7 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h)
  }
   x=center_x+x;
   y=center_y+y;
-  printf("%d  %d\n",x,y);
+  //printf("%d  %d\n",x,y);
   lseek(DEV_FB,y*screen_w+x,SEEK_SET);
   for(int j=y;j<y+h;j++)
   {
@@ -167,7 +167,7 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h)
       //fprintf(fd,)
 
   }
-  printf("firsfa\n");
+  //printf("firsfa\n");
   return ;
   
   //lseek(DEV_FB,0,SEEK_SET);
