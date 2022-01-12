@@ -43,18 +43,22 @@ void SDL_BlitSurface(SDL_Surface *src, SDL_Rect *srcrect, SDL_Surface *dst, SDL_
     //memset(x,0xffffff,sizeof(x));
   //uint32_t color_width = dst->format->palette?1:4;
 
-  uint32_t *src_color=(uint32_t *)(src->pixels);
-  uint32_t *dst_color=(uint32_t *)(dst->pixels);
+  //uint32_t *src_color=(uint32_t *)(src->pixels);
+  //uint32_t *dst_color=(uint32_t *)(dst->pixels);
   //printf("x:%d  y:%d  w:%d  h:%d   in bilt\n",dst_x,dst_y,src_w,src_h);
   //uint8_t* dst_color = dst->pixels,*src_color = src->pixels;
   //uint32_t color_width = dst->format->palette?1:4;
-  uint32_t colorbit = (dst->format->palette!=NULL)? 1 : 4;
+  //uint32_t colorbit = (dst->format->palette!=NULL)? 1 : 4;
   
-    for(int i = dst_y;i < src_h+dst_y;i++)
-    {
-        memcpy(dst_color+colorbit*(i*dst->w+dst_x),src_color+colorbit*(i*src->w+src_x),src_w);
-    }
-    
+    //for(int i = dst_y;i < src_h+dst_y;i++)
+    //{
+      //  memcpy(dst_color+colorbit*(i*dst->w+dst_x),src_color+colorbit*(i*src->w+src_x),src_w);
+    //}
+      uint8_t* dst_color = dst->pixels,*src_color = src->pixels;
+  uint32_t color_width = dst->format->palette?1:4;
+  //printf("color width %d\n",color_width);
+  for(int i = 0;i < src_h;i++)
+    memcpy(dst_color+color_width*((i+dst_y)*dst->w+dst_x),src_color+color_width*((i+src_y)*src->w+src_x),color_width*src_w);
   //NDL_DrawRect(p,dst_x,dst_y,src_w,src_h);
   
   //printf("color width %d\n",color_width);
