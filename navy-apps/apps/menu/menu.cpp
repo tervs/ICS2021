@@ -171,7 +171,7 @@ static void display_menu(int n) {
   sprintf(buf, "  page = %2d, #total apps = %d", page, nitems);
   draw_text_row(buf, i);
   i ++;
-while(1);
+
   sprintf(buf, "  help:");
   draw_text_row(buf, i);
   i ++;
@@ -187,7 +187,7 @@ while(1);
   sprintf(buf, "  0-9 Choose");
   draw_text_row(buf, i);
   i ++;
-
+while(1);
   SDL_UpdateRect(screen, 0, 0, 0, 0);
 
   printf("========================================\n");
