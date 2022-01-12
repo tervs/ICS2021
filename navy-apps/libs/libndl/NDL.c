@@ -163,7 +163,7 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h)
       //printf("pixel %x\n",*pixels);
       //fwrite((pixels),4,(canvas_w),fd);
       
-      pixels=pixels+canvas_w;
+      pixels=pixels+w;
       //fprintf(fd,)
 
   }
