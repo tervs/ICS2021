@@ -12,7 +12,7 @@ SDL_Surface* IMG_Load_RW(SDL_RWops *src, int freesrc) {
 }
 
 SDL_Surface* IMG_Load(const char *filename) {
-    printf("%s\n",filename);
+    //printf("%s\n",filename);
   FILE* fp = fopen(filename,"r");
   assert(fp != NULL);
   fseek(fp,0,SEEK_END);
