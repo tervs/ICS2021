@@ -147,8 +147,8 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h)
  //printf("fd  %d\n",fd);
  if(w==0&&h==0)
  {
-   w=screen_w;
-   h=screen_h;
+   w=canvas_w;
+   h=canvas_h;
    //lseek(DEV_FB,0,SEEK_SET);
  }
  
