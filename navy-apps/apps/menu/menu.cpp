@@ -150,7 +150,7 @@ static void draw_text_row(char *s, int r) {
 
 static void display_menu(int n) {
   printf("kjkjlogo %d\n",logo_sf->w);
-  clear_display();
+  //clear_display();
  printf("logo %d\n",logo_sf->w);
   SDL_Rect rect = { .x = screen->w - logo_sf->w, .y = 0 };
   //printf("dstretc  x%d   \n",rect.x);
