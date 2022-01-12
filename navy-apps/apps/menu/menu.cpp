@@ -149,13 +149,13 @@ static void draw_text_row(char *s, int r) {
 }
 
 static void display_menu(int n) {
-  printf("kjkjlogo %d\n",logo_sf->w);
-  SDL_UpdateRect(screen,0,0,0,0);
+  //printf("kjkjlogo %d\n",logo_sf->w);
+  //SDL_UpdateRect(screen,0,0,0,0);
   //while(1);
   clear_display();
-  SDL_UpdateRect(screen,0,0,0,0);
+  //SDL_UpdateRect(screen,0,0,0,0);
  // while(1);
- printf("logo %d %d\n",logo_sf->w,logo_sf->h);
+ //printf("logo %d %d\n",logo_sf->w,logo_sf->h);
   SDL_Rect rect = { .x = screen->w - logo_sf->w, .y = 0 };
   //printf("dstretc  x%d   \n",rect.x);
   printf(" screen_w %d    logo %d\n ",screen->w,logo_sf->w);
