@@ -76,6 +76,8 @@ int main(int argc, char *argv[], char *envp[]) {
   //printf("in test %d  %d\n",screen->w,screen->h);
   font = new BDF_Font(font_fname);
   logo_sf = SDL_LoadBMP("/share/pictures/projectn.bmp");
+  printf("logo %d   %d\n",logo_sf->w,logo_sf->h);
+
   assert(logo_sf);
   set_i_max();
 
@@ -147,10 +149,7 @@ static void draw_text_row(char *s, int r) {
 
 static void display_menu(int n) {
   clear_display();
-    while(1)
-  {
-    printf("test\n");
-  }
+
   SDL_Rect rect = { .x = screen->w - logo_sf->w, .y = 0 };
   //printf("dstretc  x%d   \n",rect.x);
   //printf(" screen_w %d    logo %d\n ",screen->w,logo_sf->w);
