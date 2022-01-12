@@ -152,8 +152,8 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h)
    //lseek(DEV_FB,0,SEEK_SET);
  }
  printf("x:%d  y:%d in drawrect\n",x,y);
-  x=center_x+x;
-  y=center_y+y;
+  //x=center_x+x;
+  //y=center_y+y;
   
   lseek(DEV_FB,y*screen_w+x,SEEK_SET);
   for(int j=y;j<y+h;j++)
