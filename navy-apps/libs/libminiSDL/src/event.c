@@ -63,11 +63,15 @@ int SDL_PollEvent(SDL_Event *ev) {
     printf("keycode %s\n",keyname[keycode]);
     return 0;
   }
-  else return 0;;
-  return 0;
+  else 
+  {
+        ev->key.keysym.sym = SDLK_NONE;
+    ev->type = SDL_USEREVENT;
+    return 0;
+
     }
 
-
+}
 
 
 /*
