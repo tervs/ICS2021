@@ -154,10 +154,7 @@ static void display_menu(int n) {
   //printf("dstretc  x%d   \n",rect.x);
   //printf(" screen_w %d    logo %d\n ",screen->w,logo_sf->w);
   SDL_BlitSurface(logo_sf, NULL, screen, &rect);
-    while(1)
-  {
-    printf("test\n");
-  }
+
   printf("Available applications:\n");
   char buf[80];
   int i;
