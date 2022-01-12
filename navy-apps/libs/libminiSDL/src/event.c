@@ -60,10 +60,10 @@ int SDL_WaitEvent(SDL_Event *event) {
   key[0] = '0';
   int keycode = 0;
   int flag=0;
-  printf("enter\n");
+  //printf("enter\n");
   while(flag);
   {
-    printf("wait  %d\n",NDL_PollEvent(key,sizeof(key)));
+    //printf("wait  %d\n",NDL_PollEvent(key,sizeof(key)));
 
     if(NDL_PollEvent(key,sizeof(key)))
     {
