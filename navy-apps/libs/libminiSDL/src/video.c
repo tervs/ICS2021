@@ -35,10 +35,12 @@ void SDL_BlitSurface(SDL_Surface *src, SDL_Rect *srcrect, SDL_Surface *dst, SDL_
     dst_w = dstrect->w;
     dst_h = dstrect->h;
   }
-  uint32_t *src_color = src->pixels;
-  uint32_t color_width = dst->format->palette?1:4;
+  //uint32_t *src_color = src->pixels;
+      uint32_t *x=malloc(dstrect->w*dstrect->h);
+    memset(x,0xffffff,sizeof(x));
+  //uint32_t color_width = dst->format->palette?1:4;
   //printf("x:%d  y:%d  w:%d  h:%d   in bilt\n",dst_x,dst_y,src_w,src_h);
-  //NDL_DrawRect(src_color,dst_x,dst_y,src_w,src_h);
+  NDL_DrawRect(x,dst_x,dst_y,src_w,src_h);
   //printf("color width %d\n",color_width);
   ///for(int i = 0;i < src_h;i++)
   //  memcpy(dst_color+color_width*((i+dst_y)*dst->w+dst_x),src_color+color_width*((i+src_y)*src->w+src_x),color_width*src_w);
