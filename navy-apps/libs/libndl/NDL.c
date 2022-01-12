@@ -140,7 +140,7 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h)
 {
 
  // memset(pixels,0x00ff0000,sizeof(pixels));
-
+  printf("x:%d  y:%d  w:%d  h:%d\n",x,y,w,h);
  //FILE *fd=fopen("/dev/fb","+r");
  //printf("fd  %d\n",fd);
  if(x==0&&y==0&&w==0&&h==0)
