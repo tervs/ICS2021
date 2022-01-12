@@ -70,6 +70,7 @@ void SDL_FillRect(SDL_Surface *dst, SDL_Rect *dstrect, uint32_t color) {
   {
       x = dstrect->x,y = dstrect->y,w = dstrect->w,h = dstrect->h;
   }
+  printf("%d %d %d %d %d %d\n",x,y,w,h,screen_w,screen_h);
   //uint32_t *ptr_color=dst->pixels
   uint32_t *p=(uint32_t *)(dst->pixels);
   p=p+y*screen_w+x;
