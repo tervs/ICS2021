@@ -165,13 +165,13 @@ static void display_menu(int n) {
     sprintf(buf, "  [%d] %s", i, item->name);
     draw_text_row(buf, i);
   }
-  while(1);
+  
   i = 11;
 
   sprintf(buf, "  page = %2d, #total apps = %d", page, nitems);
   draw_text_row(buf, i);
   i ++;
-
+while(1);
   sprintf(buf, "  help:");
   draw_text_row(buf, i);
   i ++;
