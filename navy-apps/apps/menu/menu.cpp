@@ -80,10 +80,7 @@ int main(int argc, char *argv[], char *envp[]) {
   set_i_max();
 
   while (1) {
-      while(1)
-  {
-    printf("test\n");
-  }
+
     display_menu(i_max);
 
     SDL_Event e;
@@ -150,6 +147,10 @@ static void draw_text_row(char *s, int r) {
 
 static void display_menu(int n) {
   clear_display();
+    while(1)
+  {
+    printf("test\n");
+  }
   SDL_Rect rect = { .x = screen->w - logo_sf->w, .y = 0 };
   //printf("dstretc  x%d   \n",rect.x);
   //printf(" screen_w %d    logo %d\n ",screen->w,logo_sf->w);
