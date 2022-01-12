@@ -56,7 +56,7 @@ int main() {
   int rep = 0, g = 0;
 
   render();
-
+printf("jhsgjsahgd\n");
   while (1) {
     SDL_Event e;
     SDL_WaitEvent(&e);
