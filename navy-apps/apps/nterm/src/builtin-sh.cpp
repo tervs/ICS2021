@@ -23,6 +23,14 @@ static void sh_prompt() {
 }
 
 static void sh_handle_cmd(const char *cmd) {
+  SDL_Surface *screen = SDL_SetVideoMode(0, 0, 32, SDL_HWSURFACE);
+  uint32_t *x=(uint32_t *)screen->pixels;//malloc(4*400*300);
+  x=(uint32_t *)malloc(screen->w*screen->h);
+  memset(x,0,4*400*300);
+    //NDL_DrawRect(x,0,0,0,0);
+SDL_UpdateRect(screen,0,0,0,0);
+
+
   char s[100];
   //printf("len %d\n",strlen(cmd));
   int len=strlen(cmd);
@@ -31,6 +39,7 @@ static void sh_handle_cmd(const char *cmd) {
   //printf("success\n");
   //printf("len%dlen\n",s[len-1]);
   //s[len]
+  
   execve(s,0,0);
   
 }
