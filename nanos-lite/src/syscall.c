@@ -68,6 +68,7 @@ uintptr_t sys_exit()
 {
   printf("call exit\n");
   char *menu="/bin/menu";
+  printf("menu addr %x",menu);
   a[1]=(intptr_t)menu;
   sys_execve();
   return 0;
