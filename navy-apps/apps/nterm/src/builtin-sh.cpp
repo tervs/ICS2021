@@ -25,7 +25,7 @@ static void sh_prompt() {
 static void sh_handle_cmd(const char *cmd) {
   SDL_Surface *screen = SDL_SetVideoMode(0, 0, 32, SDL_HWSURFACE);
   SDL_FillRect(screen, NULL, 0);
-
+  SDL_UpdateRect(screen,0,0,0,0);
 
   char s[100];
   //printf("len %d\n",strlen(cmd));
