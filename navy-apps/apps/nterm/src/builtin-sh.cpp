@@ -24,11 +24,7 @@ static void sh_prompt() {
 
 static void sh_handle_cmd(const char *cmd) {
   SDL_Surface *screen = SDL_SetVideoMode(0, 0, 32, SDL_HWSURFACE);
-  uint32_t *x=(uint32_t *)screen->pixels;//malloc(4*400*300);
-  x=(uint32_t *)malloc(screen->w*screen->h);
-  memset(x,0,4*400*300);
-    //NDL_DrawRect(x,0,0,0,0);
-SDL_UpdateRect(screen,0,0,0,0);
+  SDL_FillRect(screen, NULL, 0);
 
 
   char s[100];
