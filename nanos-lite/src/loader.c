@@ -53,6 +53,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   printf("%x %x %x %d\n",elfhdr.e_entry,elfhdr.e_phentsize,elfhdr.e_ehsize,elfhdr.e_phnum);
   for(int i = 0;i < elfhdr.e_phnum;i++)
   {
+    printf("i is %d\n",i);
     fs_lseek(fd,elfhdr.e_phoff+i*sizeof(Elf_Phdr),SEEK_SET);
     //rintf("test 1\n");
     fs_read(fd,&prohdr,sizeof(Elf_Phdr));
