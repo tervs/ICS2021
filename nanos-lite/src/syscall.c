@@ -66,8 +66,13 @@ uintptr_t sys_yield()
 
 uintptr_t sys_exit()
 {
+
   printf("call exit\n");
   char *menu="/bin/menu";
+  a[1]=(intptr_t)(menu);
+
+  int fd=sys_open();
+  printf("open in exit %d\n",fd);
   printf("menu addr %x",menu);
   a[1]=(intptr_t)menu;
   sys_execve();
