@@ -179,6 +179,7 @@ void strace()
     case 7: printf("syscall close\n");break;
     case 8: printf("syscall lseek\n");break;
     case 9: printf("syscall brk \n");break;
+    case 13:printf("syscall execve\n");break;
     case 19:printf("syscall  gettimeofday\n");break;
     default: panic("Unhandled syscall ID = %d", a[0]);
   }
