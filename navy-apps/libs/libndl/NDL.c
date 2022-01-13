@@ -43,7 +43,7 @@ int NDL_PollEvent(char *buf, int len) {
 
   if(res)
   {
-    //printf("NDL pollevent %s   %d\n",buf,res);
+    printf("NDL pollevent %s   %d\n",buf,res);
     return res;
   }
   else return 0;
