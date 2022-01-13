@@ -102,11 +102,11 @@ uintptr_t sys_brk()
 uintptr_t sys_open()
 {
   char *ch=(char *)(a[1]);
-  printf("open  %s\n",ch);
+  //printf("open  %s\n",ch);
 
   
   int fd=fs_open(ch,0,0);
-  printf("fd  %d\n",fd);
+  //printf("fd  %d\n",fd);
 
   return fd; 
 }
