@@ -50,13 +50,13 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   fs_read(fd,&elfhdr,sizeof(Elf_Ehdr));
   //printf("%x %x\n",elfhdr.e_phoff,elfhdr.e_phnum);
   assert(fd != -1);
-  printf("%x %x %x\n",elfhdr.e_entry,elfhdr.e_phentsize,elfhdr.e_ehsize);
+  printf("%x %x %x %d\n",elfhdr.e_entry,elfhdr.e_phentsize,elfhdr.e_ehsize,elfhdr.e_phnum);
   for(int i = 0;i < elfhdr.e_phnum;i++)
   {
     fs_lseek(fd,elfhdr.e_phoff+i*sizeof(Elf_Phdr),SEEK_SET);
-    printf("test 1\n");
+    //rintf("test 1\n");
     fs_read(fd,&prohdr,sizeof(Elf_Phdr));
-    printf("test 2\n");
+    //printf("test 2\n");
     if(prohdr.p_type == PT_LOAD){
       fs_lseek(fd,prohdr.p_offset,SEEK_SET);
       fs_read(fd,(void *)prohdr.p_vaddr,prohdr.p_filesz);
