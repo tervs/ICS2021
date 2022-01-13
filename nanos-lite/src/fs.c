@@ -15,6 +15,7 @@ size_t serial_write(const void *buf, size_t offset, size_t len) ;
 size_t get_ramdisk_size();
 size_t ramdisk_read(void *buf, size_t offset, size_t len) ;
 size_t ramdisk_write(const void *buf, size_t offset, size_t len) ;
+size_t fs_lseek(int fd, size_t offset, int whence);
 typedef struct {
   char *name;
   size_t size;
@@ -118,6 +119,7 @@ int fs_open(const char *pathname, int flags, int mode)
     //if(strcmp(file_table[i].name,pathname))
     {
       //printf("%d   %s\n",i,file_table[i].name);
+      fs_lseek(i,0,SEEK_SET);
       return i;
     }
   }
