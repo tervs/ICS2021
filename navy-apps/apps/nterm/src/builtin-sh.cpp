@@ -26,9 +26,10 @@ static void sh_handle_cmd(const char *cmd) {
   char s[100];
   strcpy(s,cmd);
   printf("success\n");
-  //s=strtok(s,"\r");
+  char *t=strtok(s,"\r");
   printf("cmd %s",cmd);
   printf("s %s\n",s);
+  printf("t %s\n",t);
   execve(cmd,0,0);
   
 }
