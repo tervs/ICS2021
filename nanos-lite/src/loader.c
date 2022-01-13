@@ -53,20 +53,20 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   printf("%x %x %x %d\n",elfhdr.e_entry,elfhdr.e_phentsize,elfhdr.e_ehsize,elfhdr.e_phnum);
   for(int i = 0;i < elfhdr.e_phnum;i++)
   {
-    printf("i is %d\n",i);
+    //printf("i is %d\n",i);
     fs_lseek(fd,elfhdr.e_phoff+i*sizeof(Elf_Phdr),SEEK_SET);
     //rintf("test 1\n");
     fs_read(fd,&prohdr,sizeof(Elf_Phdr));
-    printf("out\n");
+    //printf("out\n");
     if(prohdr.p_type == PT_LOAD){
-      printf("test 2\n");
+      //printf("test 2\n");
       fs_lseek(fd,prohdr.p_offset,SEEK_SET);
-      printf("fucccc\n");
+      //printf("fucccc\n");
       fs_read(fd,(void *)prohdr.p_vaddr,prohdr.p_filesz);
-      printf("test 3\n");
+      //printf("test 3\n");
       //printf("from %x %x size = %x \n",prohdr.p_vaddr,prohdr.p_offset,prohdr.p_filesz);
       memset((void*)(prohdr.p_vaddr+prohdr.p_filesz),0,prohdr.p_memsz-prohdr.p_filesz);
-      printf("test 4\n");
+      //printf("test 4\n");
     }//之前用的memcpy，不愧是我
     
   }
