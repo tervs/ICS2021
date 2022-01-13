@@ -75,8 +75,8 @@ uintptr_t sys_exit()
   a[1]=fd;a[2]=0;a[3]=0;
   sys_lseek();
   
-  printf("open in exit %d\n",fd);
-  printf("menu addr %x",menu);
+  //printf("open in exit %d\n",fd);
+  //printf("menu addr %x",menu);
   a[1]=(intptr_t)menu;
   sys_execve();
   return 0;
