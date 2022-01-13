@@ -1,7 +1,7 @@
 
 #include <common.h>
 #include "syscall.h"
-
+#include <proc.h>
 uintptr_t a[4];
 
 uintptr_t sys_yield();
@@ -13,6 +13,7 @@ uintptr_t sys_lseek();
 uintptr_t sys_read();
 uintptr_t sys_close();
 uintptr_t sys_gettimeofday();
+uintptr_t sys_execve();
 
 
 int fs_open(const char *pathname, int flags, int mode);
@@ -21,7 +22,8 @@ size_t fs_write(int fd, const void *buf, size_t len);
 size_t fs_lseek(int fd, size_t offset, int whence);
 int fs_close(int fd);
 void strace();
-
+//extern struct PCB;
+void naive_uload(PCB *pcb, const char *filename);
 static uint32_t sec;
 static uint32_t usec;
 
@@ -47,6 +49,7 @@ void do_syscall(Context *c) {
     case 7: c->GPRx=sys_close();break;
     case 8: c->GPRx=sys_lseek();break;
     case 9: c->GPRx=0;sys_brk();break;
+    case 13:c->GPRx=sys_execve();break;
     case 19:c->GPRx=sys_gettimeofday();break;
     default: panic("Unhandled syscall ID = %d", a[0]);
   }
@@ -117,6 +120,19 @@ uintptr_t sys_close()
 {
   
   return fs_close(a[1]);
+}
+
+uintptr_t sys_execve()
+{
+  char *fname=(char *)(a[1]);
+    int fd=fs_open(fname,0,0);
+  printf("filename:%s\n",fname);
+  if(fd==-1)return -1;
+  else{
+    naive_uload(NULL,fname);//wait to be modify
+    return 0;
+  }
+  return 0;
 }
 
 
