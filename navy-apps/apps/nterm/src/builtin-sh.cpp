@@ -24,7 +24,7 @@ static void sh_prompt() {
 
 static void sh_handle_cmd(const char *cmd) {
   char *s;
-  strcpy(s,cmd);
+  //strcpy(s,cmd);
   //s=strtok(s,"\r");
   //printf("cmd %s",cmd);
   //printf("s %s\n",s);
