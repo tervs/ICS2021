@@ -24,13 +24,12 @@ static void sh_prompt() {
 
 static void sh_handle_cmd(const char *cmd) {
   char s[100];
-  printf("len %d\n",strlen(cmd));
+  //printf("len %d\n",strlen(cmd));
+  int len=strlen(cmd);
   strcpy(s,cmd);
   printf("success\n");
-  char *t=strtok(s,"\r");
-  printf("cmd %s",cmd);
-  printf("s %s\n",s);
-  printf("t %s\n",t);
+  printf("len%clen\n",s[len-1]);
+  //s[len]
   execve(cmd,0,0);
   
 }
