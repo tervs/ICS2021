@@ -28,8 +28,8 @@ static void sh_handle_cmd(const char *cmd) {
   int len=strlen(cmd);
   strcpy(s,cmd);
   s[len-1]='\0';
-  printf("success\n");
-  printf("len%dlen\n",s[len-1]);
+  //printf("success\n");
+  //printf("len%dlen\n",s[len-1]);
   //s[len]
   execve(s,0,0);
   
