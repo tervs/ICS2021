@@ -110,7 +110,7 @@ size_t fs_write(int fd, const void *buf, size_t len)
 
 int fs_open(const char *pathname, int flags, int mode)
 {
-  //printf("call opne %s\n",pathname);
+  printf("call opne %s\n",pathname);
   for(int i=0;i<file_num;i++)
   {
     //printf("%s\n",file_table[i].name);
