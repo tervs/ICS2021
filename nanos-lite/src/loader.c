@@ -54,7 +54,9 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   for(int i = 0;i < elfhdr.e_phnum;i++)
   {
     fs_lseek(fd,elfhdr.e_phoff+i*sizeof(Elf_Phdr),SEEK_SET);
+    printf("test 1\n");
     fs_read(fd,&prohdr,sizeof(Elf_Phdr));
+    printf("test 2\n");
     if(prohdr.p_type == PT_LOAD){
       fs_lseek(fd,prohdr.p_offset,SEEK_SET);
       fs_read(fd,(void *)prohdr.p_vaddr,prohdr.p_filesz);
