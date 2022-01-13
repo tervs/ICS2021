@@ -147,7 +147,7 @@ int SDL_WaitEvent(SDL_Event *event) {
     event->type = SDL_KEYDOWN;
     keystate[keycode] = 1;
   }
-  //printf("keycode %s\n",keyname[keycode]);
+  printf("keycode %s\n",keyname[keycode]);
   return 0;
   }
     }
