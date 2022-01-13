@@ -24,6 +24,7 @@ static void sh_prompt() {
 
 static void sh_handle_cmd(const char *cmd) {
   char s[100];
+  printf("len %d\n",strlen(cmd));
   strcpy(s,cmd);
   printf("success\n");
   char *t=strtok(s,"\r");
