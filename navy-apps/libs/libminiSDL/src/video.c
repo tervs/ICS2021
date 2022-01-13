@@ -118,14 +118,31 @@ void SDL_FillRect(SDL_Surface *dst, SDL_Rect *dstrect, uint32_t color) {
 void SDL_UpdateRect(SDL_Surface *s, int x, int y, int w, int h) {
 
 //printf("test in update\n");
-uint32_t *p=(uint32_t *)(s->pixels);
+if(s->format->palette == NULL)
+{uint32_t *p=(uint32_t *)(s->pixels);
   //printf("x:%d y:%d w:%d h:%d in updaterect\n",x,y,w,h);
   NDL_DrawRect(p, x,  y,  w,  h); 
-
+}
+else{
+    uint32_t s_h = s->h,s_w = s->w;
+    if(w == 0||w > s_w) w = s_w;
+    if(h == 0||h > s_h) h = s_h;
+    uint32_t * palette = malloc(sizeof(uint32_t)*w*h);
+    memset(palette,0,sizeof(palette));
+    for(int i = 0;i < h;i++)
+      for(int j = 0;j < w;j++)
+      {
+        uint8_t r = s->format->palette->colors[s->pixels[(i+y)*s_w+j+x]].r;
+        uint8_t g = s->format->palette->colors[s->pixels[(i+y)*s_w+j+x]].g;
+        uint8_t b = s->format->palette->colors[s->pixels[(i+y)*s_w+j+x]].b;
+        palette[i*w+j] = ((r<<16)|(g<<8)|b);
+      }
+    NDL_DrawRect(palette,x,y,w,h);
+    free(palette);
 //while(1);
 
 }
-
+}
 // APIs below are already implemented.
 
 static inline int maskToShift(uint32_t mask) {
