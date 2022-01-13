@@ -66,8 +66,9 @@ uintptr_t sys_yield()
 
 uintptr_t sys_exit()
 {
-  
-  halt(0);
+  char *menu="/bin/menu";
+  a[1]=(intptr_t)menu;
+  sys_execve();
   return 0;
 }
 
