@@ -71,7 +71,7 @@ size_t dispinfo_read(void *buf, size_t offset, size_t len) {
   //strcpy(buf,(char *)h);
   //char s[128];
   sprintf(buf,"%d:%d\n",w,h);
-  printf("test in disinfo   %s\n",buf);
+  //printf("test in disinfo   %s\n",buf);
 
   return len;
   

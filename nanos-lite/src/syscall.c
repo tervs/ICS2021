@@ -140,7 +140,7 @@ uintptr_t sys_execve()
   printf("filename:%s\n",fname);
   if(fd==-1)return -1;
   else{
-    printf("success fd\n");
+    //printf("success fd\n");
     naive_uload(NULL,fname);//wait to be modify
     printf("success load\n");
     return 0;
