@@ -44,7 +44,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   //printf("%d\n",size);
   Elf_Ehdr elfhdr;
   Elf_Phdr prohdr;
-  //printf("%s\n",filename);
+  printf("test in load %s\n",filename);
   size_t fd = fs_open(filename,0,0);
   //printf("%d\n",fd);
   fs_read(fd,&elfhdr,sizeof(Elf_Ehdr));
