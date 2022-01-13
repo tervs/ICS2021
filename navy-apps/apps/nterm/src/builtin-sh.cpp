@@ -28,7 +28,7 @@ static void sh_handle_cmd(const char *cmd) {
   int len=strlen(cmd);
   strcpy(s,cmd);
   printf("success\n");
-  printf("len%clen\n",s[len-2]);
+  printf("len%dlen\n",s[len-1]);
   //s[len]
   execve(cmd,0,0);
   
