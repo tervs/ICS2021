@@ -114,10 +114,16 @@ int fs_open(const char *pathname, int flags, int mode)
   //if(strcmp(pathname,"/dev/events")){
     //printf("call opne %s\n",pathname);}
   for(int i=0;i<file_num;i++)
-  {  //if(strcmp(pathname,"/dev/events")){
-    //printf("comp %s\n",file_table[i].name);}
+  {  
+    if(strcmp(pathname,"/dev/events"))
+  {
+    printf("comp %s\n",file_table[i].name);
+    printf("res %d\n",strcmp(file_table[i].name,pathname));
+    
+  }
     //printf("%s\n",file_table[i].name);
     //if(file_table[i].name==pathname)
+  
     if(strcmp(file_table[i].name,pathname)==0)
     //if(strcmp(file_table[i].name,pathname))
     {
