@@ -106,7 +106,7 @@ uintptr_t sys_open()
 
   
   int fd=fs_open(ch,0,0);
-  //printf("%d\n",fd);
+  printf("fd  %d\n",fd);
 
   return fd; 
 }
