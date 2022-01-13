@@ -50,7 +50,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   fs_read(fd,&elfhdr,sizeof(Elf_Ehdr));
   //printf("%x %x\n",elfhdr.e_phoff,elfhdr.e_phnum);
   assert(fd != -1);
-  //printf("%x %x %x\n",elfhdr.e_entry,elfhdr.e_phentsize,elfhdr.e_ehsize);
+  printf("%x %x %x\n",elfhdr.e_entry,elfhdr.e_phentsize,elfhdr.e_ehsize);
   for(int i = 0;i < elfhdr.e_phnum;i++)
   {
     fs_lseek(fd,elfhdr.e_phoff+i*sizeof(Elf_Phdr),SEEK_SET);
@@ -65,8 +65,8 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   }
   fd = fs_close(fd);
   assert(fd == 0);
-  printf("%s File Loaded\n",filename);
-  printf("entry point %x\n",elfhdr.e_entry);
+  //printf("%s File Loaded\n",filename);
+  //printf("entry point %x\n",elfhdr.e_entry);
   return elfhdr.e_entry;
 
 /*
