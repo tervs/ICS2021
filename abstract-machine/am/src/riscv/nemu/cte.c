@@ -71,6 +71,7 @@ Context *kcontext(Area kstack, void (*entry)(void *), void *arg) {
     Context *c = kstack.end - sizeof(Context);
   *c = (Context) { 0 };
   c->mepc=(uintptr_t)entry;
+  c->gpr[10]=0x123456;
   printf("mepc  %x\n",c->mepc);
   return c;
   //return NULL;
