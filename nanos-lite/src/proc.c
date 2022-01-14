@@ -11,7 +11,7 @@ void context_kload(PCB* pcb,void(*entry)(void*),void *arg){
   printf("entry %x\n",entry);
   Area stack = {pcb->stack,pcb->stack + STACK_SIZE};
 
-  printf("st:%p->%p\n",stack.start,stack.end);
+  printf("stack:%p->%p\n",stack.start,stack.end);
   pcb->cp=kcontext(stack,entry,arg);
   printf("pcb->cp:%p\n",pcb->cp);
 } 
