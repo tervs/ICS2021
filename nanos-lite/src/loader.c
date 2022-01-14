@@ -38,7 +38,7 @@ size_t fs_len(int fd);
 
 
 
-static uintptr_t loader(PCB *pcb, const char *filename) {
+uintptr_t loader(PCB *pcb, const char *filename) {
   //TODO();
   //uint32_t size = get_ramdisk_size();
   //printf("%d\n",size);

@@ -5,7 +5,7 @@
 static PCB pcb[MAX_NR_PROC] __attribute__((used)) = {};
 static PCB pcb_boot = {};
 PCB *current = NULL;
-
+uintptr_t loader(PCB *pcb, const char *filename);
 
 void context_kload(PCB* pcb,void(*entry)(void*),void *arg){
   //printf("entry %x\n",entry);
@@ -19,10 +19,11 @@ void context_kload(PCB* pcb,void(*entry)(void*),void *arg){
 void context_uload(PCB* pcb,const char* filename){
   //printf("entry %x\n",entry);
   Area stack = {pcb->stack,pcb->stack + STACK_SIZE};
-
+  intptr_t entry=loader(pcb,filename);
+  printf("file %s enter at %x\n",filename,entry);
   //printf("stack:%p->%p\n",stack.start,stack.end);
-  pcb->cp=ucontext(NULL,stack,(void *)filename);
-  //printf("pcb->cp:%p\n",pcb->cp);
+  pcb->cp=ucontext(NULL,stack,(void *)entry);
+  //printf("pcb->cp:%p\n",pcb->cp);nt
 } 
 
 
