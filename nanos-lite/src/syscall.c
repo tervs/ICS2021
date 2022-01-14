@@ -38,7 +38,7 @@ void do_syscall(Context *c) {
   a[2] = c->GPR3;
   a[3] = c->GPR4;
 //Log("fuck tthe sytem");
-  //strace();
+  strace();
 
   switch (a[0]) {
     case 0: c->GPRx=sys_exit();break;
