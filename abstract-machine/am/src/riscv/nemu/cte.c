@@ -6,7 +6,7 @@
 static Context* (*user_handler)(Event, Context*) = NULL;
 
 Context* __am_irq_handle(Context *c) {
-
+printf("begin excute\n");
  //printf("mcause  0x%08x\n\n",c->mcause);
 //printf("0x%08x\n",c->mepc);
   //printf("\n\n\n\n\n\n\n");
@@ -25,6 +25,7 @@ Context* __am_irq_handle(Context *c) {
     c = user_handler(ev, c);
     assert(c != NULL);
   }
+  printf("end call\n");
   //_mepc=_mepc+4;
   return c;
 }
