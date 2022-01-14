@@ -74,7 +74,7 @@ Context *ucontext(AddrSpace *as, Area kstack, void *entry) {
   *c = (Context) { 0 };
   c->mepc=(uintptr_t)entry;
   //c->gpr[10]=(intptr_t)arg;
-  printf("Ucontext pc %x\n",c->mepc);
+  //printf("Ucontext pc %x\n",c->mepc);
   return c;
   //return NULL;
 }
