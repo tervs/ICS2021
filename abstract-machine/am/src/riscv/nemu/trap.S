@@ -59,8 +59,8 @@ __am_asm_trap:
   
   csrw mstatus, t1
   csrw mepc, t2
-mret
-  #MAP(REGS, POP)
+
+  MAP(REGS, POP)
 
   #addi sp, sp, CONTEXT_SIZE
   mret
