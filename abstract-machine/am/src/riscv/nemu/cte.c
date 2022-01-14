@@ -16,11 +16,18 @@ Context* __am_irq_handle(Context *c) {
     Event ev = {0};
     switch (c->mcause) {
       case -1:ev.event=EVENT_YIELD;break;
-      case 0x0000000b: ev.event = EVENT_SYSCALL;break;
-      case 0x00000001: ev.event = EVENT_SYSCALL;break;
+      //case 0x0000000b: ev.event = EVENT_SYSCALL;break;
       case 0x00000000: ev.event = EVENT_SYSCALL;break;
+      case 0x00000001: ev.event = EVENT_SYSCALL;break;
+      case 0x00000002: ev.event = EVENT_SYSCALL;break;
+      case 0x00000003: ev.event = EVENT_SYSCALL;break;
       case 0x00000004: ev.event = EVENT_SYSCALL;break;
+      case 0x00000007: ev.event = EVENT_SYSCALL;break;
+      case 0x00000008: ev.event = EVENT_SYSCALL;break;
       case 0x00000009: ev.event = EVENT_SYSCALL;break;
+      case 0x00000013: ev.event = EVENT_SYSCALL;break;
+      case 0x00000019: ev.event = EVENT_SYSCALL;break;
+      
       //case 0:ev.event = EVENT_SYSCALL;break;
       default: ev.event = EVENT_ERROR; break;
     }
