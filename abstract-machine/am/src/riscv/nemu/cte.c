@@ -38,6 +38,7 @@ Context* __am_irq_handle(Context *c) {
     );
     */
     //printf("c addr %x\n",(uintptr_t)c);
+    /*
     uint32_t *pt=(uint32_t *)(uintptr_t)c;
     
     for(int i=0;i<=36;i++)
@@ -45,6 +46,7 @@ Context* __am_irq_handle(Context *c) {
       printf("i:%d  pt:%x  *pt:%x\n",i,pt,*pt);
       pt++;
     }
+    */
     
     assert(c != NULL);
   }
