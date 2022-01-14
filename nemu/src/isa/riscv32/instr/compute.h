@@ -272,7 +272,7 @@ def_EHelper(ecall) {
 
 def_EHelper(mret) {
 
-  //printf("test\n\n\n\n\n\n\n\n");
+  printf("test mret \n");
   isa_reg_display();
   s->dnpc=*mepc;
 
