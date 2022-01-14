@@ -1,6 +1,8 @@
 #include <am.h>
 #include <riscv/riscv.h>
 #include <klib.h>
+#include <arch/riscv32-nemu.h>
+//extern struct Context;
 //extern uint32_t _mepc;
 //extern rtlreg_t _mepc;
 static Context* (*user_handler)(Event, Context*) = NULL;
