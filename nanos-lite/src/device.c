@@ -27,6 +27,7 @@ static const char *keyname[256] __attribute__((used)) = {
 
 size_t serial_write(const void *buf, size_t offset, size_t len) 
 {
+  yield();
   //printf("test\n\n\n\n\n\n\n\n\n");  
   char *ch=(char *)(buf);
   for(int i=0;i<len;i++)
@@ -42,6 +43,7 @@ size_t serial_write(const void *buf, size_t offset, size_t len)
 size_t events_read(void *buf, size_t offset, size_t len) {
 
 //printf("test\n");
+yield();
       AM_INPUT_KEYBRD_T ev = io_read(AM_INPUT_KEYBRD);
       if (ev.keycode == AM_KEY_NONE) return 0;
       else
@@ -80,7 +82,7 @@ size_t dispinfo_read(void *buf, size_t offset, size_t len) {
 }
 size_t fb_write(const void *buf, size_t offset, size_t len) {
 
-
+yield();
     uint32_t *pixels= (uint32_t *)buf;
   
  //printf("w:   %d   h  %d\n",screen_w,screen_h); 

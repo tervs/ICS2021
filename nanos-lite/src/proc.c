@@ -8,14 +8,22 @@ PCB *current = NULL;
 
 
 void context_kload(PCB* pcb,void(*entry)(void*),void *arg){
-  printf("entry %x\n",entry);
+  //printf("entry %x\n",entry);
   Area stack = {pcb->stack,pcb->stack + STACK_SIZE};
 
-  printf("stack:%p->%p\n",stack.start,stack.end);
+  //printf("stack:%p->%p\n",stack.start,stack.end);
   pcb->cp=kcontext(stack,entry,arg);
-  printf("pcb->cp:%p\n",pcb->cp);
+  //printf("pcb->cp:%p\n",pcb->cp);
 } 
 
+void context_uload(PCB* pcb,const char* filename){
+  //printf("entry %x\n",entry);
+  Area stack = {pcb->stack,pcb->stack + STACK_SIZE};
+
+  //printf("stack:%p->%p\n",stack.start,stack.end);
+  pcb->cp=ucontext(NULL,stack,(void *)filename);
+  //printf("pcb->cp:%p\n",pcb->cp);
+} 
 
 
 
@@ -36,7 +44,7 @@ void hello_fun(void *arg) {
 
 void init_proc() {
   context_kload(&pcb[0], hello_fun, (void *)0xffffffff);
-  context_kload(&pcb[1], hello_fun, (void *)0x000000ff);
+  context_uload(&pcb[1], "/bin/pal");
   switch_boot_pcb();
 
   Log("Initializing processes...");
