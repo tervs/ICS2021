@@ -26,6 +26,7 @@ Context* __am_irq_handle(Context *c) {
     }
   //printf("begin excute\n");
     c = user_handler(ev, c);
+    printf("c addr %x\n",(uintptr_t)c);
     assert(c != NULL);
   }
   //printf("end call\n");
