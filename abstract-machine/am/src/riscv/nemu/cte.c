@@ -31,7 +31,7 @@ Context* __am_irq_handle(Context *c) {
     
     for(int i=0;i<=32;i++)
     {
-      printf("i:%d  pt:%x  con:%x\n",i,pt,(uint32_t *)pt);
+      printf("i:%d  pt:%x  con:%x\n",i,pt,&pt);
       pt++;
     }
     assert(c != NULL);
