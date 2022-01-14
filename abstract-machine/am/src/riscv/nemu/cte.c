@@ -27,12 +27,12 @@ Context* __am_irq_handle(Context *c) {
   //printf("begin excute\n");
     c = user_handler(ev, c);
     printf("c addr %x\n",(uintptr_t)c);
-    uintptr_t pt=(uintptr_t)c;
+    //uintptr_t pt=(uintptr_t)c;
     
     for(int i=0;i<=32;i++)
     {
-      printf("i:%d  pt:%x  con:%x\n",i,pt,&pt);
-      pt++;
+      printf("i:%d  pt:%x  con:%x\n",i,c,*c);
+      c++;
     }
     assert(c != NULL);
   }
