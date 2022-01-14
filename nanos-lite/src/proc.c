@@ -8,11 +8,10 @@ PCB *current = NULL;
 
 
 void context_kload(PCB* pcb,void(*entry)(void*),void *arg){
-  Area st;
-  st.start=pcb->stack;
-  st.end=st.start+STACK_SIZE;
-  printf("st:%p->%p\n",st.start,st.end);
-  pcb->cp=kcontext(st,entry,arg);
+  Area stack = {pcb->stack,pcb->stack + STACK_SIZE};
+
+  printf("st:%p->%p\n",stack.start,stack.end);
+  pcb->cp=kcontext(stack,entry,arg);
   printf("pcb->cp:%p\n",pcb->cp);
 } 
 
