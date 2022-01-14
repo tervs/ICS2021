@@ -263,7 +263,7 @@ def_EHelper(csrrw) {
 def_EHelper(ecall) {
  
   printf("0x%08x\n\n\n",s->pc);
-  printf("ecall mepc:%x  mstatus:%x  mcause:%x  mtvec:%x\n"._mepc,_mstatus,_mcause,_mtvec);
+  printf("ecall mepc:%x  mstatus:%x  mcause:%x  mtvec:%x\n",_mepc,_mstatus,_mcause,_mtvec);
   isa_reg_display();
   isa_raise_intr(gpr(17),&(s->pc),&(s->dnpc));
   
@@ -275,7 +275,7 @@ def_EHelper(ecall) {
 def_EHelper(mret) {
 
   printf("test mret \n");
-  printf("ret mepc:%x  mstatus:%x  mcause:%x  mtvec:%x\n"._mepc,_mstatus,_mcause,_mtvec);
+  printf("ret mepc:%x  mstatus:%x  mcause:%x  mtvec:%x\n",_mepc,_mstatus,_mcause,_mtvec);
   isa_reg_display();
   s->dnpc=*mepc;
 
