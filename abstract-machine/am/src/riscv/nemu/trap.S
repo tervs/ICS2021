@@ -51,7 +51,7 @@ __am_asm_trap:
   csrw mstatus, t1
 
   mv a0, sp
-  #jal __am_irq_handle
+  jal __am_irq_handle
 
   #LOAD t1, OFFSET_STATUS(sp)
   #LOAD t2, OFFSET_EPC(sp)
