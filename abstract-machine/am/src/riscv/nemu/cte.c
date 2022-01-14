@@ -26,6 +26,7 @@ Context* __am_irq_handle(Context *c) {
     }
   //printf("begin excute\n");
     c = user_handler(ev, c);
+    printf("c addr %x\n",(uintptr_t)c);
     /*
     uint32_t cp=(uint32_t )c;
     uint32_t x0=0;
@@ -35,8 +36,7 @@ Context* __am_irq_handle(Context *c) {
     :
     :[src]"r"(cp),[src2]"r"(x0)
     );
-    */
-    /*
+    
     printf("c addr %x\n",(uintptr_t)c);
     uint32_t *pt=(uint32_t *)(uintptr_t)c;
     
