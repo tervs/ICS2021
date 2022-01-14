@@ -21,11 +21,11 @@ Context* __am_irq_handle(Context *c) {
       //case 0:ev.event = EVENT_SYSCALL;break;
       default: ev.event = EVENT_ERROR; break;
     }
-printf("begin excute\n");
+  //printf("begin excute\n");
     c = user_handler(ev, c);
     assert(c != NULL);
   }
-  printf("end call\n");
+  //printf("end call\n");
   //_mepc=_mepc+4;
   return c;
 }
