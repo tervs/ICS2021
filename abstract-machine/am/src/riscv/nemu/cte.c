@@ -6,7 +6,7 @@
 static Context* (*user_handler)(Event, Context*) = NULL;
 
 Context* __am_irq_handle(Context *c) {
-printf("begin excute\n");
+
  //printf("mcause  0x%08x\n\n",c->mcause);
 //printf("0x%08x\n",c->mepc);
   //printf("\n\n\n\n\n\n\n");
@@ -21,7 +21,7 @@ printf("begin excute\n");
       //case 0:ev.event = EVENT_SYSCALL;break;
       default: ev.event = EVENT_ERROR; break;
     }
-
+printf("begin excute\n");
     c = user_handler(ev, c);
     assert(c != NULL);
   }
