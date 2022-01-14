@@ -266,9 +266,9 @@ def_EHelper(ecall) {
   //printf("ecall mepc:%x  mstatus:%x  mcause:%x  mtvec:%x\n",_mepc,_mstatus,_mcause,_mtvec);
   //isa_reg_display();
   //printf("gpr17 %x\n",gpr(17));
-  isa_raise_intr(gpr(17),&(s->pc),&(s->dnpc));
+  //isa_raise_intr(gpr(17),&(s->pc),&(s->dnpc));
   
-  //isa_raise_intr(0x0000000b,&(s->pc),&(s->dnpc));//no more independent yield
+  isa_raise_intr(0x0000000b,&(s->pc),&(s->dnpc));//no more independent yield
   //printf("\n\n\n");
   //isa_reg_display();
 }
