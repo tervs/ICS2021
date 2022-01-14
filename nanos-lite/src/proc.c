@@ -23,6 +23,7 @@ void context_uload(PCB* pcb,const char* filename){
   printf("file %s enter at %x\n",filename,entry);
   //printf("stack:%p->%p\n",stack.start,stack.end);
   pcb->cp=ucontext(NULL,stack,(void *)entry);
+  pcb->cp->GPRx = (uintptr_t)heap.end; 
   //printf("pcb->cp:%p\n",pcb->cp);nt
 } 
 
