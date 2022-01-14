@@ -50,9 +50,9 @@ current->cp = prev;
 
 // always select pcb[0] as the new process
 current = &pcb[0];
-
+printf("return from sch\n");
 // then return the new context
 return current->cp;
-printf("return from sch\n");
-  return NULL;
+
+  //return NULL;
 }
