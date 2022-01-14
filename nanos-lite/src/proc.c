@@ -45,15 +45,15 @@ void init_proc() {
 }
 
 Context* schedule(Context *prev) {
-  printf("current->cp %x\n",current->cp);
-  printf("call schedule to switch pcb\n");
+  //printf("current->cp %x\n",current->cp);
+  //printf("call schedule to switch pcb\n");
   // save the context pointer
 current->cp = prev;
-printf("prev %x\n",prev);
+//printf("prev %x\n",prev);
 // always select pcb[0] as the new process
 current = &pcb[0];
 printf("pcb0 %x\n",&pcb[0]);
-printf("return from sch  %x\n",current->cp);
+//printf("return from sch  %x\n",current->cp);
 // then return the new context
 return current->cp;
 
