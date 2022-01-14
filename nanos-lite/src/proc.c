@@ -53,5 +53,6 @@ current = &pcb[0];
 
 // then return the new context
 return current->cp;
+printf("return from sch\n");
   return NULL;
 }
