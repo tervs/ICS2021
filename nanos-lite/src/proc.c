@@ -44,6 +44,7 @@ void init_proc() {
 }
 
 Context* schedule(Context *prev) {
+  printf("call schedule to switch pcb\n");
   // save the context pointer
 current->cp = prev;
 
