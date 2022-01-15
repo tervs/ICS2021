@@ -15,6 +15,7 @@ void context_kload(PCB* pcb,void(*entry)(void*),void *arg){
   pcb->cp=kcontext(stack,entry,arg);
   //printf("pcb->cp:%p\n",pcb->cp);
 } 
+/*
 void context_uload(PCB *pcb, const char *filename, char *const argv[], char *const envp[])
 {
     Area ustack = {pcb->stack,pcb->stack + STACK_SIZE};
@@ -29,7 +30,7 @@ void context_uload(PCB *pcb, const char *filename, char *const argv[], char *con
  
   //printf("pcb->cp:%p\n",pcb->cp);nt
 } 
-
+*/
 
 
 void naive_uload(PCB *pcb, const char *filename);
@@ -49,7 +50,7 @@ void hello_fun(void *arg) {
 
 void init_proc() {
   context_kload(&pcb[0], hello_fun, (void *)0xffffffff);
-  context_uload(&pcb[1], "/bin/pal",NULL,NULL);
+  //context_uload(&pcb[1], "/bin/pal",NULL,NULL);
   switch_boot_pcb();
 
   Log("Initializing processes...");
@@ -65,8 +66,8 @@ Context* schedule(Context *prev) {
 current->cp = prev;
 //printf("prev %x\n",prev);
 // always select pcb[0] as the new process
-//current = &pcb[0];
-current = (current == &pcb[0] ? &pcb[1] : &pcb[0]);
+current = &pcb[0];
+//current = (current == &pcb[0] ? &pcb[1] : &pcb[0]);
 //printf("pcb0 %x\n",&pcb[0]);
 //printf("return from sch  %x\n",current->cp);
 // then return the new context
