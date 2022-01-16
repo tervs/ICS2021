@@ -18,7 +18,7 @@ uint64_t g_nr_guest_instr = 0;
 static uint64_t g_timer = 0; // unit: us
 static bool g_print_step = false;
 const rtlreg_t rzero = 0;
-word_t intr = isa_query_intr();
+
 rtlreg_t tmp_reg[4];
 //Decode s;
 //rtlreg_t csr[4096];
@@ -143,7 +143,7 @@ void cpu_exec(uint64_t n) {
     trace_and_difftest(&s, cpu.pc);
     if (nemu_state.state != NEMU_RUNNING) break;
     IFDEF(CONFIG_DEVICE, device_update());
-
+    word_t intr = isa_query_intr();
     if (intr != INTR_EMPTY) {
     cpu.pc = isa_raise_intr(intr, &(cpu.pc),&(s.dnpc));
     }
