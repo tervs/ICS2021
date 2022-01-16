@@ -49,8 +49,9 @@ bool vme_init(void* (*pgalloc_f)(int), void (*pgfree_f)(void*)) {
       
     }
   }
-  while(1);
+  
   set_satp(kas.ptr);
+  while(1);
   vme_enable = 1;
   
   return true;
