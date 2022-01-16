@@ -145,7 +145,7 @@ void cpu_exec(uint64_t n) {
     IFDEF(CONFIG_DEVICE, device_update());
 
     if (intr != INTR_EMPTY) {
-    cpu.pc = isa_raise_intr(intr, cpu.pc,&(s.dnpc));
+    cpu.pc = isa_raise_intr(intr, &(cpu.pc),&(s.dnpc));
     }
   }
 
