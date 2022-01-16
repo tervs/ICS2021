@@ -68,6 +68,7 @@ void init_proc() {
 }
 
 Context* schedule(Context *prev) {
+  Log("process time interrupt");
   //printf("current->cp %x\n",current->cp);
   //printf("call schedule to switch pcb\n");
   // save the context pointer
