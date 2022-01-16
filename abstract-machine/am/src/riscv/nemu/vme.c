@@ -25,6 +25,8 @@ static inline uintptr_t get_satp() {
 }
 
 bool vme_init(void* (*pgalloc_f)(int), void (*pgfree_f)(void*)) {
+  
+  return true;
   pgalloc_usr = pgalloc_f;
   pgfree_usr = pgfree_f;
 
@@ -42,6 +44,8 @@ bool vme_init(void* (*pgalloc_f)(int), void (*pgfree_f)(void*)) {
   vme_enable = 1;
 
   return true;
+
+//return true;
 }
 
 void protect(AddrSpace *as) {
