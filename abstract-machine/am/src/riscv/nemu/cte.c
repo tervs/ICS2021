@@ -76,11 +76,12 @@ bool cte_init(Context*(*handler)(Event, Context*)) {
 
 Context *kcontext(Area kstack, void (*entry)(void *), void *arg) {
   //assert(0);
-  assert(0);
+  //assert(0);
     Context *c = kstack.end - sizeof(Context);
   *c = (Context) { 0 };
   c->mepc=(uintptr_t)entry;
   c->gpr[10]=(intptr_t)arg;
+  assert(0);
   //printf("mepc  %x\n",c->mepc);
   return c;
   //return NULL;
