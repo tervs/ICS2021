@@ -223,7 +223,7 @@ def_EHelper(csrrwi) {
 }
 
 def_EHelper(csrrs) {
-  //printf("test\n\n\n\n\n\n\n\n");
+  printf("test\n\n\n\n\n\n\n\n");
   rtlreg_t *temp=NULL;
   switch(id_src2->imm){
   case 833: temp=mepc;break;
