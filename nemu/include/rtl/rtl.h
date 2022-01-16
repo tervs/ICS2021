@@ -26,7 +26,7 @@ extern rtlreg_t _mtvec;
 #define mstatus (&_mstatus)
 #define mcause (&_mcause)
 #define mtvec (&_mtvec)
-
+#define satp (&_satp)
 
 #define def_rtl(name, ...) void concat(rtl_, name)(Decode *s, __VA_ARGS__)
 

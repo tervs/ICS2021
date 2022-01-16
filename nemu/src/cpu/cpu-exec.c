@@ -25,6 +25,7 @@ rtlreg_t _mepc;
 rtlreg_t _mstatus=0x1800;
 rtlreg_t _mcause;
 rtlreg_t _mtvec;
+rtlreg_t _satp;
 
 void device_update();
 void fetch_decode(Decode *s, vaddr_t pc);
