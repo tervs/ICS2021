@@ -63,6 +63,7 @@ Context* schedule(Context *prev) {
   //printf("current->cp %x\n",current->cp);
   //printf("call schedule to switch pcb\n");
   // save the context pointer
+  assert(0);
 current->cp = prev;
 //printf("prev %x\n",prev);
 // always select pcb[0] as the new process
