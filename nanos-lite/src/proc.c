@@ -11,7 +11,6 @@ void context_kload(PCB* pcb,void(*entry)(void*),void *arg){
   //assert(0);
   //printf("entry %x\n",entry);
   Area stack = {pcb->stack,pcb->stack + STACK_SIZE};
-
   //printf("stack:%p->%p\n",stack.start,stack.end);
   pcb->cp=kcontext(stack,entry,arg);
   //printf("pcb->cp:%p\n",pcb->cp);
@@ -22,14 +21,9 @@ void context_uload(PCB *pcb, const char *filename, char *const argv[], char *con
   assert(0);
     Area ustack = {pcb->stack,pcb->stack + STACK_SIZE};
   intptr_t entry=loader(pcb,filename);
-  
-  //printf("entry %x\n",entry);
 
-  //printf("file %s enter at %x\n",filename,entry);
-  //printf("stack:%p->%p\n",stack.start,stack.end);
   pcb->cp=ucontext(NULL,ustack,(void *)entry);
   pcb->cp->GPRx = (uintptr_t)heap.end; 
- 
   //printf("pcb->cp:%p\n",pcb->cp);nt
 } 
 
