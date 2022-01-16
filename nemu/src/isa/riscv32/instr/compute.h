@@ -281,6 +281,10 @@ def_EHelper(mret) {
   //printf("ret mepc:%x  mstatus:%x  mcause:%x  mtvec:%x\n",_mepc,_mstatus,_mcause,_mtvec);
   //isa_reg_display();
   s->dnpc=*mepc;
-
+  int mpie=*mcause&(0x00000080);
+  *mstatus=*mstatus|(0x00000080);
+    if(!mpie){
+    *mstatus=*mstatus&(0xfffffff7);
+  }else{*mstatus=*mstatus|(0x00000008);}
   //
 }
