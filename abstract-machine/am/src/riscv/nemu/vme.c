@@ -6,7 +6,7 @@ static AddrSpace kas = {};
 static void* (*pgalloc_usr)(int) = NULL;
 static void (*pgfree_usr)(void*) = NULL;
 static int vme_enable = 0;
-
+extern char _pmem_start;
 static Area segments[] = {      // Kernel memory mappings
   NEMU_PADDR_SPACE
 };
@@ -35,7 +35,8 @@ static inline uintptr_t get_satp() {
 
 
 bool vme_init(void* (*pgalloc_f)(int), void (*pgfree_f)(void*)) {
-  
+  printf("%x\n",&(_pmem_start));
+  while(1);
   //return true;
   pgalloc_usr = pgalloc_f;
   pgfree_usr = pgfree_f;
