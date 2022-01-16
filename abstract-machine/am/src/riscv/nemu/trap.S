@@ -37,7 +37,7 @@ __am_asm_trap:
   csrr t0, mcause
   csrr t1, mstatus
   csrr t2, mepc
-  addi t2, t2, 0x00000004
+  #addi t2, t2, 0x00000004
   #todohere
 
   
