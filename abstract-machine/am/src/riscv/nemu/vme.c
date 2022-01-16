@@ -18,15 +18,23 @@ static inline void set_satp(void *pdir) {
   asm volatile("csrw satp, %0" : : "r"(mode | ((uintptr_t)pdir >> 12)));
 }
 
+
+
+
+
 static inline uintptr_t get_satp() {
   uintptr_t satp;
   asm volatile("csrr %0, satp" : "=r"(satp));
   return satp << 12;
 }
 
+
+
+
+
 bool vme_init(void* (*pgalloc_f)(int), void (*pgfree_f)(void*)) {
   
-  return true;
+  //return true;
   pgalloc_usr = pgalloc_f;
   pgfree_usr = pgfree_f;
 
@@ -48,6 +56,9 @@ bool vme_init(void* (*pgalloc_f)(int), void (*pgfree_f)(void*)) {
 //return true;
 }
 
+
+
+
 void protect(AddrSpace *as) {
   PTE *updir = (PTE*)(pgalloc_usr(PGSIZE));
   as->ptr = updir;
@@ -57,12 +68,25 @@ void protect(AddrSpace *as) {
   memcpy(updir, kas.ptr, PGSIZE);
 }
 
+
+
+
+
 void unprotect(AddrSpace *as) {
 }
+
+
+
+
 
 void __am_get_cur_as(Context *c) {
   c->pdir = (vme_enable ? (void *)get_satp() : NULL);
 }
+
+
+
+
+
 
 void __am_switch(Context *c) {
   if (vme_enable && c->pdir != NULL) {
@@ -70,8 +94,20 @@ void __am_switch(Context *c) {
   }
 }
 
+
+
+
+
+
 void map(AddrSpace *as, void *va, void *pa, int prot) {
 }
+
+
+
+
+
+
+
 
 Context *ucontext(AddrSpace *as, Area kstack, void *entry) {
   //assert(0);
