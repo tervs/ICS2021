@@ -44,6 +44,7 @@ bool vme_init(void* (*pgalloc_f)(int), void (*pgfree_f)(void*)) {
   for (i = 0; i < LENGTH(segments); i ++) {
     void *va = segments[i].start;
     for (; va < segments[i].end; va += PGSIZE) {
+      while(1);
       map(&kas, va, va, 0);
     }
   }
@@ -54,6 +55,9 @@ bool vme_init(void* (*pgalloc_f)(int), void (*pgfree_f)(void*)) {
   return true;
 
 //return true;
+}
+void map(AddrSpace *as, void *va, void *pa, int prot) {
+
 }
 
 
@@ -99,8 +103,6 @@ void __am_switch(Context *c) {
 
 
 
-void map(AddrSpace *as, void *va, void *pa, int prot) {
-}
 
 
 
