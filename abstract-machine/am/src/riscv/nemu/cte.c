@@ -9,7 +9,7 @@ static Context* (*user_handler)(Event, Context*) = NULL;
 
 Context* __am_irq_handle(Context *c) {
 
- //printf("mcause  0x%08x\n\n",c->mcause);
+ printf("mcause  0x%08x\n\n",c->mcause);
 //printf("0x%08x\n",c->mepc);
   //printf("\n\n\n\n\n\n\n");
   if (user_handler) {
@@ -27,7 +27,7 @@ Context* __am_irq_handle(Context *c) {
       case 0x00000009: ev.event = EVENT_SYSCALL;break;
       case 0x00000013: ev.event = EVENT_SYSCALL;break;
       case 0x00000019: ev.event = EVENT_SYSCALL;break;
-      case 5:ev.event=EVENT_IRQ_TIMER;break;
+      case 0x80000007:ev.event=EVENT_IRQ_TIMER;break;
       //case 0:ev.event = EVENT_SYSCALL;break;
       default: ev.event = EVENT_ERROR; break;
     }
