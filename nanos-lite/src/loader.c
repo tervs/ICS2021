@@ -51,6 +51,7 @@ uintptr_t loader(PCB *pcb, const char *filename) {
   //printf("%x %x\n",elfhdr.e_phoff,elfhdr.e_phnum);
   assert(fd != -1);
   //printf("%x %x %x %d\n",elfhdr.e_entry,elfhdr.e_phentsize,elfhdr.e_ehsize,elfhdr.e_phnum);
+  assert(0);
   for(int i = 0;i < elfhdr.e_phnum;i++)
   {
     //printf("i is %d\n",i);
@@ -74,7 +75,7 @@ uintptr_t loader(PCB *pcb, const char *filename) {
   assert(fd == 0);
   //printf("%s File Loaded\n",filename);
   //printf("entry point %x\n",elfhdr.e_entry);
-  assert(0);
+  //assert(0);
   return elfhdr.e_entry;
 
 /*
