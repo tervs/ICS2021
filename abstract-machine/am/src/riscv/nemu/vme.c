@@ -61,6 +61,7 @@ bool vme_init(void* (*pgalloc_f)(int), void (*pgfree_f)(void*)) {
 
 //return true;
 }
+
 void map(AddrSpace *as, void *va, void *pa, int prot) {
 
 }
