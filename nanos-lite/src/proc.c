@@ -22,7 +22,7 @@ void context_uload(PCB *pcb, const char *filename, char *const argv[], char *con
 {
   //assert(0);
     Area ustack = {pcb->stack,pcb->stack + STACK_SIZE};
-    assert(0);
+
   intptr_t entry=loader(pcb,filename);
 assert(0);
   pcb->cp=ucontext(NULL,ustack,(void *)entry);
