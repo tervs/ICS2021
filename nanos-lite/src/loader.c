@@ -51,7 +51,7 @@ uintptr_t loader(PCB *pcb, const char *filename) {
   //printf("%x %x\n",elfhdr.e_phoff,elfhdr.e_phnum);
   assert(fd != -1);
   //printf("%x %x %x %d\n",elfhdr.e_entry,elfhdr.e_phentsize,elfhdr.e_ehsize,elfhdr.e_phnum);
-  assert(0);
+  //assert(0);
   for(int i = 0;i < elfhdr.e_phnum;i++)
   {
     //printf("i is %d\n",i);
@@ -59,6 +59,7 @@ uintptr_t loader(PCB *pcb, const char *filename) {
     //rintf("test 1\n");
     fs_read(fd,&prohdr,sizeof(Elf_Phdr));
     //printf("out\n");
+    assert(0);
     if(prohdr.p_type == PT_LOAD){
       //printf("test 2\n");
       fs_lseek(fd,prohdr.p_offset,SEEK_SET);
