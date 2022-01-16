@@ -2,7 +2,7 @@
 //#include<../rtl.h>
 extern rtlreg_t _mepc;
 extern rtlreg_t _mstatus;
-extern rtlreg_t _mstatus;
+extern rtlreg_t _mcause;
 extern rtlreg_t _mtvec;
 #define IRQ_TIMER 0x80000007  // for riscv32
 
