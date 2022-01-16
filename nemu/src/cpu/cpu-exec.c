@@ -130,8 +130,8 @@ void cpu_exec(uint64_t n) {
   Decode s;//todo tobe delete
   for (;n > 0; n --) {
     fetch_decode_exec_updatepc(&s);
-    //printf(" pc:  0x%08x\n",s.pc);
-    //isa_reg_display();
+    printf(" pc:  0x%08x\n",s.pc);
+    isa_reg_display();
     #ifdef ENDCYCLE
     if(cpu.pc==0x830000e0)
     {
