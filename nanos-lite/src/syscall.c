@@ -42,7 +42,7 @@ void do_syscall(Context *c) {
 
   switch (a[0]) {
     case 0: c->GPRx=sys_exit();break;
-    case 1: return (void)schedule(c);//c->GPRx=sys_yield();break;
+    case 1: c->GPRx=sys_yield();break;
     case 2: c->GPRx=sys_open();break;
     case 3: c->GPRx=sys_read();break;
     case 4: c->GPRx=sys_write();break;
