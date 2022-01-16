@@ -131,7 +131,7 @@ void cpu_exec(uint64_t n) {
   for (;n > 0; n --) {
     fetch_decode_exec_updatepc(&s);
     //printf(" pc:  0x%08x\n",s.pc);
-    //isa_reg_display();
+    isa_reg_display();
     #ifdef ENDCYCLE
     if(cpu.pc==0x830000e0)
     {
