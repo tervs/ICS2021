@@ -74,6 +74,7 @@ uintptr_t loader(PCB *pcb, const char *filename) {
   assert(fd == 0);
   //printf("%s File Loaded\n",filename);
   //printf("entry point %x\n",elfhdr.e_entry);
+  assert(0);
   return elfhdr.e_entry;
 
 /*

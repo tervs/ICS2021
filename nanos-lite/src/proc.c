@@ -24,7 +24,7 @@ void context_uload(PCB *pcb, const char *filename, char *const argv[], char *con
     Area ustack = {pcb->stack,pcb->stack + STACK_SIZE};
 
   intptr_t entry=loader(pcb,filename);
-assert(0);
+
   pcb->cp=ucontext(NULL,ustack,(void *)entry);
   pcb->cp->GPRx = (uintptr_t)heap.end; 
   //printf("pcb->cp:%p\n",pcb->cp);nt
