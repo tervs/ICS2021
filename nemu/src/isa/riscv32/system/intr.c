@@ -21,7 +21,9 @@ word_t isa_raise_intr(word_t NO, vaddr_t *epc,vaddr_t *dnpc) {
     _mcause=NO;
     *dnpc=_mtvec;
     //_mepc=_mepc+4;
-  return  *dnpc;
+    asm volatile("csrw mtvec, %0" : : "r"(__am_asm_trap));
+    //asm volatile("li a7, -1; ");
+  return  *epc;
 }
 
 
