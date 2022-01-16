@@ -63,11 +63,12 @@ uintptr_t loader(PCB *pcb, const char *filename) {
     if(prohdr.p_type == PT_LOAD){
       //printf("test 2\n");
       fs_lseek(fd,prohdr.p_offset,SEEK_SET);
+      assert(0);
       //printf("fucccc\n");
       fs_read(fd,(void *)prohdr.p_vaddr,prohdr.p_filesz);
       //printf("test 3\n");
       //printf("from %x %x size = %x \n",prohdr.p_vaddr,prohdr.p_offset,prohdr.p_filesz);
-      assert(0);
+      
       memset((void*)(prohdr.p_vaddr+prohdr.p_filesz),0,prohdr.p_memsz-prohdr.p_filesz);
       //printf("test 4\n");
     }//之前用的memcpy，不愧是我
