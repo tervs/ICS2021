@@ -8,7 +8,7 @@ PCB *current = NULL;
 uintptr_t loader(PCB *pcb, const char *filename);
 
 void context_kload(PCB* pcb,void(*entry)(void*),void *arg){
-  assert(0);
+  //assert(0);
   //printf("entry %x\n",entry);
   Area stack = {pcb->stack,pcb->stack + STACK_SIZE};
   //printf("stack:%p->%p\n",stack.start,stack.end);
@@ -18,7 +18,7 @@ void context_kload(PCB* pcb,void(*entry)(void*),void *arg){
 
 void context_uload(PCB *pcb, const char *filename, char *const argv[], char *const envp[])
 {
-  assert(0);
+  //assert(0);
     Area ustack = {pcb->stack,pcb->stack + STACK_SIZE};
   intptr_t entry=loader(pcb,filename);
 
@@ -45,7 +45,7 @@ void hello_fun(void *arg) {
 }
 
 void init_proc() {
-  assert(0);
+  //assert(0);
   context_kload(&pcb[0], hello_fun, (void *)0xffffffff);
   context_uload(&pcb[1], "/bin/pal",NULL,NULL);
   switch_boot_pcb();
