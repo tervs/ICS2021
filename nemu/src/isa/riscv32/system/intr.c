@@ -20,6 +20,7 @@ word_t isa_raise_intr(word_t NO, vaddr_t *epc,vaddr_t *dnpc) {
     _mepc=*epc;
     _mcause=NO;
     *dnpc=_mtvec;
+    printf("mstatus 0x%08x\n",_mstatus);
     //_mepc=_mepc+4;
     //asm volatile("csrw mtvec, %0" : : "r"(__am_asm_trap));
     //asm volatile("li a7, -1; ");
