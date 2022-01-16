@@ -76,10 +76,10 @@ Context* schedule(Context *prev) {
 current->cp = prev;
 //printf("prev %x\n",prev);
 // always select pcb[0] as the new process
-current = &pcb[0];
+//current = &pcb[0];
 Log("process time interrupt");
 //assert(0);
-//current = (current == &pcb[0] ? &pcb[1] : &pcb[0]);
+current = (current == &pcb[0] ? &pcb[1] : &pcb[0]);
 //printf("pcb0 %x\n",&pcb[0]);
 //printf("return from sch  %x\n",current->cp);
 // then return the new context
