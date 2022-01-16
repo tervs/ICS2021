@@ -249,7 +249,7 @@ def_EHelper(csrrw) {
   case 768: temp=mstatus;break;
   case 834: temp=mcause;break;
   case 773: temp=mtvec;break;
-  case 0x180:temp=satp;break;
+  //case 0x180:temp=satp;break;
   }
   rtl_li(s, ddest, *temp);
   //rtl_or(s, &csr[id_src2->imm], dsrc1, &csr[id_src2->imm]);
