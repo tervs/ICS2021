@@ -12,6 +12,7 @@ word_t isa_raise_intr(word_t NO, vaddr_t *epc,vaddr_t *dnpc) {
    */
   //printf("0x%08x\n\n\n\n",*epc);
   //printf("0x%08x\n\n\n\n",_mtvec);
+  printf("before 0x%08x in nemu\n",_mstatus);
   int mie=_mstatus&(0x00000008);
   _mstatus=_mstatus&(0xfffffff7);
   if(!mie){
