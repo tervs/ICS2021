@@ -20,7 +20,7 @@ void context_kload(PCB* pcb,void(*entry)(void*),void *arg){
 
 void context_uload(PCB *pcb, const char *filename, char *const argv[], char *const envp[])
 {
-  //assert(0);
+  assert(0);
     Area ustack = {pcb->stack,pcb->stack + STACK_SIZE};
   intptr_t entry=loader(pcb,filename);
 
@@ -57,7 +57,7 @@ void init_proc() {
   //while(1);
   context_uload(&pcb[1], "/bin/pal",NULL,NULL);
 
-  assert(0);
+  //assert(0);
   switch_boot_pcb();
 
   Log("Initializing processes...");
