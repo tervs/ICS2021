@@ -14,6 +14,7 @@ void context_kload(PCB* pcb,void(*entry)(void*),void *arg){
   //assert(0);
   //printf("stack:%p->%p\n",stack.start,stack.end);
   pcb->cp=kcontext(stack,entry,arg);
+  assert(0);
   //printf("pcb->cp:%p\n",pcb->cp);
 } 
 
