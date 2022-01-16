@@ -53,9 +53,11 @@ void hello_fun(void *arg) {
 void init_proc() {
   
   context_kload(&pcb[0], hello_fun, (void *)0xffffffff);
-  assert(0);
+  //assert(0);
   //while(1);
   context_uload(&pcb[1], "/bin/pal",NULL,NULL);
+
+  assert(0);
   switch_boot_pcb();
 
   Log("Initializing processes...");
