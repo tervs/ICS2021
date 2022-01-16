@@ -122,6 +122,7 @@ Context *ucontext(AddrSpace *as, Area kstack, void *entry) {
   Context *c = kstack.end - sizeof(Context);
   *c = (Context) { 0 };
   c->mepc=(uintptr_t)entry;
+  c->mstatus=(c->mstatus)|(0x00000008);
   //c->gpr[10]=(intptr_t)arg;
   //printf("Ucontext pc %x\n",c->mepc);
   return c;
