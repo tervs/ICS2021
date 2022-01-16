@@ -32,6 +32,7 @@ Context* __am_irq_handle(Context *c) {
       default: ev.event = EVENT_ERROR; break;
     }
   //printf("begin excute\n");
+    //Log("fuck cte");
     c = user_handler(ev, c);
     //printf("c addr %x\n",(uintptr_t)c);
     /*

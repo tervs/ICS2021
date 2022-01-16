@@ -77,7 +77,7 @@ current->cp = prev;
 //printf("prev %x\n",prev);
 // always select pcb[0] as the new process
 //current = &pcb[0];
-Log("process time interrupt");
+//Log("process time interrupt");
 //assert(0);
 current = (current == &pcb[0] ? &pcb[1] : &pcb[0]);
 //printf("pcb0 %x\n",&pcb[0]);
